@@ -1,9 +1,9 @@
 {
-    "name": "mikealmond/musicbrainz",
+    "name": "xenos/musicbrainz",
     "type": "library",
     "description": "A PHP library for accessing the MusicBrainz API",
     "keywords": ["musicbrainz", "library", "php", "api"],
-    "homepage": "https://github.com/mikealmond/musicbrainz",
+    "homepage": "https://github.com/XenosEleatikos/MusicBrainz",
     "license": "MIT",
     "authors": [
         {
