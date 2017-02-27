@@ -2,28 +2,29 @@
 
 namespace MusicBrainz\HttpAdapters;
 
-use Guzzle\Http\ClientInterface;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\ServerException;
 use MusicBrainz\Exception;
 
 /**
- * Guzzle Http Adapter
+ * Adapter for Guzzle 6 HTTP Client.
+ *
+ * @see http://docs.guzzlephp.org
  */
 class GuzzleHttpAdapter extends AbstractHttpAdapter
 {
     /**
-     * The Guzzle client used to make cURL requests
-     *
-     * @var \Guzzle\Http\ClientInterface
+     * @var ClientInterface
      */
     private $client;
 
     /**
-     * Initializes the class.
+     * Initialize class
      *
-     * @param \Guzzle\Http\ClientInterface $client The Guzzle client used to make requests
-     * @param null                         $endpoint Override the default endpoint (useful for local development)
+     * @param ClientInterface $client   A Guzzle HTTP client
+     * @param null|string     $endpoint API endpoint
      */
-    public function __construct(ClientInterface $client, $endpoint = null)
+    public function __construct(ClientInterface $client, ?string $endpoint = null)
     {
         $this->client = $client;
 
@@ -33,47 +34,69 @@ class GuzzleHttpAdapter extends AbstractHttpAdapter
     }
 
     /**
-     * Perform an HTTP request on MusicBrainz
+     * Performs an HTTP request on MusicBrainz API.
      *
-     * @param  string  $path
-     * @param  array   $params
-     * @param  array   $options
-     * @param  boolean $isAuthRequired
-     * @param  boolean $returnArray disregarded
+     * @param  string $path
+     * @param  array  $params
+     * @param  array  $options
+     * @param  bool   $isAuthRequired
+     * @param  bool   $returnArray
      *
-     * @throws \MusicBrainz\Exception
+     * @throws Exception
      * @return array
      */
-    public function call($path, array $params = array(), array $options = array(), $isAuthRequired = false, $returnArray = false)
-    {
+    public function call(
+        string $path,
+        array $params = array(),
+        array $options = array(),
+        bool $isAuthRequired = false,
+        bool $returnArray = false
+    ) {
         if ($options['user-agent'] == '') {
             throw new Exception('You must set a valid User Agent before accessing the MusicBrainz API');
         }
 
-        $this->client->setBaseUrl($this->endpoint);
-        $this->client->setConfig(
-            array(
-                'data' => $params
-            )
-        );
-
-        $request = $this->client->get($path . '{?data*}');
-        $request->setHeader('Accept', 'application/json');
-        $request->setHeader('User-Agent', $options['user-agent']);
+        $requestOptions = [
+            'headers'        => [
+                'Accept'     => 'application/json',
+                'User-Agent' => $options['user-agent']
+            ],
+            'query' => urldecode(http_build_query($params))
+        ];
 
         if ($isAuthRequired) {
             if ($options['user'] != null && $options['password'] != null) {
-                $request->setAuth($options['user'], $options['password'], CURLAUTH_DIGEST);
+                $requestOptions['auth'] = [
+                    $options['user'],
+                    $options['password'],
+                    'digest'
+                ];
             } else {
                 throw new Exception('Authentication is required');
             }
         }
 
-        $request->getQuery()->useUrlEncoding(false);
-
-        // musicbrainz throttle
+        /**
+         * @todo Implement caching last request time, such that MusicBrainz rules are followed.
+         *
+         * @see https://musicbrainz.org/doc/XML_Web_Service/Rate_Limiting
+         *
+         * @todo Implement loop to retry in case of 503
+         */
         sleep(1);
+        try{
+            $request = $this->client->request('GET', $this->endpoint . '/' . $path, $requestOptions);
+        }catch (ServerException $e){
+            sleep(1);
+            $request = $this->client->request('GET', $this->endpoint . '/' . $path, $requestOptions);
+        }
+        $responseBody = json_decode($request->getBody());
+        /**
+         * This is a weird one, but because most if not all functions in this package expect arrays
+         * we try to give them that as early as possible and avoid errors while keeping compatibility to a maximum.
+         */
+        $responseBody = json_decode(json_encode($responseBody), true);
 
-        return $request->send()->json();
+        return $responseBody;
     }
 }

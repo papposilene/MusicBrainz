@@ -23,5 +23,11 @@ abstract class AbstractHttpAdapter
      *
      * @return array
      */
-    abstract public function call($path, array $params = array(), array $options = array(), $isAuthRequired = false, $returnArray = false);
+    abstract public function call(
+        string $path,
+        array $params = array(),
+        array $options = array(),
+        bool $isAuthRequired = false,
+        bool $returnArray = false
+    );
 }
