@@ -17,7 +17,7 @@ class Score
     /**
      * Constructs a relevance score.
      *
-     * @param int $score
+     * @param int $score The score
      */
     public function __construct(int $score)
     {
