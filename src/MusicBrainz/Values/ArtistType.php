@@ -75,15 +75,13 @@ class ArtistType
     /**
      * Constructs an artist type.
      *
-     * @param string $type
+     * @param string $type An artist type code
      */
     public function __construct(string $type)
     {
-        if (in_array($type, self::TYPES)) {
-            $this->type = $type;
-        }
-
-        $this->type = self::OTHER;
+        $this->gender = (in_array($type, self::TYPES))
+            ? $type
+            : self::OTHER;
     }
 
     /**
