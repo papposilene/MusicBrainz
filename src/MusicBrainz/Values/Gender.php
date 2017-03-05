@@ -29,6 +29,13 @@ class Gender
     public const OTHER = 'other';
 
     /**
+     * Undefined gender
+     *
+     * @var string
+     */
+    public const UNDEFINED = '';
+
+    /**
      * A list of valid gender codes
      *
      * @var array
@@ -36,7 +43,8 @@ class Gender
     public const GENDERS = [
         self::MALE,
         self::FEMALE,
-        self::OTHER
+        self::OTHER,
+        self::UNDEFINED
     ];
 
     /**
@@ -44,17 +52,17 @@ class Gender
      *
      * @var string
      */
-    private $gender;
+    private $genderCode;
 
     /**
      * Constructs a gender.
      *
-     * @param string $gender The gender
+     * @param string $genderCode The gender
      */
-    public function __construct(string $gender)
+    public function __construct(string $genderCode)
     {
-        $this->gender = (in_array($gender, self::GENDERS))
-            ? $gender
+        $this->gender = (in_array($genderCode, self::GENDERS))
+            ? $genderCode
             : self::OTHER;
     }
 
@@ -65,6 +73,6 @@ class Gender
      */
     public function __toString(): string
     {
-        return $this->gender;
+        return $this->genderCode;
     }
 }
