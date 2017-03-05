@@ -79,7 +79,7 @@ class ArtistType
      */
     public function __construct(string $type)
     {
-        $this->gender = (in_array($type, self::TYPES))
+        $this->type = (in_array($type, self::TYPES))
             ? $type
             : self::OTHER;
     }
