@@ -1,6 +1,6 @@
 <?php
 
-namespace MusicBrainz;
+namespace MusicBrainz\Value;
 
 /**
  * An area

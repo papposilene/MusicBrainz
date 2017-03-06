@@ -1,6 +1,6 @@
 <?php
 
-namespace MusicBrainz;
+namespace MusicBrainz\Value;
 
 /**
  * Aliases are variant names that are mostly used as search help: if a search matches an entity's alias, the entity will
@@ -163,3 +163,4 @@ class Alias
         return $this->name;
     }
 }
+use Doctrine\Common\Collections\Expr\Value;

@@ -1,6 +1,6 @@
 <?php
 
-namespace MusicBrainz;
+namespace MusicBrainz\Value;
 
 /**
  * An IPI (interested party information) code is an identifying number assigned by the CISAC database for musical rights
