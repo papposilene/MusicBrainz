@@ -35,7 +35,7 @@ class MBID
      *
      * @return bool
      */
-    private function isValidMBID($mbid)
+    private function isValidMBID($mbid): bool
     {
         return (bool) preg_match("/^(\{)?[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}(?(1)\})$/i", $mbid);
     }
