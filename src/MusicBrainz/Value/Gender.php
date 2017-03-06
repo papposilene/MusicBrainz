@@ -61,7 +61,7 @@ class Gender
      */
     public function __construct(string $genderCode)
     {
-        $this->gender = (in_array($genderCode, self::GENDERS))
+        $this->genderCode = (in_array($genderCode, self::GENDERS))
             ? $genderCode
             : self::OTHER;
     }
