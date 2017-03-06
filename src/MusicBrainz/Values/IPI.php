@@ -11,7 +11,7 @@ namespace MusicBrainz;
 class IPI
 {
     /**
-     * The MusikBrainz Identifier for the area
+     * The IPI code
      *
      * @var string
      */
