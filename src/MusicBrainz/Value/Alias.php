@@ -163,4 +163,3 @@ class Alias
         return $this->name;
     }
 }
-use Doctrine\Common\Collections\Expr\Value;
