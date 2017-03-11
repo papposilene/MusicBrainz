@@ -2,6 +2,7 @@
 
 namespace MusicBrainz;
 
+use MusicBrainz\Filter\ArtistFilter;
 use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
 
 /**
@@ -545,6 +546,56 @@ class MusicBrainz
         $response = $this->adapter->call($filter->getEntity() . '/', $params, $this->getHttpOptions(), false, true);
 
         return $filter->parseResponse($response, $this);
+    }
+
+    /**
+     * Searches for artists and returns the result.
+     *
+     * @param ArtistFilter $artistFilter An artist filter
+     * @param int          $limit        Maximum number of items
+     * @param null|int     $offset
+     *
+     * @return Artist[]
+     *
+     * @throws Exception
+     */
+    public function searchArtist(ArtistFilter $artistFilter, int $limit = 25, int $offset = null)
+    {
+        if (count($artistFilter->createParameters()) < 1) {
+            throw new Exception('The artist filter object needs at least 1 argument to create a query.');
+        }
+
+        if ($limit > 100) {
+            throw new Exception('Limit can only be between 1 and 100');
+        }
+
+        $params = $artistFilter->createParameters(array('limit' => $limit, 'offset' => $offset, 'fmt' => 'json'));
+
+        $response = $this->adapter->call('artist' . '/', $params, $this->getHttpOptions(), false, true);
+
+        return $this->parseArtistResponse($response, $this);
+    }
+
+    /**
+     * @param array       $response
+     * @param MusicBrainz $brainz
+     *
+     * @return Artist[]
+     */
+    public function parseArtistResponse(array $response, MusicBrainz $brainz)
+    {
+        $artists = array();
+        if (isset($response['artist'])) {
+            foreach ($response['artist'] as $artist) {
+                $artists[] = new Artist($artist, $brainz);
+            }
+        } elseif (isset($response['artists'])) {
+            foreach ($response['artists'] as $artist) {
+                $artists[] = new Artist($artist, $brainz);
+            }
+        }
+
+        return $artists;
     }
 
     /**
