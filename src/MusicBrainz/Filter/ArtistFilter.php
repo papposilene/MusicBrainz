@@ -13,8 +13,8 @@ use MusicBrainz\Filter\Accessor\CommentAccessorTrait;
 use MusicBrainz\Filter\Accessor\CountryAccessorTrait;
 use MusicBrainz\Filter\Accessor\EndAccessorTrait;
 use MusicBrainz\Filter\Accessor\EndAreaAccessorTrait;
+use MusicBrainz\Filter\Accessor\EndedAccessorTrait;
 use MusicBrainz\Value\ArtistType;
-use MusicBrainz\Value\Date;
 use MusicBrainz\Value\Gender;
 use MusicBrainz\Value\IPI;
 
@@ -34,28 +34,7 @@ class ArtistFilter extends Filter
     use CountryAccessorTrait;
     use EndAccessorTrait;
     use EndAreaAccessorTrait;
-
-    /**
-     * Returns true for dissolved bands or dead artists.
-     *
-     * @return null|bool
-     */
-    public function getEnded(): ?bool
-    {
-        return $this->getFilterValue('ended');
-    }
-
-    /**
-     * Sets, whether the is dissolved or the artist is dead.
-     *
-     * @param null|bool $ended True, if the band is dissolved or the artist is dead.
-     *
-     * @return self
-     */
-    public function setEnded(?bool $ended): self
-    {
-        return $this->setFilterValue('ended', $ended);
-    }
+    use EndedAccessorTrait;
 
     /**
      * Returns the gender.
