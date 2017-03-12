@@ -17,6 +17,7 @@ use MusicBrainz\Filter\Accessor\EndedAccessorTrait;
 use MusicBrainz\Filter\Accessor\GenderAccessorTrait;
 use MusicBrainz\Filter\Accessor\IpiCodeAccessorTrait;
 use MusicBrainz\Filter\Accessor\SortNameAccessorTrait;
+use MusicBrainz\Filter\Accessor\TagNameAccessorTrait;
 use MusicBrainz\Value\ArtistType;
 
 /**
@@ -39,48 +40,5 @@ class ArtistFilter extends Filter
     use GenderAccessorTrait;
     use IpiCodeAccessorTrait;
     use SortNameAccessorTrait;
-
-    /**
-     * Returns the tag name.
-     *
-     * @return null|string
-     */
-    public function getTagName(): ?string
-    {
-        return $this->getFilterValue('tag');
-    }
-
-    /**
-     * Sets a tag applied to the artist.
-     *
-     * @param null|string $tagName A tag applied to the artist
-     *
-     * @return self
-     */
-    public function setTagName(?string $tagName): self
-    {
-        return $this->setFilterValue('tag', $tagName);
-    }
-
-    /**
-     * Returns the artist type.
-     *
-     * @return null|ArtistType
-     */
-    public function getArtistType(): ?ArtistType
-    {
-        return $this->getFilterValue('type');
-    }
-
-    /**
-     * Sets the artist type.
-     *
-     * @param null|ArtistType $artistType An artist type
-     *
-     * @return self
-     */
-    public function setArtistType(?ArtistType $artistType): self
-    {
-        return $this->setFilterValue('type', $artistType);
-    }
+    use TagNameAccessorTrait;
 }
