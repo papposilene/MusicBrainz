@@ -9,6 +9,7 @@ use MusicBrainz\Filter\Accessor\ArtistNameAccessorTrait;
 use MusicBrainz\Filter\Accessor\ArtistNameWithoutAccentAccessorTrait;
 use MusicBrainz\Filter\Accessor\BeginAccessorTrait;
 use MusicBrainz\Filter\Accessor\BeginAreaAccessorTrait;
+use MusicBrainz\Filter\Accessor\CommentAccessorTrait;
 use MusicBrainz\Value\ArtistType;
 use MusicBrainz\Value\Country;
 use MusicBrainz\Value\Date;
@@ -27,28 +28,7 @@ class ArtistFilter extends Filter
     use ArtistNameWithoutAccentAccessorTrait;
     use BeginAccessorTrait;
     use BeginAreaAccessorTrait;
-
-    /**
-     * Returns the comment to differentiate similar artists.
-     *
-     * @return null|string
-     */
-    public function getComment(): ?string
-    {
-        return $this->getFilterValue('comment');
-    }
-
-    /**
-     * Sets a comment to differentiate similar artists.
-     *
-     * @param null|string $comment A comment to differentiate similar artists
-     *
-     * @return ArtistFilter
-     */
-    public function setComment(?string $comment): self
-    {
-        return $this->setFilterValue('comment', $comment);
-    }
+    use CommentAccessorTrait;
 
     /**
      * Returns the country.
