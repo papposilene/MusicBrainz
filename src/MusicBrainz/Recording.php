@@ -2,6 +2,8 @@
 
 namespace MusicBrainz;
 
+use MusicBrainz\Value\Artist;
+
 /**
  * Represents a MusicBrainz Recording object
  * @package MusicBrainz

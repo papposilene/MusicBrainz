@@ -1,16 +1,6 @@
 <?php
 
-namespace MusicBrainz;
-
-use MusicBrainz\Value\AliasList;
-use MusicBrainz\Value\Area;
-use MusicBrainz\Value\ArtistType;
-use MusicBrainz\Value\Gender;
-use MusicBrainz\Value\IPIList;
-use MusicBrainz\Value\LifeSpan;
-use MusicBrainz\Value\MBID;
-use MusicBrainz\Value\Score;
-use MusicBrainz\Value\TagList;
+namespace MusicBrainz\Value;
 
 /**
  * An artist
@@ -150,8 +140,6 @@ class Artist
      * Constructs an artist.
      *
      * @param array $artist Array of information about an artist
-     *
-     * @throws Exception
      */
     public function __construct(array $artist)
     {

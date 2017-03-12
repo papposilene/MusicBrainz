@@ -2,8 +2,11 @@
 
 namespace MusicBrainz;
 
+use AppBundle\Entity\Label;
 use MusicBrainz\Filter\ArtistFilter;
+use MusicBrainz\Filter\LabelFilter;
 use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
+use MusicBrainz\Value\Artist;
 
 /**
  * Connect to the MusicBrainz web service
