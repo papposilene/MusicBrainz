@@ -6,6 +6,8 @@ use MusicBrainz\Filter\Accessor\AliasNameAccessorTrait;
 use MusicBrainz\Filter\Accessor\AreaNameAccessorTrait;
 use MusicBrainz\Filter\Accessor\ArtistIdAccessorTrait;
 use MusicBrainz\Filter\Accessor\ArtistNameAccessorTrait;
+use MusicBrainz\Filter\Accessor\ArtistNameWithoutAccentAccessorTrait;
+use MusicBrainz\Filter\Accessor\BeginAccessorTrait;
 use MusicBrainz\Value\ArtistType;
 use MusicBrainz\Value\Country;
 use MusicBrainz\Value\Date;
@@ -21,50 +23,8 @@ class ArtistFilter extends Filter
     use AreaNameAccessorTrait;
     use ArtistIdAccessorTrait;
     use ArtistNameAccessorTrait;
-
-    /**
-     * Returns the artist name without accents.
-     *
-     * @return null|string
-     */
-    public function getArtistNameWithoutAccent(): ?string
-    {
-        return $this->getFilterValue('artistaccent');
-    }
-
-    /**
-     * Sets the artist name without accents.
-     *
-     * @param null|string $artistNameWithoutAccent The artist name without accents
-     *
-     * @return self
-     */
-    public function setArtistNameWithoutAccent(?string $artistNameWithoutAccent): self
-    {
-        return $this->setFilterValue('artistaccent', $artistNameWithoutAccent);
-    }
-
-    /**
-     * Returns artist birth date/band founding date.
-     *
-     * @return null|Date
-     */
-    public function getBegin(): ?Date
-    {
-        return $this->getFilterValue('begin');
-    }
-
-    /**
-     * Sets artist birth date/band founding date.
-     *
-     * @param null|Date $begin Artist birth date/band founding date
-     *
-     * @return self
-     */
-    public function setBegin(?Date $begin): self
-    {
-        return $this->setFilterValue('begin', $begin);
-    }
+    use ArtistNameWithoutAccentAccessorTrait;
+    use BeginAccessorTrait;
 
     /**
      * Sets the name of the beginning area.
