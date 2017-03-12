@@ -10,8 +10,8 @@ use MusicBrainz\Filter\Accessor\ArtistNameWithoutAccentAccessorTrait;
 use MusicBrainz\Filter\Accessor\BeginAccessorTrait;
 use MusicBrainz\Filter\Accessor\BeginAreaAccessorTrait;
 use MusicBrainz\Filter\Accessor\CommentAccessorTrait;
+use MusicBrainz\Filter\Accessor\CountryAccessorTrait;
 use MusicBrainz\Value\ArtistType;
-use MusicBrainz\Value\Country;
 use MusicBrainz\Value\Date;
 use MusicBrainz\Value\Gender;
 use MusicBrainz\Value\IPI;
@@ -29,28 +29,7 @@ class ArtistFilter extends Filter
     use BeginAccessorTrait;
     use BeginAreaAccessorTrait;
     use CommentAccessorTrait;
-
-    /**
-     * Returns the country.
-     *
-     * @return null|Country
-     */
-    public function getCountry(): ?Country
-    {
-        return $this->getFilterValue('country');
-    }
-
-    /**
-     * Sets the country.
-     *
-     * @param null|Country $country A country
-     *
-     * @return self
-     */
-    public function setCountry(?Country $country): self
-    {
-        return $this->setFilterValue('country', $country);
-    }
+    use CountryAccessorTrait;
 
     /**
      * Returns artist death date/band dissolution date.
