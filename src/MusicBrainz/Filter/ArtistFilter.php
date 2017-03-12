@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Filter;
 
+use MusicBrainz\Filter\Accessor\AliasNameAccessorTrait;
 use MusicBrainz\Value\ArtistType;
 use MusicBrainz\Value\Country;
 use MusicBrainz\Value\Date;
@@ -14,27 +15,7 @@ use MusicBrainz\Value\MBID;
  */
 class ArtistFilter extends Filter
 {
-    /**
-     * Returns the alias.
-     *
-     * @return null|string
-     */
-    public function getAliasName(): ?string
-    {
-        return $this->offsetGet('alias');
-    }
-
-    /**
-     * Sets an alias.
-     *
-     * @param null|string $aliasName An alias
-     *
-     * @return self
-     */
-    public function setAliasName(?string $aliasName): self
-    {
-        return $this->setFilterValue('alias', $aliasName);
-    }
+    use AliasNameAccessorTrait;
 
     /**
      * Returns the name of the artist's area.
@@ -43,7 +24,7 @@ class ArtistFilter extends Filter
      */
     public function getAreaName(): ?string
     {
-        return $this->offsetGet('area');
+        return $this->getFilterValue('area');
     }
 
     /**
@@ -65,7 +46,7 @@ class ArtistFilter extends Filter
      */
     public function getArtistId(): ?MBID
     {
-        return $this->offsetGet('arid');
+        return $this->getFilterValue('arid');
     }
 
     /**
@@ -87,7 +68,7 @@ class ArtistFilter extends Filter
      */
     public function getArtistName(): ?string
     {
-        return $this->offsetGet('artist');
+        return $this->getFilterValue('artist');
     }
 
     /**
@@ -109,7 +90,7 @@ class ArtistFilter extends Filter
      */
     public function getArtistNameWithoutAccent(): ?string
     {
-        return $this->offsetGet('artistaccent');
+        return $this->getFilterValue('artistaccent');
     }
 
     /**
@@ -131,7 +112,7 @@ class ArtistFilter extends Filter
      */
     public function getBegin(): ?Date
     {
-        return $this->offsetGet('begin');
+        return $this->getFilterValue('begin');
     }
 
     /**
@@ -153,7 +134,7 @@ class ArtistFilter extends Filter
      */
     public function getBeginAreaName(): ?string
     {
-        return $this->offsetGet('beginarea');
+        return $this->getFilterValue('beginarea');
     }
 
     /**
@@ -175,7 +156,7 @@ class ArtistFilter extends Filter
      */
     public function getComment(): ?string
     {
-        return $this->offsetGet('comment');
+        return $this->getFilterValue('comment');
     }
 
     /**
@@ -197,7 +178,7 @@ class ArtistFilter extends Filter
      */
     public function getCountry(): ?Country
     {
-        return $this->offsetGet('country');
+        return $this->getFilterValue('country');
     }
 
     /**
@@ -219,7 +200,7 @@ class ArtistFilter extends Filter
      */
     public function getEnd(): ?Date
     {
-        return $this->offsetGet('end');
+        return $this->getFilterValue('end');
     }
 
     /**
@@ -241,7 +222,7 @@ class ArtistFilter extends Filter
      */
     public function getEndAreaName(): ?string
     {
-        return $this->offsetGet('endarea');
+        return $this->getFilterValue('endarea');
     }
 
     /**
@@ -263,7 +244,7 @@ class ArtistFilter extends Filter
      */
     public function getEnded(): ?bool
     {
-        return $this->offsetGet('ended');
+        return $this->getFilterValue('ended');
     }
 
     /**
@@ -285,7 +266,7 @@ class ArtistFilter extends Filter
      */
     public function getGender(): ?Gender
     {
-        return $this->offsetGet('gender');
+        return $this->getFilterValue('gender');
     }
 
     /**
@@ -307,7 +288,7 @@ class ArtistFilter extends Filter
      */
     public function getIpiCode(): ?IPI
     {
-        return $this->offsetGet('ipi');
+        return $this->getFilterValue('ipi');
     }
 
     /**
@@ -329,7 +310,7 @@ class ArtistFilter extends Filter
      */
     public function getSortName(): ?string
     {
-        return $this->offsetGet('sortname');
+        return $this->getFilterValue('sortname');
     }
 
     /**
@@ -351,7 +332,7 @@ class ArtistFilter extends Filter
      */
     public function getTagName(): ?string
     {
-        return $this->offsetGet('tag');
+        return $this->getFilterValue('tag');
     }
 
     /**
@@ -373,7 +354,7 @@ class ArtistFilter extends Filter
      */
     public function getArtistType(): ?ArtistType
     {
-        return $this->offsetGet('type');
+        return $this->getFilterValue('type');
     }
 
     /**

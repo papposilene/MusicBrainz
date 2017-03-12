@@ -2,15 +2,38 @@
 
 namespace MusicBrainz\Filter;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use MusicBrainz\Artist;
-use MusicBrainz\MusicBrainz;
-
 /**
  * A filter for searching artists
  */
-abstract class Filter extends ArrayCollection
+abstract class Filter
 {
+    /**
+     * A list of filter values
+     *
+     * @var FilterValueList
+     */
+    private $filterValues;
+
+    /**
+     * Constructs a filter.
+     */
+    public function __construct()
+    {
+        $this->filterValues = new FilterValueList;
+    }
+
+    /**
+     * Returns a filter value.
+     *
+     * @param string $key Filter key
+     *
+     * @return null|mixed
+     */
+    protected function getFilterValue(string $key)
+    {
+        return isset($this->filterValues[$key]) ? $this->filterValues[$key] : null;
+    }
+
     /**
      * Sets a filter value.
      *
@@ -22,12 +45,12 @@ abstract class Filter extends ArrayCollection
     protected function setFilterValue(string $key, $value): self
     {
         if (!empty($value)) {
-            $this->offsetSet($key, $value);
+            $this->filterValues[$key] = $value;
 
             return $this;
         }
 
-        $this->offsetUnset($key);
+        unset($this->filterValues[$key]);
 
         return $this;
     }
@@ -46,7 +69,7 @@ abstract class Filter extends ArrayCollection
             return $params;
         }
 
-        foreach ($this as $key => $val) {
+        foreach ($this->filterValues as $key => $val) {
             if ($params['query'] != '') {
                 $params['query'] .= '+AND+';
             }
@@ -68,5 +91,15 @@ abstract class Filter extends ArrayCollection
         }
 
         return $params;
+    }
+
+    /**
+     * Returns the number of filter values.
+     *
+     * @return int
+     */
+    public function count(): int
+    {
+        return count($this->filterValues);
     }
 }
