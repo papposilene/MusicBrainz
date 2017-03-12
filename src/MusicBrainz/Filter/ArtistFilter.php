@@ -5,6 +5,7 @@ namespace MusicBrainz\Filter;
 use MusicBrainz\Filter\Accessor\AliasNameAccessorTrait;
 use MusicBrainz\Filter\Accessor\AreaNameAccessorTrait;
 use MusicBrainz\Filter\Accessor\ArtistIdAccessorTrait;
+use MusicBrainz\Filter\Accessor\ArtistNameAccessorTrait;
 use MusicBrainz\Value\ArtistType;
 use MusicBrainz\Value\Country;
 use MusicBrainz\Value\Date;
@@ -19,28 +20,7 @@ class ArtistFilter extends Filter
     use AliasNameAccessorTrait;
     use AreaNameAccessorTrait;
     use ArtistIdAccessorTrait;
-
-    /**
-     * Returns the artists name.
-     *
-     * @return null|string
-     */
-    public function getArtistName(): ?string
-    {
-        return $this->getFilterValue('artist');
-    }
-
-    /**
-     * Sets the artist's name.
-     *
-     * @param null|string $artistName The artist's name
-     *
-     * @return self
-     */
-    public function setArtistName(?string $artistName): self
-    {
-        return $this->setFilterValue('artist', $artistName);
-    }
+    use ArtistNameAccessorTrait;
 
     /**
      * Returns the artist name without accents.
