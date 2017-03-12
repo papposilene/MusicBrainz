@@ -15,8 +15,8 @@ use MusicBrainz\Filter\Accessor\EndAccessorTrait;
 use MusicBrainz\Filter\Accessor\EndAreaAccessorTrait;
 use MusicBrainz\Filter\Accessor\EndedAccessorTrait;
 use MusicBrainz\Filter\Accessor\GenderAccessorTrait;
+use MusicBrainz\Filter\Accessor\IpiCodeAccessorTrait;
 use MusicBrainz\Value\ArtistType;
-use MusicBrainz\Value\IPI;
 
 /**
  * A filter for searching artists
@@ -36,28 +36,7 @@ class ArtistFilter extends Filter
     use EndAreaAccessorTrait;
     use EndedAccessorTrait;
     use GenderAccessorTrait;
-
-    /**
-     * Returns the IPI (interested party information) code for the artist.
-     *
-     * @return null|IPI
-     */
-    public function getIpiCode(): ?IPI
-    {
-        return $this->getFilterValue('ipi');
-    }
-
-    /**
-     * Sets the IPI (interested party information) code for the artist.
-     *
-     * @param IPI|null $ipiCode The IPI (interested party information) code for the artist
-     *
-     * @return self
-     */
-    public function setIpiCode(?IPI $ipiCode): self
-    {
-        return $this->setFilterValue('ipi', $ipiCode);
-    }
+    use IpiCodeAccessorTrait;
 
     /**
      * Returns the sort index.
