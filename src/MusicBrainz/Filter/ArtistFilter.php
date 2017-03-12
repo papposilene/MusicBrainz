@@ -8,6 +8,7 @@ use MusicBrainz\Filter\Accessor\ArtistIdAccessorTrait;
 use MusicBrainz\Filter\Accessor\ArtistNameAccessorTrait;
 use MusicBrainz\Filter\Accessor\ArtistNameWithoutAccentAccessorTrait;
 use MusicBrainz\Filter\Accessor\BeginAccessorTrait;
+use MusicBrainz\Filter\Accessor\BeginAreaAccessorTrait;
 use MusicBrainz\Value\ArtistType;
 use MusicBrainz\Value\Country;
 use MusicBrainz\Value\Date;
@@ -25,28 +26,7 @@ class ArtistFilter extends Filter
     use ArtistNameAccessorTrait;
     use ArtistNameWithoutAccentAccessorTrait;
     use BeginAccessorTrait;
-
-    /**
-     * Sets the name of the beginning area.
-     *
-     * @return null|string
-     */
-    public function getBeginAreaName(): ?string
-    {
-        return $this->getFilterValue('beginarea');
-    }
-
-    /**
-     * Sets the name of the beginning area.
-     *
-     * @param null|string $beginAreaName The name of the beginning area
-     *
-     * @return self
-     */
-    public function setBeginAreaName(?string $beginAreaName): self
-    {
-        return $this->setFilterValue('beginarea', $beginAreaName);
-    }
+    use BeginAreaAccessorTrait;
 
     /**
      * Returns the comment to differentiate similar artists.
