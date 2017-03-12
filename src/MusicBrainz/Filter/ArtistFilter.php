@@ -14,8 +14,8 @@ use MusicBrainz\Filter\Accessor\CountryAccessorTrait;
 use MusicBrainz\Filter\Accessor\EndAccessorTrait;
 use MusicBrainz\Filter\Accessor\EndAreaAccessorTrait;
 use MusicBrainz\Filter\Accessor\EndedAccessorTrait;
+use MusicBrainz\Filter\Accessor\GenderAccessorTrait;
 use MusicBrainz\Value\ArtistType;
-use MusicBrainz\Value\Gender;
 use MusicBrainz\Value\IPI;
 
 /**
@@ -35,28 +35,7 @@ class ArtistFilter extends Filter
     use EndAccessorTrait;
     use EndAreaAccessorTrait;
     use EndedAccessorTrait;
-
-    /**
-     * Returns the gender.
-     *
-     * @return null|Gender
-     */
-    public function getGender(): ?Gender
-    {
-        return $this->getFilterValue('gender');
-    }
-
-    /**
-     * Sets the gender.
-     *
-     * @param null|Gender $gender
-     *
-     * @return self
-     */
-    public function setGender(?Gender $gender): self
-    {
-        return $this->setFilterValue('gender', $gender);
-    }
+    use GenderAccessorTrait;
 
     /**
      * Returns the IPI (interested party information) code for the artist.
