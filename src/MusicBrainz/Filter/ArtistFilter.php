@@ -16,6 +16,7 @@ use MusicBrainz\Filter\Accessor\EndAreaAccessorTrait;
 use MusicBrainz\Filter\Accessor\EndedAccessorTrait;
 use MusicBrainz\Filter\Accessor\GenderAccessorTrait;
 use MusicBrainz\Filter\Accessor\IpiCodeAccessorTrait;
+use MusicBrainz\Filter\Accessor\SortNameAccessorTrait;
 use MusicBrainz\Value\ArtistType;
 
 /**
@@ -37,28 +38,7 @@ class ArtistFilter extends Filter
     use EndedAccessorTrait;
     use GenderAccessorTrait;
     use IpiCodeAccessorTrait;
-
-    /**
-     * Returns the sort index.
-     *
-     * @return null|string
-     */
-    public function getSortName(): ?string
-    {
-        return $this->getFilterValue('sortname');
-    }
-
-    /**
-     * Sets the sort index.
-     *
-     * @param null|string $sortName The sort index
-     *
-     * @return self
-     */
-    public function setSortName(?string $sortName): self
-    {
-        return $this->setFilterValue('sortname', $sortName);
-    }
+    use SortNameAccessorTrait;
 
     /**
      * Returns the tag name.
