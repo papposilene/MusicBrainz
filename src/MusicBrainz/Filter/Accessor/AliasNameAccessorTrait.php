@@ -1,7 +1,6 @@
 <?php
 
 namespace MusicBrainz\Filter\Accessor;
-use MusicBrainz\Filter\Filter;
 
 /**
  * Provides accessors for the alias name
@@ -25,9 +24,9 @@ trait AliasNameAccessorTrait
      *
      * @param null|string $aliasName An alias
      *
-     * @return Filter
+     * @return self
      */
-    public function setAliasName(?string $aliasName): Filter
+    public function setAliasName(?string $aliasName): self
     {
         return $this->setFilterValue('alias', $aliasName);
     }
