@@ -16,7 +16,7 @@ class Artist
      *
      * @see https://musicbrainz.org/doc/MusicBrainz_Identifier
      */
-    public $id;
+    private $id;
 
     /**
      * The type is used to state whether an artist is a person, a group, or something else.
