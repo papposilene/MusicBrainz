@@ -3,12 +3,13 @@
 namespace MusicBrainz\Filter;
 
 use MusicBrainz\Filter\Accessor\AliasNameAccessorTrait;
+use MusicBrainz\Filter\Accessor\AreaNameAccessorTrait;
+use MusicBrainz\Filter\Accessor\ArtistIdAccessorTrait;
 use MusicBrainz\Value\ArtistType;
 use MusicBrainz\Value\Country;
 use MusicBrainz\Value\Date;
 use MusicBrainz\Value\Gender;
 use MusicBrainz\Value\IPI;
-use MusicBrainz\Value\MBID;
 
 /**
  * A filter for searching artists
@@ -16,50 +17,8 @@ use MusicBrainz\Value\MBID;
 class ArtistFilter extends Filter
 {
     use AliasNameAccessorTrait;
-
-    /**
-     * Returns the name of the artist's area.
-     *
-     * @return null|string
-     */
-    public function getAreaName(): ?string
-    {
-        return $this->getFilterValue('area');
-    }
-
-    /**
-     * Sets the name of the artist's area.
-     *
-     * @param null|string $areaName The artist's area
-     *
-     * @return self
-     */
-    public function setAreaName(?string $areaName): self
-    {
-        return $this->setFilterValue('area', $areaName);
-    }
-
-    /**
-     * Returns the MusicBrainz Identifier (MBID) of the artist.
-     *
-     * @return null|MBID
-     */
-    public function getArtistId(): ?MBID
-    {
-        return $this->getFilterValue('arid');
-    }
-
-    /**
-     * Sets the MusicBrainz Identifier (MBID) of the artist.
-     *
-     * @param null|MBID $artistId The MusicBrainz Identifier (MBID) of the artist
-     *
-     * @return self
-     */
-    public function setArtistId(?MBID $artistId): self
-    {
-        return $this->setFilterValue('arid', $artistId);
-    }
+    use AreaNameAccessorTrait;
+    use ArtistIdAccessorTrait;
 
     /**
      * Returns the artists name.

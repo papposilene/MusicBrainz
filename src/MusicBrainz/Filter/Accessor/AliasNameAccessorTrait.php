@@ -3,14 +3,14 @@
 namespace MusicBrainz\Filter\Accessor;
 
 /**
- * Provides accessors for the alias name
+ * Provides accessors for the alias name.
  */
 trait AliasNameAccessorTrait
 {
     use AccessorTrait;
 
     /**
-     * Returns the alias.
+     * Returns the alias name.
      *
      * @return null|string
      */
@@ -20,9 +20,9 @@ trait AliasNameAccessorTrait
     }
 
     /**
-     * Sets an alias.
+     * Sets an alias name.
      *
-     * @param null|string $aliasName An alias
+     * @param null|string $aliasName An alias name
      *
      * @return self
      */
