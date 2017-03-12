@@ -11,6 +11,8 @@ use MusicBrainz\Filter\Accessor\BeginAccessorTrait;
 use MusicBrainz\Filter\Accessor\BeginAreaAccessorTrait;
 use MusicBrainz\Filter\Accessor\CommentAccessorTrait;
 use MusicBrainz\Filter\Accessor\CountryAccessorTrait;
+use MusicBrainz\Filter\Accessor\EndAccessorTrait;
+use MusicBrainz\Filter\Accessor\EndAreaAccessorTrait;
 use MusicBrainz\Value\ArtistType;
 use MusicBrainz\Value\Date;
 use MusicBrainz\Value\Gender;
@@ -30,50 +32,8 @@ class ArtistFilter extends Filter
     use BeginAreaAccessorTrait;
     use CommentAccessorTrait;
     use CountryAccessorTrait;
-
-    /**
-     * Returns artist death date/band dissolution date.
-     *
-     * @return null|Date
-     */
-    public function getEnd(): ?Date
-    {
-        return $this->getFilterValue('end');
-    }
-
-    /**
-     * Sets artist death date/band dissolution date.
-     *
-     * @param null|Date $end Artist death date/band dissolution date
-     *
-     * @return self
-     */
-    public function setEnd(?Date $end): self
-    {
-        return $this->setFilterValue('end', $end);
-    }
-
-    /**
-     * Returns the name of the ending area.
-     *
-     * @return null|string
-     */
-    public function getEndAreaName(): ?string
-    {
-        return $this->getFilterValue('endarea');
-    }
-
-    /**
-     * Sets the name of the ending area.
-     *
-     * @param null|string $endAreaName The name of the ending area
-     *
-     * @return self
-     */
-    public function setEndAreaName(?string $endAreaName): self
-    {
-        return $this->setFilterValue('endarea', $endAreaName);
-    }
+    use EndAccessorTrait;
+    use EndAreaAccessorTrait;
 
     /**
      * Returns true for dissolved bands or dead artists.
