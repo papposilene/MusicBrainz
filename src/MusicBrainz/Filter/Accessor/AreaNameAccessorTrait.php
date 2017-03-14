@@ -3,14 +3,14 @@
 namespace MusicBrainz\Filter\Accessor;
 
 /**
- * Provides accessors for the area name.
+ * Provides accessors for an area name.
  */
 trait AreaNameAccessorTrait
 {
     use AccessorTrait;
 
     /**
-     * Returns the name of the artist's area.
+     * Returns the area name.
      *
      * @return null|string
      */
@@ -20,9 +20,9 @@ trait AreaNameAccessorTrait
     }
 
     /**
-     * Sets the name of the artist's area.
+     * Sets the area name.
      *
-     * @param null|string $areaName The artist's area
+     * @param null|string $areaName An area name
      *
      * @return self
      */
