@@ -35,20 +35,25 @@ class LifeSpan
      *
      * @var Date
      */
+    private $end;
+
+    /**
+     * True, if the life span is already ended, otherwise false
+     *
+     * @var null|bool
+     */
     private $ended;
 
     /**
      * Constructs a life span.
      *
-     * @param array $lifeSpan An array with begin and end date
+     * @param array $lifeSpan An array of information about a life span
      */
     public function __construct(array $lifeSpan)
     {
-        $begin = isset($lifeSpan['begin']) ? (string) $lifeSpan['begin'] : '';
-        $ended = isset($lifeSpan['ended']) ? (string) $lifeSpan['ended'] : '';
-
-        $this->begin = new Date($begin);
-        $this->ended = new Date($ended);
+        $this->begin = new Date(isset($lifeSpan['begin']) ? (string) $lifeSpan['begin'] : '');
+        $this->end = new Date(isset($lifeSpan['end']) ? (string) $lifeSpan['end'] : '');
+        $this->ended = !empty($this->end) || (isset($lifeSpan['end']) && true === $lifeSpan['end']);
     }
 
     /**
@@ -66,7 +71,17 @@ class LifeSpan
      *
      * @return Date
      */
-    public function getEnded(): Date
+    public function getEnd(): Date
+    {
+        return $this->end;
+    }
+
+    /**
+     * Returns true, if the life span is already ended, otherwise false.
+     *
+     * @return null|bool
+     */
+    public function getEnded(): ?bool
     {
         return $this->ended;
     }
