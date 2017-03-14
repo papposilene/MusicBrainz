@@ -5,7 +5,7 @@ namespace MusicBrainz\Value;
 /**
  * A life span.
  *
- * @see https://musicbrainz.org/doc/IPI
+ * @link https://musicbrainz.org/doc/Artist
  */
 class LifeSpan
 {
