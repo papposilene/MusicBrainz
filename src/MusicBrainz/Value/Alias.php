@@ -20,7 +20,7 @@ class Alias
     /**
      * The alternative name
      *
-     * @var string
+     * @var Name
      */
     private $name;
 
@@ -64,14 +64,14 @@ class Alias
     private $endDate;
 
     /**
-     * Constructs a life span.
+     * Constructs an alias.
      *
      * @param array $alias An array with information about the alias
      */
     public function __construct(array $alias)
     {
         $this->sortName = isset($alias['sort-name']) ? (string) $alias['sort-name'] : '';
-        $this->name     = isset($alias['name']) ? (string) $alias['name'] : '';
+        $this->name     = new Name(isset($alias['name']) ? (string) $alias['name'] : '');
         $this->locale   = isset($alias['locale']) ? (string) $alias['locale'] : '';
         $this->type     = isset($alias['type']) ? (string) $alias['type'] : '';
         $this->primary  = isset($alias['primary']) ? (string) $alias['primary'] : '';
@@ -96,9 +96,9 @@ class Alias
     /**
      * Returns the alternative name.
      *
-     * @return string
+     * @return Name
      */
-    public function getName(): string
+    public function getName(): Name
     {
         return $this->name;
     }
@@ -160,6 +160,6 @@ class Alias
      */
     public function __toString()
     {
-        return $this->name;
+        return (string) $this->name;
     }
 }

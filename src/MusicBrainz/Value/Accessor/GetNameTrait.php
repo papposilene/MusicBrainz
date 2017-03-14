@@ -2,24 +2,26 @@
 
 namespace MusicBrainz\Value\Accessor;
 
+use MusicBrainz\Value\Name;
+
 /**
  * Provides a getter for a name.
  */
 trait GetNameTrait
 {
     /**
-     * The official name of the artist, be it a person or a band
+     * The name
      *
-     * @var string
+     * @var Name
      */
     public $name;
 
     /**
-     * Returns the official name of the artist.
+     * Returns the name.
      *
-     * @return string
+     * @return Name
      */
-    public function getName(): string
+    public function getName(): Name
     {
         return $this->name;
     }

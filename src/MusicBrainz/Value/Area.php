@@ -17,7 +17,7 @@ class Area
     /**
      * The area name
      *
-     * @var string
+     * @var Name
      */
     private $name;
 
@@ -36,7 +36,7 @@ class Area
     public function __construct(array $area)
     {
         $this->id       = isset($area['id']) ? (string) $area['id'] : '';
-        $this->name     = isset($area['name']) ? (string) $area['name'] : '';
+        $this->name     = new Name(isset($area['name']) ? (string) $area['name'] : '');
         $this->sortName = isset($area['sort-name']) ? (string) $area['sort-name'] : '';
     }
 
@@ -47,6 +47,6 @@ class Area
      */
     public function __toString(): string
     {
-        return $this->name;
+        return (string) $this->name;
     }
 }

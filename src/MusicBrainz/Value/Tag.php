@@ -17,7 +17,7 @@ class Tag
     /**
      * The tag
      *
-     * @var string
+     * @var Name
      */
     private $name;
 
@@ -29,7 +29,7 @@ class Tag
     public function __construct(array $tag)
     {
         $this->count = isset($tag['count']) ? (int) $tag['count'] : 0;
-        $this->name  = isset($tag['name']) ? (string) $tag['name'] : '';
+        $this->name  = new Name(isset($tag['name']) ? (string) $tag['name'] : '');
     }
 
     /**
@@ -39,6 +39,6 @@ class Tag
      */
     public function __toString(): string
     {
-        return $this->name;
+        return (string) $this->name;
     }
 }

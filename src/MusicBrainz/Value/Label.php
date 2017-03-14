@@ -29,7 +29,7 @@ class Label
     public function __construct(array $label)
     {
         $this->MBID      = new MBID(isset($label['id']) ? (string) $label['id'] : '');
-        $this->name      = isset($label['name']) ? (string) $label['name'] : '';
+        $this->name      = new Name(isset($label['name']) ? (string) $label['name'] : '');
         $this->aliases   = new AliasList(isset($label['aliases']) ? $label['aliases'] : []);
         $this->ipis      = new IPIList(isset($label['ipis']) ? $label['ipis'] : []);
         $this->country   = new Country(isset($label['country']) ? (string) $label['country'] : '');
