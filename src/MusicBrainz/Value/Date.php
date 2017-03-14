@@ -41,12 +41,12 @@ class Date
     /**
      * Returns the date in the originally given format.
      *
-     * @return null|string
+     * @return string
      */
     public function __toString(): string
     {
         return ($this->dateTime)
             ? $this->dateTime->format(self::FORMAT)
-            : null;
+            : '';
     }
 }
