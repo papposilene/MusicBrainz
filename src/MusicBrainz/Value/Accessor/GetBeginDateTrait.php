@@ -5,19 +5,24 @@ namespace MusicBrainz\Value\Accessor;
 use MusicBrainz\Value\Date;
 
 /**
- * Provides a getter for the artist birth date/band founding date.
+ * Provides a getter for the beginning date.
  */
 trait GetBeginDateTrait
 {
-    use \MusicBrainz\Property\BeginDateTrait;
+    /**
+     * The beginning date
+     *
+     * @var null|Date
+     */
+    private $beginDate;
 
     /**
-     * Returns the artist birth date/band founding date.
+     * Returns the beginning date.
      *
      * @return null|Date
      */
     public function getBeginDate(): ?Date
     {
-        return $this->getBeginDate();
+        return $this->beginDate;
     }
 }
