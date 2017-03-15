@@ -10,58 +10,13 @@ namespace MusicBrainz\Value;
  */
 class Alias
 {
-    /**
-     * Sort index
-     *
-     * @var string
-     */
-    private $sortName;
-
-    /**
-     * The alternative name
-     *
-     * @var Name
-     */
-    private $name;
-
-    /**
-     * A locale code to indicate, where the alias is used
-     *
-     * @var string
-     */
-    private $locale;
-
-    /**
-     * The alias type
-     *
-     * @var string
-     */
-    private $type;
-
-    /**
-     * ?
-     *
-     * @var
-     */
-    private $primary;
-
-    /**
-     * Begin date
-     *
-     * @var Date
-     *
-     * @see LifeSpan
-     */
-    private $beginDate;
-
-    /**
-     * End date
-     *
-     * @var Date
-     *
-     * @see LifeSpan
-     */
-    private $endDate;
+    use Accessor\GetSortNameTrait;
+    use Accessor\GetNameTrait;
+    use Accessor\GetLocaleCodeTrait;
+    use Accessor\GetAliasTypeTrait;
+    use Accessor\GetPrimaryNameTrait;
+    use Accessor\GetBeginDateTrait;
+    use Accessor\GetEndDateTrait;
 
     /**
      * Constructs an alias.
@@ -70,87 +25,13 @@ class Alias
      */
     public function __construct(array $alias)
     {
-        $this->sortName = isset($alias['sort-name']) ? (string) $alias['sort-name'] : '';
-        $this->name     = new Name(isset($alias['name']) ? (string) $alias['name'] : '');
-        $this->locale   = isset($alias['locale']) ? (string) $alias['locale'] : '';
-        $this->type     = isset($alias['type']) ? (string) $alias['type'] : '';
-        $this->primary  = isset($alias['primary']) ? (string) $alias['primary'] : '';
-
-        $beginDate = isset($alias['begin']) ? (string) $alias['begin'] : '';
-        $endedDate = isset($alias['ended']) ? (string) $alias['ended'] : '';
-
-        $this->beginDate = new Date($beginDate);
-        $this->endDate   = new Date($endedDate);
-    }
-
-    /**
-     * Returns the sort index.
-     *
-     * @return string
-     */
-    public function getSortName(): string
-    {
-        return $this->sortName;
-    }
-
-    /**
-     * Returns the alternative name.
-     *
-     * @return Name
-     */
-    public function getName(): Name
-    {
-        return $this->name;
-    }
-
-    /**
-     * Returns the locale code.
-     *
-     * @return string
-     */
-    public function getLocale(): string
-    {
-        return $this->locale;
-    }
-
-    /**
-     * Returns the alias type.
-     *
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    /**
-     * ?
-     *
-     * @return mixed
-     */
-    public function getPrimary()
-    {
-        return $this->primary;
-    }
-
-    /**
-     * Returns the begin date.
-     *
-     * @return Date
-     */
-    public function getBeginDate(): Date
-    {
-        return $this->beginDate;
-    }
-
-    /**
-     * Returns the end date.
-     *
-     * @return Date
-     */
-    public function getEndDate(): Date
-    {
-        return $this->endDate;
+        $this->sortName    = isset($alias['sort-name']) ? (string) $alias['sort-name'] : '';
+        $this->name        = new Name(isset($alias['name']) ? (string) $alias['name'] : '');
+        $this->localeCode  = new LocaleCode(isset($alias['locale']) ? (string) $alias['locale'] : '');
+        $this->aliasType   = new AliasType(isset($alias['type']) ? (string) $alias['type'] : '');
+        $this->primaryName = isset($alias['primary']) && true == $alias['primary'];
+        $this->beginDate   = new Date(isset($alias['begin']) ? (string) $alias['begin'] : '');
+        $this->endDate     = new Date(isset($alias['ended']) ? (string) $alias['ended'] : '');
     }
 
     /**
@@ -160,6 +41,6 @@ class Alias
      */
     public function __toString()
     {
-        return (string) $this->name;
+        return (string) $this->getName();
     }
 }

@@ -12,16 +12,16 @@ trait GetBeginDateTrait
     /**
      * The beginning date
      *
-     * @var null|Date
+     * @var Date
      */
     private $beginDate;
 
     /**
      * Returns the beginning date.
      *
-     * @return null|Date
+     * @return Date
      */
-    public function getBeginDate(): ?Date
+    public function getBeginDate(): Date
     {
         return $this->beginDate;
     }
