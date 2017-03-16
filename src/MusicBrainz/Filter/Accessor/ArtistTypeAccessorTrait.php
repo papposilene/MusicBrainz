@@ -9,27 +9,34 @@ use MusicBrainz\Value\ArtistType;
  */
 trait ArtistTypeAccessorTrait
 {
-    use AccessorTrait;
+    /**
+     * The artist type
+     *
+     * @var ArtistType
+     */
+    private $artistType;
 
     /**
-     * Returns the artist type.
+     * Returns the artist type
      *
-     * @return null|ArtistType
+     * @return ArtistType
      */
-    public function getArtistType(): ?ArtistType
+    public function getArtistType(): ArtistType
     {
-        return $this->getFilterValue('type');
+        return $this->artistType;
     }
 
     /**
-     * Sets the artist type.
+     * Sets the artist type
      *
-     * @param null|ArtistType $artistType An artist type
+     * @param ArtistType $artistType The artist type
      *
      * @return self
      */
-    public function setArtistType(?ArtistType $artistType): self
+    public function setArtistType(ArtistType $artistType): self
     {
-        return $this->setFilterValue('type', $artistType);
+        $this->artistType = $artistType;
+
+        return $this;
     }
 }

@@ -562,7 +562,7 @@ dump($response);die;
      *
      * @throws Exception
      */
-    public function searchArtist(ArtistFilter $artistFilter, int $limit = 25, int $offset = null)
+    public function searchArtist(ArtistFilter $artistFilter, int $limit = 25, int $offset = 0)
     {
         if ($limit > 100) {
             throw new Exception('Limit can only be between 1 and 100');
@@ -587,35 +587,7 @@ dump($response);die;
             'tag'          => (string) $artistFilter->getTag()
         ];
 
-        $filterValues = array_filter($filterValues);
-
-        if (empty($filterValues)) {
-
-            throw new Exception('The artist filter object needs at least 1 argument to create a query.');
-        }
-
-        $params = ['limit' => $limit, 'offset' => $offset, 'fmt' => 'json'] + ['query' => ''];
-
-        foreach ($filterValues as $key => $val) {
-            if ($params['query'] != '') {
-                $params['query'] .= '+AND+';
-            }
-
-            if (!in_array($key, ['arid'])) {
-                // Lucene escape characters
-                $val = urlencode(
-                    preg_replace('/([\+\-\!\(\)\{\}\[\]\^\~\*\?\:\\\\])/', '\\\\$1', $val)
-                );
-            }
-            // If the search string contains a space, wrap it in brackets/quotes
-            // This isn't always wanted, but for the searches required in this
-            // library, I'm going to do it.
-            if (preg_match('/[\+]/', $val)) {
-                $val = '(' . $val . ')';
-            }
-
-            $params['query'] .= $key . ':' . $val;
-        }
+        $params = $this->getParameters($filterValues, $limit, $offset);
 
         $response = $this->adapter->call('artist' . '/', $params, $this->getHttpOptions(), false, true);
 
@@ -642,6 +614,64 @@ dump($response);die;
         }
 
         return $artists;
+    }
+
+    /**
+     * Searches for labels and returns the result.
+     *
+     * @param LabelFilter $labelFilter A label filter
+     * @param int         $limit       Maximum number of items
+     * @param null|int    $offset
+     *
+     * @return Label[]
+     *
+     * @throws Exception
+     */
+    public function searchLabel(LabelFilter $labelFilter, int $limit = 25, int $offset = 0)
+    {
+        if ($limit > 100) {
+            throw new Exception('Limit can only be between 1 and 100');
+        }
+
+        $filterValues = [
+            'alias'       => (string) $labelFilter->getAliasName(),
+            'begin'       => (string) $labelFilter->getBeginDate(),
+            'code'        => (string) $labelFilter->getLabelCode(),
+            'comment'     => (string) $labelFilter->getComment(),
+            'country'     => (string) $labelFilter->getCountry(),
+            'end'         => (string) $labelFilter->getEndDate(),
+            'ended'       => (string) $labelFilter->isEnded(),
+            'ipi'         => (string) $labelFilter->getIpiCode(),
+            'label'       => (string) $labelFilter->getLabelCode(),
+            'labelaccent' => (string) $labelFilter->getLabelNameWithoutAccent(),
+            'laid'        => (string) $labelFilter->getLabelId(),
+            'sortname'    => (string) $labelFilter->getSortName(),
+            'tag'         => (string) $labelFilter->getTag(),
+            'type'        => (string) $labelFilter->getLabelType()
+        ];
+
+        $params = $this->getParameters($filterValues, $limit, $offset);
+
+        $response = $this->adapter->call('label' . '/', $params, $this->getHttpOptions(), false, true);
+
+        return $this->parseLabelResponse($response, $this);
+    }
+
+    /**
+     * @param array       $response
+     * @param MusicBrainz $brainz
+     *
+     * @return \MusicBrainz\Value\Label[]
+     */
+    public function parseLabelResponse(array $response, MusicBrainz $brainz)
+    {
+        $labels = array();
+
+        foreach ($response['labels'] as $label) {
+            $labels[] = new Label($label, $brainz);
+        }
+
+        return $labels;
     }
 
     /**
@@ -851,5 +881,50 @@ dump($response);die;
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    /**
+     * Returns a list of parameters.
+     *
+     * @param array $filterValues
+     * @param int   $limit
+     * @param int   $offset
+     *
+     * @return array
+     *
+     * @throws Exception
+     */
+    private function getParameters($filterValues, int $limit, int $offset): array
+    {
+        $filterValues = array_filter($filterValues);
+
+        if (empty($filterValues)) {
+
+            throw new Exception('The artist filter object needs at least 1 argument to create a query.');
+        }
+
+        $params = ['limit' => $limit, 'offset' => $offset, 'fmt' => 'json'] + ['query' => ''];
+
+        foreach ($filterValues as $key => $val) {
+            if ($params['query'] != '') {
+                $params['query'] .= '+AND+';
+            }
+
+            if (!in_array($key, ['arid'])) {
+                // Lucene escape characters
+                $val = urlencode(
+                    preg_replace('/([\+\-\!\(\)\{\}\[\]\^\~\*\?\:\\\\])/', '\\\\$1', $val)
+                );
+            }
+            // If the search string contains a space, wrap it in brackets/quotes
+            // This isn't always wanted, but for the searches required in this
+            // library, I'm going to do it.
+            if (preg_match('/[\+]/', $val)) {
+                $val = '(' . $val . ')';
+            }
+
+            $params['query'] .= $key . ':' . $val;
+        }
+        return $params;
     }
 }

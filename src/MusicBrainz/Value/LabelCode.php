@@ -27,9 +27,9 @@ class LabelCode
      *
      * @param string $labelCode A label code
      */
-    public function __construct(string $labelCode)
+    public function __construct(string $labelCode = '')
     {
-        $this->labelCode = $this->getNormalizedLabelCode($labelCode);
+        $this->code = $this->getNormalizedLabelCode($labelCode);
     }
 
     /**
@@ -43,7 +43,7 @@ class LabelCode
      *
      * @return bool
      */
-    private function isValidLabelCode(string $labelCode)
+    private function isValidLabelCode(string $labelCode): bool
     {
         return (bool) preg_match('/^(LC)?[-| ]?(?=.*[1-9].*)[0-9]{1,5}$/i', $labelCode);
     }
@@ -56,7 +56,7 @@ class LabelCode
      *
      * @return string
      */
-    private function getNormalizedLabelCode(string $labelCode)
+    private function getNormalizedLabelCode(string $labelCode): string
     {
         return ($this->isValidLabelCode($labelCode))
             ? 'LC-' . str_pad(

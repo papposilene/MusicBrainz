@@ -100,7 +100,7 @@ class LabelType
      *
      * @param string $type A label type code
      */
-    public function __construct(string $type)
+    public function __construct(string $type = self::UNDEFINED)
     {
         $this->type = (in_array($type, self::TYPES))
             ? $type
@@ -114,6 +114,6 @@ class LabelType
      */
     public function __toString(): string
     {
-        return $this->type;
+        return (self::UNDEFINED === $this->type) ? '' : $this->type;
     }
 }
