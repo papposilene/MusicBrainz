@@ -7,27 +7,34 @@ namespace MusicBrainz\Filter\Accessor;
  */
 trait EndedAccessorTrait
 {
-    use AccessorTrait;
+    /**
+     * True, if already ended, otherwise false
+     *
+     * @var null|bool
+     */
+    private $ended;
 
     /**
-     * Returns true for dissolved bands or dead artists.
+     * Returns the 'ended' status.
      *
      * @return null|bool
      */
-    public function getEnded(): ?bool
+    public function isEnded(): ?bool
     {
-        return $this->getFilterValue('ended');
+        return $this->ended;
     }
 
     /**
-     * Sets, whether the is dissolved or the artist is dead.
+     * Sests the 'ended' status.
      *
-     * @param null|bool $ended True, if the band is dissolved or the artist is dead.
+     * @param null|bool $ended
      *
      * @return self
      */
     public function setEnded(?bool $ended): self
     {
-        return $this->setFilterValue('ended', $ended);
+        $this->ended = $ended;
+
+        return $this;
     }
 }

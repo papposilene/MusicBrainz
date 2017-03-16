@@ -9,27 +9,34 @@ use MusicBrainz\Value\IPI;
  */
 trait IpiCodeAccessorTrait
 {
-    use AccessorTrait;
+    /**
+     * The IPI (interested party information) code
+     *
+     * @var IPI
+     */
+    private $ipiCode;
 
     /**
-     * Returns the IPI (interested party information) code for the artist.
+     * Returns the IPI (interested party information) code.
      *
-     * @return null|IPI
+     * @return IPI
      */
-    public function getIpiCode(): ?IPI
+    public function getIpiCode(): IPI
     {
-        return $this->getFilterValue('ipi');
+        return $this->ipiCode;
     }
 
     /**
-     * Sets the IPI (interested party information) code for the artist.
+     * Sets the IPI (interested party information) code.
      *
-     * @param IPI|null $ipiCode The IPI (interested party information) code for the artist
+     * @param IPI $ipiCode The IPI (interested party information) code
      *
      * @return self
      */
-    public function setIpiCode(?IPI $ipiCode): self
+    public function setIpiCode(IPI $ipiCode): self
     {
-        return $this->setFilterValue('ipi', $ipiCode);
+        $this->ipiCode = $ipiCode;
+
+        return $this;
     }
 }

@@ -21,11 +21,11 @@ class Country
      *
      * @param string $country A country code
      */
-    public function __construct(string $country)
+    public function __construct(string $country = '')
     {
         $this->country = (strlen($country) === 2)
             ? strtoupper($country)
-            : 'XU';
+            : '';
     }
 
     /**

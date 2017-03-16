@@ -2,32 +2,41 @@
 
 namespace MusicBrainz\Filter\Accessor;
 
+use MusicBrainz\Value\Name;
+
 /**
  * Provides accessors for the alias name.
  */
 trait AliasNameAccessorTrait
 {
-    use AccessorTrait;
+    /**
+     * An alias name
+     *
+     * @var Name
+     */
+    private $aliasName;
 
     /**
      * Returns the alias name.
      *
-     * @return null|string
+     * @return Name
      */
-    public function getAliasName(): ?string
+    public function getAliasName(): Name
     {
-        return $this->getFilterValue('alias');
+        return $this->aliasName;
     }
 
     /**
-     * Sets an alias name.
+     * Sets the alias name.
      *
-     * @param null|string $aliasName An alias name
+     * @param Name $aliasName The alias name
      *
      * @return self
      */
-    public function setAliasName(?string $aliasName): self
+    public function setAliasName(Name $aliasName): self
     {
-        return $this->setFilterValue('alias', $aliasName);
+        $this->aliasName = $aliasName;
+
+        return $this;
     }
 }

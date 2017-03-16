@@ -2,11 +2,11 @@
 
 namespace MusicBrainz;
 
-use AppBundle\Entity\Label;
 use MusicBrainz\Filter\ArtistFilter;
 use MusicBrainz\Filter\LabelFilter;
 use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
 use MusicBrainz\Value\Artist;
+use MusicBrainz\Value\Label;
 
 /**
  * Connect to the MusicBrainz web service
@@ -335,7 +335,7 @@ class MusicBrainz
         );
 
         $response = $this->adapter->call($entity . '/' . $mbid, $params, $this->getHttpOptions(), $authRequired);
-
+dump($response);die;
         return $response;
     }
 
@@ -564,15 +564,58 @@ class MusicBrainz
      */
     public function searchArtist(ArtistFilter $artistFilter, int $limit = 25, int $offset = null)
     {
-        if (count($artistFilter->createParameters()) < 1) {
-            throw new Exception('The artist filter object needs at least 1 argument to create a query.');
-        }
-
         if ($limit > 100) {
             throw new Exception('Limit can only be between 1 and 100');
         }
 
-        $params = $artistFilter->createParameters(array('limit' => $limit, 'offset' => $offset, 'fmt' => 'json'));
+        $filterValues = [
+            'alias'        => (string) $artistFilter->getAliasName(),
+            'area'         => (string) $artistFilter->getAreaName(),
+            'arid'         => (string) $artistFilter->getArtistId(),
+            'artist'       => (string) $artistFilter->getArtistName(),
+            'artistaccent' => (string) $artistFilter->getArtistNameWithoutAccent(),
+            'begin'        => (string) $artistFilter->getBeginDate(),
+            'beginarea'    => (string) $artistFilter->getBeginArea(),
+            'comment'      => (string) $artistFilter->getComment(),
+            'country'      => (string) $artistFilter->getCountry(),
+            'end'          => (string) $artistFilter->getEndDate(),
+            'endarea'      => (string) $artistFilter->getEndArea(),
+            'ended'        => (string) $artistFilter->isEnded(),
+            'gender'       => (string) $artistFilter->getGender(),
+            'ipi'          => (string) $artistFilter->getIpiCode(),
+            'sortname'     => (string) $artistFilter->getSortName(),
+            'tag'          => (string) $artistFilter->getTag()
+        ];
+
+        $filterValues = array_filter($filterValues);
+
+        if (empty($filterValues)) {
+
+            throw new Exception('The artist filter object needs at least 1 argument to create a query.');
+        }
+
+        $params = ['limit' => $limit, 'offset' => $offset, 'fmt' => 'json'] + ['query' => ''];
+
+        foreach ($filterValues as $key => $val) {
+            if ($params['query'] != '') {
+                $params['query'] .= '+AND+';
+            }
+
+            if (!in_array($key, ['arid'])) {
+                // Lucene escape characters
+                $val = urlencode(
+                    preg_replace('/([\+\-\!\(\)\{\}\[\]\^\~\*\?\:\\\\])/', '\\\\$1', $val)
+                );
+            }
+            // If the search string contains a space, wrap it in brackets/quotes
+            // This isn't always wanted, but for the searches required in this
+            // library, I'm going to do it.
+            if (preg_match('/[\+]/', $val)) {
+                $val = '(' . $val . ')';
+            }
+
+            $params['query'] .= $key . ':' . $val;
+        }
 
         $response = $this->adapter->call('artist' . '/', $params, $this->getHttpOptions(), false, true);
 

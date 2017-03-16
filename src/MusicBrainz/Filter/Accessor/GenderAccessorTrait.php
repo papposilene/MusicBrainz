@@ -9,27 +9,34 @@ use MusicBrainz\Value\Gender;
  */
 trait GenderAccessorTrait
 {
-    use AccessorTrait;
+    /**
+     * The gender
+     *
+     * @var Gender
+     */
+    private $gender;
 
     /**
      * Returns the gender.
      *
-     * @return null|Gender
+     * @return Gender
      */
-    public function getGender(): ?Gender
+    public function getGender(): Gender
     {
-        return $this->getFilterValue('gender');
+        return $this->gender;
     }
 
     /**
      * Sets the gender.
      *
-     * @param null|Gender $gender
+     * @param Gender $gender The gender
      *
      * @return self
      */
-    public function setGender(?Gender $gender): self
+    public function setGender(Gender $gender): self
     {
-        return $this->setFilterValue('gender', $gender);
+        $this->gender = $gender;
+
+        return $this;
     }
 }

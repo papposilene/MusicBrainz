@@ -22,7 +22,7 @@ class IPI
      *
      * @param string $code An IPI code
      */
-    public function __construct(string $code)
+    public function __construct(string $code = '')
     {
         $this->code = (11 === strlen($code) && ctype_digit($code))
             ? $code

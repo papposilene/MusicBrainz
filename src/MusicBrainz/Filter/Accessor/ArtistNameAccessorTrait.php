@@ -2,32 +2,41 @@
 
 namespace MusicBrainz\Filter\Accessor;
 
+use MusicBrainz\Value\Name;
+
 /**
  * Provides accessors for the artist name.
  */
 trait ArtistNameAccessorTrait
 {
-    use AccessorTrait;
+    /**
+     * The artist name
+     *
+     * @var Name
+     */
+    private $artistName;
 
     /**
-     * Returns the artists name.
+     * Returns the artist name.
      *
-     * @return null|string
+     * @return Name
      */
-    public function getArtistName(): ?string
+    public function getArtistName(): Name
     {
-        return $this->getFilterValue('artist');
+        return $this->artistName;
     }
 
     /**
-     * Sets the artist's name.
+     * Sets the artist name.
      *
-     * @param null|string $artistName The artist's name
+     * @param Name $artistName
      *
      * @return self
      */
-    public function setArtistName(?string $artistName): self
+    public function setArtistName(Name $artistName): self
     {
-        return $this->setFilterValue('artist', $artistName);
+        $this->artistName = $artistName;
+
+        return $this;
     }
 }

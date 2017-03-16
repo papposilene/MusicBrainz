@@ -2,32 +2,41 @@
 
 namespace MusicBrainz\Filter\Accessor;
 
+use MusicBrainz\Value\Name;
+
 /**
  * Provides accessors for the artist name without accents.
  */
 trait ArtistNameWithoutAccentAccessorTrait
 {
-    use AccessorTrait;
+    /**
+     * The artist name without accent.
+     *
+     * @var Name
+     */
+    private $artistNameWithoutAccent;
 
     /**
-     * Returns the artist name without accents.
+     * Returns the artist name without accent.
      *
-     * @return null|string
+     * @return Name
      */
-    public function getArtistNameWithoutAccent(): ?string
+    public function getArtistNameWithoutAccent(): Name
     {
-        return $this->getFilterValue('artistaccent');
+        return $this->artistNameWithoutAccent;
     }
 
     /**
-     * Sets the artist name without accents.
+     * Sets the artist name without accent.
      *
-     * @param null|string $artistNameWithoutAccent The artist name without accents
+     * @param Name $artistNameWithoutAccent The artist name without accent
      *
      * @return self
      */
-    public function setArtistNameWithoutAccent(?string $artistNameWithoutAccent): self
+    public function setArtistNameWithoutAccent(Name $artistNameWithoutAccent): self
     {
-        return $this->setFilterValue('artistaccent', $artistNameWithoutAccent);
+        $this->artistNameWithoutAccent = $artistNameWithoutAccent;
+
+        return $this;
     }
 }

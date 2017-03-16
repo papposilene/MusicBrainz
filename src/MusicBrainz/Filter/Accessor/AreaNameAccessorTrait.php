@@ -2,32 +2,41 @@
 
 namespace MusicBrainz\Filter\Accessor;
 
+use MusicBrainz\Value\Name;
+
 /**
  * Provides accessors for an area name.
  */
 trait AreaNameAccessorTrait
 {
-    use AccessorTrait;
+    /**
+     * The area name.
+     *
+     * @var Name
+     */
+    private $areaName;
 
     /**
      * Returns the area name.
      *
-     * @return null|string
+     * @return Name
      */
-    public function getAreaName(): ?string
+    public function getAreaName(): Name
     {
-        return $this->getFilterValue('area');
+        return $this->areaName;
     }
 
     /**
      * Sets the area name.
      *
-     * @param null|string $areaName An area name
+     * @param Name $areaName The area name
      *
      * @return self
      */
-    public function setAreaName(?string $areaName): self
+    public function setAreaName(Name $areaName): self
     {
-        return $this->setFilterValue('area', $areaName);
+        $this->areaName = $areaName;
+
+        return $this;
     }
 }

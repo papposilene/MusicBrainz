@@ -25,7 +25,7 @@ class Name
      *
      * @param string $name The name
      */
-    public function __construct(string $name)
+    public function __construct(string $name = '')
     {
         $this->name = $name;
     }

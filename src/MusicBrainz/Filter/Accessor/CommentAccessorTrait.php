@@ -7,27 +7,34 @@ namespace MusicBrainz\Filter\Accessor;
  */
 trait CommentAccessorTrait
 {
-    use AccessorTrait;
+    /**
+     * A comment
+     *
+     * @var string
+     */
+    private $comment;
 
     /**
-     * Returns the comment to differentiate similar artists.
+     * Returns the comment.
      *
-     * @return null|string
+     * @return string
      */
-    public function getComment(): ?string
+    public function getComment(): string
     {
-        return $this->getFilterValue('comment');
+        return $this->comment;
     }
 
     /**
-     * Sets a comment to differentiate similar artists.
+     * Sets the comment.
      *
-     * @param null|string $comment A comment to differentiate similar artists
+     * @param string $comment The comment
      *
      * @return self
      */
-    public function setComment(?string $comment): self
+    public function setComment(string $comment): self
     {
-        return $this->setFilterValue('comment', $comment);
+        $this->comment = $comment;
+
+        return $this;
     }
 }

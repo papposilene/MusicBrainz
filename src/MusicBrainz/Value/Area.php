@@ -33,7 +33,7 @@ class Area
      *
      * @param array $area Array of values
      */
-    public function __construct(array $area)
+    public function __construct(array $area = [])
     {
         $this->id       = isset($area['id']) ? (string) $area['id'] : '';
         $this->name     = new Name(isset($area['name']) ? (string) $area['name'] : '');

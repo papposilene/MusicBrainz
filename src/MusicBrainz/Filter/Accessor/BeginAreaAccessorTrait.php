@@ -2,32 +2,41 @@
 
 namespace MusicBrainz\Filter\Accessor;
 
+use MusicBrainz\Value\Area;
+
 /**
  * Provides accessors for the name of the beginning area.
  */
 trait BeginAreaAccessorTrait
 {
-    use AccessorTrait;
+    /**
+     * The name of the beginning area.
+     *
+     * @var Area
+     */
+    private $beginArea;
 
     /**
-     * Sets the name of the beginning area.
+     * Returns the beginning area.
      *
-     * @return null|string
+     * @return Area
      */
-    public function getBeginAreaName(): ?string
+    public function getBeginArea(): Area
     {
-        return $this->getFilterValue('beginarea');
+        return $this->beginArea;
     }
 
     /**
-     * Sets the name of the beginning area.
+     * Sets the beginning area.
      *
-     * @param null|string $beginAreaName The name of the beginning area
+     * @param Area $beginArea The beginning area
      *
      * @return self
      */
-    public function setBeginAreaName(?string $beginAreaName): self
+    public function setBeginArea(Area $beginArea): self
     {
-        return $this->setFilterValue('beginarea', $beginAreaName);
+        $this->beginArea = $beginArea;
+
+        return $this;
     }
 }

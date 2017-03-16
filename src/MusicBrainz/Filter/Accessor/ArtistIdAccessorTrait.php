@@ -9,27 +9,34 @@ use MusicBrainz\Value\MBID;
  */
 trait ArtistIdAccessorTrait
 {
-    use AccessorTrait;
+    /**
+     * The MusicBrainz Identifier (MBID) of the artist.
+     *
+     * @var MBID
+     */
+    private $artistId;
 
     /**
      * Returns the MusicBrainz Identifier (MBID) of the artist.
      *
-     * @return null|MBID
+     * @return MBID
      */
-    public function getArtistId(): ?MBID
+    public function getArtistId(): MBID
     {
-        return $this->getFilterValue('arid');
+        return $this->artistId;
     }
 
     /**
      * Sets the MusicBrainz Identifier (MBID) of the artist.
      *
-     * @param null|MBID $artistId The MusicBrainz Identifier (MBID) of the artist
+     * @param MBID $artistId The MusicBrainz Identifier (MBID) of the artist
      *
      * @return self
      */
-    public function setArtistId(?MBID $artistId): self
+    public function setArtistId(MBID $artistId): self
     {
-        return $this->setFilterValue('arid', $artistId);
+        $this->artistId = $artistId;
+
+        return $this;
     }
 }

@@ -59,7 +59,7 @@ class Gender
      *
      * @param string $genderCode The gender
      */
-    public function __construct(string $genderCode)
+    public function __construct(string $genderCode = self::UNDEFINED)
     {
         $this->genderCode = (in_array($genderCode, self::GENDERS))
             ? $genderCode

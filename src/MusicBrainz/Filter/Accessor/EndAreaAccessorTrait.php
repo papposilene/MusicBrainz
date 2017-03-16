@@ -2,32 +2,41 @@
 
 namespace MusicBrainz\Filter\Accessor;
 
+use MusicBrainz\Value\Area;
+
 /**
  * Provides accessors for the name of the ending area.
  */
 trait EndAreaAccessorTrait
 {
-    use AccessorTrait;
+    /**
+     * The ending area
+     *
+     * @var Area
+     */
+    private $endArea;
 
     /**
-     * Returns the name of the ending area.
+     * Returns the ending area.
      *
-     * @return null|string
+     * @return Area
      */
-    public function getEndAreaName(): ?string
+    public function getEndArea(): Area
     {
-        return $this->getFilterValue('endarea');
+        return $this->endArea;
     }
 
     /**
-     * Sets the name of the ending area.
+     * Sets the ending area.
      *
-     * @param null|string $endAreaName The name of the ending area
+     * @param Area $endArea The ending area
      *
      * @return self
      */
-    public function setEndAreaName(?string $endAreaName): self
+    public function setEndArea(Area $endArea): self
     {
-        return $this->setFilterValue('endarea', $endAreaName);
+        $this->endArea = $endArea;
+
+        return $this;
     }
 }

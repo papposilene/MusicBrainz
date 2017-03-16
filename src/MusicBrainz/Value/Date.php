@@ -29,7 +29,7 @@ class Date
      *
      * @param string $date A date formatted as defined on top
      */
-    public function __construct(string $date)
+    public function __construct(string $date = '')
     {
         $dateTime = \DateTime::createFromFormat(self::FORMAT, $date);
 

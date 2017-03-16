@@ -9,27 +9,36 @@ use MusicBrainz\Value\Country;
  */
 trait CountryAccessorTrait
 {
-    use AccessorTrait;
+    /**
+     * The country
+     *
+     * @var Country
+     */
+    private $country;
 
     /**
      * Returns the country.
      *
-     * @return null|Country
+     * @return Country
      */
-    public function getCountry(): ?Country
+    public function getCountry(): Country
     {
-        return $this->getFilterValue('country');
+        return $this->country;
     }
 
     /**
      * Sets the country.
      *
-     * @param null|Country $country A country
+     * @param Country $country The country
      *
      * @return self
      */
-    public function setCountry(?Country $country): self
+    public function setCountry(Country $country): self
     {
-        return $this->setFilterValue('country', $country);
+        $this->country = $country;
+
+        return $this;
     }
+
+
 }
