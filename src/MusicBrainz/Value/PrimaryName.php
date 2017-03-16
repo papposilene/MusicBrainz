@@ -22,7 +22,7 @@ class PrimaryName
      *
      * @param string $labelCode A label code
      */
-    public function __construct(string $labelCode)
+    public function __construct(string $labelCode = '')
     {
         $this->labelCode = $this->getNormalizedLabelCode($labelCode);
     }

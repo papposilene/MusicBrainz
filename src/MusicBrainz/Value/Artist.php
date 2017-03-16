@@ -30,7 +30,7 @@ class Artist
      *
      * @param array $artist Array of information about an artist
      */
-    public function __construct(array $artist)
+    public function __construct(array $artist = [])
     {
         $this->MBID           = new MBID(isset($artist['id']) ? (string) $artist['id'] : '');
         $this->artistType     = new ArtistType(isset($artist['type']) ? (string) $artist['type'] : '');

@@ -43,8 +43,7 @@ class Gender
     public const GENDERS = [
         self::MALE,
         self::FEMALE,
-        self::OTHER,
-        self::UNDEFINED
+        self::OTHER
     ];
 
     /**
@@ -63,7 +62,7 @@ class Gender
     {
         $this->genderCode = (in_array($genderCode, self::GENDERS))
             ? $genderCode
-            : self::OTHER;
+            : self::UNDEFINED;
     }
 
     /**
@@ -73,6 +72,8 @@ class Gender
      */
     public function __toString(): string
     {
-        return $this->genderCode;
+        return (self::UNDEFINED === $this->genderCode)
+            ? $this->genderCode
+            : '';
     }
 }

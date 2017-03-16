@@ -114,6 +114,8 @@ class LabelType
      */
     public function __toString(): string
     {
-        return (self::UNDEFINED === $this->type) ? '' : $this->type;
+        return (self::UNDEFINED === $this->type)
+            ? ''
+            : $this->type;
     }
 }

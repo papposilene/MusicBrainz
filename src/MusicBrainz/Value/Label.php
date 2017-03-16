@@ -26,7 +26,7 @@ class Label
      *
      * @param array $label Array of information about a label
      */
-    public function __construct(array $label)
+    public function __construct(array $label = [])
     {
         $this->MBID      = new MBID(isset($label['id']) ? (string) $label['id'] : '');
         $this->name      = new Name(isset($label['name']) ? (string) $label['name'] : '');

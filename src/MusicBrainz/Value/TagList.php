@@ -14,7 +14,7 @@ class TagList extends ValueList
      *
      * @param array $tags An array tag arrays
      */
-    public function __construct(array $tags = array())
+    public function __construct(array $tags = [])
     {
         parent::__construct(
             array_map(

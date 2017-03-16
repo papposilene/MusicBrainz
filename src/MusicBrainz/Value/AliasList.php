@@ -14,7 +14,7 @@ class AliasList extends ValueList
      *
      * @param array $aliases An array alias arrays
      */
-    public function __construct(array $aliases = array())
+    public function __construct(array $aliases = [])
     {
         parent::__construct(
             array_map(

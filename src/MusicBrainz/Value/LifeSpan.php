@@ -49,7 +49,7 @@ class LifeSpan
      *
      * @param array $lifeSpan An array of information about a life span
      */
-    public function __construct(array $lifeSpan)
+    public function __construct(array $lifeSpan = [])
     {
         $this->begin = new Date(isset($lifeSpan['begin']) ? (string) $lifeSpan['begin'] : '');
         $this->end = new Date(isset($lifeSpan['end']) ? (string) $lifeSpan['end'] : '');

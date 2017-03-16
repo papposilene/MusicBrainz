@@ -45,11 +45,18 @@ class ArtistType
     public const CHARACTER = 'Character';
 
     /**
-     * This indicates an undefined type of character.
+     * Anything which does not fit into the above categories.
      *
      * @var string
      */
     public const OTHER = 'Other';
+
+    /**
+     * This indicates an undefined type of character.
+     *
+     * @var string
+     */
+    public const UNDEFINED = 'Undefined';
 
     /**
      * A list of valid artist type codes
@@ -81,7 +88,7 @@ class ArtistType
     {
         $this->type = (in_array($type, self::TYPES))
             ? $type
-            : self::OTHER;
+            : self::UNDEFINED;
     }
 
     /**
@@ -91,6 +98,8 @@ class ArtistType
      */
     public function __toString(): string
     {
-        return $this->type;
+        return (self::UNDEFINED === $this->type)
+            ? ''
+            : $this->type;
     }
 }

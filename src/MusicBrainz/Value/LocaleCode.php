@@ -21,7 +21,7 @@ class LocaleCode
      *
      * @param string $localeCode A locale code
      */
-    public function __construct(string $localeCode)
+    public function __construct(string $localeCode = '')
     {
         $this->code = $localeCode;
     }

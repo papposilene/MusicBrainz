@@ -10,39 +10,31 @@ class Score
     /**
      * The relevance score
      *
-     * @var string
+     * @var null|int
      */
     private $score;
 
     /**
      * Constructs a relevance score.
      *
-     * @param int $score The score
+     * @param null|int $score The score
      */
-    public function __construct(int $score)
+    public function __construct(int $score = null)
     {
-        if (0 <= $score && $score <= 100) {
-            $this->score = $score;
-
-            return;
-        }
-
-        if ($score < 0) {
-            $this->score = 0;
-        }
-
-        if ($score > 100) {
-            $this->score = 100;
-        }
+        $this->score = ((0 <= $score && $score <= 100) || null === $score)
+            ? $score
+            : null;
     }
 
     /**
-     * Returns the relevance score as integer.
+     * Returns the relevance score as string.
      *
-     * @return int
+     * @return string
      */
-    public function toInteger(): int
+    public function __toString(): string
     {
-        return $this->score;
+        return (null === $this->score)
+            ? ''
+            : $this->score;
     }
 }

@@ -21,7 +21,7 @@ class AliasType
      *
      * @param string $typeCode An alias type code
      */
-    public function __construct(string $typeCode)
+    public function __construct(string $typeCode = '')
     {
         $this->typeCode = $typeCode;
     }

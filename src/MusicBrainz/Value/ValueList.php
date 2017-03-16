@@ -14,14 +14,14 @@ abstract class ValueList implements \Iterator
      *
      * @var array
      */
-    private $elements = array();
+    private $elements;
 
     /**
      * Constructs a list of values.
      *
      * @param array $array Array of values
      */
-    public function __construct(array $array)
+    public function __construct(array $array = [])
     {
         $this->elements = $array;
     }

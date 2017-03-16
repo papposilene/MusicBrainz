@@ -23,7 +23,7 @@ class Alias
      *
      * @param array $alias An array with information about the alias
      */
-    public function __construct(array $alias)
+    public function __construct(array $alias = [])
     {
         $this->sortName    = isset($alias['sort-name']) ? (string) $alias['sort-name'] : '';
         $this->name        = new Name(isset($alias['name']) ? (string) $alias['name'] : '');

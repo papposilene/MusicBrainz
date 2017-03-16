@@ -26,7 +26,7 @@ class Tag
      *
      * @param array $tag Array of information about the tag
      */
-    public function __construct(array $tag)
+    public function __construct(array $tag = [])
     {
         $this->count = isset($tag['count']) ? (int) $tag['count'] : 0;
         $this->name  = new Name(isset($tag['name']) ? (string) $tag['name'] : '');
