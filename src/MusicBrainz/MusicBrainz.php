@@ -2,6 +2,7 @@
 
 namespace MusicBrainz;
 
+use MusicBrainz\Api\Search;
 use MusicBrainz\Filter\ArtistFilter;
 use MusicBrainz\Filter\LabelFilter;
 use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
@@ -307,6 +308,16 @@ class MusicBrainz
     }
 
     /**
+     * Returns the API.
+     *
+     * @return Api
+     */
+    public function api()
+    {
+        return new Api($this->adapter, $this->getHttpOptions());
+    }
+
+    /**
      * Do a MusicBrainz lookup
      *
      * http://musicbrainz.org/doc/XML_Web_Service
@@ -320,7 +331,6 @@ class MusicBrainz
      */
     public function lookup($entity, $mbid, array $includes = array())
     {
-
         if (!$this->isValidEntity($entity)) {
             throw new Exception('Invalid entity');
         }
@@ -335,8 +345,13 @@ class MusicBrainz
         );
 
         $response = $this->adapter->call($entity . '/' . $mbid, $params, $this->getHttpOptions(), $authRequired);
-dump($response);die;
+
         return $response;
+    }
+
+    public function search()
+    {
+        return new Search($this->adapter);
     }
 
     /**
@@ -514,164 +529,6 @@ dump($response);die;
             $offset,
             $releaseType
         );
-    }
-
-    /**
-     * Performs a query based on the parameters supplied in the Filter object.
-     * Returns an array of possible matches with scores, as returned by the
-     * musicBrainz web service.
-     *
-     * Note that these types of queries only return some information, and not all the
-     * information available about a particular item is available using this type of query.
-     * You will need to get the MusicBrainz id (mbid) and perform a lookup with browse
-     * to return complete information about a release. This method returns an array of
-     * objects that are possible matches.
-     *
-     * @param Filters\FilterInterface $filter
-     * @param int                     $limit
-     * @param null|int                $offset
-     *
-     * @throws Exception
-     * @return array
-     */
-    public function search(Filters\FilterInterface $filter, $limit = 25, $offset = null)
-    {
-        if (count($filter->createParameters()) < 1) {
-            throw new Exception('The artist filter object needs at least 1 argument to create a query.');
-        }
-
-        if ($limit > 100) {
-            throw new Exception('Limit can only be between 1 and 100');
-        }
-
-        $params = $filter->createParameters(array('limit' => $limit, 'offset' => $offset, 'fmt' => 'json'));
-
-        $response = $this->adapter->call($filter->getEntity() . '/', $params, $this->getHttpOptions(), false, true);
-
-        return $filter->parseResponse($response, $this);
-    }
-
-    /**
-     * Searches for artists and returns the result.
-     *
-     * @param ArtistFilter $artistFilter An artist filter
-     * @param int          $limit        Maximum number of items
-     * @param null|int     $offset
-     *
-     * @return Artist[]
-     *
-     * @throws Exception
-     */
-    public function searchArtist(ArtistFilter $artistFilter, int $limit = 25, int $offset = 0)
-    {
-        if ($limit > 100) {
-            throw new Exception('Limit can only be between 1 and 100');
-        }
-
-        $filterValues = [
-            'alias'        => (string) $artistFilter->getAliasName(),
-            'area'         => (string) $artistFilter->getAreaName(),
-            'arid'         => (string) $artistFilter->getArtistId(),
-            'artist'       => (string) $artistFilter->getArtistName(),
-            'artistaccent' => (string) $artistFilter->getArtistNameWithoutAccent(),
-            'begin'        => (string) $artistFilter->getBeginDate(),
-            'beginarea'    => (string) $artistFilter->getBeginArea(),
-            'comment'      => (string) $artistFilter->getComment(),
-            'country'      => (string) $artistFilter->getCountry(),
-            'end'          => (string) $artistFilter->getEndDate(),
-            'endarea'      => (string) $artistFilter->getEndArea(),
-            'ended'        => (string) $artistFilter->isEnded(),
-            'gender'       => (string) $artistFilter->getGender(),
-            'ipi'          => (string) $artistFilter->getIpiCode(),
-            'sortname'     => (string) $artistFilter->getSortName(),
-            'tag'          => (string) $artistFilter->getTag()
-        ];
-
-        $params = $this->getParameters($filterValues, $limit, $offset);
-
-        $response = $this->adapter->call('artist' . '/', $params, $this->getHttpOptions(), false, true);
-
-        return $this->parseArtistResponse($response, $this);
-    }
-
-    /**
-     * @param array       $response
-     * @param MusicBrainz $brainz
-     *
-     * @return Artist[]
-     */
-    public function parseArtistResponse(array $response, MusicBrainz $brainz)
-    {
-        $artists = array();
-        if (isset($response['artist'])) {
-            foreach ($response['artist'] as $artist) {
-                $artists[] = new Artist($artist, $brainz);
-            }
-        } elseif (isset($response['artists'])) {
-            foreach ($response['artists'] as $artist) {
-                $artists[] = new Artist($artist, $brainz);
-            }
-        }
-
-        return $artists;
-    }
-
-    /**
-     * Searches for labels and returns the result.
-     *
-     * @param LabelFilter $labelFilter A label filter
-     * @param int         $limit       Maximum number of items
-     * @param null|int    $offset
-     *
-     * @return Label[]
-     *
-     * @throws Exception
-     */
-    public function searchLabel(LabelFilter $labelFilter, int $limit = 25, int $offset = 0)
-    {
-        if ($limit > 100) {
-            throw new Exception('Limit can only be between 1 and 100');
-        }
-
-        $filterValues = [
-            'alias'       => (string) $labelFilter->getAliasName(),
-            'begin'       => (string) $labelFilter->getBeginDate(),
-            'code'        => (string) $labelFilter->getLabelCode(),
-            'comment'     => (string) $labelFilter->getComment(),
-            'country'     => (string) $labelFilter->getCountry(),
-            'end'         => (string) $labelFilter->getEndDate(),
-            'ended'       => (string) $labelFilter->isEnded(),
-            'ipi'         => (string) $labelFilter->getIpiCode(),
-            'label'       => (string) $labelFilter->getLabelCode(),
-            'labelaccent' => (string) $labelFilter->getLabelNameWithoutAccent(),
-            'laid'        => (string) $labelFilter->getLabelId(),
-            'sortname'    => (string) $labelFilter->getSortName(),
-            'tag'         => (string) $labelFilter->getTag(),
-            'type'        => (string) $labelFilter->getLabelType()
-        ];
-
-        $params = $this->getParameters($filterValues, $limit, $offset);
-
-        $response = $this->adapter->call('label' . '/', $params, $this->getHttpOptions(), false, true);
-
-        return $this->parseLabelResponse($response, $this);
-    }
-
-    /**
-     * @param array       $response
-     * @param MusicBrainz $brainz
-     *
-     * @return \MusicBrainz\Value\Label[]
-     */
-    public function parseLabelResponse(array $response, MusicBrainz $brainz)
-    {
-        $labels = array();
-
-        foreach ($response['labels'] as $label) {
-            $labels[] = new Label($label, $brainz);
-        }
-
-        return $labels;
     }
 
     /**
@@ -881,50 +738,5 @@ dump($response);die;
     public function setPassword($password)
     {
         $this->password = $password;
-    }
-
-    /**
-     * Returns a list of parameters.
-     *
-     * @param array $filterValues
-     * @param int   $limit
-     * @param int   $offset
-     *
-     * @return array
-     *
-     * @throws Exception
-     */
-    private function getParameters($filterValues, int $limit, int $offset): array
-    {
-        $filterValues = array_filter($filterValues);
-
-        if (empty($filterValues)) {
-
-            throw new Exception('The artist filter object needs at least 1 argument to create a query.');
-        }
-
-        $params = ['limit' => $limit, 'offset' => $offset, 'fmt' => 'json'] + ['query' => ''];
-
-        foreach ($filterValues as $key => $val) {
-            if ($params['query'] != '') {
-                $params['query'] .= '+AND+';
-            }
-
-            if (!in_array($key, ['arid'])) {
-                // Lucene escape characters
-                $val = urlencode(
-                    preg_replace('/([\+\-\!\(\)\{\}\[\]\^\~\*\?\:\\\\])/', '\\\\$1', $val)
-                );
-            }
-            // If the search string contains a space, wrap it in brackets/quotes
-            // This isn't always wanted, but for the searches required in this
-            // library, I'm going to do it.
-            if (preg_match('/[\+]/', $val)) {
-                $val = '(' . $val . ')';
-            }
-
-            $params['query'] .= $key . ':' . $val;
-        }
-        return $params;
     }
 }
