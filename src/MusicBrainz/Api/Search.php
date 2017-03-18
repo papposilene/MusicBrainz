@@ -126,7 +126,7 @@ class Search
      *
      * @throws Exception
      */
-    public function label(LabelFilter $labelFilter, PageFilte $pageFilter)
+    public function label(LabelFilter $labelFilter, PageFilter $pageFilter)
     {
         $filterValues = [
             'alias'       => (string) $labelFilter->getAliasName(),
