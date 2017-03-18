@@ -3,9 +3,11 @@
 namespace MusicBrainz\Api;
 
 use MusicBrainz\Exception;
+use MusicBrainz\Filter\AnnotationFilter;
 use MusicBrainz\Filter\ArtistFilter;
 use MusicBrainz\Filter\LabelFilter;
 use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
+use MusicBrainz\Value\Annotation;
 use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\Label;
 
@@ -44,6 +46,49 @@ class Search
     {
         $this->httpAdapter = $httpAdapter;
         $this->httpOptions = $httpOptions;
+    }
+
+    /**
+     * Search for annotations and returns the result.
+     *
+     * @param AnnotationFilter $annotationFilter
+     * @param int $limit
+     * @param int $offset
+     */
+    public function annotation(AnnotationFilter $annotationFilter, int $limit = 25, int $offset = 0)
+    {
+        if ($limit > 100) {
+            throw new Exception('Limit can only be between 1 and 100');
+        }
+
+        $filterValues = [
+            'name'   => (string) $annotationFilter->getEntityName(),
+            'entity' => (string) $annotationFilter->getEntityId(),
+            'text'   => (string) $annotationFilter->getText(),
+            'type'   => (string) $annotationFilter->getEntityType()
+        ];
+
+        $params = $this->getParameters($filterValues, $limit, $offset);
+
+        $response = $this->httpAdapter->call('annotation' . '/', $params, $this->httpOptions, false, true);
+
+        return $this->parseAnnotationResponse($response);
+    }
+
+    /**
+     * @param array $response
+     *
+     * @return Artist[]
+     */
+    private function parseAnnotationResponse(array $response)
+    {
+        $annotations = array();
+
+        foreach ($response['annotations'] as $annotation) {
+            $annotations[] = new Annotation($annotation);
+        }
+
+        return $annotations;
     }
 
     /**

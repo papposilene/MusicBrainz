@@ -351,7 +351,7 @@ class MusicBrainz
 
     public function search()
     {
-        return new Search($this->adapter);
+        return new Search($this->adapter, $this->getHttpOptions());
     }
 
     /**

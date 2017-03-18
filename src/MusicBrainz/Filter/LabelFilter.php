@@ -1,6 +1,7 @@
 <?php
 
 namespace MusicBrainz\Filter;
+
 use MusicBrainz\Value\Country;
 use MusicBrainz\Value\Date;
 use MusicBrainz\Value\IPI;
