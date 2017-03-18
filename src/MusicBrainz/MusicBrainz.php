@@ -2,6 +2,7 @@
 
 namespace MusicBrainz;
 
+use MusicBrainz\Api\Lookup;
 use MusicBrainz\Api\Search;
 use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
 
@@ -15,176 +16,6 @@ use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
  */
 class MusicBrainz
 {
-    /**
-     * @var array
-     */
-    private static $validIncludes = array(
-        'artist'        => array(
-            "recordings",
-            "releases",
-            "release-groups",
-            "works",
-            "various-artists",
-            "discids",
-            "media",
-            "aliases",
-            "tags",
-            "user-tags",
-            "ratings",
-            "user-ratings", // misc
-            "artist-rels",
-            "label-rels",
-            "recording-rels",
-            "release-rels",
-            "release-group-rels",
-            "url-rels",
-            "work-rels",
-            "annotation"
-        ),
-        'annotation'    => array(),
-        'label'         => array(
-            "releases",
-            "discids",
-            "media",
-            "aliases",
-            "tags",
-            "user-tags",
-            "ratings",
-            "user-ratings", // misc
-            "artist-rels",
-            "label-rels",
-            "recording-rels",
-            "release-rels",
-            "release-group-rels",
-            "url-rels",
-            "work-rels",
-            "annotation"
-        ),
-        'recording'     => array(
-            "artists",
-            "releases", // sub queries
-            "discids",
-            "media",
-            "artist-credits",
-            "tags",
-            "user-tags",
-            "ratings",
-            "user-ratings", // misc
-            "artist-rels",
-            "label-rels",
-            "recording-rels",
-            "release-rels",
-            "release-group-rels",
-            "url-rels",
-            "work-rels",
-            "annotation",
-            "aliases"
-        ),
-        'release'       => array(
-            "artists",
-            "labels",
-            "recordings",
-            "release-groups",
-            "media",
-            "artist-credits",
-            "discids",
-            "puids",
-            "echoprints",
-            "isrcs",
-            "artist-rels",
-            "label-rels",
-            "recording-rels",
-            "release-rels",
-            "release-group-rels",
-            "url-rels",
-            "work-rels",
-            "recording-level-rels",
-            "work-level-rels",
-            "annotation",
-            "aliases"
-        ),
-        'release-group' => array(
-            "artists",
-            "releases",
-            "discids",
-            "media",
-            "artist-credits",
-            "tags",
-            "user-tags",
-            "ratings",
-            "user-ratings", // misc
-            "artist-rels",
-            "label-rels",
-            "recording-rels",
-            "release-rels",
-            "release-group-rels",
-            "url-rels",
-            "work-rels",
-            "annotation",
-            "aliases"
-        ),
-        'work'          => array(
-            "artists", // sub queries
-            "aliases",
-            "tags",
-            "user-tags",
-            "ratings",
-            "user-ratings", // misc
-            "artist-rels",
-            "label-rels",
-            "recording-rels",
-            "release-rels",
-            "release-group-rels",
-            "url-rels",
-            "work-rels",
-            "annotation"
-        ),
-        'discid'        => array(
-            "artists",
-            "labels",
-            "recordings",
-            "release-groups",
-            "media",
-            "artist-credits",
-            "discids",
-            "puids",
-            "echoprints",
-            "isrcs",
-            "artist-rels",
-            "label-rels",
-            "recording-rels",
-            "release-rels",
-            "release-group-rels",
-            "url-rels",
-            "work-rels",
-            "recording-level-rels",
-            "work-level-rels"
-        ),
-        'echoprint'     => array(
-            "artists",
-            "releases"
-        ),
-        'puid'          => array(
-            "artists",
-            "releases",
-            "puids",
-            "echoprints",
-            "isrcs"
-        ),
-        'isrc'          => array(
-            "artists",
-            "releases",
-            "puids",
-            "echoprints",
-            "isrcs"
-        ),
-        'iswc'          => array(
-            "artists"
-        ),
-        'collection'    => array(
-            'releases'
-        )
-    );
     /**
      * @var array
      */
@@ -313,41 +144,14 @@ class MusicBrainz
         return new Api($this->adapter, $this->getHttpOptions());
     }
 
-    /**
-     * Do a MusicBrainz lookup
-     *
-     * http://musicbrainz.org/doc/XML_Web_Service
-     *
-     * @param string $entity
-     * @param string $mbid Music Brainz ID
-     * @param array  $includes
-     *
-     * @throws Exception
-     * @return array
-     */
-    public function lookup($entity, $mbid, array $includes = array())
-    {
-        if (!$this->isValidEntity($entity)) {
-            throw new Exception('Invalid entity');
-        }
-
-        $this->validateInclude($includes, self::$validIncludes[$entity]);
-
-        $authRequired = $this->isAuthRequired($entity, $includes);
-
-        $params = array(
-            'inc' => implode('+', $includes),
-            'fmt' => 'json'
-        );
-
-        $response = $this->adapter->call($entity . '/' . $mbid, $params, $this->getHttpOptions(), $authRequired);
-
-        return $response;
-    }
-
     public function search()
     {
         return new Search($this->adapter, $this->getHttpOptions());
+    }
+
+    public function lookup()
+    {
+        return new Lookup($this->adapter, $this->getHttpOptions());
     }
 
     /**
@@ -535,18 +339,6 @@ class MusicBrainz
     public function isValidMBID($mbid)
     {
         return preg_match("/^(\{)?[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}(?(1)\})$/i", $mbid);
-    }
-
-    /**
-     * Check the list of allowed entities
-     *
-     * @param $entity
-     *
-     * @return bool
-     */
-    private function isValidEntity($entity)
-    {
-        return array_key_exists($entity, self::$validIncludes);
     }
 
     /**
