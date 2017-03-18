@@ -68,6 +68,6 @@ trait IteratorTrait
      */
     public function valid(): bool
     {
-        return $this->offsetExists($this->key());
+        return array_key_exists($this->key(), $this->elements);
     }
 }
