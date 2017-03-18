@@ -8,7 +8,6 @@ use MusicBrainz\Filter\ArtistFilter;
 use MusicBrainz\Filter\LabelFilter;
 use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
-use MusicBrainz\Value\Annotation;
 use MusicBrainz\Value\AnnotationList;
 use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\ArtistList;

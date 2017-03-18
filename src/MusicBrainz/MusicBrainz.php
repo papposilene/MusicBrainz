@@ -3,11 +3,7 @@
 namespace MusicBrainz;
 
 use MusicBrainz\Api\Search;
-use MusicBrainz\Filter\ArtistFilter;
-use MusicBrainz\Filter\LabelFilter;
 use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
-use MusicBrainz\Value\Artist;
-use MusicBrainz\Value\Label;
 
 /**
  * Connect to the MusicBrainz web service
