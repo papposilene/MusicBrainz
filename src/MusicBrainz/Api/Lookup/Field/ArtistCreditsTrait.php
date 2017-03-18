@@ -1,0 +1,37 @@
+<?php
+
+namespace MusicBrainz\Api\Lookup\Field;
+
+trait ArtistCreditsTrait
+{
+    /**
+     * True, if artist credits should be included, otherwise false
+     *
+     * @var bool
+     */
+    private $artistCredits = false;
+
+    /**
+     * Returns true, if artist credits should be included, otherwise false.
+     *
+     * @return bool
+     */
+    public function isArtistCredits(): bool
+    {
+        return $this->artistCredits;
+    }
+
+    /**
+     * Sets whether artist credits should be included.
+     *
+     * @param bool $artistCredits True, if artist credits should be included, otherwise false
+     *
+     * @return self
+     */
+    public function setArtistCredits(bool $artistCredits = true): self
+    {
+        $this->artistCredits = $artistCredits;
+
+        return $this;
+    }
+}
