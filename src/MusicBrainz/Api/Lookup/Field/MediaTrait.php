@@ -1,0 +1,37 @@
+<?php
+
+namespace MusicBrainz\Api\Lookup\Field;
+
+trait MediaTrait
+{
+    /**
+     * True, if media should be included, otherwise false
+     *
+     * @var bool
+     */
+    private $media = false;
+
+    /**
+     * Returns true, if media should be included, otherwise false.
+     *
+     * @return bool
+     */
+    public function isMedia(): bool
+    {
+        return $this->media;
+    }
+
+    /**
+     * Sets whether media should be included.
+     *
+     * @param bool $media True, if media should be included, otherwise false
+     *
+     * @return self
+     */
+    public function setMedia(bool $media = true): self
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+}

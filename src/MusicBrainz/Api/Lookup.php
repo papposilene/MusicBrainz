@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Api;
 
+use MusicBrainz\Api\Lookup\ArtistFields;
 use MusicBrainz\Exception;
 use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
 use MusicBrainz\Value\Area;
@@ -221,6 +222,43 @@ class Lookup
     }
 
     /**
+     * Looks up for an artist and returns the result.
+     *
+     * @param MBID $mbid A Music Brainz Identifier (MBID) of an artist
+     *
+     * @return Area
+     */
+    public function artist(MBID $mbid, ArtistFields $artistFields)
+    {
+        $fields = [
+            'recordings'         => $artistFields->isRecordings(),
+            'releases'           => $artistFields->isReleases(),
+            'release-groups'     => $artistFields->isReleaseGroups(),
+            'works'              => $artistFields->isWorks(),
+            'various-artists'    => $artistFields->isVariousArtists(),
+            'discids'            => $artistFields->isDiscIds(),
+            'media'              => $artistFields->isMedia(),
+            'aliases'            => $artistFields->isAliases(),
+            'tags'               => $artistFields->isTags(),
+            'user-tags'          => $artistFields->isUserTags(),
+            'ratings'            => $artistFields->isRatings(),
+            'user-ratings'       => $artistFields->isUserRatings(), // misc
+            'artist-rels'        => $artistFields->isArtistRelations(),
+            'label-rels'         => $artistFields->isLabelRelations(),
+            'recording-rels'     => $artistFields->isRecordingRelations(),
+            'release-rels'       => $artistFields->isReleaseRelations(),
+            'release-group-rels' => $artistFields->isReleaseGroupRelations(),
+            'url-rels'           => $artistFields->isURLRelations(),
+            'work-rels'          => $artistFields->isWorkRelations(),
+            'annotation'         => $artistFields->isAnnotation()
+        ];
+
+        $result = $this->lookup('artist', $mbid, $fields);
+
+        return new Area($result);
+    }
+
+    /**
      * Do a MusicBrainz lookup
      *
      * http://musicbrainz.org/doc/XML_Web_Service
@@ -230,19 +268,22 @@ class Lookup
      * @param array  $includes
      *
      * @throws Exception
+     *
      * @return array
      */
     private function lookup($entity, MBID $mbid, array $includes = [])
     {
-        //$this->validateInclude($includes, self::$validIncludes[$entity]);
+        // $this->validateInclude($includes, self::$validIncludes[$entity]);
 
         // $authRequired = $this->isAuthRequired($entity, $includes);
         $authRequired = false;
 
-        $params = array(
+        $includes = array_keys(array_filter($includes));
+
+        $params = [
             'inc' => implode('+', $includes),
             'fmt' => 'json'
-        );
+        ];
 
         $response = $this->httpAdapter->call($entity . '/' . (string) $mbid, $params, $this->httpOptions, $authRequired);
 

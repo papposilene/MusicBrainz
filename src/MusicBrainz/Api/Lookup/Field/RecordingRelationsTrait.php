@@ -1,0 +1,37 @@
+<?php
+
+namespace MusicBrainz\Api\Lookup\Field;
+
+trait RecordingRelationsTrait
+{
+    /**
+     * True, if recording relations should be included, otherwise false
+     *
+     * @var bool
+     */
+    private $recordingRelations = false;
+
+    /**
+     * Returns true, if recording relations should be included, otherwise false.
+     *
+     * @return bool
+     */
+    public function isRecordingRelations(): bool
+    {
+        return $this->recordingRelations;
+    }
+
+    /**
+     * Sets whether recording relations should be included.
+     *
+     * @param bool $recordingRelations True, if recording relations should be included, otherwise false
+     *
+     * @return self
+     */
+    public function setRecordingRelations(bool $recordingRelations = true): self
+    {
+        $this->recordingRelations = $recordingRelations;
+
+        return $this;
+    }
+}
