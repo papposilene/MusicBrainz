@@ -7,6 +7,7 @@ use MusicBrainz\Filter\AnnotationFilter;
 use MusicBrainz\Filter\ArtistFilter;
 use MusicBrainz\Filter\LabelFilter;
 use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
+use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Value\Annotation;
 use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\Label;
@@ -51,16 +52,15 @@ class Search
     /**
      * Search for annotations and returns the result.
      *
-     * @param AnnotationFilter $annotationFilter
-     * @param int $limit
-     * @param int $offset
+     * @param AnnotationFilter $annotationFilter An annotation filter
+     * @param PageFilter       $pageFilter       A page filter
+     *
+     * @return array
+     *
+     * @throws Exception
      */
-    public function annotation(AnnotationFilter $annotationFilter, int $limit = 25, int $offset = 0)
+    public function annotation(AnnotationFilter $annotationFilter, PageFilter $pageFilter)
     {
-        if ($limit > 100) {
-            throw new Exception('Limit can only be between 1 and 100');
-        }
-
         $filterValues = [
             'name'   => (string) $annotationFilter->getEntityName(),
             'entity' => (string) $annotationFilter->getEntityId(),
@@ -68,7 +68,7 @@ class Search
             'type'   => (string) $annotationFilter->getEntityType()
         ];
 
-        $params = $this->getParameters($filterValues, $limit, $offset);
+        $params = $this->getParameters($filterValues, $pageFilter->getLimit(), $pageFilter->getOffset());
 
         $response = $this->httpAdapter->call('annotation' . '/', $params, $this->httpOptions, false, true);
 
@@ -95,19 +95,14 @@ class Search
      * Searches for artists and returns the result.
      *
      * @param ArtistFilter $artistFilter An artist filter
-     * @param int          $limit        Maximum number of items
-     * @param null|int     $offset
+     * @param PageFilter   $pageFilter   A page filter
      *
      * @return Artist[]
      *
      * @throws Exception
      */
-    public function artist(ArtistFilter $artistFilter, int $limit = 25, int $offset = 0)
+    public function artist(ArtistFilter $artistFilter, PageFilter $pageFilter)
     {
-        if ($limit > 100) {
-            throw new Exception('Limit can only be between 1 and 100');
-        }
-
         $filterValues = [
             'alias'        => (string) $artistFilter->getAliasName(),
             'area'         => (string) $artistFilter->getAreaName(),
@@ -127,7 +122,7 @@ class Search
             'tag'          => (string) $artistFilter->getTag()
         ];
 
-        $params = $this->getParameters($filterValues, $limit, $offset);
+        $params = $this->getParameters($filterValues, $pageFilter->getLimit(), $pageFilter->getOffset());
 
         $response = $this->httpAdapter->call('artist' . '/', $params, $this->httpOptions, false, true);
 
@@ -159,19 +154,14 @@ class Search
      * Searches for labels and returns the result.
      *
      * @param LabelFilter $labelFilter A label filter
-     * @param int         $limit       Maximum number of items
-     * @param null|int    $offset
+     * @param PageFilter  $pageFilter  A page filter
      *
      * @return Label[]
      *
      * @throws Exception
      */
-    public function label(LabelFilter $labelFilter, int $limit = 25, int $offset = 0)
+    public function label(LabelFilter $labelFilter, PageFilte $pageFilter)
     {
-        if ($limit > 100) {
-            throw new Exception('Limit can only be between 1 and 100');
-        }
-
         $filterValues = [
             'alias'       => (string) $labelFilter->getAliasName(),
             'begin'       => (string) $labelFilter->getBeginDate(),
@@ -189,7 +179,7 @@ class Search
             'type'        => (string) $labelFilter->getLabelType()
         ];
 
-        $params = $this->getParameters($filterValues, $limit, $offset);
+        $params = $this->getParameters($filterValues, $pageFilter->getLimit(), $pageFilter->getOffset());
 
         $response = $this->httpAdapter->call('label' . '/', $params, $this->httpOptions, false, true);
 
