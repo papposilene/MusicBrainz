@@ -2,6 +2,9 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Collection\CollectionTrait;
+use MusicBrainz\Collection\IteratorTrait;
+
 /**
  * A list of values
  *
@@ -9,12 +12,8 @@ namespace MusicBrainz\Value;
  */
 abstract class ValueList implements \Iterator
 {
-    /**
-     * A list of values
-     *
-     * @var array
-     */
-    private $elements;
+    use CollectionTrait;
+    use IteratorTrait;
 
     /**
      * Constructs a list of values.
@@ -24,68 +23,6 @@ abstract class ValueList implements \Iterator
     public function __construct(array $array = [])
     {
         $this->elements = $array;
-    }
-
-    /**
-     * Rewinds the iterator to the first element.
-     *
-     * @link http://php.net/manual/en/iterator.rewind.php
-     *
-     * @return mixed
-     */
-    public function rewind()
-    {
-        reset($this->elements);
-    }
-
-    /**
-     * Returns the current element.
-     *
-     * @link http://php.net/manual/en/iterator.current.php
-     *
-     * @return mixed
-     */
-    public function current()
-    {
-        return current($this->elements);
-    }
-
-    /**
-     * Returns the key of the current element.
-     *
-     * @link http://php.net/manual/en/iterator.key.php
-     *
-     * @return mixed
-     */
-    public function key()
-    {
-        return key($this->elements);
-    }
-
-    /**
-     * Moves forward to next element.
-     *
-     * @link http://php.net/manual/en/iterator.next.php
-     *
-     * @return mixed
-     */
-    public function next()
-    {
-        return next($this->elements);
-    }
-
-    /**
-     * Checks if current position is valid.
-     *
-     * @link http://php.net/manual/en/iterator.valid.php
-     *
-     * @return bool
-     */
-    public function valid(): bool
-    {
-        $type = static::getType();
-
-        return $this->current() instanceof $type;
     }
 
     /**
