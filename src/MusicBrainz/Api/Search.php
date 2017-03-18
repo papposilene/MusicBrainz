@@ -9,6 +9,7 @@ use MusicBrainz\Filter\LabelFilter;
 use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Value\Annotation;
+use MusicBrainz\Value\AnnotationList;
 use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\Label;
 
@@ -57,7 +58,7 @@ class Search
      *
      * @return array
      *
-     * @throws Exception
+     * @throws AnnotationList
      */
     public function annotation(AnnotationFilter $annotationFilter, PageFilter $pageFilter)
     {
@@ -72,23 +73,7 @@ class Search
 
         $response = $this->httpAdapter->call('annotation' . '/', $params, $this->httpOptions, false, true);
 
-        return $this->parseAnnotationResponse($response);
-    }
-
-    /**
-     * @param array $response
-     *
-     * @return Artist[]
-     */
-    private function parseAnnotationResponse(array $response)
-    {
-        $annotations = array();
-
-        foreach ($response['annotations'] as $annotation) {
-            $annotations[] = new Annotation($annotation);
-        }
-
-        return $annotations;
+        return new AnnotationList((isset($response['annotations'])) ? $response['annotations'] : []);
     }
 
     /**
