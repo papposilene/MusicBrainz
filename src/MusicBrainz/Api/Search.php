@@ -11,6 +11,7 @@ use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Value\Annotation;
 use MusicBrainz\Value\AnnotationList;
 use MusicBrainz\Value\Artist;
+use MusicBrainz\Value\ArtistList;
 use MusicBrainz\Value\Label;
 
 /**
@@ -111,28 +112,7 @@ class Search
 
         $response = $this->httpAdapter->call('artist' . '/', $params, $this->httpOptions, false, true);
 
-        return $this->parseArtistResponse($response);
-    }
-
-    /**
-     * @param array $response
-     *
-     * @return Artist[]
-     */
-    private function parseArtistResponse(array $response)
-    {
-        $artists = array();
-        if (isset($response['artist'])) {
-            foreach ($response['artist'] as $artist) {
-                $artists[] = new Artist($artist);
-            }
-        } elseif (isset($response['artists'])) {
-            foreach ($response['artists'] as $artist) {
-                $artists[] = new Artist($artist);
-            }
-        }
-
-        return $artists;
+        return new ArtistList((isset($response['artists'])) ? $response['artists'] : []);
     }
 
     /**
