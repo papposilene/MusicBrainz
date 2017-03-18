@@ -13,6 +13,7 @@ use MusicBrainz\Value\AnnotationList;
 use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\ArtistList;
 use MusicBrainz\Value\Label;
+use MusicBrainz\Value\LabelList;
 
 /**
  * Performs a query based on the parameters supplied in the Filter object.
@@ -148,23 +149,7 @@ class Search
 
         $response = $this->httpAdapter->call('label' . '/', $params, $this->httpOptions, false, true);
 
-        return $this->parseLabelResponse($response, $this);
-    }
-
-    /**
-     * @param array $response
-     *
-     * @return Label[]
-     */
-    private function parseLabelResponse(array $response)
-    {
-        $labels = array();
-
-        foreach ($response['labels'] as $label) {
-            $labels[] = new Label($label);
-        }
-
-        return $labels;
+        return new LabelList((isset($response['labels'])) ? $response['labels'] : []);
     }
 
     /**
