@@ -2,10 +2,13 @@
 
 namespace MusicBrainz\Api;
 
+use AppBundle\Entity\Label;
 use MusicBrainz\Api\Lookup\ArtistFields;
+use MusicBrainz\Api\Lookup\LabelFields;
 use MusicBrainz\Exception;
 use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
 use MusicBrainz\Value\Area;
+use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\MBID;
 
 class Lookup
@@ -255,7 +258,40 @@ class Lookup
 
         $result = $this->lookup('artist', $mbid, $fields);
 
-        return new Area($result);
+        return new Artist($result);
+    }
+
+    /**
+     * Looks up for a label and returns the result.
+     *
+     * @param MBID $mbid A Music Brainz Identifier (MBID) of a label
+     *
+     * @return Area
+     */
+    public function label(MBID $mbid, LabelFields $labelFields)
+    {
+        $fields = [
+            'releases'           => $labelFields->isReleases(),
+            'discids'            => $labelFields->isDiscIds(),
+            'media'              => $labelFields->isMedia(),
+            'aliases'            => $labelFields->isAliases(),
+            'tags'               => $labelFields->isTags(),
+            'user-tags'          => $labelFields->isUserTags(),
+            'ratings'            => $labelFields->isRatings(),
+            'user-ratings'       => $labelFields->isUserRatings(), // misc
+            'artist-rels'        => $labelFields->isArtistRelations(),
+            'label-rels'         => $labelFields->isLabelRelations(),
+            'recording-rels'     => $labelFields->isRecordingRelations(),
+            'release-rels'       => $labelFields->isReleaseRelations(),
+            'release-group-rels' => $labelFields->isReleaseGroupRelations(),
+            'url-rels'           => $labelFields->isURLRelations(),
+            'work-rels'          => $labelFields->isWorkRelations(),
+            'annotation'         => $labelFields->isAnnotation()
+        ];
+
+        $result = $this->lookup('label', $mbid, $fields);
+
+        return new Label($result);
     }
 
     /**
