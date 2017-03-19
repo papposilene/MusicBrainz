@@ -19,7 +19,7 @@ class RecordingFields
     use Field\ReleaseRelationsTrait;
     use Field\ReleaseGroupRelationsTrait;
     use Field\URLRelationsTrait;
-    use Field\WorksTrait;
+    use Field\WorkRelationsTrait;
     use Field\AnnotationTrait;
     use Field\AliasesTrait;
 }

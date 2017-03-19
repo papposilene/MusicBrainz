@@ -5,11 +5,13 @@ namespace MusicBrainz\Api;
 use AppBundle\Entity\Label;
 use MusicBrainz\Api\Lookup\ArtistFields;
 use MusicBrainz\Api\Lookup\LabelFields;
+use MusicBrainz\Api\Lookup\RecordingFields;
 use MusicBrainz\Exception;
 use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
 use MusicBrainz\Value\Area;
 use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\MBID;
+use MusicBrainz\Value\Recording;
 
 class Lookup
 {
@@ -17,67 +19,6 @@ class Lookup
      * @var array
      */
     private static $validIncludes = array(
-        'artist' => array(
-            "recordings",
-            "releases",
-            "release-groups",
-            "works",
-            "various-artists",
-            "discids",
-            "media",
-            "aliases",
-            "tags",
-            "user-tags",
-            "ratings",
-            "user-ratings", // misc
-            "artist-rels",
-            "label-rels",
-            "recording-rels",
-            "release-rels",
-            "release-group-rels",
-            "url-rels",
-            "work-rels",
-            "annotation"
-        ),
-        'annotation'    => array(),
-        'label'         => array(
-            "releases",
-            "discids",
-            "media",
-            "aliases",
-            "tags",
-            "user-tags",
-            "ratings",
-            "user-ratings", // misc
-            "artist-rels",
-            "label-rels",
-            "recording-rels",
-            "release-rels",
-            "release-group-rels",
-            "url-rels",
-            "work-rels",
-            "annotation"
-        ),
-        'recording'     => array(
-            "artists",
-            "releases", // sub queries
-            "discids",
-            "media",
-            "artist-credits",
-            "tags",
-            "user-tags",
-            "ratings",
-            "user-ratings", // misc
-            "artist-rels",
-            "label-rels",
-            "recording-rels",
-            "release-rels",
-            "release-group-rels",
-            "url-rels",
-            "work-rels",
-            "annotation",
-            "aliases"
-        ),
         'release'       => array(
             "artists",
             "labels",
@@ -229,7 +170,7 @@ class Lookup
      *
      * @param MBID $mbid A Music Brainz Identifier (MBID) of an artist
      *
-     * @return Area
+     * @return Artist
      */
     public function artist(MBID $mbid, ArtistFields $artistFields)
     {
@@ -266,7 +207,7 @@ class Lookup
      *
      * @param MBID $mbid A Music Brainz Identifier (MBID) of a label
      *
-     * @return Area
+     * @return Label
      */
     public function label(MBID $mbid, LabelFields $labelFields)
     {
@@ -292,6 +233,41 @@ class Lookup
         $result = $this->lookup('label', $mbid, $fields);
 
         return new Label($result);
+    }
+
+    /**
+     * Looks up for a recording and returns the result.
+     *
+     * @param MBID $mbid A Music Brainz Identifier (MBID) of a recording
+     *
+     * @return Recording
+     */
+    public function recording(MBID $mbid, RecordingFields $recordingFields)
+    {
+        $fields = [
+            'artists' =>            $recordingFields->isArtists(),
+            'releases' =>           $recordingFields->isReleases(), // sub queries
+            'discids' =>            $recordingFields->isDiscIds(),
+            'media' =>              $recordingFields->isMedia(),
+            'artist-credits' =>     $recordingFields->isArtistCredits(),
+            'tags' =>               $recordingFields->isTags(),
+            'user-tags' =>          $recordingFields->isUserTags(),
+            'ratings' =>            $recordingFields->isRatings(),
+            'user-ratings' =>       $recordingFields->isUserRatings(), // misc
+            'artist-rels' =>        $recordingFields->isArtistRelations(),
+            'label-rels' =>         $recordingFields->isLabelRelations(),
+            'recording-rels' =>     $recordingFields->isRecordingRelations(),
+            'release-rels' =>       $recordingFields->isReleaseRelations(),
+            'release-group-rels' => $recordingFields->isReleaseGroupRelations(),
+            'url-rels' =>           $recordingFields->isURLRelations(),
+            'work-rels' =>          $recordingFields->isWorkRelations(),
+            'annotation' =>         $recordingFields->isAnnotation(),
+            'aliases' =>            $recordingFields->isAliases()
+        ];
+
+        $result = $this->lookup('recording', $mbid, $fields);
+
+        return new Recording($result);
     }
 
     /**

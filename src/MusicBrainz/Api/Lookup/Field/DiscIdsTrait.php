@@ -26,7 +26,7 @@ trait DiscIdsTrait
      *
      * @param bool $discIds True, if disc ID's should be included, otherwise false
      *
-     * @return self
+     * @return static
      */
     public function setDiscIds(bool $discIds = true): self
     {
