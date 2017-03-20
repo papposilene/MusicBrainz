@@ -15,20 +15,20 @@ use MusicBrainz\Value\Name;
  */
 class LabelFilter
 {
-    use Accessor\AliasNameAccessorTrait;
-    use Accessor\BeginDateAccessorTrait;
-    use Accessor\LabelCodeAccessorTrait;
-    use Accessor\CommentAccessorTrait;
-    use Accessor\CountryAccessorTrait;
-    use Accessor\EndDateAccessorTrait;
-    use Accessor\EndedAccessorTrait;
-    use Accessor\IpiCodeAccessorTrait;
-    use Accessor\LabelNameAccessorTrait;
-    use Accessor\LabelNameWithoutAccentAccessorTrait;
-    use Accessor\LabelIdAccessorTrait;
-    use Accessor\SortNameAccessorTrait;
-    use Accessor\TagAccessorTrait;
-    use Accessor\LabelTypeAccessorTrait;
+    use Property\AliasNameTrait;
+    use Property\BeginDateTrait;
+    use Property\LabelCodeTrait;
+    use Property\CommentTrait;
+    use Property\CountryTrait;
+    use Property\EndDateTrait;
+    use Property\EndedTrait;
+    use Property\IpiCodeTrait;
+    use Property\LabelNameTrait;
+    use Property\LabelNameWithoutAccentTrait;
+    use Property\LabelIdTrait;
+    use Property\SortNameTrait;
+    use Property\TagTrait;
+    use Property\LabelTypeTrait;
 
     /**
      * Constructs a label filter.

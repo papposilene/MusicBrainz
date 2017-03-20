@@ -9,21 +9,21 @@ namespace MusicBrainz\Value;
  */
 class Artist
 {
-    use Accessor\GetMBIDTrait;
-    use Accessor\GetArtistTypeTrait;
-    use Accessor\GetScoreTrait;
-    use Accessor\GetNameTrait;
-    use Accessor\GetSortNameTrait;
-    use Accessor\GetGenderTrait;
-    use Accessor\GetCountryTrait;
-    use Accessor\GetAreaTrait;
-    use Accessor\GetBeginAreaTrait;
-    use Accessor\GetEndAreaTrait;
-    use Accessor\GetDisambiguationTrait;
-    use Accessor\GetIpisTrait;
-    use Accessor\GetLifeSpanTrait;
-    use Accessor\GetAliasesTrait;
-    use Accessor\GetTagsTrait;
+    use Property\MBIDTrait;
+    use Property\ArtistTypeTrait;
+    use Property\ScoreTrait;
+    use Property\NameTrait;
+    use Property\SortNameTrait;
+    use Property\GenderTrait;
+    use Property\CountryTrait;
+    use Property\AreaTrait;
+    use Property\BeginAreaTrait;
+    use Property\EndAreaTrait;
+    use Property\DisambiguationTrait;
+    use Property\IpisTrait;
+    use Property\LifeSpanTrait;
+    use Property\AliasesTrait;
+    use Property\TagsTrait;
 
     /**
      * Constructs an artist.

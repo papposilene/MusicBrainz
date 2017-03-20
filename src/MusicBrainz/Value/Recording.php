@@ -7,20 +7,20 @@ namespace MusicBrainz\Value;
  */
 class Recording
 {
-    use Accessor\GetMBIDTrait;
-    use Accessor\GetLengthTrait;
-    use Accessor\GetTitleTrait;
-    use Accessor\GetAliasesTrait;
-    use Accessor\GetIpisTrait;
-    use Accessor\GetCountryTrait;
-    use Accessor\GetLabelCodeTrait;
-    use Accessor\GetLabelTypeTrait;
-    use Accessor\GetAreaTrait;
-    use Accessor\GetLifeSpanTrait;
-    use Accessor\GetSortNameTrait;
-    use Accessor\GetIsnisTrait;
-    use Accessor\GetDisambiguationTrait;
-    use Accessor\GetScoreTrait;
+    use Property\MBIDTrait;
+    use Property\LengthTrait;
+    use Property\TitleTrait;
+    use Property\AliasesTrait;
+    use Property\IpisTrait;
+    use Property\CountryTrait;
+    use Property\LabelCodeTrait;
+    use Property\LabelTypeTrait;
+    use Property\AreaTrait;
+    use Property\LifeSpanTrait;
+    use Property\SortNameTrait;
+    use Property\IsnisTrait;
+    use Property\DisambiguationTrait;
+    use Property\ScoreTrait;
 
     /**
      * Constructs a recording.

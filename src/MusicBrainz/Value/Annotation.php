@@ -13,11 +13,11 @@ namespace MusicBrainz\Value;
  */
 class Annotation
 {
-    use Accessor\GetEntityTypeTrait;
-    use Accessor\GetScoreTrait;
-    use Accessor\GetMBIDTrait;
-    use Accessor\GetNameTrait;
-    use Accessor\GetTextTrait;
+    use Property\EntityTypeTrait;
+    use Property\ScoreTrait;
+    use Property\MBIDTrait;
+    use Property\NameTrait;
+    use Property\TextTrait;
 
     /**
      * Constructs an alias.

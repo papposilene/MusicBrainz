@@ -11,10 +11,10 @@ use MusicBrainz\Value\Name;
  */
 class AnnotationFilter
 {
-    use Accessor\EntityNameAccessorTrait;
-    use Accessor\EntityIdAccessorTrait;
-    use Accessor\TextAccessorTrait;
-    use Accessor\EntityTypeAccessorTrait;
+    use Property\EntityNameTrait;
+    use Property\EntityIdTrait;
+    use Property\TextTrait;
+    use Property\EntityTypeTrait;
 
     /**
      * Constructs an annotation filter.

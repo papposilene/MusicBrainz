@@ -7,9 +7,9 @@ namespace MusicBrainz\Value;
  */
 class Area
 {
-    use Accessor\GetMBIDTrait;
-    use Accessor\GetNameTrait;
-    use Accessor\GetSortNameTrait;
+    use Property\MBIDTrait;
+    use Property\NameTrait;
+    use Property\SortNameTrait;
 
     /**
      * Constructs an area.

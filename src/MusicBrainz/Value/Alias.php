@@ -10,13 +10,13 @@ namespace MusicBrainz\Value;
  */
 class Alias
 {
-    use Accessor\GetSortNameTrait;
-    use Accessor\GetNameTrait;
-    use Accessor\GetLocaleCodeTrait;
-    use Accessor\GetAliasTypeTrait;
-    use Accessor\GetPrimaryNameTrait;
-    use Accessor\GetBeginDateTrait;
-    use Accessor\GetEndDateTrait;
+    use Property\SortNameTrait;
+    use Property\NameTrait;
+    use Property\LocaleCodeTrait;
+    use Property\AliasTypeTrait;
+    use Property\PrimaryNameTrait;
+    use Property\BeginDateTrait;
+    use Property\EndDateTrait;
 
     /**
      * Constructs an alias.

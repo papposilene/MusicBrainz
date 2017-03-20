@@ -15,22 +15,22 @@ use MusicBrainz\Value\Name;
  */
 class ArtistFilter
 {
-    use Accessor\AliasNameAccessorTrait;
-    use Accessor\AreaNameAccessorTrait;
-    use Accessor\ArtistIdAccessorTrait;
-    use Accessor\ArtistNameAccessorTrait;
-    use Accessor\ArtistNameWithoutAccentAccessorTrait;
-    use Accessor\BeginDateAccessorTrait;
-    use Accessor\BeginAreaAccessorTrait;
-    use Accessor\CommentAccessorTrait;
-    use Accessor\CountryAccessorTrait;
-    use Accessor\EndDateAccessorTrait;
-    use Accessor\EndAreaAccessorTrait;
-    use Accessor\EndedAccessorTrait;
-    use Accessor\GenderAccessorTrait;
-    use Accessor\IpiCodeAccessorTrait;
-    use Accessor\SortNameAccessorTrait;
-    use Accessor\TagAccessorTrait;
+    use Property\AliasNameTrait;
+    use Property\AreaNameTrait;
+    use Property\ArtistIdTrait;
+    use Property\ArtistNameTrait;
+    use Property\ArtistNameWithoutAccentTrait;
+    use Property\BeginDateTrait;
+    use Property\BeginAreaTrait;
+    use Property\CommentTrait;
+    use Property\CountryTrait;
+    use Property\EndDateTrait;
+    use Property\EndAreaTrait;
+    use Property\EndedTrait;
+    use Property\GenderTrait;
+    use Property\IpiCodeTrait;
+    use Property\SortNameTrait;
+    use Property\TagTrait;
 
     /**
      * Constructs an artist filter.
