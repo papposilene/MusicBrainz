@@ -7,26 +7,9 @@ namespace MusicBrainz\Value;
  */
 class Area
 {
-    /**
-     * The MusikBrainz Identifier for the area
-     *
-     * @var string
-     */
-    private $id;
-
-    /**
-     * The area name
-     *
-     * @var Name
-     */
-    private $name;
-
-    /**
-     * Sort index
-     *
-     * @var string
-     */
-    private $sortName;
+    use Accessor\GetMBIDTrait;
+    use Accessor\GetNameTrait;
+    use Accessor\GetSortNameTrait;
 
     /**
      * Constructs an area.
@@ -35,7 +18,7 @@ class Area
      */
     public function __construct(array $area = [])
     {
-        $this->id       = isset($area['id']) ? (string) $area['id'] : '';
+        $this->MBID     = new MBID(isset($area['id']) ? (string) $area['id'] : '');
         $this->name     = new Name(isset($area['name']) ? (string) $area['name'] : '');
         $this->sortName = isset($area['sort-name']) ? (string) $area['sort-name'] : '';
     }
