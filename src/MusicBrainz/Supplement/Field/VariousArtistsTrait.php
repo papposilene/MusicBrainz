@@ -1,0 +1,37 @@
+<?php
+
+namespace MusicBrainz\Supplement\Field;
+
+trait VariousArtistsTrait
+{
+    /**
+     * True, if various artists should be included, otherwise false
+     *
+     * @var bool
+     */
+    private $variousArtists = false;
+
+    /**
+     * Returns true, if various artists should be included, otherwise false.
+     *
+     * @return bool
+     */
+    public function isVariousArtists(): bool
+    {
+        return $this->variousArtists;
+    }
+
+    /**
+     * Sets whether various artists should be included.
+     *
+     * @param bool $variousArtists True, if various artists should be included, otherwise false
+     *
+     * @return self
+     */
+    public function setVariousArtists(bool $variousArtists = true): self
+    {
+        $this->variousArtists = $variousArtists;
+
+        return $this;
+    }
+}
