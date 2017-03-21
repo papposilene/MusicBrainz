@@ -3,7 +3,7 @@
 namespace MusicBrainz;
 
 use MusicBrainz\Api\Search;
-use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
+use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 
 /**
  * Represents a MusicBrainz tag object

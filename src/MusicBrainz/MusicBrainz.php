@@ -4,7 +4,7 @@ namespace MusicBrainz;
 
 use MusicBrainz\Api\Lookup;
 use MusicBrainz\Api\Search;
-use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
+use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 
 /**
  * Connect to the MusicBrainz web service
@@ -109,7 +109,7 @@ class MusicBrainz
     /**
      * The Http adapter used to make requests
      *
-     * @var \MusicBrainz\HttpAdapters\AbstractHttpAdapter
+     * @var \MusicBrainz\HttpAdapter\AbstractHttpAdapter
      */
     private $adapter;
 
@@ -117,7 +117,7 @@ class MusicBrainz
      * Initializes the class. You can pass the user’s username and password
      * However, you can modify or add all values later.
      *
-     * @param HttpAdapters\AbstractHttpAdapter $adapter The Http adapter used to make requests
+     * @param HttpAdapter\AbstractHttpAdapter $adapter The Http adapter used to make requests
      * @param string                           $user
      * @param string                           $password
      */

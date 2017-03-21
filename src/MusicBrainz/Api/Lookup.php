@@ -7,7 +7,7 @@ use MusicBrainz\Api\Lookup\ArtistFields;
 use MusicBrainz\Api\Lookup\LabelFields;
 use MusicBrainz\Api\Lookup\RecordingFields;
 use MusicBrainz\Exception;
-use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
+use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Value\Area;
 use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\MBID;

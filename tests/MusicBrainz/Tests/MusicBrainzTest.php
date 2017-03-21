@@ -2,7 +2,7 @@
 
 namespace MusicBrainz\Tests;
 
-use MusicBrainz\HttpAdapters\GuzzleHttpAdapter;
+use MusicBrainz\HttpAdapter\GuzzleHttpAdapter;
 use MusicBrainz\MusicBrainz;
 
 /**

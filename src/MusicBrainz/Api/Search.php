@@ -6,7 +6,7 @@ use MusicBrainz\Exception;
 use MusicBrainz\Filter\AnnotationFilter;
 use MusicBrainz\Filter\ArtistFilter;
 use MusicBrainz\Filter\LabelFilter;
-use MusicBrainz\HttpAdapters\AbstractHttpAdapter;
+use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Value\AnnotationList;
 use MusicBrainz\Value\Artist;

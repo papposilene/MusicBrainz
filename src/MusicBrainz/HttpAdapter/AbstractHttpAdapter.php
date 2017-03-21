@@ -1,6 +1,6 @@
 <?php
 
-namespace MusicBrainz\HttpAdapters;
+namespace MusicBrainz\HttpAdapter;
 
 /**
  * MusicBrainz HTTP Client interface

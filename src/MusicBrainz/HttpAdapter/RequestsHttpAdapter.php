@@ -1,6 +1,6 @@
 <?php
 
-namespace MusicBrainz\HttpAdapters;
+namespace MusicBrainz\HttpAdapter;
 
 use MusicBrainz\Exception;
 use Requests;
