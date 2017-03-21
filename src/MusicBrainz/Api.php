@@ -3,6 +3,7 @@
 namespace MusicBrainz;
 
 use MusicBrainz\Api\Search;
+use MusicBrainz\Api\Lookup;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 
 /**
@@ -37,8 +38,23 @@ class Api
         $this->httpOptions = $httpOptions;
     }
 
+    /**
+     * Returns the search API.
+     *
+     * @return Search
+     */
     public function search()
     {
         return new Search($this->httpAdapter, $this->httpOptions);
+    }
+
+    /**
+     * Returns the lookup API.
+     *
+     * @return Lookup
+     */
+    public function lookup()
+    {
+        return new Lookup($this->httpAdapter, $this->httpOptions);
     }
 }
