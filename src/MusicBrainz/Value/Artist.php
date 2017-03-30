@@ -42,7 +42,7 @@ class Artist
         $this->area           = new Area(isset($artist['area']) ? $artist['area'] : []);
         $this->beginArea      = new Area(isset($artist['begin-area']) ? $artist['begin-area'] : []);
         $this->endArea        = new Area(isset($artist['end-area']) ? $artist['end-area'] : []);
-        $this->disambiguation = isset($artist['disambiguation']) ? (string) $artist['disambiguation'] : '';
+        $this->disambiguation = new Disambiguation(isset($artist['disambiguation']) ? (string) $artist['disambiguation'] : '');
         $this->ipis           = new IPIList(isset($artist['ipis']) ? $artist['ipis'] : []);
         $this->lifeSpan       = new LifeSpan(isset($artist['life-span']) ? $artist['life-span'] : []);
         $this->aliases        = new AliasList(isset($artist['aliases']) ? $artist['aliases'] : []);

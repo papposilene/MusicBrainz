@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Value\Disambiguation;
+
 /**
  * Provides a getter for the disambiguation comment.
  */
@@ -10,18 +12,16 @@ trait DisambiguationTrait
     /**
      * A disambiguation comment
      *
-     * @var string
-     *
-     * @see https://musicbrainz.org/doc/Disambiguation_Comment
+     * @var Disambiguation
      */
     private $disambiguation;
 
     /**
      * Returns a disambiguation comment.
      *
-     * @return string
+     * @return Disambiguation
      */
-    public function getDisambiguation(): string
+    public function getDisambiguation(): Disambiguation
     {
         return $this->disambiguation;
     }

@@ -20,26 +20,31 @@ class Recording
     use Property\SortNameTrait;
     use Property\IsnisTrait;
     use Property\DisambiguationTrait;
+    use Property\RatingTrait;
+    use Property\ReleasesTrait;
     use Property\ScoreTrait;
 
     /**
      * Constructs a recording.
      *
-     * @param array $label Array of information about a label
+     * @param array $recording Array of information about a label
      */
-    public function __construct(array $label = [])
+    public function __construct(array $recording = [])
     {
-        $this->MBID      = new MBID(isset($label['id']) ? (string) $label['id'] : '');
-        $this->length    = new Length(isset($label['length']) ? (string) $label['length'] : '');
-        $this->title     = new Title(isset($label['title']) ? (string) $label['title'] : '');
-        $this->aliases   = new AliasList(isset($label['aliases']) ? $label['aliases'] : []);
-        $this->ipis      = new IPIList(isset($label['ipis']) ? $label['ipis'] : []);
-        $this->country   = new Country(isset($label['country']) ? (string) $label['country'] : '');
-        $this->labelCode = new LabelCode(isset($label['label-code']) ? (string) $label['label-code'] : '');
-        $this->labelType = new LabelType(isset($label['type']) ? (string) $label['type'] : '');
-        $this->area      = new Area(isset($label['area']) ? $label['area'] : []);
-        $this->lifeSpan  = new LifeSpan(isset($label['life-span']) ? $label['life-span'] : []);
-        $this->sortName  = isset($label['sort-name']) ? (string)$label['sort-name'] : '';
-        $this->score     = isset($label['score']) ? (int)$label['score'] : 0;
+        $this->MBID           = new MBID(isset($recording['id']) ? (string) $recording['id'] : '');
+        $this->length         = new Length(isset($recording['length']) ? (string) $recording['length'] : '');
+        $this->title          = new Title(isset($recording['title']) ? (string) $recording['title'] : '');
+        $this->aliases        = new AliasList(isset($recording['aliases']) ? $recording['aliases'] : []);
+        $this->ipis           = new IPIList(isset($recording['ipis']) ? $recording['ipis'] : []);
+        $this->country        = new Country(isset($recording['country']) ? (string) $recording['country'] : '');
+        $this->labelCode      = new LabelCode(isset($recording['label-code']) ? (string) $recording['label-code'] : '');
+        $this->labelType      = new LabelType(isset($recording['type']) ? (string) $recording['type'] : '');
+        $this->area           = new Area(isset($recording['area']) ? $recording['area'] : []);
+        $this->lifeSpan       = new LifeSpan(isset($recording['life-span']) ? $recording['life-span'] : []);
+        $this->sortName       = isset($recording['sort-name']) ? (string)$recording['sort-name'] : '';
+        $this->disambiguation = new Disambiguation(isset($recording['disambiguation']) ? (string)$recording['disambiguation'] : '');
+        $this->rating         = new Rating(isset($recording['rating']) ? $recording['rating'] : []);
+        $this->releases       = new ReleaseList(isset($recording['releases']) ? $recording['releases'] : []);
+        $this->score          = isset($recording['score']) ? (int)$recording['score'] : 0;
     }
 }
