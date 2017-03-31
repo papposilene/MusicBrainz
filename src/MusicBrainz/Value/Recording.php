@@ -22,6 +22,9 @@ class Recording
     use Property\DisambiguationTrait;
     use Property\RatingTrait;
     use Property\ReleasesTrait;
+    use Property\TagsTrait;
+    use Property\ArtistCreditsTrait;
+    use Property\VideoFlagTrait;
     use Property\ScoreTrait;
 
     /**
@@ -45,6 +48,9 @@ class Recording
         $this->disambiguation = new Disambiguation(isset($recording['disambiguation']) ? (string)$recording['disambiguation'] : '');
         $this->rating         = new Rating(isset($recording['rating']) ? $recording['rating'] : []);
         $this->releases       = new ReleaseList(isset($recording['releases']) ? $recording['releases'] : []);
+        $this->tags           = new TagList(isset($recording['tags']) ? $recording['tags'] : []);
+        $this->artistCredits  = new ArtistCreditList(isset($recording['artist-credit']) ? $recording['artist-credit'] : []);
+        $this->videoFlag      = new VideoFlag(isset($recording['video']) && true === (bool) $recording['video']);
         $this->score          = isset($recording['score']) ? (int)$recording['score'] : 0;
     }
 }
