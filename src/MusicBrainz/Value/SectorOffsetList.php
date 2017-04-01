@@ -3,14 +3,14 @@
 namespace MusicBrainz\Value;
 
 /**
- * A list of sectors
+ * A list of sector offsets
  */
-class SectorsList extends ValueList
+class SectorOffsetList extends ValueList
 {
     /**
      * Constructs a list of sectors.
      *
-     * @param array $sectorss An array containing information about the sectorss
+     * @param array $sectorss Information about the sector offsets
      */
     public function __construct(array $sectorss = [])
     {
