@@ -10,7 +10,7 @@ class Length
     /**
      * The length in milli seconds
      *
-     * @var string
+     * @var int
      */
     private $length;
 
