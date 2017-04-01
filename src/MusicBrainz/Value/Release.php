@@ -13,6 +13,7 @@ class Release
     use Property\BarcodeTrait;
     use Property\DisambiguationTrait;
     use Property\MediaTrait;
+    use Property\PackagingTrait;
 
     /**
      * Constructs a recording.
@@ -27,5 +28,6 @@ class Release
         $this->barcode        = new Barcode(isset($release['barcode']) ? (string) $release['barcode'] : '');
         $this->disambiguation = new Disambiguation(isset($release['disambiguation']) ? (string) $release['disambiguation'] : '');
         $this->media          = new MediaList(isset($release['media']) ? $release['media'] : []);
+        $this->packaging      = new Packaging(isset($release['packaging']) ? $release['packaging'] : '');
     }
 }
