@@ -24,7 +24,7 @@ class Track
         $this->title         = new Title(isset($track['title']) ? $track['title'] : '');
         $this->length        = new Length(isset($track['length']) ? (int) $track['length'] : 0);
         $this->artistCredits = new ArtistCreditList(isset($track['artist-credit']) ? $track['artist-credit'] : []);
-        $this->trackNumber   = new TrackNumber(isset($track['number']) ? $track['number'] : null);
+        $this->trackNumber   = new TrackNumber(isset($track['number']) ? (int) $track['number'] : null);
     }
 
     /**
