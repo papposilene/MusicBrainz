@@ -12,6 +12,7 @@ class Release
     use Property\ArtistCreditsTrait;
     use Property\BarcodeTrait;
     use Property\DisambiguationTrait;
+    use Property\MediaTrait;
 
     /**
      * Constructs a recording.
@@ -25,5 +26,6 @@ class Release
         $this->artistCredits  = new ArtistCreditList(isset($release['artistCredits']) ? (string) $release['artistCredits'] : []);
         $this->barcode        = new Barcode(isset($release['barcode']) ? (string) $release['barcode'] : '');
         $this->disambiguation = new Disambiguation(isset($release['disambiguation']) ? (string) $release['disambiguation'] : '');
+        $this->media          = new MediaList(isset($release['media']) ? $release['media'] : []);
     }
 }
