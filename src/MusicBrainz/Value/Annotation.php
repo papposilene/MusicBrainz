@@ -20,9 +20,9 @@ class Annotation
     use Property\TextTrait;
 
     /**
-     * Constructs an alias.
+     * Constructs an annotation.
      *
-     * @param array $alias An array with information about the alias
+     * @param array $alias Information about the annotation
      */
     public function __construct(array $alias = [])
     {
