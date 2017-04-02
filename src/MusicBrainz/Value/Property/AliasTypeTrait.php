@@ -21,7 +21,7 @@ trait AliasTypeTrait
      *
      * @return AliasType
      */
-    public function getLabelType(): AliasType
+    public function getAliasType(): AliasType
     {
         return $this->aliasType;
     }
