@@ -12,16 +12,16 @@ trait ArtistTypeTrait
     /**
      * The artist type
      *
-     * @var ArtistType
+     * @var null|ArtistType
      */
     private $artistType;
 
     /**
      * Returns the artist type
      *
-     * @return ArtistType
+     * @return null|ArtistType
      */
-    public function getArtistType(): ArtistType
+    public function getArtistType(): ?ArtistType
     {
         return $this->artistType;
     }
@@ -29,11 +29,11 @@ trait ArtistTypeTrait
     /**
      * Sets the artist type
      *
-     * @param ArtistType $artistType The artist type
+     * @param null|ArtistType $artistType The artist type
      *
      * @return self
      */
-    public function setArtistType(ArtistType $artistType): self
+    public function setArtistType(?ArtistType $artistType): self
     {
         $this->artistType = $artistType;
 

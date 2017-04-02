@@ -23,4 +23,5 @@ class ArtistFilter
     use Property\IpiCodeTrait;
     use Property\SortNameTrait;
     use Property\TagTrait;
+    use Property\ArtistTypeTrait;
 }

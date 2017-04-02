@@ -144,7 +144,8 @@ class Search
             'gender'       => (string) $artistFilter->getGender(),
             'ipi'          => (string) $artistFilter->getIpiCode(),
             'sortname'     => (string) $artistFilter->getSortName(),
-            'tag'          => (string) $artistFilter->getTag()
+            'tag'          => (string) $artistFilter->getTag(),
+            'type'         => (string) $artistFilter->getArtistType()
         ];
 
         $params = $this->getParameters($filterValues, $pageFilter->getLimit(), $pageFilter->getOffset());
