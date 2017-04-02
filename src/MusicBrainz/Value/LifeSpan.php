@@ -52,8 +52,8 @@ class LifeSpan
     public function __construct(array $lifeSpan = [])
     {
         $this->begin = new Date(isset($lifeSpan['begin']) ? (string) $lifeSpan['begin'] : '');
-        $this->end = new Date(isset($lifeSpan['end']) ? (string) $lifeSpan['end'] : '');
-        $this->ended = !empty($this->end) || (isset($lifeSpan['end']) && true === $lifeSpan['end']);
+        $this->end   = new Date(isset($lifeSpan['end']) ? (string) $lifeSpan['end'] : '');
+        $this->ended = !empty((string) $this->end) || (isset($lifeSpan['end']) && true === $lifeSpan['end']);
     }
 
     /**
