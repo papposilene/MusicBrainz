@@ -2,7 +2,7 @@
 
 namespace MusicBrainz\Filter\Property;
 
-use MusicBrainz\Value\Name;
+use MusicBrainz\Value\SortName;
 
 /**
  * Provides accessors for the sort index.
@@ -12,16 +12,16 @@ trait SortNameTrait
     /**
      * The sort index.
      *
-     * @var Name
+     * @var null|SortName
      */
     private $sortName;
 
     /**
      * Returns the sort index.
      *
-     * @return Name
+     * @return null|SortName
      */
-    public function getSortName(): Name
+    public function getSortName(): ?SortName
     {
         return $this->sortName;
     }
@@ -29,11 +29,11 @@ trait SortNameTrait
     /**
      * Sets the sort index.
      *
-     * @param Name $sortName The sort index
+     * @param null|SortName $sortName The sort index
      *
-     * @return SortNameTrait
+     * @return self
      */
-    public function setSortName(Name $sortName): self
+    public function setSortName(?SortName $sortName): self
     {
         $this->sortName = $sortName;
 

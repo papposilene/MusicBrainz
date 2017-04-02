@@ -12,16 +12,16 @@ trait AreaNameTrait
     /**
      * The area name.
      *
-     * @var Name
+     * @var null|Name
      */
     private $areaName;
 
     /**
      * Returns the area name.
      *
-     * @return Name
+     * @return null|Name
      */
-    public function getAreaName(): Name
+    public function getAreaName(): ?Name
     {
         return $this->areaName;
     }
@@ -29,11 +29,11 @@ trait AreaNameTrait
     /**
      * Sets the area name.
      *
-     * @param Name $areaName The area name
+     * @param null|Name $areaName The area name
      *
      * @return self
      */
-    public function setAreaName(Name $areaName): self
+    public function setAreaName(?Name $areaName): self
     {
         $this->areaName = $areaName;
 

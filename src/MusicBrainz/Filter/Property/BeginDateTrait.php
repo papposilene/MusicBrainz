@@ -12,16 +12,16 @@ trait BeginDateTrait
     /**
      * The beginning date
      *
-     * @var Date
+     * @var null|Date
      */
     private $beginDate;
 
     /**
      * Returns the beginning date.
      *
-     * @return Date
+     * @return null|Date
      */
-    public function getBeginDate(): Date
+    public function getBeginDate(): ?Date
     {
         return $this->beginDate;
     }
@@ -29,11 +29,11 @@ trait BeginDateTrait
     /**
      * Sets the beginning date.
      *
-     * @param Date $beginDate The beginning date
+     * @param null|Date $beginDate The beginning date
      *
      * @return self
      */
-    public function setBeginDate(Date $beginDate): self
+    public function setBeginDate(?Date $beginDate): self
     {
         $this->beginDate = $beginDate;
 

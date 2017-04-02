@@ -12,16 +12,16 @@ trait EndDateTrait
     /**
      * The ending date
      *
-     * @var Date
+     * @var null|Date
      */
     private $endDate;
 
     /**
      * Returns the ending date.
      *
-     * @return Date
+     * @return null|Date
      */
-    public function getEndDate(): Date
+    public function getEndDate(): ?Date
     {
         return $this->endDate;
     }
@@ -29,11 +29,11 @@ trait EndDateTrait
     /**
      * Sets the ending date.
      *
-     * @param Date $endDate The ending date
+     * @param null|Date $endDate The ending date
      *
      * @return self
      */
-    public function setEndDate(Date $endDate): self
+    public function setEndDate(?Date $endDate): self
     {
         $this->endDate = $endDate;
 

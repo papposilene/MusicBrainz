@@ -12,16 +12,16 @@ trait AliasNameTrait
     /**
      * An alias name
      *
-     * @var Name
+     * @var null|Name
      */
     private $aliasName;
 
     /**
      * Returns the alias name.
      *
-     * @return Name
+     * @return null|Name
      */
-    public function getAliasName(): Name
+    public function getAliasName(): ?Name
     {
         return $this->aliasName;
     }
@@ -29,11 +29,11 @@ trait AliasNameTrait
     /**
      * Sets the alias name.
      *
-     * @param Name $aliasName The alias name
+     * @param null|Name $aliasName The alias name
      *
      * @return self
      */
-    public function setAliasName(Name $aliasName): self
+    public function setAliasName(?Name $aliasName): self
     {
         $this->aliasName = $aliasName;
 
