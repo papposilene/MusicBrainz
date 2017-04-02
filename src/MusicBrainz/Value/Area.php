@@ -7,6 +7,7 @@ namespace MusicBrainz\Value;
  */
 class Area
 {
+    use Property\AreaTypeTrait;
     use Property\DisambiguationTrait;
     use Property\ISO31662CodesTrait;
     use Property\LifeSpanTrait;
@@ -21,6 +22,7 @@ class Area
      */
     public function __construct(array $area = [])
     {
+        $this->areaType       = new AreaType(isset($area['type']) ? $area['type'] : '');
         $this->disambiguation = new Disambiguation(isset($area['disambiguation']) ? $area['disambiguation'] : '');
         $this->ISO31662Codes  = new ISO31662CodeList(isset($area['iso-3166-2-codes']) ? $area['iso-3166-2-codes'] : []);
         $this->lifeSpan       = new LifeSpan(isset($area['life-span']) ? $area['life-span'] : []);
