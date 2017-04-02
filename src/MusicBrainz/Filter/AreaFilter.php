@@ -7,9 +7,10 @@ namespace MusicBrainz\Filter;
  */
 class AreaFilter
 {
-    use Property\AreaIdTrait;
     use Property\AliasNameTrait;
+    use Property\AreaIdTrait;
     use Property\AreaNameTrait;
+    use Property\AreaTypeTrait;
     use Property\BeginDateTrait;
     use Property\CommentTrait;
     use Property\EndDateTrait;
@@ -19,5 +20,4 @@ class AreaFilter
     use Property\ISO31662CodeTrait;
     use Property\ISO31663CodeTrait;
     use Property\SortNameTrait;
-    use Property\AreaTypeTrait;
 }

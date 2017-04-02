@@ -7,8 +7,8 @@ namespace MusicBrainz\Filter;
  */
 class AnnotationFilter
 {
-    use Property\EntityNameTrait;
     use Property\EntityIdTrait;
-    use Property\TextTrait;
+    use Property\EntityNameTrait;
     use Property\EntityTypeTrait;
+    use Property\TextTrait;
 }
