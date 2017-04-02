@@ -3,23 +3,23 @@
 namespace MusicBrainz\Value;
 
 /**
- * An ISO 3166-2 code
+ * An ISO 3166-3 code
  *
- * @link https://en.wikipedia.org/wiki/ISO_3166-2
+ * @link https://en.wikipedia.org/wiki/ISO_3166-3
  */
-class ISO31662Code implements ISO3166Code
+class ISO31663Code implements ISO3166Code
 {
     /**
-     * The ISO 3166-2 code
+     * The ISO 3166-3 code
      *
      * @var string
      */
     private $code;
 
     /**
-     * Constructs an ISO 3166-2 code.
+     * Constructs an ISO 3166-3 code.
      *
-     * @param string $code An ISO 3166-2 code
+     * @param string $code An ISO 3166-3 code
      */
     public function __construct(string $code = '')
     {
@@ -27,7 +27,7 @@ class ISO31662Code implements ISO3166Code
     }
 
     /**
-     * Returns the ISO 3166-2 code as string.
+     * Returns the ISO 3166-3 code as string.
      *
      * @return string
      */
