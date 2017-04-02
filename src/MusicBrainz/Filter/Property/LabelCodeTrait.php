@@ -12,16 +12,16 @@ trait LabelCodeTrait
     /**
      * The Label Code
      *
-     * @var LabelCode
+     * @var null|LabelCode
      */
     private $labelCode;
 
     /**
      * Returns the Label Code.
      *
-     * @return LabelCode
+     * @return null|LabelCode
      */
-    public function getLabelCode(): LabelCode
+    public function getLabelCode(): ?LabelCode
     {
         return $this->labelCode;
     }
@@ -29,11 +29,11 @@ trait LabelCodeTrait
     /**
      * Sets the Label Code.
      *
-     * @param LabelCode $labelCode The Label Code
+     * @param null|LabelCode $labelCode The Label Code
      *
      * @return self
      */
-    public function setLabelCode(LabelCode $labelCode): self
+    public function setLabelCode(?LabelCode $labelCode): self
     {
         $this->labelCode = $labelCode;
 

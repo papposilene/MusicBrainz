@@ -12,16 +12,16 @@ trait LabelNameTrait
     /**
      * The label name
      *
-     * @var Name
+     * @var null|Name
      */
     private $labelName;
 
     /**
      * Returns the label name.
      *
-     * @return Name
+     * @return null|Name
      */
-    public function getLabelName(): Name
+    public function getLabelName(): ?Name
     {
         return $this->labelName;
     }
@@ -29,11 +29,11 @@ trait LabelNameTrait
     /**
      * Sets the label name.
      *
-     * @param Name $labelName
+     * @param null|Name $labelName
      *
      * @return self
      */
-    public function setLabelName(Name $labelName): self
+    public function setLabelName(?Name $labelName): self
     {
         $this->labelName = $labelName;
 

@@ -12,16 +12,16 @@ trait LabelIdTrait
     /**
      * The MusicBrainz Identifier (MBID) of the label.
      *
-     * @var MBID
+     * @var null|MBID
      */
     private $labelId;
 
     /**
      * Returns the MusicBrainz Identifier (MBID) of the label.
      *
-     * @return MBID
+     * @return null|MBID
      */
-    public function getLabelId(): MBID
+    public function getLabelId(): ?MBID
     {
         return $this->labelId;
     }
@@ -29,11 +29,11 @@ trait LabelIdTrait
     /**
      * Sets the MusicBrainz Identifier (MBID) of the label.
      *
-     * @param MBID $labelId The MusicBrainz Identifier (MBID) of the label
+     * @param null|MBID $labelId The MusicBrainz Identifier (MBID) of the label
      *
      * @return self
      */
-    public function setLabelId(MBID $labelId): self
+    public function setLabelId(?MBID $labelId): self
     {
         $this->labelId = $labelId;
 

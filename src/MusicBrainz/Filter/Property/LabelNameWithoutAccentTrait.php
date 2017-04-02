@@ -12,16 +12,16 @@ trait LabelNameWithoutAccentTrait
     /**
      * The label name without accent.
      *
-     * @var Name
+     * @var null|Name
      */
     private $labelNameWithoutAccent;
 
     /**
      * Returns the label name without accent.
      *
-     * @return Name
+     * @return null|Name
      */
-    public function getLabelNameWithoutAccent(): Name
+    public function getLabelNameWithoutAccent(): ?Name
     {
         return $this->labelNameWithoutAccent;
     }
@@ -29,11 +29,11 @@ trait LabelNameWithoutAccentTrait
     /**
      * Sets the label name without accent.
      *
-     * @param Name $labelNameWithoutAccent The label name without accent
+     * @param null|Name $labelNameWithoutAccent The label name without accent
      *
      * @return self
      */
-    public function setLabelNameWithoutAccent(Name $labelNameWithoutAccent): self
+    public function setLabelNameWithoutAccent(?Name $labelNameWithoutAccent): self
     {
         $this->labelNameWithoutAccent = $labelNameWithoutAccent;
 

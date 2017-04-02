@@ -12,16 +12,16 @@ trait LabelTypeTrait
     /**
      * The label type
      *
-     * @var LabelType
+     * @var null|LabelType
      */
     private $labelType;
 
     /**
      * Returns the label type
      *
-     * @return LabelType
+     * @return null|LabelType
      */
-    public function getLabelType(): LabelType
+    public function getLabelType(): ?LabelType
     {
         return $this->labelType;
     }
@@ -29,11 +29,11 @@ trait LabelTypeTrait
     /**
      * Sets the label type
      *
-     * @param LabelType $labelType The label type
+     * @param null|LabelType $labelType The label type
      *
      * @return self
      */
-    public function setLabelType(LabelType $labelType): self
+    public function setLabelType(?LabelType $labelType): self
     {
         $this->labelType = $labelType;
 
