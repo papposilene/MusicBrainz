@@ -37,7 +37,7 @@ class Label
         $this->labelType      = new LabelType(isset($label['type']) ? (string) $label['type'] : '');
         $this->area           = new Area(isset($label['area']) ? $label['area'] : []);
         $this->lifeSpan       = new LifeSpan(isset($label['life-span']) ? $label['life-span'] : []);
-        $this->sortName       = isset($label['sort-name']) ? (string)$label['sort-name'] : '';
+        $this->sortName       = new SortName(isset($label['sort-name']) ? (string)$label['sort-name'] : '');
         $this->disambiguation = new Disambiguation(isset($label['disambiguation']) ? (string)$label['disambiguation'] : '');
         $this->score          = isset($label['score']) ? (int)$label['score'] : 0;
     }

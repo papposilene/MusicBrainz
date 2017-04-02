@@ -25,7 +25,7 @@ class Alias
      */
     public function __construct(array $alias = [])
     {
-        $this->sortName    = isset($alias['sort-name']) ? (string) $alias['sort-name'] : '';
+        $this->sortName    = new SortName(isset($alias['sort-name']) ? (string) $alias['sort-name'] : '');
         $this->name        = new Name(isset($alias['name']) ? (string) $alias['name'] : '');
         $this->localeCode  = new LocaleCode(isset($alias['locale']) ? (string) $alias['locale'] : '');
         $this->aliasType   = new AliasType(isset($alias['type']) ? (string) $alias['type'] : '');

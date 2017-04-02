@@ -52,7 +52,7 @@ class Recording
         $this->labelType      = new LabelType(isset($recording['type']) ? (string) $recording['type'] : '');
         $this->area           = new Area(isset($recording['area']) ? $recording['area'] : []);
         $this->lifeSpan       = new LifeSpan(isset($recording['life-span']) ? $recording['life-span'] : []);
-        $this->sortName       = isset($recording['sort-name']) ? (string)$recording['sort-name'] : '';
+        $this->sortName       = new SortName(isset($recording['sort-name']) ? (string)$recording['sort-name'] : '');
         $this->disambiguation = new Disambiguation(isset($recording['disambiguation']) ? (string)$recording['disambiguation'] : '');
         $this->rating         = new Rating(isset($recording['rating']) ? $recording['rating'] : []);
         $this->releases       = new ReleaseList(isset($recording['releases']) ? $recording['releases'] : []);

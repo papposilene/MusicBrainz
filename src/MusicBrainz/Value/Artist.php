@@ -36,7 +36,7 @@ class Artist
         $this->artistType     = new ArtistType(isset($artist['type']) ? (string) $artist['type'] : '');
         $this->score          = new Score(isset($artist['score']) ? (int) $artist['score'] : 0);
         $this->name           = new Name(isset($artist['name']) ? (string) $artist['name'] : '');
-        $this->sortName       = isset($artist['sort-name']) ? (string) $artist['sort-name'] : '';
+        $this->sortName       = new SortName(isset($artist['sort-name']) ? (string) $artist['sort-name'] : '');
         $this->gender         = new Gender(isset($artist['gender']) ? (string) $artist['gender'] : Gender::UNDEFINED);
         $this->country        = new Country(isset($artist['country']) ? (string) $artist['country'] : '');
         $this->area           = new Area(isset($artist['area']) ? $artist['area'] : []);
