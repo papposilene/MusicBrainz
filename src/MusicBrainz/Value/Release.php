@@ -8,6 +8,7 @@ namespace MusicBrainz\Value;
 class Release
 {
     use Property\AliasesTrait;
+    use Property\AnnotationTrait;
     use Property\ArtistCreditsTrait;
     use Property\BarcodeTrait;
     use Property\DateTrait;
@@ -24,6 +25,7 @@ class Release
     public function __construct(array $release = [])
     {
         $this->aliases        = new AliasList(isset($release['aliases']) ? $release['aliases'] : []);
+        $this->annotation     = new Annotation(isset($release['annotation']) ? $release['annotation'] : '');
         $this->artistCredits  = new ArtistCreditList(isset($release['artistCredits']) ? (string) $release['artistCredits'] : []);
         $this->barcode        = new Barcode(isset($release['barcode']) ? (string) $release['barcode'] : '');
         $this->date           = new Date(isset($release['date']) ? (string) $release['date'] : '');
