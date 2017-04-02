@@ -12,16 +12,16 @@ trait CountryTrait
     /**
      * The country
      *
-     * @var Country
+     * @var null|Country
      */
     private $country;
 
     /**
      * Returns the country.
      *
-     * @return Country
+     * @return null|Country
      */
-    public function getCountry(): Country
+    public function getCountry(): ?Country
     {
         return $this->country;
     }
@@ -29,11 +29,11 @@ trait CountryTrait
     /**
      * Sets the country.
      *
-     * @param Country $country The country
+     * @param null|Country $country The country
      *
      * @return self
      */
-    public function setCountry(Country $country): self
+    public function setCountry(?Country $country): self
     {
         $this->country = $country;
 

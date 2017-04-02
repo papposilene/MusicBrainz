@@ -12,16 +12,16 @@ trait ArtistIdTrait
     /**
      * The MusicBrainz Identifier (MBID) of the artist.
      *
-     * @var MBID
+     * @var null|MBID
      */
     private $artistId;
 
     /**
      * Returns the MusicBrainz Identifier (MBID) of the artist.
      *
-     * @return MBID
+     * @return null|MBID
      */
-    public function getArtistId(): MBID
+    public function getArtistId(): ?MBID
     {
         return $this->artistId;
     }
@@ -29,11 +29,11 @@ trait ArtistIdTrait
     /**
      * Sets the MusicBrainz Identifier (MBID) of the artist.
      *
-     * @param MBID $artistId The MusicBrainz Identifier (MBID) of the artist
+     * @param null|MBID $artistId The MusicBrainz Identifier (MBID) of the artist
      *
      * @return self
      */
-    public function setArtistId(MBID $artistId): self
+    public function setArtistId(?MBID $artistId): self
     {
         $this->artistId = $artistId;
 

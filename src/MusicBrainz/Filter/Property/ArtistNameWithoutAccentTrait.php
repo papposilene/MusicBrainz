@@ -12,16 +12,16 @@ trait ArtistNameWithoutAccentTrait
     /**
      * The artist name without accent.
      *
-     * @var Name
+     * @var null|Name
      */
     private $artistNameWithoutAccent;
 
     /**
      * Returns the artist name without accent.
      *
-     * @return Name
+     * @return null|Name
      */
-    public function getArtistNameWithoutAccent(): Name
+    public function getArtistNameWithoutAccent(): ?Name
     {
         return $this->artistNameWithoutAccent;
     }
@@ -29,11 +29,11 @@ trait ArtistNameWithoutAccentTrait
     /**
      * Sets the artist name without accent.
      *
-     * @param Name $artistNameWithoutAccent The artist name without accent
+     * @param null|Name $artistNameWithoutAccent The artist name without accent
      *
      * @return self
      */
-    public function setArtistNameWithoutAccent(Name $artistNameWithoutAccent): self
+    public function setArtistNameWithoutAccent(?Name $artistNameWithoutAccent): self
     {
         $this->artistNameWithoutAccent = $artistNameWithoutAccent;
 

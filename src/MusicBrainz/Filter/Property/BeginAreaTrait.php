@@ -12,16 +12,16 @@ trait BeginAreaTrait
     /**
      * The name of the beginning area.
      *
-     * @var Area
+     * @var null|Area
      */
     private $beginArea;
 
     /**
      * Returns the beginning area.
      *
-     * @return Area
+     * @return null|Area
      */
-    public function getBeginArea(): Area
+    public function getBeginArea(): ?Area
     {
         return $this->beginArea;
     }
@@ -29,11 +29,11 @@ trait BeginAreaTrait
     /**
      * Sets the beginning area.
      *
-     * @param Area $beginArea The beginning area
+     * @param null|Area $beginArea The beginning area
      *
      * @return self
      */
-    public function setBeginArea(Area $beginArea): self
+    public function setBeginArea(?Area $beginArea): self
     {
         $this->beginArea = $beginArea;
 

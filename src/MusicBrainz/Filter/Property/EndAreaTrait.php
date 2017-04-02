@@ -12,16 +12,16 @@ trait EndAreaTrait
     /**
      * The ending area
      *
-     * @var Area
+     * @var null|Area
      */
     private $endArea;
 
     /**
      * Returns the ending area.
      *
-     * @return Area
+     * @return null|Area
      */
-    public function getEndArea(): Area
+    public function getEndArea(): ?Area
     {
         return $this->endArea;
     }
@@ -29,11 +29,11 @@ trait EndAreaTrait
     /**
      * Sets the ending area.
      *
-     * @param Area $endArea The ending area
+     * @param null|Area $endArea The ending area
      *
      * @return self
      */
-    public function setEndArea(Area $endArea): self
+    public function setEndArea(?Area $endArea): self
     {
         $this->endArea = $endArea;
 

@@ -10,16 +10,16 @@ trait TagTrait
     /**
      * The tag name
      *
-     * @var string
+     * @var null|string
      */
     private $tagName;
 
     /**
      * Returns the tag name.
      *
-     * @return string
+     * @return null|string
      */
-    public function getTag(): string
+    public function getTag(): ?string
     {
         return $this->tagName;
     }
@@ -27,11 +27,11 @@ trait TagTrait
     /**
      * Sets the tag name.
      *
-     * @param string $tagName The tag name
+     * @param null|string $tagName The tag name
      *
-     * @return TagTrait
+     * @return self
      */
-    public function setTag(string $tagName): self
+    public function setTag(?string $tagName): self
     {
         $this->tagName = $tagName;
 

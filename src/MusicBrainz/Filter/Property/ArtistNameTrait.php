@@ -12,16 +12,16 @@ trait ArtistNameTrait
     /**
      * The artist name
      *
-     * @var Name
+     * @var null|Name
      */
     private $artistName;
 
     /**
      * Returns the artist name.
      *
-     * @return Name
+     * @return null|Name
      */
-    public function getArtistName(): Name
+    public function getArtistName(): ?Name
     {
         return $this->artistName;
     }
@@ -29,11 +29,11 @@ trait ArtistNameTrait
     /**
      * Sets the artist name.
      *
-     * @param Name $artistName
+     * @param null|Name $artistName
      *
      * @return self
      */
-    public function setArtistName(Name $artistName): self
+    public function setArtistName(?Name $artistName): self
     {
         $this->artistName = $artistName;
 

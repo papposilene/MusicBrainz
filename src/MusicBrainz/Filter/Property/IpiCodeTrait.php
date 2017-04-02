@@ -12,16 +12,16 @@ trait IpiCodeTrait
     /**
      * The IPI (interested party information) code
      *
-     * @var IPI
+     * @var null|IPI
      */
     private $ipiCode;
 
     /**
      * Returns the IPI (interested party information) code.
      *
-     * @return IPI
+     * @return null|IPI
      */
-    public function getIpiCode(): IPI
+    public function getIpiCode(): ?IPI
     {
         return $this->ipiCode;
     }
@@ -29,11 +29,11 @@ trait IpiCodeTrait
     /**
      * Sets the IPI (interested party information) code.
      *
-     * @param IPI $ipiCode The IPI (interested party information) code
+     * @param null|IPI $ipiCode The IPI (interested party information) code
      *
      * @return self
      */
-    public function setIpiCode(IPI $ipiCode): self
+    public function setIpiCode(?IPI $ipiCode): self
     {
         $this->ipiCode = $ipiCode;
 
