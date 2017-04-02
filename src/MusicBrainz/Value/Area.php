@@ -7,6 +7,7 @@ namespace MusicBrainz\Value;
  */
 class Area
 {
+    use Property\ISO31662CodesTrait;
     use Property\MBIDTrait;
     use Property\NameTrait;
     use Property\SortNameTrait;
@@ -18,9 +19,10 @@ class Area
      */
     public function __construct(array $area = [])
     {
-        $this->MBID     = new MBID(isset($area['id']) ? (string) $area['id'] : '');
-        $this->name     = new Name(isset($area['name']) ? (string) $area['name'] : '');
-        $this->sortName = isset($area['sort-name']) ? (string) $area['sort-name'] : '';
+        $this->ISO31662Codes = new ISO31662CodeList(isset($area['iso-3166-2-codes']) ? $area['iso-3166-2-codes'] : []);
+        $this->MBID          = new MBID(isset($area['id']) ? (string) $area['id'] : '');
+        $this->name          = new Name(isset($area['name']) ? (string) $area['name'] : '');
+        $this->sortName      = isset($area['sort-name']) ? (string) $area['sort-name'] : '';
     }
 
     /**
