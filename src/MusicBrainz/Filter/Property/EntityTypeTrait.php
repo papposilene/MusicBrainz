@@ -12,16 +12,16 @@ trait EntityTypeTrait
     /**
      * The entity type
      *
-     * @var EntityType
+     * @var null|EntityType
      */
     private $entityType;
 
     /**
      * Returns the entity type
      *
-     * @return EntityType
+     * @return null|EntityType
      */
-    public function getEntityType(): EntityType
+    public function getEntityType(): ?EntityType
     {
         return $this->entityType;
     }
@@ -29,11 +29,11 @@ trait EntityTypeTrait
     /**
      * Sets the entity type
      *
-     * @param EntityType $entityType The entity type
+     * @param null|EntityType $entityType The entity type
      *
      * @return self
      */
-    public function setEntityType(EntityType $entityType): self
+    public function setEntityType(?EntityType $entityType): self
     {
         $this->entityType = $entityType;
 

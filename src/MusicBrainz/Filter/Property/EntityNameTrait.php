@@ -12,16 +12,16 @@ trait EntityNameTrait
     /**
      * The entity name.
      *
-     * @var Name
+     * @var null|Name
      */
     private $entityName;
 
     /**
      * Returns the entity name.
      *
-     * @return Name
+     * @return null|Name
      */
-    public function getEntityName(): Name
+    public function getEntityName(): ?Name
     {
         return $this->entityName;
     }
@@ -29,11 +29,11 @@ trait EntityNameTrait
     /**
      * Sets the entity name.
      *
-     * @param Name $entityName The entity name
+     * @param null|Name $entityName The entity name
      *
      * @return self
      */
-    public function setEntityName(Name $entityName): self
+    public function setEntityName(?Name $entityName): self
     {
         $this->entityName = $entityName;
 

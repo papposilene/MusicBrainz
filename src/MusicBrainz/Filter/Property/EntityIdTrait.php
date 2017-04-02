@@ -12,16 +12,16 @@ trait EntityIdTrait
     /**
      * The MusicBrainz Identifier (MBID) of the entity.
      *
-     * @var MBID
+     * @var null|MBID
      */
     private $entityId;
 
     /**
      * Returns the MusicBrainz Identifier (MBID) of the entity.
      *
-     * @return MBID
+     * @return null|MBID
      */
-    public function getEntityId(): MBID
+    public function getEntityId(): ?MBID
     {
         return $this->entityId;
     }
@@ -29,11 +29,11 @@ trait EntityIdTrait
     /**
      * Sets the MusicBrainz Identifier (MBID) of the entity.
      *
-     * @param MBID $entityId The MusicBrainz Identifier (MBID) of the entity
+     * @param null|MBID $entityId The MusicBrainz Identifier (MBID) of the entity
      *
      * @return self
      */
-    public function setEntityId(MBID $entityId): self
+    public function setEntityId(?MBID $entityId): self
     {
         $this->entityId = $entityId;
 

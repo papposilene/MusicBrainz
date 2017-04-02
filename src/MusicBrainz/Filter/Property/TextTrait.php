@@ -10,16 +10,16 @@ trait TextTrait
     /**
      * A text
      *
-     * @var string
+     * @var null|string
      */
     private $text;
 
     /**
      * Returns the text.
      *
-     * @return string
+     * @return null|string
      */
-    public function getText(): string
+    public function getText(): ?string
     {
         return $this->text;
     }
@@ -27,11 +27,11 @@ trait TextTrait
     /**
      * Sets the text.
      *
-     * @param string $text The text
+     * @param null|string $text The text
      *
-     * @return TextTrait
+     * @return self
      */
-    public function setText(string $text = ''): self
+    public function setText(?string $text): self
     {
         $this->text = $text;
 
