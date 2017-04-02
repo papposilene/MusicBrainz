@@ -4,11 +4,14 @@ namespace MusicBrainz\Api;
 
 use MusicBrainz\Exception;
 use MusicBrainz\Filter\AnnotationFilter;
+use MusicBrainz\Filter\AreaFilter;
 use MusicBrainz\Filter\ArtistFilter;
 use MusicBrainz\Filter\LabelFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Value\AnnotationList;
+use MusicBrainz\Value\Area;
+use MusicBrainz\Value\AreaList;
 use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\ArtistList;
 use MusicBrainz\Value\Label;
@@ -75,6 +78,42 @@ class Search
         $response = $this->httpAdapter->call('annotation' . '/', $params, $this->httpOptions, false, true);
 
         return new AnnotationList((isset($response['annotations'])) ? $response['annotations'] : []);
+    }
+
+    /**
+     * Searches for areas and returns the result.
+     *
+     * @param AreaFilter $areaFilter An area filter
+     * @param PageFilter $pageFilter A page filter
+     *
+     * @return Area[]
+     *
+     * @throws Exception
+     */
+    public function area(AreaFilter $areaFilter, PageFilter $pageFilter)
+    {
+        $filterValues = [
+            'aid'      => (string) $areaFilter->getAreaId(),
+            'alias'    => (string) $areaFilter->getAliasName(),
+            'arid'     => (string) $areaFilter->getAreaId(),
+            'area'     => (string) $areaFilter->getAreaName(),
+            'begin'    => (string) $areaFilter->getBeginDate(),
+            'comment'  => (string) $areaFilter->getComment(),
+            'end'      => (string) $areaFilter->getEndDate(),
+            'ended'    => (string) $areaFilter->isEnded(),
+            'iso'      => (string) $areaFilter->getIso3166Code(),
+            'iso1'     => (string) $areaFilter->getIso31661Code(),
+            'iso2'     => (string) $areaFilter->getIso31662Code(),
+            'iso3'     => (string) $areaFilter->getIso31663Code(),
+            'sortname' => (string) $areaFilter->getSortName(),
+            'type'     => (string) $areaFilter->getAreaType()
+        ];
+
+        $params = $this->getParameters($filterValues, $pageFilter->getLimit(), $pageFilter->getOffset());
+
+        $response = $this->httpAdapter->call('area' . '/', $params, $this->httpOptions, false, true);
+
+        return new AreaList((isset($response['areas'])) ? $response['areas'] : []);
     }
 
     /**
