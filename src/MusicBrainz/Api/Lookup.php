@@ -3,9 +3,9 @@
 namespace MusicBrainz\Api;
 
 use AppBundle\Entity\Label;
-use MusicBrainz\Supplement\ArtistFields;
-use MusicBrainz\Supplement\LabelFields;
-use MusicBrainz\Supplement\RecordingFields;
+use MusicBrainz\Supplement\Lookup\ArtistFields;
+use MusicBrainz\Supplement\Lookup\LabelFields;
+use MusicBrainz\Supplement\Lookup\RecordingFields;
 use MusicBrainz\Exception;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Value\Area;
