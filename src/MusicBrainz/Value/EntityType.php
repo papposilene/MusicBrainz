@@ -3,7 +3,7 @@
 namespace MusicBrainz\Value;
 
 /**
- * A gender
+ * An entity type
  */
 class EntityType
 {
