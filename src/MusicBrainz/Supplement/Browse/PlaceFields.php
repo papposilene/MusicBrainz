@@ -1,6 +1,6 @@
 <?php
 
-namespace MusicBrainz\Supplement\Lookup;
+namespace MusicBrainz\Supplement\Browse;
 
 class PlaceFields
 {
