@@ -3,10 +3,10 @@
 namespace MusicBrainz\Api;
 
 use MusicBrainz\Exception;
-use MusicBrainz\Filter\AnnotationFilter;
-use MusicBrainz\Filter\AreaFilter;
-use MusicBrainz\Filter\ArtistFilter;
-use MusicBrainz\Filter\LabelFilter;
+use MusicBrainz\Filter\Search\AnnotationFilter;
+use MusicBrainz\Filter\Search\AreaFilter;
+use MusicBrainz\Filter\Search\ArtistFilter;
+use MusicBrainz\Filter\Search\LabelFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Value\AnnotationList;
