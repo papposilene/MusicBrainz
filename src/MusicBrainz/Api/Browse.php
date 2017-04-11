@@ -8,12 +8,15 @@ use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Relation\AbstractRelation;
 use MusicBrainz\Relation\Entity\Artist as ArtistRelation;
 use MusicBrainz\Relation\Entity\Area as AreaRelation;
+use MusicBrainz\Relation\Entity\Event as EventRelation;
 use MusicBrainz\Relation\Entity\Label as LabelRelation;
 use MusicBrainz\Supplement\Browse\AreaFields;
 use MusicBrainz\Supplement\Browse\ArtistFields;
+use MusicBrainz\Supplement\Browse\EventFields;
 use MusicBrainz\Supplement\Browse\LabelFields;
 use MusicBrainz\Value\AreaList;
 use MusicBrainz\Value\ArtistList;
+use MusicBrainz\Value\EventList;
 use MusicBrainz\Value\EntityType;
 use MusicBrainz\Value\LabelList;
 
@@ -103,6 +106,36 @@ class Browse
         );
 
         return new ArtistList($result['artists']);
+    }
+
+    /**
+     * Looks up for all events standing in a certain relation.
+     *
+     * @param EventRelation $eventRelation A relation, the requested events stand in
+     * @param EventFields   $eventFields   A list of properties of the events to be included in the response
+     * @param PageFilter    $pageFilter    A page filter
+     *
+     * @return EventList
+     */
+    public function event(EventRelation $eventRelation, EventFields $eventFields, PageFilter $pageFilter)
+    {
+        $fields = [
+            'aliases'      => $eventFields->isAliases(),
+            'annotation'   => $eventFields->isAnnotation(),
+            'ratings'      => $eventFields->isRatings(),
+            'tags'         => $eventFields->isTags(),
+            'user-ratings' => $eventFields->isUserRatings(),
+            'user-tags'    => $eventFields->isUserTags()
+        ];
+
+        $result = $this->browse(
+            new EntityType(EntityType::EVENT),
+            $eventRelation,
+            $fields,
+            $pageFilter
+        );
+
+        return new EventList($result['events']);
     }
 
     /**
