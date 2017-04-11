@@ -8,13 +8,6 @@ use MusicBrainz\Value\MBID;
 abstract class AbstractRelation
 {
     /**
-     * The entity type
-     *
-     * @var \MusicBrainz\Value\EntityType
-     */
-    private $entityType;
-
-    /**
      * An entity type
      *
      * @var \MusicBrainz\Value\EntityType
@@ -27,16 +20,6 @@ abstract class AbstractRelation
      * @var MBID
      */
     private $relatedEntityId;
-
-    /**
-     * Constructs the relation.
-     *
-     * @param EntityType $entityType The type of the entity that has the relation
-     */
-    protected function __construct(EntityType $entityType)
-    {
-        $this->entityType = $entityType;
-    }
 
     /**
      * Returns the type of the related entity.
