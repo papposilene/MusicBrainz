@@ -8,11 +8,14 @@ use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Relation\AbstractRelation;
 use MusicBrainz\Relation\Entity\Artist as ArtistRelation;
 use MusicBrainz\Relation\Entity\Area as AreaRelation;
+use MusicBrainz\Relation\Entity\Label as LabelRelation;
 use MusicBrainz\Supplement\Browse\AreaFields;
 use MusicBrainz\Supplement\Browse\ArtistFields;
+use MusicBrainz\Supplement\Browse\LabelFields;
 use MusicBrainz\Value\AreaList;
 use MusicBrainz\Value\ArtistList;
 use MusicBrainz\Value\EntityType;
+use MusicBrainz\Value\LabelList;
 
 class Browse
 {
@@ -100,6 +103,36 @@ class Browse
         );
 
         return new ArtistList($result['artists']);
+    }
+
+    /**
+     * Looks up for all labels standing in a certain relation.
+     *
+     * @param LabelRelation $labelRelation A relation, the requested labels stand in
+     * @param LabelFields   $labelFields   A list of properties of the labels to be included in the response
+     * @param PageFilter    $pageFilter    A page filter
+     *
+     * @return ArtistList
+     */
+    public function label(LabelRelation $labelRelation, LabelFields $labelFields, PageFilter $pageFilter)
+    {
+        $fields = [
+            'aliases'      => $labelFields->isAliases(),
+            'annotation'   => $labelFields->isAnnotation(),
+            'ratings'      => $labelFields->isRatings(),
+            'tags'         => $labelFields->isTags(),
+            'user-ratings' => $labelFields->isUserRatings(),
+            'user-tags'    => $labelFields->isUserTags()
+        ];
+
+        $result = $this->browse(
+            new EntityType(EntityType::LABEL),
+            $labelRelation,
+            $fields,
+            $pageFilter
+        );
+
+        return new LabelList($result['labels']);
     }
 
     /**
