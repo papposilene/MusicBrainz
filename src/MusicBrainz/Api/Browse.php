@@ -7,10 +7,12 @@ use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Relation\AbstractRelation;
 use MusicBrainz\Relation\Entity\Artist as ArtistRelation;
+use MusicBrainz\Relation\Entity\Area as AreaRelation;
+use MusicBrainz\Supplement\Browse\AreaFields;
 use MusicBrainz\Supplement\Browse\ArtistFields;
+use MusicBrainz\Value\AreaList;
 use MusicBrainz\Value\ArtistList;
 use MusicBrainz\Value\EntityType;
-use MusicBrainz\Value\MBID;
 
 class Browse
 {
@@ -38,6 +40,36 @@ class Browse
     {
         $this->httpAdapter = $httpAdapter;
         $this->httpOptions = $httpOptions;
+    }
+
+    /**
+     * Looks up for all areas standing in a certain relation.
+     *
+     * @param AreaRelation $areaRelation A relation, the requested areas stand in
+     * @param AreaFields   $areaFields   A list of properties of the areas to be included in the response
+     * @param PageFilter   $pageFilter   A page filter
+     *
+     * @return ArtistList
+     */
+    public function area(AreaRelation $areaRelation, AreaFields $areaFields, PageFilter $pageFilter)
+    {
+        $fields = [
+            'aliases'      => $areaFields->isAliases(),
+            'annotation'   => $areaFields->isAnnotation(),
+            'ratings'      => $areaFields->isRatings(),
+            'tags'         => $areaFields->isTags(),
+            'user-ratings' => $areaFields->isUserRatings(),
+            'user-tags'    => $areaFields->isUserTags()
+        ];
+
+        $result = $this->browse(
+            new EntityType(EntityType::AREA),
+            $areaRelation,
+            $fields,
+            $pageFilter
+        );
+
+        return new AreaList($result['areas']);
     }
 
     /**
