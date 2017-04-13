@@ -17,6 +17,7 @@ class Release
     use Property\MBIDTrait;
     use Property\MediaTrait;
     use Property\PackagingTrait;
+    use Property\QualityTrait;
     use Property\TitleTrait;
     use Property\TextRepresentationTrait;
 
@@ -37,6 +38,7 @@ class Release
         $this->MBID               = new MBID(isset($release['id']) ? (string) $release['id'] : '');
         $this->media              = new MediaList(isset($release['media']) ? $release['media'] : []);
         $this->packaging          = new Packaging(isset($release['packaging']) ? $release['packaging'] : '');
+        $this->quality            = new Quality(isset($release['quality']) ? $release['quality'] : '');
         $this->title              = new Title(isset($release['title']) ? $release['title'] : '');
         $this->textRepresentation = new TextRepresentation(isset($release['text-representation']) ? $release['text-representation'] : []);
     }
