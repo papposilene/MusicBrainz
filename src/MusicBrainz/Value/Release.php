@@ -12,6 +12,7 @@ class Release
     use Property\ArtistCreditsTrait;
     use Property\ASINTrait;
     use Property\BarcodeTrait;
+    use Property\CountryTrait;
     use Property\DateTrait;
     use Property\DisambiguationTrait;
     use Property\MBIDTrait;
@@ -33,6 +34,7 @@ class Release
         $this->artistCredits      = new ArtistCreditList(isset($release['artistCredits']) ? (string) $release['artistCredits'] : []);
         $this->asin               = new ASIN(isset($release['asin']) ? (string) $release['asin'] : '');
         $this->barcode            = new Barcode(isset($release['barcode']) ? (string) $release['barcode'] : '');
+        $this->country            = new Country(isset($release['country']) ? (string) $release['country'] : '');
         $this->date               = new Date(isset($release['date']) ? (string) $release['date'] : '');
         $this->disambiguation     = new Disambiguation(isset($release['disambiguation']) ? (string) $release['disambiguation'] : '');
         $this->MBID               = new MBID(isset($release['id']) ? (string) $release['id'] : '');
