@@ -17,6 +17,7 @@ class Release
     use Property\MBIDTrait;
     use Property\MediaTrait;
     use Property\PackagingTrait;
+    use Property\TitleTrait;
 
     /**
      * Constructs a recording.
@@ -35,5 +36,6 @@ class Release
         $this->MBID           = new MBID(isset($release['id']) ? (string) $release['id'] : '');
         $this->media          = new MediaList(isset($release['media']) ? $release['media'] : []);
         $this->packaging      = new Packaging(isset($release['packaging']) ? $release['packaging'] : '');
+        $this->title          = new Title(isset($release['title']) ? $release['title'] : '');
     }
 }
