@@ -14,17 +14,17 @@ class Country
      *
      * @var string
      */
-    private $country;
+    private $countryCode;
 
     /**
      * Constructs a country.
      *
-     * @param string $country A country code
+     * @param string $countryCode A country code
      */
-    public function __construct(string $country = '')
+    public function __construct(string $countryCode = '')
     {
-        $this->country = (strlen($country) === 2)
-            ? strtoupper($country)
+        $this->countryCode = (strlen($countryCode) === 2)
+            ? strtoupper($countryCode)
             : '';
     }
 
@@ -35,6 +35,6 @@ class Country
      */
     public function __toString(): string
     {
-        return $this->country;
+        return $this->countryCode;
     }
 }
