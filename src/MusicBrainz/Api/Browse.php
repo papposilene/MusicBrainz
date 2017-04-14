@@ -184,6 +184,8 @@ class Browse
         array $includes,
         PageFilter $pageFilter
     ) {
+        $includes = array_keys(array_filter($includes));
+
         $params = [
             (string) $relation->getRelatedEntityType()  => (string) $relation->getRelatedEntityId(),
             'inc'                                       => implode('+', $includes),
