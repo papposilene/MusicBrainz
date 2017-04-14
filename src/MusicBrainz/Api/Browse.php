@@ -2,7 +2,6 @@
 
 namespace MusicBrainz\Api;
 
-use MusicBrainz\Exception;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Relation\AbstractRelation;
@@ -10,15 +9,18 @@ use MusicBrainz\Relation\Entity\Artist as ArtistRelation;
 use MusicBrainz\Relation\Entity\Area as AreaRelation;
 use MusicBrainz\Relation\Entity\Event as EventRelation;
 use MusicBrainz\Relation\Entity\Label as LabelRelation;
+use MusicBrainz\Relation\Entity\Release as ReleaselRelation;
 use MusicBrainz\Supplement\Browse\AreaFields;
 use MusicBrainz\Supplement\Browse\ArtistFields;
 use MusicBrainz\Supplement\Browse\EventFields;
 use MusicBrainz\Supplement\Browse\LabelFields;
+use MusicBrainz\Supplement\Browse\ReleaseFields;
 use MusicBrainz\Value\AreaList;
 use MusicBrainz\Value\ArtistList;
 use MusicBrainz\Value\EventList;
 use MusicBrainz\Value\EntityType;
 use MusicBrainz\Value\LabelList;
+use MusicBrainz\Value\ReleaseList;
 
 class Browse
 {
@@ -166,6 +168,38 @@ class Browse
         );
 
         return new LabelList($result['labels']);
+    }
+
+    /**
+     * Looks up for all releases standing in a certain relation.
+     *
+     * @param ReleaselRelation $releaseRelation A relation, the requested releases stand in
+     * @param ReleaseFields    $releaseFields   A list of properties of the releases to be included in the response
+     * @param PageFilter       $pageFilter      A page filter
+     *
+     * @return ArtistList
+     */
+    public function release(ReleaselRelation $releaseRelation, ReleaseFields $releaseFields, PageFilter $pageFilter)
+    {
+        $fields = [
+            'annotation'     => $releaseFields->isAnnotation(),
+            'artist-credits' => $releaseFields->isArtistCredits(),
+            'discids'        => $releaseFields->isDiscIds(),
+            'isrcs'          => $releaseFields->isIsrcs(),
+            'labels'         => $releaseFields->isLabels(),
+            'media'          => $releaseFields->isMedia(),
+            'recordings'     => $releaseFields->isRecordings(),
+            'release-groups' => $releaseFields->isReleaseGroups()
+        ];
+
+        $result = $this->browse(
+            new EntityType(EntityType::RELEASE),
+            $releaseRelation,
+            $fields,
+            $pageFilter
+        );
+
+        return new ReleaseList($result['releases']);
     }
 
     /**
