@@ -3,26 +3,32 @@
 namespace MusicBrainz\Value;
 
 /**
- * A quality
+ * The data quality
+ * Data quality indicates how good the data for a release is. It is not a mark of how good or bad the music itself is.
+ *
+ * @link https://musicbrainz.org/doc/Release
  */
-class Quality
+class DataQuality
 {
     /**
-     * Low quality
+     * Low data quality
+     * The release needs serious fixes, or its existence is hard to prove (but it's not clearly fake).
      *
      * @var string
      */
     public const LOW = 'low';
 
     /**
-     * Low quality
+     * Normal data quality
+     * This is the default setting
      *
      * @var string
      */
     public const NORMAL = 'normal';
 
     /**
-     * Low quality
+     * High data quality
+     * All available data has been added, if possible including cover art with liner info that proves it.
      *
      * @var string
      */
@@ -33,7 +39,7 @@ class Quality
      *
      * @var string
      */
-    public const UNDEFINED = 'undefined';
+    public const UNDEFINED = 'unknown';
 
     /**
      * A list of valid quality codes.
