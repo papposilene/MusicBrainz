@@ -19,8 +19,9 @@ class Release
     use Property\MediaTrait;
     use Property\PackagingTrait;
     use Property\QualityTrait;
-    use Property\TitleTrait;
+    use Property\ReleaseStatusTrait;
     use Property\TextRepresentationTrait;
+    use Property\TitleTrait;
 
     /**
      * Constructs a recording.
@@ -41,7 +42,8 @@ class Release
         $this->media              = new MediaList(isset($release['media']) ? $release['media'] : []);
         $this->packaging          = new Packaging(isset($release['packaging']) ? $release['packaging'] : '');
         $this->quality            = new Quality(isset($release['quality']) ? $release['quality'] : '');
-        $this->title              = new Title(isset($release['title']) ? $release['title'] : '');
+        $this->releaseStatus      = new ReleaseStatus(isset($release['status']) ? $release['status'] : '');
         $this->textRepresentation = new TextRepresentation(isset($release['text-representation']) ? $release['text-representation'] : []);
+        $this->title              = new Title(isset($release['title']) ? $release['title'] : '');
     }
 }
