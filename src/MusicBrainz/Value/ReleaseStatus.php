@@ -4,6 +4,8 @@ namespace MusicBrainz\Value;
 
 /**
  * A release status
+ *
+ * @link https://musicbrainz.org/doc/Style/Release
  */
 class ReleaseStatus
 {
@@ -12,35 +14,37 @@ class ReleaseStatus
      *
      * @var string
      */
-    public const OFFICIAL = 'official';
+    public const OFFICIAL = 'Official';
 
     /**
      * Promotional release
      *
      * @var string
      */
-    public const PROMOTION = 'promotion';
+    public const PROMOTION = 'Promotion';
 
     /**
      * A bootleg
      *
      * @var string
      */
-    public const BOOTLEG = 'bootleg';
+    public const BOOTLEG = 'Bootleg';
 
     /**
-     * A pseude release
+     * A pseudo-release
+     * Pseudo-release should be used for translations or transliterations that do not appear on an actual release (even
+     * if they appear on an official site).
      *
      * @var string
      */
-    public const PSEUDO_RELEASE = 'pseudo-release';
+    public const PSEUDO_RELEASE = 'Pseudo-Release';
 
     /**
      * An undefined release status
      *
      * @var string
      */
-    public const UNDEFINED = 'undefined';
+    public const UNDEFINED = 'Undefined';
 
     /**
      * A list of valid status codes
