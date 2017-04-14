@@ -17,7 +17,7 @@ class Annotation
     use Property\ScoreTrait;
     use Property\MBIDTrait;
     use Property\NameTrait;
-    use Property\TextTrait;
+    use Property\AnnotationTextTrait;
 
     /**
      * Constructs an annotation.
@@ -30,7 +30,7 @@ class Annotation
         $this->score      = new Score(isset($alias['score']) ? (string) $alias['score'] : null);
         $this->MBID       = new MBID(isset($alias['entity']) ? (string) $alias['entity'] : '');
         $this->name       = new Name(isset($alias['name']) ? (string) $alias['name'] : '');
-        $this->text       = new Text(isset($alias['text']) ? (string) $alias['text'] : '');
+        $this->text       = new AnnotationText(isset($alias['text']) ? (string) $alias['text'] : '');
     }
 
     /**

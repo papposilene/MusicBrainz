@@ -3,9 +3,9 @@
 namespace MusicBrainz\Value;
 
 /**
- * A text
+ * An annotation text
  */
-class Text
+class AnnotationText
 {
     /**
      * The text
@@ -15,7 +15,7 @@ class Text
     private $text;
 
     /**
-     * Constructs a text.
+     * Constructs an annotation text.
      *
      * @param string $text The text
      */
@@ -25,7 +25,7 @@ class Text
     }
 
     /**
-     * Returns the string.
+     * Returns the annotation text as string.
      *
      * @return string
      */
