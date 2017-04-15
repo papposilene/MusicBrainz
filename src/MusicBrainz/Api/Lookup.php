@@ -6,10 +6,10 @@ use AppBundle\Entity\Label;
 use MusicBrainz\Supplement\Lookup\ArtistFields;
 use MusicBrainz\Supplement\Lookup\LabelFields;
 use MusicBrainz\Supplement\Lookup\RecordingFields;
-use MusicBrainz\Exception;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Value\Area;
 use MusicBrainz\Value\Artist;
+use MusicBrainz\Value\EntityType;
 use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Recording;
 
@@ -50,7 +50,7 @@ class Lookup
      */
     public function area(MBID $mbid)
     {
-        $result = $this->lookup('area', $mbid);
+        $result = $this->lookup(new EntityType(EntityType::AREA), $mbid);
 
         return new Area($result);
     }
@@ -87,7 +87,7 @@ class Lookup
             'annotation'         => $artistFields->isAnnotation()
         ];
 
-        $result = $this->lookup('artist', $mbid, $fields);
+        $result = $this->lookup(new EntityType(EntityType::ARTIST), $mbid, $fields);
 
         return new Artist($result);
     }
@@ -120,7 +120,7 @@ class Lookup
             'annotation'         => $labelFields->isAnnotation()
         ];
 
-        $result = $this->lookup('label', $mbid, $fields);
+        $result = $this->lookup(new EntityType(EntityType::LABEL), $mbid, $fields);
 
         return new Label($result);
     }
@@ -155,25 +155,23 @@ class Lookup
             'aliases' =>            $recordingFields->isAliases()
         ];
 
-        $result = $this->lookup('recording', $mbid, $fields);
+        $result = $this->lookup(new EntityType(EntityType::RECORDING), $mbid, $fields);
 
         return new Recording($result);
     }
 
     /**
-     * Do a MusicBrainz lookup
+     * Looks up for an entity by performing a request to MusicBrainz webservice.
      *
-     * http://musicbrainz.org/doc/XML_Web_Service
+     * @link http://musicbrainz.org/doc/XML_Web_Service
      *
-     * @param string $entity
-     * @param MBID   $mbid     Music Brainz ID
-     * @param array  $includes
-     *
-     * @throws Exception
+     * @param EntityType $entityType An entity type
+     * @param MBID       $mbid       A MusicBrainz Identifier (MBID)
+     * @param array      $includes   A list of include parameters
      *
      * @return array
      */
-    private function lookup($entity, MBID $mbid, array $includes = [])
+    private function lookup(EntityType $entityType, MBID $mbid, array $includes = [])
     {
         $authRequired = false;
 
@@ -184,7 +182,14 @@ class Lookup
             'fmt' => 'json'
         ];
 
-        $response = $this->httpAdapter->call($entity . '/' . (string) $mbid, $params, $this->httpOptions, $authRequired);
+        $response = $this->httpAdapter->call(
+            (string) $entityType .
+            '/' .
+            (string) $mbid,
+            $params,
+            $this->httpOptions,
+            $authRequired
+        );
 
         return $response;
     }
