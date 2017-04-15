@@ -101,7 +101,7 @@ class Lookup
      *
      * @return Artist
      */
-    public function collection(MBID $mbid, CollectionFields $collectionFields)
+    public function collection(MBID $mbid)
     {
         $fields = [];
 

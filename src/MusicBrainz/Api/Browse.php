@@ -5,8 +5,9 @@ namespace MusicBrainz\Api;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Relation\AbstractRelation;
-use MusicBrainz\Relation\Entity\Artist as ArtistRelation;
 use MusicBrainz\Relation\Entity\Area as AreaRelation;
+use MusicBrainz\Relation\Entity\Artist as ArtistRelation;
+use MusicBrainz\Relation\Entity\Collection as CollectionRelation;
 use MusicBrainz\Relation\Entity\Event as EventRelation;
 use MusicBrainz\Relation\Entity\Label as LabelRelation;
 use MusicBrainz\Relation\Entity\Release as ReleaselRelation;
@@ -17,8 +18,9 @@ use MusicBrainz\Supplement\Browse\LabelFields;
 use MusicBrainz\Supplement\Browse\ReleaseFields;
 use MusicBrainz\Value\AreaList;
 use MusicBrainz\Value\ArtistList;
-use MusicBrainz\Value\EventList;
+use MusicBrainz\Value\CollectionList;
 use MusicBrainz\Value\EntityType;
+use MusicBrainz\Value\EventList;
 use MusicBrainz\Value\LabelList;
 use MusicBrainz\Value\ReleaseList;
 
@@ -108,6 +110,28 @@ class Browse
         );
 
         return new ArtistList($result['artists']);
+    }
+
+    /**
+     * Looks up for all collections standing in a certain relation.
+     *
+     * @param CollectionRelation $collectionRelation A relation, the requested collections stand in
+     * @param PageFilter         $pageFilter         A page filter
+     *
+     * @return ArtistList
+     */
+    public function collection(CollectionRelation $collectionRelation, PageFilter $pageFilter)
+    {
+        $fields = [];
+
+        $result = $this->browse(
+            new EntityType(EntityType::COLLECTION),
+            $collectionRelation,
+            $fields,
+            $pageFilter
+        );
+
+        return new CollectionList($result['collections']);
     }
 
     /**
