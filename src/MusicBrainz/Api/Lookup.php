@@ -175,9 +175,6 @@ class Lookup
      */
     private function lookup($entity, MBID $mbid, array $includes = [])
     {
-        // $this->validateInclude($includes, self::$validIncludes[$entity]);
-
-        // $authRequired = $this->isAuthRequired($entity, $includes);
         $authRequired = false;
 
         $includes = array_keys(array_filter($includes));
@@ -190,23 +187,5 @@ class Lookup
         $response = $this->httpAdapter->call($entity . '/' . (string) $mbid, $params, $this->httpOptions, $authRequired);
 
         return $response;
-    }
-
-    /**
-     * @param $includes
-     * @param $validIncludes
-     *
-     * @return bool
-     * @throws \OutOfBoundsException
-     */
-    public function validateInclude($includes, $validIncludes)
-    {
-        foreach ($includes as $include) {
-            if (!in_array($include, $validIncludes)) {
-                throw new \OutOfBoundsException(sprintf('%s is not a valid include', $include));
-            }
-        }
-
-        return true;
     }
 }
