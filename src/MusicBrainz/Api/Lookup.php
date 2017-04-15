@@ -4,11 +4,13 @@ namespace MusicBrainz\Api;
 
 use AppBundle\Entity\Label;
 use MusicBrainz\Supplement\Lookup\ArtistFields;
+use MusicBrainz\Supplement\Lookup\CollectionFields;
 use MusicBrainz\Supplement\Lookup\LabelFields;
 use MusicBrainz\Supplement\Lookup\RecordingFields;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Value\Area;
 use MusicBrainz\Value\Artist;
+use MusicBrainz\Value\Collection;
 use MusicBrainz\Value\EntityType;
 use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Recording;
@@ -93,6 +95,22 @@ class Lookup
     }
 
     /**
+     * Looks up for a collection and returns the result.
+     *
+     * @param MBID $mbid A Music Brainz Identifier (MBID) of a collection
+     *
+     * @return Artist
+     */
+    public function collection(MBID $mbid, CollectionFields $collectionFields)
+    {
+        $fields = [];
+
+        $result = $this->lookup(new EntityType(EntityType::COLLECTION), $mbid, $fields, true);
+
+        return new Collection($result);
+    }
+
+    /**
      * Looks up for a label and returns the result.
      *
      * @param MBID $mbid A Music Brainz Identifier (MBID) of a label
@@ -165,16 +183,15 @@ class Lookup
      *
      * @link http://musicbrainz.org/doc/XML_Web_Service
      *
-     * @param EntityType $entityType An entity type
-     * @param MBID       $mbid       A MusicBrainz Identifier (MBID)
-     * @param array      $includes   A list of include parameters
+     * @param EntityType $entityType   An entity type
+     * @param MBID       $mbid         A MusicBrainz Identifier (MBID)
+     * @param array      $includes     A list of include parameters
+     * @param bool       $authRequired True, if user authentication is required
      *
      * @return array
      */
-    private function lookup(EntityType $entityType, MBID $mbid, array $includes = [])
+    private function lookup(EntityType $entityType, MBID $mbid, array $includes = [], bool $authRequired = false)
     {
-        $authRequired = false;
-
         $includes = array_keys(array_filter($includes));
 
         $params = [
