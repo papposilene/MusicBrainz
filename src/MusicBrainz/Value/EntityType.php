@@ -138,6 +138,7 @@ class EntityType
         self::RELEASE,
         self::RELEASE_GROUP,
         self::TRACK,
+        self::URL,
         self::WORK
     ];
 
