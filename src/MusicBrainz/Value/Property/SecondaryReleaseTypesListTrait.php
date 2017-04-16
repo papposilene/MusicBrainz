@@ -5,23 +5,23 @@ namespace MusicBrainz\Value\Property;
 use MusicBrainz\Value\ReleaseTypeList;
 
 /**
- * Provides a getter for a release type list.
+ * Provides a getter for a list of secondary release types.
  */
-trait SecondaryTypesListTrait
+trait SecondaryReleaseTypesListTrait
 {
     /**
-     * A list of release types
+     * A list of secondary release types
      *
      * @var ReleaseTypeList
      */
-    private $releaseTypeList;
+    private $secondaryReleaseTypes;
 
     /**
-     * Returns the list of release types.
+     * Returns the list of secondary release types.
      *
      * @return ReleaseTypeList
      */
-    public function getReleaseType(): ReleaseTypeList
+    public function getSecondaryReleaseTypes(): ReleaseTypeList
     {
         return $this->releaseTypeList;
     }
