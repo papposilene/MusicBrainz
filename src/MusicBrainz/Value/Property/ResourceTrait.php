@@ -2,28 +2,27 @@
 
 namespace MusicBrainz\Value\Property;
 
-use MusicBrainz\Value\Gender;
+use MusicBrainz\Value\Resource;
 
 /**
- * Provides a getter for the gender.
+ * Provides a getter for the resource.
  */
-trait GenderTrait
+trait ResourceTrait
 {
     /**
-     * The gender is used to explicitly state whether a person or character identifies as male, female or neither.
-     * Groups have an undefined gender.
+     * The resource
      *
-     * @var Gender
+     * @var Resource
      */
-    private $gender;
+    private $resource;
 
     /**
-     * Returns the artist's gender.
+     * Returns the resource.
      *
-     * @return Gender
+     * @return Resource
      */
-    public function getGender(): Gender
+    public function getResource(): Resource
     {
-        return $this->gender;
+        return $this->resource;
     }
 }

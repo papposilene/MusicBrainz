@@ -15,7 +15,7 @@ class Resource
     private $resource;
 
     /**
-     * Constructs a language.
+     * Constructs a resource.
      *
      * @param string $resource The resource
      */
