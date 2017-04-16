@@ -5,6 +5,7 @@ namespace MusicBrainz\Supplement\Lookup;
 class ReleaseFields
 {
     use \MusicBrainz\Supplement\Field\ArtistsTrait;
+    use \MusicBrainz\Supplement\Field\CollectionsTrait;
     use \MusicBrainz\Supplement\Field\LabelsTrait;
     use \MusicBrainz\Supplement\Field\RecordingsTrait;
     use \MusicBrainz\Supplement\Field\ReleaseGroupsTrait;
