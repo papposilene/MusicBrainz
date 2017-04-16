@@ -43,6 +43,13 @@ class EntityType
     public const EVENT = 'event';
 
     /**
+     * An instrument
+     *
+     * @var string
+     */
+    public const INSTRUMENT = 'instrument';
+
+    /**
      * A label
      *
      * @var string
@@ -123,6 +130,7 @@ class EntityType
         self::COLLECTION,
         self::EDITOR,
         self::EVENT,
+        self::INSTRUMENT,
         self::LABEL,
         self::PLACE,
         self::RECORDING,
