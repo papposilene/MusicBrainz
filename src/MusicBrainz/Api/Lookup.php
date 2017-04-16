@@ -8,6 +8,7 @@ use MusicBrainz\Supplement\Lookup\LabelFields;
 use MusicBrainz\Supplement\Lookup\RecordingFields;
 use MusicBrainz\Supplement\Lookup\ReleaseFields;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
+use MusicBrainz\Supplement\Lookup\ReleaseGroupFields;
 use MusicBrainz\Value\Area;
 use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\Collection;
@@ -17,6 +18,7 @@ use MusicBrainz\Value\Instrument;
 use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Recording;
 use MusicBrainz\Value\Release;
+use MusicBrainz\Value\ReleaseGroup;
 
 class Lookup
 {
@@ -243,6 +245,41 @@ class Lookup
         $result = $this->lookup(new EntityType(EntityType::RELEASE), $mbid, $fields);
 
         return new Release($result);
+    }
+
+    /**
+     * Looks up for a release group and returns the result.
+     *
+     * @param MBID $mbid A Music Brainz Identifier (MBID) of a release group
+     *
+     * @return Recording
+     */
+    public function releaseGroup(MBID $mbid, ReleaseGroupFields $releaseGroupFields)
+    {
+        $fields = [
+            'artists'            => $releaseGroupFields->isArtists(),
+            'releases'           => $releaseGroupFields->isReleases(),
+            'discids'            => $releaseGroupFields->isDiscIds(),
+            'media'              => $releaseGroupFields->isMedia(),
+            'artist-credits'     => $releaseGroupFields->isArtistCredits(),
+            'tags'               => $releaseGroupFields->isTags(),
+            'user-tags'          => $releaseGroupFields->isUserTags(),
+            'ratings'            => $releaseGroupFields->isRatings(),
+            'user-ratings'       => $releaseGroupFields->isUserRatings(),
+            'artist-rels'        => $releaseGroupFields->isArtistRelations(),
+            'label-rels'         => $releaseGroupFields->isLabelRelations(),
+            'recording-rels'     => $releaseGroupFields->isRecordingRelations(),
+            'release-rels'       => $releaseGroupFields->isReleaseRelations(),
+            'release-group-rels' => $releaseGroupFields->isReleaseGroupRelations(),
+            'url-rels'           => $releaseGroupFields->isURLRelations(),
+            'work-level-rels'    => $releaseGroupFields->isWorkLevelRelations(),
+            'annotations'        => $releaseGroupFields->isAnnotation(),
+            'aliases'            => $releaseGroupFields->isAliases()
+        ];
+
+        $result = $this->lookup(new EntityType(EntityType::RELEASE_GROUP), $mbid, $fields);
+
+        return new ReleaseGroup($result);
     }
 
     /**
