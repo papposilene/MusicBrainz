@@ -20,6 +20,7 @@ use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Recording;
 use MusicBrainz\Value\Release;
 use MusicBrainz\Value\ReleaseGroup;
+use MusicBrainz\Value\URL;
 use MusicBrainz\Value\Work;
 
 class Lookup
@@ -282,6 +283,20 @@ class Lookup
         $result = $this->lookup(new EntityType(EntityType::RELEASE_GROUP), $mbid, $fields);
 
         return new ReleaseGroup($result);
+    }
+
+    /**
+     * Looks up for an URL and returns the result.
+     *
+     * @param MBID $mbid A Music Brainz Identifier (MBID) of an URL
+     *
+     * @return U
+     */
+    public function url(MBID $mbid)
+    {
+        $result = $this->lookup(new EntityType(EntityType::URL), $mbid);
+
+        return new URL($result);
     }
 
     /**
