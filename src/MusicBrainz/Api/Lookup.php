@@ -9,6 +9,7 @@ use MusicBrainz\Supplement\Lookup\RecordingFields;
 use MusicBrainz\Supplement\Lookup\ReleaseFields;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Supplement\Lookup\ReleaseGroupFields;
+use MusicBrainz\Supplement\Lookup\WorkFields;
 use MusicBrainz\Value\Area;
 use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\Collection;
@@ -19,6 +20,7 @@ use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Recording;
 use MusicBrainz\Value\Release;
 use MusicBrainz\Value\ReleaseGroup;
+use MusicBrainz\Value\Work;
 
 class Lookup
 {
@@ -280,6 +282,37 @@ class Lookup
         $result = $this->lookup(new EntityType(EntityType::RELEASE_GROUP), $mbid, $fields);
 
         return new ReleaseGroup($result);
+    }
+
+    /**
+     * Looks up for a work and returns the result.
+     *
+     * @param MBID $mbid A Music Brainz Identifier (MBID) of a work
+     *
+     * @return Recording
+     */
+    public function work(MBID $mbid, WorkFields $workFields)
+    {
+        $fields = [
+            'artists'       => $workFields->isArtists(),
+            'aliases'       => $workFields->isAliases(),
+            'tags'          => $workFields->isTags(),
+            'user-tags'     => $workFields->isUserTags(),
+            'ratings'       => $workFields->isRatings(),
+            'user-ratings'  => $workFields->isUserRatings(),
+            'artist-rels'   => $workFields->isArtistRelations(),
+            'label-rels'    => $workFields->isLabelRelations(),
+            'recording-rels'=> $workFields->isRecordingRelations(),
+            'release-rels'  => $workFields->isReleaseRelations(),
+            'release-group' => $workFields->isReleaseGroups(),
+            'url-rels'      => $workFields->isURLRelations(),
+            'work-rels'     => $workFields->isWorkRelations(),
+            'annotations'   => $workFields->isAnnotation()
+        ];
+
+        $result = $this->lookup(new EntityType(EntityType::WORK), $mbid, $fields);
+
+        return new Work($result);
     }
 
     /**
