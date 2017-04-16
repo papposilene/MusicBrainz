@@ -13,6 +13,7 @@ use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\Collection;
 use MusicBrainz\Value\EntityType;
 use MusicBrainz\Value\Event;
+use MusicBrainz\Value\Instrument;
 use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Recording;
 
@@ -123,6 +124,20 @@ class Lookup
         $result = $this->lookup(new EntityType(EntityType::EVENT), $mbid);
 
         return new Event($result);
+    }
+
+    /**
+     * Looks up for an instrument and returns the result.
+     *
+     * @param MBID $mbid A Music Brainz Identifier (MBID) of an instrument
+     *
+     * @return Instrument
+     */
+    public function instrument(MBID $mbid)
+    {
+        $result = $this->lookup(new EntityType(EntityType::INSTRUMENT), $mbid);
+
+        return new Instrument($result);
     }
 
     /**
