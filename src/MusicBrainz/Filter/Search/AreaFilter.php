@@ -4,6 +4,8 @@ namespace MusicBrainz\Filter\Search;
 
 /**
  * A filter for searching areas
+ *
+ * @link https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2/Search#Area
  */
 class AreaFilter
 {

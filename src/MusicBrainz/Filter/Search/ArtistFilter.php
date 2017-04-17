@@ -4,6 +4,8 @@ namespace MusicBrainz\Filter\Search;
 
 /**
  * A filter for searching artists
+ *
+ * @link https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2/Search#Artist
  */
 class ArtistFilter
 {
