@@ -4,7 +4,10 @@ namespace MusicBrainz\Relation\Entity;
 
 use MusicBrainz\Relation\AbstractRelation;
 
-class Collection extends AbstractRelation
+/**
+ * A relation between a collection and another entity.
+ */
+class CollectionRelation extends AbstractRelation
 {
     use \MusicBrainz\Relation\RelatedEntity\AreaTrait;
     use \MusicBrainz\Relation\RelatedEntity\ArtistTrait;
