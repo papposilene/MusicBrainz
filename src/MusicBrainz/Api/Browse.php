@@ -24,6 +24,11 @@ use MusicBrainz\Value\EventList;
 use MusicBrainz\Value\LabelList;
 use MusicBrainz\Value\ReleaseList;
 
+/**
+ * Browse requests are a direct lookup of all the entities directly linked to another entity.
+ *
+ * @link https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Browse
+ */
 class Browse
 {
     /**

@@ -18,13 +18,9 @@ use MusicBrainz\Value\Label;
 use MusicBrainz\Value\LabelList;
 
 /**
- * Performs a query based on the parameters supplied in the Filter object.
- * Returns an array of possible matches with scores, as returned by the MusicBrainz web service.
+ * The search API provides methods for searching entities based on the parameters supplied in the filter objects.
  *
- * Note that these types of queries only return some information, and not all the information available about a
- * particular item is available using this type of query.
- * You will need to get the MusicBrainz id (mbid) and perform a lookup with browse to return complete information about
- * a release. This method returns an array of objects that are possible matches.
+ * @link https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2/Search
  */
 class Search
 {

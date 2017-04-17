@@ -23,6 +23,11 @@ use MusicBrainz\Value\ReleaseGroup;
 use MusicBrainz\Value\URL;
 use MusicBrainz\Value\Work;
 
+/**
+ * Lookups are direct queries for entities specified by a MusicBrainz Identifier (MBID).
+ *
+ * @link https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Lookups
+ */
 class Lookup
 {
     /**
