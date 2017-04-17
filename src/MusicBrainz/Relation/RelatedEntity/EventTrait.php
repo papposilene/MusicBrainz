@@ -16,6 +16,6 @@ trait EventTrait
      */
     public function setEntityTypeEvent(): void
     {
-        $this->setRelatedEntityType(new EntityType(EntityType::EVENT));
+        $this->setEntityType(new EntityType(EntityType::EVENT));
     }
 }

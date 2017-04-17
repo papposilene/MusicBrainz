@@ -16,6 +16,6 @@ trait LabelTrait
      */
     public function setEntityTypeLabel(): void
     {
-        $this->setRelatedEntityType(new EntityType(EntityType::LABEL));
+        $this->setEntityType(new EntityType(EntityType::LABEL));
     }
 }

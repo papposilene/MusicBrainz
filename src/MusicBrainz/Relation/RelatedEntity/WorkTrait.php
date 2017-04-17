@@ -16,6 +16,6 @@ trait WorkTrait
      */
     public function setEntityTypeWork(): void
     {
-        $this->setRelatedEntityType(new EntityType(EntityType::WORK));
+        $this->setEntityType(new EntityType(EntityType::WORK));
     }
 }

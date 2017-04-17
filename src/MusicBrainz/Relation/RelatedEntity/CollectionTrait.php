@@ -16,6 +16,6 @@ trait CollectionTrait
      */
     public function setEntityTypeCollection(): void
     {
-        $this->setRelatedEntityType(new EntityType(EntityType::COLLECTION));
+        $this->setEntityType(new EntityType(EntityType::COLLECTION));
     }
 }

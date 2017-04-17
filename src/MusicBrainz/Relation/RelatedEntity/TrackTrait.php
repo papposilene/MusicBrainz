@@ -16,6 +16,6 @@ trait TrackTrait
      */
     public function setEntityTypeTrack(): void
     {
-        $this->setRelatedEntityType(new EntityType(EntityType::TRACK));
+        $this->setEntityType(new EntityType(EntityType::TRACK));
     }
 }

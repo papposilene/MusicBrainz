@@ -16,6 +16,6 @@ trait ReleaseTrait
      */
     public function setEntityTypeRelease(): void
     {
-        $this->setRelatedEntityType(new EntityType(EntityType::RELEASE));
+        $this->setEntityType(new EntityType(EntityType::RELEASE));
     }
 }

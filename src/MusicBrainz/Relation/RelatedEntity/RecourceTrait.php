@@ -16,6 +16,6 @@ trait RecourceTrait
      */
     public function setEntityTypeRecource(): void
     {
-        $this->setRelatedEntityType(new EntityType(EntityType::RECOURCE));
+        $this->setEntityType(new EntityType(EntityType::RECOURCE));
     }
 }

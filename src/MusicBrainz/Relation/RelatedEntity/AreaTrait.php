@@ -16,6 +16,6 @@ trait AreaTrait
      */
     public function setEntityTypeArea(): void
     {
-        $this->setRelatedEntityType(new EntityType(EntityType::AREA));
+        $this->setEntityType(new EntityType(EntityType::AREA));
     }
 }

@@ -245,7 +245,7 @@ class Browse
         $includes = array_keys(array_filter($includes));
 
         $params = [
-            (string) $relation->getRelatedEntityType()  => (string) $relation->getRelatedEntityId(),
+            (string) $relation->getEntityType()  => (string) $relation->getEntityId(),
             'inc'                                       => implode('+', $includes),
             'limit'                                     => $pageFilter->getLimit(),
             'offset'                                    => $pageFilter->getOffset(),

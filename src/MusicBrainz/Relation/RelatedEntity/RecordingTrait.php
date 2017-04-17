@@ -16,6 +16,6 @@ trait RecordingTrait
      */
     public function setEntityTypeRecording(): void
     {
-        $this->setRelatedEntityType(new EntityType(EntityType::RECORDING));
+        $this->setEntityType(new EntityType(EntityType::RECORDING));
     }
 }

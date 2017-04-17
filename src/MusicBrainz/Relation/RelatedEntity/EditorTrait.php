@@ -16,6 +16,6 @@ trait EditorTrait
      */
     public function setEntityTypeEditor(): void
     {
-        $this->setRelatedEntityType(new EntityType(EntityType::EDITOR));
+        $this->setEntityType(new EntityType(EntityType::EDITOR));
     }
 }

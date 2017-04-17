@@ -16,6 +16,6 @@ trait PlaceTrait
      */
     public function setEntityTypePlace(): void
     {
-        $this->setRelatedEntityType(new EntityType(EntityType::PLACE));
+        $this->setEntityType(new EntityType(EntityType::PLACE));
     }
 }

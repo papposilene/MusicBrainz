@@ -16,6 +16,6 @@ trait ReleaseGroupTrait
      */
     public function setEntityTypeReleaseGroup(): void
     {
-        $this->setRelatedEntityType(new EntityType(EntityType::RELEASE_GROUP));
+        $this->setEntityType(new EntityType(EntityType::RELEASE_GROUP));
     }
 }

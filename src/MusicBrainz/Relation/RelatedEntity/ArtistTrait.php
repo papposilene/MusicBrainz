@@ -16,6 +16,6 @@ trait ArtistTrait
      */
     public function setEntityTypeArtist(): void
     {
-        $this->setRelatedEntityType(new EntityType(EntityType::ARTIST));
+        $this->setEntityType(new EntityType(EntityType::ARTIST));
     }
 }
