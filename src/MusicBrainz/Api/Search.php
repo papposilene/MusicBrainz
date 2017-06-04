@@ -10,11 +10,8 @@ use MusicBrainz\Filter\Search\LabelFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Value\AnnotationList;
-use MusicBrainz\Value\Area;
 use MusicBrainz\Value\AreaList;
-use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\ArtistList;
-use MusicBrainz\Value\Label;
 use MusicBrainz\Value\LabelList;
 
 /**
@@ -56,9 +53,9 @@ class Search
      * @param AnnotationFilter $annotationFilter An annotation filter
      * @param PageFilter       $pageFilter       A page filter
      *
-     * @return array
+     * @return AnnotationList
      *
-     * @throws AnnotationList
+     * @throws Exception
      */
     public function annotation(AnnotationFilter $annotationFilter, PageFilter $pageFilter)
     {
@@ -82,7 +79,7 @@ class Search
      * @param AreaFilter $areaFilter An area filter
      * @param PageFilter $pageFilter A page filter
      *
-     * @return Area[]
+     * @return AreaList
      *
      * @throws Exception
      */
@@ -118,7 +115,7 @@ class Search
      * @param ArtistFilter $artistFilter An artist filter
      * @param PageFilter   $pageFilter   A page filter
      *
-     * @return Artist[]
+     * @return ArtistList
      *
      * @throws Exception
      */
@@ -157,7 +154,7 @@ class Search
      * @param LabelFilter $labelFilter A label filter
      * @param PageFilter  $pageFilter  A page filter
      *
-     * @return Label[]
+     * @return LabelList
      *
      * @throws Exception
      */
