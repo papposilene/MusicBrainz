@@ -69,6 +69,16 @@ class LabelCode
     }
 
     /**
+     * Returns the label code without the "LC-" prefix.
+     *
+     * @return string
+     */
+    public function getLabelCodeWithoutLcPrefix()
+    {
+        return substr($this->code, 3);
+    }
+
+    /**
      * Returns the Label Code with "LC-" prefix and 5 digits.
      *
      * @return string

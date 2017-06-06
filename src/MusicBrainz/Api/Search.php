@@ -59,14 +59,7 @@ class Search
      */
     public function annotation(AnnotationFilter $annotationFilter, PageFilter $pageFilter)
     {
-        $filterValues = [
-            'name'   => (string) $annotationFilter->getEntityName(),
-            'entity' => (string) $annotationFilter->getEntityId(),
-            'text'   => (string) $annotationFilter->getText(),
-            'type'   => (string) $annotationFilter->getEntityType()
-        ];
-
-        $params = $this->getParameters($filterValues, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params = $this->getParameters($annotationFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
         $response = $this->httpAdapter->call('annotation' . '/', $params, $this->httpOptions, false, true);
 
@@ -85,24 +78,7 @@ class Search
      */
     public function area(AreaFilter $areaFilter, PageFilter $pageFilter)
     {
-        $filterValues = [
-            'aid'      => (string) $areaFilter->getAreaId(),
-            'alias'    => (string) $areaFilter->getAliasName(),
-            'arid'     => (string) $areaFilter->getAreaId(),
-            'area'     => (string) $areaFilter->getAreaName(),
-            'begin'    => (string) $areaFilter->getBeginDate(),
-            'comment'  => (string) $areaFilter->getComment(),
-            'end'      => (string) $areaFilter->getEndDate(),
-            'ended'    => (string) $areaFilter->isEnded(),
-            'iso'      => (string) $areaFilter->getIso3166Code(),
-            'iso1'     => (string) $areaFilter->getIso31661Code(),
-            'iso2'     => (string) $areaFilter->getIso31662Code(),
-            'iso3'     => (string) $areaFilter->getIso31663Code(),
-            'sortname' => (string) $areaFilter->getSortName(),
-            'type'     => (string) $areaFilter->getAreaType()
-        ];
-
-        $params = $this->getParameters($filterValues, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params = $this->getParameters($areaFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
         $response = $this->httpAdapter->call('area' . '/', $params, $this->httpOptions, false, true);
 
@@ -121,27 +97,7 @@ class Search
      */
     public function artist(ArtistFilter $artistFilter, PageFilter $pageFilter)
     {
-        $filterValues = [
-            'alias'        => (string) $artistFilter->getAliasName(),
-            'area'         => (string) $artistFilter->getAreaName(),
-            'arid'         => (string) $artistFilter->getArtistId(),
-            'artist'       => (string) $artistFilter->getArtistName(),
-            'artistaccent' => (string) $artistFilter->getArtistNameWithoutAccent(),
-            'begin'        => (string) $artistFilter->getBeginDate(),
-            'beginarea'    => (string) $artistFilter->getBeginArea(),
-            'comment'      => (string) $artistFilter->getComment(),
-            'country'      => (string) $artistFilter->getCountry(),
-            'end'          => (string) $artistFilter->getEndDate(),
-            'endarea'      => (string) $artistFilter->getEndArea(),
-            'ended'        => (string) $artistFilter->isEnded(),
-            'gender'       => (string) $artistFilter->getGender(),
-            'ipi'          => (string) $artistFilter->getIpiCode(),
-            'sortname'     => (string) $artistFilter->getSortName(),
-            'tag'          => (string) $artistFilter->getTag(),
-            'type'         => (string) $artistFilter->getArtistType()
-        ];
-
-        $params = $this->getParameters($filterValues, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params = $this->getParameters($artistFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
         $response = $this->httpAdapter->call('artist' . '/', $params, $this->httpOptions, false, true);
 
@@ -160,24 +116,7 @@ class Search
      */
     public function label(LabelFilter $labelFilter, PageFilter $pageFilter)
     {
-        $filterValues = [
-            'alias'       => (string) $labelFilter->getAliasName(),
-            'begin'       => (string) $labelFilter->getBeginDate(),
-            'code'        => (string) $labelFilter->getLabelCode(),
-            'comment'     => (string) $labelFilter->getComment(),
-            'country'     => (string) $labelFilter->getCountry(),
-            'end'         => (string) $labelFilter->getEndDate(),
-            'ended'       => (string) $labelFilter->isEnded(),
-            'ipi'         => (string) $labelFilter->getIpiCode(),
-            'label'       => (string) $labelFilter->getLabelCode(),
-            'labelaccent' => (string) $labelFilter->getLabelNameWithoutAccent(),
-            'laid'        => (string) $labelFilter->getLabelId(),
-            'sortname'    => (string) $labelFilter->getSortName(),
-            'tag'         => (string) $labelFilter->getTag(),
-            'type'        => (string) $labelFilter->getLabelType()
-        ];
-
-        $params = $this->getParameters($filterValues, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params = $this->getParameters($labelFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
         $response = $this->httpAdapter->call('label' . '/', $params, $this->httpOptions, false, true);
 
@@ -195,37 +134,18 @@ class Search
      *
      * @throws Exception
      */
-    private function getParameters($filterValues, int $limit, int $offset): array
+    private function getParameters($query, int $limit, int $offset): array
     {
-        $filterValues = array_filter($filterValues);
+        if (empty((string) $query)) {
 
-        if (empty($filterValues)) {
-
-            throw new Exception('The artist filter object needs at least 1 argument to create a query.');
+            throw new Exception('The filter needs at least one argument to create a query.');
         }
 
-        $params = ['limit' => $limit, 'offset' => $offset, 'fmt' => 'json'] + ['query' => ''];
-
-        foreach ($filterValues as $key => $val) {
-            if ($params['query'] != '') {
-                $params['query'] .= '+AND+';
-            }
-
-            if (!in_array($key, ['arid'])) {
-                // Lucene escape characters
-                $val = urlencode(
-                    preg_replace('/([\+\-\!\(\)\{\}\[\]\^\~\*\?\:\\\\])/', '\\\\$1', $val)
-                );
-            }
-            // If the search string contains a space, wrap it in brackets/quotes
-            // This isn't always wanted, but for the searches required in this
-            // library, I'm going to do it.
-            if (preg_match('/[\+]/', $val)) {
-                $val = '(' . $val . ')';
-            }
-
-            $params['query'] .= $key . ':' . $val;
-        }
-        return $params;
+        return [
+            'limit'  => $limit,
+            'offset' => $offset,
+            'fmt'    => 'json',
+            'query'  => (string) $query
+        ];
     }
 }
