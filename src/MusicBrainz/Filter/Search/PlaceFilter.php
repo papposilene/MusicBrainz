@@ -12,7 +12,7 @@ use MusicBrainz\Value\Name;
 use MusicBrainz\Value\PlaceType;
 
 /**
- * A filter for searching labels
+ * A filter for searching places
  *
  * @link https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2/Search#Place
  */
