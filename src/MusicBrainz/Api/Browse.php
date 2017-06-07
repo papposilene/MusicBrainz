@@ -64,7 +64,7 @@ class Browse
      * @param AreaFields   $areaFields   A list of properties of the areas to be included in the response
      * @param PageFilter   $pageFilter   A page filter
      *
-     * @return ArtistList
+     * @return AreaList
      */
     public function area(AreaRelation $areaRelation, AreaFields $areaFields, PageFilter $pageFilter)
     {
@@ -123,7 +123,7 @@ class Browse
      * @param CollectionRelation $collectionRelation A relation, the requested collections stand in
      * @param PageFilter         $pageFilter         A page filter
      *
-     * @return ArtistList
+     * @return CollectionList
      */
     public function collection(CollectionRelation $collectionRelation, PageFilter $pageFilter)
     {
@@ -176,7 +176,7 @@ class Browse
      * @param LabelFields   $labelFields   A list of properties of the labels to be included in the response
      * @param PageFilter    $pageFilter    A page filter
      *
-     * @return ArtistList
+     * @return LabelList
      */
     public function label(LabelRelation $labelRelation, LabelFields $labelFields, PageFilter $pageFilter)
     {
@@ -206,7 +206,7 @@ class Browse
      * @param ReleaseFields    $releaseFields   A list of properties of the releases to be included in the response
      * @param PageFilter       $pageFilter      A page filter
      *
-     * @return ArtistList
+     * @return ReleaseList
      */
     public function release(ReleaselRelation $releaseRelation, ReleaseFields $releaseFields, PageFilter $pageFilter)
     {
