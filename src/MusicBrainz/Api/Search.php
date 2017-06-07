@@ -124,6 +124,25 @@ class Search
     }
 
     /**
+     * Searches for places and returns the result.
+     *
+     * @param PlaceFilter $placeFilter A place filter
+     * @param PageFilter  $pageFilter  A page filter
+     *
+     * @return PlaceList
+     *
+     * @throws Exception
+     */
+    public function place(PlaceFilter $placeFilter, PageFilter $pageFilter)
+    {
+        $params = $this->getParameters($placeFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+
+        $response = $this->httpAdapter->call('place' . '/', $params, $this->httpOptions, false, true);
+
+        return new PlaceList((isset($response['placees'])) ? $response['placees'] : []);
+    }
+
+    /**
      * Returns a list of parameters.
      *
      * @param array $filterValues

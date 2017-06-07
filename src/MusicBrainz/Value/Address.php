@@ -21,7 +21,7 @@ class Address
      *
      * @param string $address An address in the standard addressing format for the country it is located in
      */
-    public function __construct(string $address ='')
+    public function __construct(string $address = '')
     {
         $this->address = $address;
     }

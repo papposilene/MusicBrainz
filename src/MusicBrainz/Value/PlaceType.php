@@ -78,7 +78,7 @@ class PlaceType
      *
      * @param string $typeCode A place type code
      */
-    public function __construct(string $typeCode = '')
+    public function __construct(string $typeCode = self::OTHER)
     {
         $this->typeCode = (in_array($typeCode, self::TYPE_CODES))
             ? $typeCode
