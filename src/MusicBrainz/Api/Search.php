@@ -7,12 +7,14 @@ use MusicBrainz\Filter\Search\AnnotationFilter;
 use MusicBrainz\Filter\Search\AreaFilter;
 use MusicBrainz\Filter\Search\ArtistFilter;
 use MusicBrainz\Filter\Search\LabelFilter;
+use MusicBrainz\Filter\Search\PlaceFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Value\AnnotationList;
 use MusicBrainz\Value\AreaList;
 use MusicBrainz\Value\ArtistList;
 use MusicBrainz\Value\LabelList;
+use MusicBrainz\Value\PlaceList;
 
 /**
  * The search API provides methods for searching entities based on the parameters supplied in the filter objects.
@@ -139,7 +141,7 @@ class Search
 
         $response = $this->httpAdapter->call('place' . '/', $params, $this->httpOptions, false, true);
 
-        return new PlaceList((isset($response['placees'])) ? $response['placees'] : []);
+        return new PlaceList((isset($response['places'])) ? $response['places'] : []);
     }
 
     /**
