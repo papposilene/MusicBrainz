@@ -255,7 +255,7 @@ class ReleaseGroupFilter extends AbstractFilter
     /**
      * Adds the type of the release group.
      *
-     * @param ReleaseType $primaryType The type of the release group
+     * @param ReleaseType $releaseGroupType The type of the release group
      *
      * @return Term
      */
