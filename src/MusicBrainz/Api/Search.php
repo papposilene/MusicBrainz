@@ -9,6 +9,7 @@ use MusicBrainz\Filter\Search\ArtistFilter;
 use MusicBrainz\Filter\Search\LabelFilter;
 use MusicBrainz\Filter\Search\PlaceFilter;
 use MusicBrainz\Filter\Search\RecordingFilter;
+use MusicBrainz\Filter\Search\ReleaseGroupFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Value\AnnotationList;
@@ -17,6 +18,7 @@ use MusicBrainz\Value\ArtistList;
 use MusicBrainz\Value\LabelList;
 use MusicBrainz\Value\PlaceList;
 use MusicBrainz\Value\RecordingList;
+use MusicBrainz\Value\ReleaseGroupList;
 
 /**
  * The search API provides methods for searching entities based on the parameters supplied in the filter objects.
@@ -163,6 +165,25 @@ class Search
         $response = $this->httpAdapter->call('recording' . '/', $params, $this->httpOptions, false, true);
 
         return new RecordingList((isset($response['recordings'])) ? $response['recordings'] : []);
+    }
+
+    /**
+     * Searches for recording and returns the result.
+     *
+     * @param ReleaseGroupFilter $releaseGroupFilter A release group filter
+     * @param PageFilter         $pageFilter         A page filter
+     *
+     * @return ReleaseGroupList
+     *
+     * @throws Exception
+     */
+    public function releaseGroup(ReleaseGroupFilter $releaseGroupFilter, PageFilter $pageFilter)
+    {
+        $params = $this->getParameters($releaseGroupFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+
+        $response = $this->httpAdapter->call('release-group' . '/', $params, $this->httpOptions, false, true);
+
+        return new ReleaseGroupList((isset($response['release-groups'])) ? $response['release-groups'] : []);
     }
 
     /**
