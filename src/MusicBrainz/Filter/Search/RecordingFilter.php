@@ -505,7 +505,7 @@ class RecordingFilter extends AbstractFilter
      */
     public function addReleaseStatus(ReleaseStatus $releaseStatus): Term
     {
-        return $this->addPhrase($releaseStatus, self::RELEASE_STATUS);
+        return $this->addTerm($releaseStatus, self::RELEASE_STATUS);
     }
 
     /**
