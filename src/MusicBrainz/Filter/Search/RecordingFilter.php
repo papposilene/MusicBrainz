@@ -26,11 +26,11 @@ use MusicBrainz\Value\TrackNumber;
 class RecordingFilter extends AbstractFilter
 {
     /**
-     * The artist's name, as it appears on the recording
+     * An artist name, as it appears on the recording
      *
      * @var string
      */
-    public const ALBUM_ARTIST_NAME = 'artist';
+    public const ARTIST_NAME = 'artist';
 
     /**
      * The artist ID
@@ -40,11 +40,11 @@ class RecordingFilter extends AbstractFilter
     public const ARTIST_ID = 'arid';
 
     /**
-     * The name of an artist on the recording
+     * The “real name” of any artist that is included in the release group’s artist credit
      *
      * @var string
      */
-    public const ARTIST_NAME = 'artistname';
+    public const ARTIST_REAL_NAME = 'artistname';
 
     /**
      * The country, where the recording is released
@@ -231,15 +231,15 @@ class RecordingFilter extends AbstractFilter
     public const VIDEO = 'video';
 
     /**
-     * Adds an album artist name.
+     * Adds an artist name, as it appears on the recording.
      *
-     * @param Name $albumArtistName An album artist name
+     * @param Name $artistName An artist name, as it appears on the recording
      *
      * @return Phrase
      */
-    public function addAlbumArtistName(Name $albumArtistName): Phrase
+    public function addArtistName(Name $artistName): Phrase
     {
-        return $this->addPhrase($albumArtistName, self::ALBUM_ARTIST_NAME);
+        return $this->addPhrase($artistName, self::ARTIST_NAME);
     }
 
     /**
@@ -255,15 +255,15 @@ class RecordingFilter extends AbstractFilter
     }
 
     /**
-     * Adds an artist name.
+     * Adds a “real name” of any artist that is included in the release group’s artist credit.
      *
-     * @param Name $artistName An artist name
+     * @param Name $artistRealName A “real name” of any artist that is included in the release group’s artist credit
      *
      * @return Phrase
      */
-    public function addArtistName(Name $artistName): Phrase
+    public function addArtistRealName(Name $artistRealName): Phrase
     {
-        return $this->addPhrase($artistName, self::ARTIST_NAME);
+        return $this->addPhrase($artistRealName, self::ARTIST_REAL_NAME);
     }
 
     /**
@@ -458,6 +458,18 @@ class RecordingFilter extends AbstractFilter
     public function addRecordingNameWithoutAccent(Name $recordingNameWithoutAccent): Phrase
     {
         return $this->addPhrase($recordingNameWithoutAccent, self::RECORDING_NAME_WITHOUT_ACCENT);
+    }
+
+    /**
+     * Adds the MusicBrainz ID of a release of this recording.
+     *
+     * @param MBID $releaseId The MusicBrainz ID of a release of this recording
+     *
+     * @return Term
+     */
+    public function addReleaseId(MBID $releaseId): Term
+    {
+        return $this->addTerm($releaseId, self::RELEASE_ID);
     }
 
     /**
