@@ -1,0 +1,32 @@
+<?php
+namespace MusicBrainz\Filter\Property;
+
+use AskLucy\Term;
+use MusicBrainz\Value\Format;
+
+trait ReleaseFormatTrait
+{
+    use AbstractAdderTrait;
+
+    /**
+     * Returns the field name for the release format.
+     *
+     * @return string
+     */
+    public static function format(): string
+    {
+        return 'format';
+    }
+
+    /**
+     * Adds the recording release format.
+     *
+     * @param Format $format The recording release format
+     *
+     * @return Term
+     */
+    public function addFormat(Format $format): Term
+    {
+        return $this->addTerm($format, self::format());
+    }
+}

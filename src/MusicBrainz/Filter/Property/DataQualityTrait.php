@@ -4,7 +4,7 @@ namespace MusicBrainz\Filter\Property;
 use AskLucy\Term;
 use MusicBrainz\Value\DataQuality;
 
-trait QualityTrait
+trait DataQualityTrait
 {
     use AbstractAdderTrait;
 

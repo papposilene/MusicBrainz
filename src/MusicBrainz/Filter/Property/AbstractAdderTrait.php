@@ -4,7 +4,7 @@ namespace MusicBrainz\Filter\Property;
 use AskLucy\Phrase;
 use AskLucy\Term;
 
-trait AbstractAdder
+trait AbstractAdderTrait
 {
     /**
      * Creates a new term by given search word and field name, adds it to the filter query and returns it.

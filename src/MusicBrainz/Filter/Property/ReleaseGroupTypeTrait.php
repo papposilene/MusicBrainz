@@ -2,31 +2,31 @@
 namespace MusicBrainz\Filter\Property;
 
 use AskLucy\Term;
-use MusicBrainz\Value\ReleaseStatus;
+use MusicBrainz\Value\ReleaseType;
 
-trait ReleaseTypeTrait
+trait ReleaseGroupTypeTrait
 {
     use AbstractAdderTrait;
 
     /**
-     * Returns the field name for the release status.
+     * Returns the field name for the type of the release group.
      *
      * @return string
      */
-    public static function releaseStatus(): string
+    public static function releaseGroupType(): string
     {
-        return 'status';
+        return 'type';
     }
 
     /**
-     * Adds the release status.
+     * Adds the type of the release group.
      *
-     * @param ReleaseStatus $releaseStatus The release status
+     * @param ReleaseType $releaseGroupType The type of the release group
      *
      * @return Term
      */
-    public function addReleaseStatus(ReleaseStatus $releaseStatus): Term
+    public function addReleaseGroupType(ReleaseType $releaseGroupType): Term
     {
-        return $this->addTerm($releaseStatus, self::releaseStatus());
+        return $this->addTerm($releaseGroupType, self::releaseGroupType());
     }
 }

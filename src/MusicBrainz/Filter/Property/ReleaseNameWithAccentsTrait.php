@@ -4,7 +4,7 @@ namespace MusicBrainz\Filter\Property;
 use AskLucy\Phrase;
 use MusicBrainz\Value\Name;
 
-trait ReleaseNameWithAccentTrait
+trait ReleaseNameWithAccentsTrait
 {
     use AbstractAdderTrait;
 

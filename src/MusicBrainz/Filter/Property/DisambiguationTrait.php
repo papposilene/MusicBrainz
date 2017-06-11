@@ -1,0 +1,32 @@
+<?php
+namespace MusicBrainz\Filter\Property;
+
+use AskLucy\Phrase;
+use MusicBrainz\Value\Disambiguation;
+
+trait DisambiguationTrait
+{
+    use AbstractAdderTrait;
+
+    /**
+     * Returns the field name for the disambiguation comment.
+     *
+     * @return string
+     */
+    public static function disambiguation(): string
+    {
+        return 'comment';
+    }
+
+    /**
+     * Adds the disambiguation comment.
+     *
+     * @param Disambiguation $disambiguation The disambiguation comment
+     *
+     * @return Phrase
+     */
+    public function addDisambiguationComment(Disambiguation $disambiguation): Phrase
+    {
+        return $this->addPhrase($disambiguation, self::disambiguation());
+    }
+}
