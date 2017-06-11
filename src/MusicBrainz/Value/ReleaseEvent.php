@@ -18,6 +18,6 @@ class ReleaseEvent
     public function __construct(array $releaseEvent = [])
     {
         $this->area = new Area(isset($releaseEvent['area']) ? $releaseEvent['area'] : []);
-        $this->date = new Date(isset($releaseEvent['date']) ? $releaseEvent['date'] : []);
+        $this->date = new Date(isset($releaseEvent['date']) ? $releaseEvent['date'] : '');
     }
 }

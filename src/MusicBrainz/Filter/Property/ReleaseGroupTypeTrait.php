@@ -1,0 +1,32 @@
+<?php
+namespace MusicBrainz\Filter\Property;
+
+use AskLucy\Term;
+use MusicBrainz\Value\ReleaseStatus;
+
+trait ReleaseTypeTrait
+{
+    use AbstractAdderTrait;
+
+    /**
+     * Returns the field name for the release status.
+     *
+     * @return string
+     */
+    public static function releaseStatus(): string
+    {
+        return 'status';
+    }
+
+    /**
+     * Adds the release status.
+     *
+     * @param ReleaseStatus $releaseStatus The release status
+     *
+     * @return Term
+     */
+    public function addReleaseStatus(ReleaseStatus $releaseStatus): Term
+    {
+        return $this->addTerm($releaseStatus, self::releaseStatus());
+    }
+}
