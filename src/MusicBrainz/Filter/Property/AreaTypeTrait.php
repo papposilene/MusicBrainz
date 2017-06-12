@@ -1,0 +1,32 @@
+<?php
+namespace MusicBrainz\Filter\Property;
+
+use AskLucy\Term;
+use MusicBrainz\Value\AreaType;
+
+trait AreaTypeTrait
+{
+    use AbstractAdderTrait;
+
+    /**
+     * Returns the field name for the area type.
+     *
+     * @return string
+     */
+    public static function areaType(): string
+    {
+        return 'type';
+    }
+
+    /**
+     * Adds the area type.
+     *
+     * @param AreaType $areaType The area type
+     *
+     * @return Term
+     */
+    public function addAreaType(AreaType $areaType): Term
+    {
+        return $this->addTerm($areaType, self::areaType());
+    }
+}
