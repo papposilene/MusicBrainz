@@ -1,7 +1,7 @@
 <?php
 namespace MusicBrainz\Filter\Property;
 
-use AskLucy\Term;
+use AskLucy\Phrase;
 use MusicBrainz\Value\Name;
 
 trait AliasNameTrait
@@ -13,7 +13,7 @@ trait AliasNameTrait
      *
      * @return string
      */
-    public static function alias(): string
+    public static function aliasName(): string
     {
         return 'alias';
     }
@@ -23,10 +23,10 @@ trait AliasNameTrait
      *
      * @param Name $aliasName An alias name
      *
-     * @return Term
+     * @return Phrase
      */
-    public function addAlias(Name $aliasName): Term
+    public function addAliasName(Name $aliasName): Phrase
     {
-        return $this->addTerm($aliasName, self::alias());
+        return $this->addPhrase($aliasName, self::aliasName());
     }
 }
