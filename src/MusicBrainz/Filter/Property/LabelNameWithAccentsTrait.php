@@ -4,16 +4,16 @@ namespace MusicBrainz\Filter\Property;
 use AskLucy\Phrase;
 use MusicBrainz\Value\Name;
 
-trait LabelNameTrait
+trait LabelNameWithAccentsTrait
 {
     use AbstractAdderTrait;
 
     /**
-     * Returns the field name for the label name.
+     * Returns the field name for the label's name (with accented characters).
      *
      * @return string
      */
-    public static function labelName(): string
+    public static function labelNameWithAccents(): string
     {
         return 'label';
     }

@@ -19,7 +19,7 @@ class ReleaseFilter extends AbstractFilter
     use \MusicBrainz\Filter\Property\DateTrait;
     use \MusicBrainz\Filter\Property\DisambiguationTrait;
     use \MusicBrainz\Filter\Property\LabelIdTrait;
-    use \MusicBrainz\Filter\Property\LabelNameTrait;
+    use \MusicBrainz\Filter\Property\LabelNameWithoutAccentsTrait;
     use \MusicBrainz\Filter\Property\LanguageTrait;
     use \MusicBrainz\Filter\Property\NumberOfDiscIdsOnMediumTrait;
     use \MusicBrainz\Filter\Property\NumberOfDiscIdsTrait;

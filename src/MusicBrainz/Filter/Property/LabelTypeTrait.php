@@ -1,0 +1,32 @@
+<?php
+namespace MusicBrainz\Filter\Property;
+
+use AskLucy\Term;
+use MusicBrainz\Value\LabelType;
+
+trait LabelTypeTrait
+{
+    use AbstractAdderTrait;
+
+    /**
+     * Returns the field name for the type of label.
+     *
+     * @return string
+     */
+    public static function labelType(): string
+    {
+        return 'type';
+    }
+
+    /**
+     * Adds the type of label.
+     *
+     * @param LabelType $labelType The type of label
+     *
+     * @return Term
+     */
+    public function addLabelType(LabelType $labelType): Term
+    {
+        return $this->addTerm($labelType, self::labelType());
+    }
+}
