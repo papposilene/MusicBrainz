@@ -30,13 +30,8 @@ class Coordinates
      */
     public function __construct(array $coordinates = [])
     {
-        $this->latitude = isset($coordinates['latitude'])
-            ? (float) $coordinates['latitude']
-            : null;
-
-        $this->longitude = isset($coordinates['longitude'])
-            ? (float) $coordinates['longitude']
-            : null;
+        $this->latitude  = new Latitude(isset($coordinates['latitude']) ? (float) $coordinates['latitude'] : null);
+        $this->longitude = new Longitude(isset($coordinates['longitude']) ? (float) $coordinates['longitude'] : null);
     }
 
     /**
@@ -46,7 +41,7 @@ class Coordinates
      */
     public function __toString(): string
     {
-        return (!isNull($this->latitude) && !isNull($this->longitude))
+        return (!empty((string) $this->latitude) && !empty((string) $this->longitude))
             ? $this->latitude . ', ' . $this->longitude
             : '';
     }

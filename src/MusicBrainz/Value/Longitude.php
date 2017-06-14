@@ -1,0 +1,38 @@
+<?php
+
+namespace MusicBrainz\Value;
+
+/**
+ * A longitude
+ *
+ * @link https://musicbrainz.org/doc/Place
+ */
+class Longitude
+{
+    /**
+     * The longitude
+     *
+     * @var null|float
+     */
+    private $longitude;
+
+    /**
+     * Constructs a longitude.
+     *
+     * @param float $longitude The longitude
+     */
+    public function __construct(float $longitude = null)
+    {
+        $this->longitude = $longitude;
+    }
+
+    /**
+     * Returns the longitude as string.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->longitude;
+    }
+}
