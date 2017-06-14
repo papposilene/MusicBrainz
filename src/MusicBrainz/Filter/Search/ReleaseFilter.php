@@ -10,7 +10,7 @@ namespace MusicBrainz\Filter\Search;
 class ReleaseFilter extends AbstractFilter
 {
     use \MusicBrainz\Filter\Property\ArtistIdTrait;
-    use \MusicBrainz\Filter\Property\ArtistNameTrait;
+    use \MusicBrainz\Filter\Property\ArtistNameWithoutAccentsTrait;
     use \MusicBrainz\Filter\Property\ArtistRealNameTrait;
     use \MusicBrainz\Filter\Property\BarcodeTrait;
     use \MusicBrainz\Filter\Property\CountryTrait;

@@ -10,7 +10,7 @@ namespace MusicBrainz\Filter\Search;
 class ReleaseGroupFilter extends AbstractFilter
 {
     use \MusicBrainz\Filter\Property\ArtistIdTrait;
-    use \MusicBrainz\Filter\Property\ArtistNameTrait;
+    use \MusicBrainz\Filter\Property\ArtistNameWithoutAccentsTrait;
     use \MusicBrainz\Filter\Property\ArtistRealNameTrait;
     use \MusicBrainz\Filter\Property\DisambiguationTrait;
     use \MusicBrainz\Filter\Property\CreditNameTrait;

@@ -25,6 +25,8 @@ use MusicBrainz\Value\TrackNumber;
  */
 class RecordingFilter extends AbstractFilter
 {
+    use \MusicBrainz\Filter\Property\ArtistNameWithoutAccentsTrait;
+
     /**
      * An artist name, as it appears on the recording
      *
