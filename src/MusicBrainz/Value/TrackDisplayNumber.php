@@ -1,0 +1,36 @@
+<?php
+
+namespace MusicBrainz\Value;
+
+/**
+ * A track number as displayed on a release
+ */
+class TrackDisplayNumber
+{
+    /**
+     * The displayed track number
+     *
+     * @var null|string
+     */
+    private $trackNumber;
+
+    /**
+     * Constructs a barcode.
+     *
+     * @param null|string $trackNumber The displayed track number
+     */
+    public function __construct(?string $trackNumber = null)
+    {
+        $this->trackNumber = $trackNumber;
+    }
+
+    /**
+     * Returns the track number as string.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return ($this->trackNumber) ? $this->trackNumber : '';
+    }
+}

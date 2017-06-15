@@ -11,7 +11,7 @@ class Track
     use Property\TitleTrait;
     use Property\LengthTrait;
     use Property\ArtistCreditsTrait;
-    use Property\TrackNumberTrait;
+    use Property\TrackDisplayNumberTrait;
 
     /**
      * Constructs a track.
@@ -20,11 +20,11 @@ class Track
      */
     public function __construct(array $track = [])
     {
-        $this->MBID          = new MBID(isset($track['id']) ? $track['id'] : '');
-        $this->title         = new Title(isset($track['title']) ? $track['title'] : '');
-        $this->length        = new Length(isset($track['length']) ? (int) $track['length'] : 0);
-        $this->artistCredits = new ArtistCreditList(isset($track['artist-credit']) ? $track['artist-credit'] : []);
-        $this->trackNumber   = new TrackNumber(isset($track['number']) ? (int) $track['number'] : null);
+        $this->MBID               = new MBID(isset($track['id']) ? $track['id'] : '');
+        $this->title              = new Title(isset($track['title']) ? $track['title'] : '');
+        $this->length             = new Length(isset($track['length']) ? (int) $track['length'] : 0);
+        $this->artistCredits      = new ArtistCreditList(isset($track['artist-credit']) ? $track['artist-credit'] : []);
+        $this->trackDisplayNumber = new TrackDisplayNumber(isset($track['number']) ? $track['number'] : null);
     }
 
     /**

@@ -7,23 +7,23 @@ use MusicBrainz\Value\TrackNumber;
 /**
  * Provides a getter for a track number.
  */
-trait TrackNumberTrait
+trait TrackDisplayNumberTrait
 {
     /**
      * The track number
      *
      * @var TrackNumber
      */
-    public $trackNumber;
+    public $trackDisplayNumber;
 
     /**
      * Returns the track number.
      *
      * @return TrackNumber
      */
-    public function getTrackNumber(): TrackNumber
+    public function getTrackDisplayNumber(): TrackNumber
     {
-        return $this->trackNumber;
+        return $this->trackDisplayNumber;
     }
 
 }
