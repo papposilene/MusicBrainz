@@ -28,12 +28,12 @@ class Track
     }
 
     /**
-     * Returns the rating as string.
+     * Returns the track as string.
      *
      * @return string
      */
     public function __toString(): string
     {
-        return (string) $this->getRatingValue();
+        return $this->title;
     }
 }
