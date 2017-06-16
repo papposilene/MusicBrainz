@@ -11,6 +11,7 @@ use MusicBrainz\Filter\Search\PlaceFilter;
 use MusicBrainz\Filter\Search\RecordingFilter;
 use MusicBrainz\Filter\Search\ReleaseFilter;
 use MusicBrainz\Filter\Search\ReleaseGroupFilter;
+use MusicBrainz\Filter\Search\TagFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Value\AnnotationList;
@@ -21,6 +22,7 @@ use MusicBrainz\Value\PlaceList;
 use MusicBrainz\Value\RecordingList;
 use MusicBrainz\Value\ReleaseGroupList;
 use MusicBrainz\Value\ReleaseList;
+use MusicBrainz\Value\TagList;
 
 /**
  * The search API provides methods for searching entities based on the parameters supplied in the filter objects.
@@ -205,6 +207,25 @@ class Search
         $response = $this->httpAdapter->call('release' . '/', $params, $this->httpOptions, false, true);
 
         return new ReleaseList((isset($response['releases'])) ? $response['releases'] : []);
+    }
+
+    /**
+     * Searches for tags and returns the result.
+     *
+     * @param TagFilter  $tagFilter  A tag filter
+     * @param PageFilter $pageFilter A page filter
+     *
+     * @return ReleaseList
+     *
+     * @throws Exception
+     */
+    public function tag(TagFilter $tagFilter, PageFilter $pageFilter)
+    {
+        $params = $this->getParameters($tagFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+
+        $response = $this->httpAdapter->call('tag' . '/', $params, $this->httpOptions, false, true);
+
+        return new TagList((isset($response['tags'])) ? $response['tags'] : []);
     }
 
     /**
