@@ -23,5 +23,5 @@ class ReleaseGroupFilter extends AbstractFilter
     use \MusicBrainz\Filter\Property\ReleaseNameWithoutAccentsTrait;
     use \MusicBrainz\Filter\Property\ReleaseStatusTrait;
     use \MusicBrainz\Filter\Property\SecondaryTypeTrait;
-    use \MusicBrainz\Filter\Property\TagTrait;
+    use \MusicBrainz\Filter\Property\TagNameTrait;
 }

@@ -25,5 +25,5 @@ class ArtistFilter extends AbstractFilter
     use \MusicBrainz\Filter\Property\EndedTrait;
     use \MusicBrainz\Filter\Property\GenderTrait;
     use \MusicBrainz\Filter\Property\IpiCodeTrait;
-    use \MusicBrainz\Filter\Property\TagTrait;
+    use \MusicBrainz\Filter\Property\TagNameTrait;
 }

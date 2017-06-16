@@ -33,7 +33,7 @@ class RecordingFilter extends AbstractFilter
     use \MusicBrainz\Filter\Property\ReleaseNameWithoutAccentsTrait;
     use \MusicBrainz\Filter\Property\ReleaseStatusTrait;
     use \MusicBrainz\Filter\Property\SecondaryTypeTrait;
-    use \MusicBrainz\Filter\Property\TagTrait;
+    use \MusicBrainz\Filter\Property\TagNameTrait;
     use \MusicBrainz\Filter\Property\TrackDisplayNumberTrait;
     use \MusicBrainz\Filter\Property\TrackIdTrait;
     use \MusicBrainz\Filter\Property\TrackNumberTrait;

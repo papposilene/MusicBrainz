@@ -34,5 +34,5 @@ class LabelFilter extends AbstractFilter
     use \MusicBrainz\Filter\Property\LabelNameWithoutAccentsTrait;
     use \MusicBrainz\Filter\Property\LabelTypeTrait;
     use \MusicBrainz\Filter\Property\SortNameTrait;
-    use \MusicBrainz\Filter\Property\TagTrait;
+    use \MusicBrainz\Filter\Property\TagNameTrait;
 }
