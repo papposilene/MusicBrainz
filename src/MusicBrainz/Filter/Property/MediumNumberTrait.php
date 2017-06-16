@@ -1,0 +1,32 @@
+<?php
+namespace MusicBrainz\Filter\Property;
+
+use AskLucy\Term;
+use MusicBrainz\Value\MediumNumber;
+
+trait MediumNumberTrait
+{
+    use AbstractAdderTrait;
+
+    /**
+     * Returns the field name for the medium number.
+     *
+     * @return string
+     */
+    public static function mediumNumber(): string
+    {
+        return 'position';
+    }
+
+    /**
+     * Adds the medium number.
+     *
+     * @param MediumNumber $mediumNumber The medium number
+     *
+     * @return Term
+     */
+    public function addMediumNumber(MediumNumber $mediumNumber): Term
+    {
+        return $this->addTerm($mediumNumber, self::mediumNumber());
+    }
+}
