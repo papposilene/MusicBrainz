@@ -4,6 +4,7 @@ namespace MusicBrainz\HttpAdapter;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ServerException;
+use MusicBrainz\Config;
 use MusicBrainz\Exception;
 
 /**
@@ -36,44 +37,44 @@ class GuzzleHttpAdapter extends AbstractHttpAdapter
     /**
      * Performs an HTTP request on MusicBrainz API.
      *
-     * @param  string $path
-     * @param  array  $params
-     * @param  array  $options
-     * @param  bool   $isAuthRequired
-     * @param  bool   $returnArray
+     * @param string $path
+     * @param Config $config
+     * @param array  $params
+     * @param bool   $isAuthRequired
+     * @param bool   $returnArray
      *
      * @throws Exception
      * @return array
      */
     public function call(
         string $path,
+        Config $config,
         array $params = array(),
-        array $options = array(),
         bool $isAuthRequired = false,
         bool $returnArray = false
     ) {
-        if ($options['user-agent'] == '') {
+        if (empty($config->getUserAgent())) {
             throw new Exception('You must set a valid User Agent before accessing the MusicBrainz API');
         }
 
         $requestOptions = [
-            'headers'        => [
+            'headers' => [
                 'Accept'     => 'application/json',
-                'User-Agent' => $options['user-agent']
+                'User-Agent' => $config->getUserAgent()
             ],
             'query' => urldecode(http_build_query($params))
         ];
 
         if ($isAuthRequired) {
-            if ($options['user'] != null && $options['password'] != null) {
-                $requestOptions['auth'] = [
-                    $options['user'],
-                    $options['password'],
-                    'digest'
-                ];
-            } else {
+            if (empty($config->getUsername()) || empty($config->getPassword())) {
                 throw new Exception('Authentication is required');
             }
+
+            $requestOptions['auth'] = [
+                $config->getUsername(),
+                $config->getPassword(),
+                'digest'
+            ];
         }
 
         /**

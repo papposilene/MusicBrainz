@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\HttpAdapter;
 
+use MusicBrainz\Config;
+
 /**
  * MusicBrainz HTTP Client interface
  */
@@ -16,8 +18,8 @@ abstract class AbstractHttpAdapter
      * Perform an HTTP request on MusicBrainz
      *
      * @param  string  $path
+     * @param  Config  $config
      * @param  array   $params
-     * @param  array   $options
      * @param  boolean $isAuthRequired
      * @param  boolean $returnArray
      *
@@ -25,8 +27,8 @@ abstract class AbstractHttpAdapter
      */
     abstract public function call(
         string $path,
+        Config $config,
         array $params = array(),
-        array $options = array(),
         bool $isAuthRequired = false,
         bool $returnArray = false
     );

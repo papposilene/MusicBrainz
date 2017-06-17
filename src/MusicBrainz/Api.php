@@ -21,22 +21,22 @@ class Api
     private $httpAdapter;
 
     /**
-     * A list of http options.
+     * The API client configuration
      *
-     * @var array
+     * @var Config
      */
-    private $httpOptions;
+    private $config;
 
     /**
      * Constructs the search API.
      *
      * @param AbstractHttpAdapter $httpAdapter An HTTP adapter
-     * @param array               $httpOptions A list of http options
+     * @param Config              $config      The API client configuration
      */
-    public function __construct(AbstractHttpAdapter $httpAdapter, array $httpOptions)
+    public function __construct(AbstractHttpAdapter $httpAdapter, Config $config)
     {
         $this->httpAdapter = $httpAdapter;
-        $this->httpOptions = $httpOptions;
+        $this->config      = $config;
     }
 
     /**
@@ -46,7 +46,7 @@ class Api
      */
     public function browse()
     {
-        return new Browse($this->httpAdapter, $this->httpOptions);
+        return new Browse($this->httpAdapter, $this->config);
     }
 
     /**
@@ -56,7 +56,7 @@ class Api
      */
     public function lookup()
     {
-        return new Lookup($this->httpAdapter, $this->httpOptions);
+        return new Lookup($this->httpAdapter, $this->config);
     }
 
     /**
@@ -66,6 +66,6 @@ class Api
      */
     public function search()
     {
-        return new Search($this->httpAdapter, $this->httpOptions);
+        return new Search($this->httpAdapter, $this->config);
     }
 }

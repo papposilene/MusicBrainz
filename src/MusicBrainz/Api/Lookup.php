@@ -3,6 +3,7 @@
 namespace MusicBrainz\Api;
 
 use AppBundle\Entity\Label;
+use MusicBrainz\Config;
 use MusicBrainz\Supplement\Lookup\ArtistFields;
 use MusicBrainz\Supplement\Lookup\LabelFields;
 use MusicBrainz\Supplement\Lookup\RecordingFields;
@@ -38,22 +39,22 @@ class Lookup
     private $httpAdapter;
 
     /**
-     * A list of http options.
+     * The API client configuration
      *
-     * @var array
+     * @var Config
      */
-    private $httpOptions;
+    private $config;
 
     /**
      * Constructs the search API.
      *
      * @param AbstractHttpAdapter $httpAdapter An HTTP adapter
-     * @param array               $httpOptions A list of http options
+     * @param Config              $config      The API client configuration
      */
-    public function __construct(AbstractHttpAdapter $httpAdapter, array $httpOptions)
+    public function __construct(AbstractHttpAdapter $httpAdapter, Config $config)
     {
         $this->httpAdapter = $httpAdapter;
-        $this->httpOptions = $httpOptions;
+        $this->config      = $config;
     }
 
     /**
@@ -361,7 +362,7 @@ class Lookup
             '/' .
             (string) $mbid,
             $params,
-            $this->httpOptions,
+            $this->config,
             $authRequired
         );
 

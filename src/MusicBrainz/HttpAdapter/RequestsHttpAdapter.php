@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\HttpAdapter;
 
+use MusicBrainz\Config;
 use MusicBrainz\Exception;
 use Requests;
 
@@ -24,25 +25,25 @@ class RequestsHttpAdapter extends AbstractHttpAdapter
     }
 
     /**
-     * Perform an HTTP request on MusicBrainz
+     * Performs an HTTP request on MusicBrainz
      *
-     * @param  string  $path
-     * @param  array   $params
-     * @param  array   $options
-     * @param  boolean $isAuthRequired
-     * @param  boolean $returnArray force json_decode to return an array instead of an object
+     * @param string  $path
+     * @param Config  $config
+     * @param array   $params
+     * @param boolean $isAuthRequired
+     * @param boolean $returnArray force json_decode to return an array instead of an object
      *
      * @throws \MusicBrainz\Exception
      * @return array
      */
     public function call(
         string $path,
+        Config $config,
         array $params = array(),
-        array $options = array(),
         bool $isAuthRequired = false,
         bool $returnArray = false
     ) {
-        if ($options['user-agent'] == '') {
+        if (empty($config->getUserAgent())) {
             throw new Exception('You must set a valid User Agent before accessing the MusicBrainz API');
         }
 
@@ -55,16 +56,19 @@ class RequestsHttpAdapter extends AbstractHttpAdapter
 
         $headers = array(
             'Accept'     => 'application/json',
-            'User-Agent' => $options['user-agent']
+            'User-Agent' => $config->getUserAgent()
         );
 
         $requestOptions = array();
         if ($isAuthRequired) {
-            if ($options['user'] != null && $options['password'] != null) {
-                $requestOptions['auth'] = array($options['user'], $options['password']);
-            } else {
+            if (empty($config->getUsername()) || empty($config->getPassword())) {
                 throw new Exception('Authentication is required');
             }
+
+            $requestOptions['auth'] = [
+                $config->getUsername(),
+                $config->getPassword()
+            ];
         }
         $request = Requests::get($url, $headers, $requestOptions);
 

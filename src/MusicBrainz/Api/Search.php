@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Api;
 
+use MusicBrainz\Config;
 use MusicBrainz\Exception;
 use MusicBrainz\Filter\Search\AnnotationFilter;
 use MusicBrainz\Filter\Search\AreaFilter;
@@ -39,22 +40,22 @@ class Search
     private $httpAdapter;
 
     /**
-     * A list of http options.
+     * The API client configuration
      *
-     * @var array
+     * @var Config
      */
-    private $httpOptions;
+    private $config;
 
     /**
      * Constructs the search API.
      *
      * @param AbstractHttpAdapter $httpAdapter An HTTP adapter
-     * @param array               $httpOptions A list of http options
+     * @param Config              $config      The API client configuration
      */
-    public function __construct(AbstractHttpAdapter $httpAdapter, array $httpOptions)
+    public function __construct(AbstractHttpAdapter $httpAdapter, Config $config)
     {
         $this->httpAdapter = $httpAdapter;
-        $this->httpOptions = $httpOptions;
+        $this->config      = $config;
     }
 
     /**
@@ -71,7 +72,7 @@ class Search
     {
         $params = $this->getParameters($annotationFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
-        $response = $this->httpAdapter->call('annotation' . '/', $params, $this->httpOptions, false, true);
+        $response = $this->httpAdapter->call('annotation' . '/', $this->config, $params, false, true);
 
         return new AnnotationList((isset($response['annotations'])) ? $response['annotations'] : []);
     }
@@ -90,7 +91,7 @@ class Search
     {
         $params = $this->getParameters($areaFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
-        $response = $this->httpAdapter->call('area' . '/', $params, $this->httpOptions, false, true);
+        $response = $this->httpAdapter->call('area' . '/', $this->config, $params, false, true);
 
         return new AreaList((isset($response['areas'])) ? $response['areas'] : []);
     }
@@ -109,7 +110,7 @@ class Search
     {
         $params = $this->getParameters($artistFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
-        $response = $this->httpAdapter->call('artist' . '/', $params, $this->httpOptions, false, true);
+        $response = $this->httpAdapter->call('artist' . '/', $this->config, $params, false, true);
 
         return new ArtistList((isset($response['artists'])) ? $response['artists'] : []);
     }
@@ -128,7 +129,7 @@ class Search
     {
         $params = $this->getParameters($labelFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
-        $response = $this->httpAdapter->call('label' . '/', $params, $this->httpOptions, false, true);
+        $response = $this->httpAdapter->call('label' . '/', $this->config, $params, false, true);
 
         return new LabelList((isset($response['labels'])) ? $response['labels'] : []);
     }
@@ -147,7 +148,7 @@ class Search
     {
         $params = $this->getParameters($placeFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
-        $response = $this->httpAdapter->call('place' . '/', $params, $this->httpOptions, false, true);
+        $response = $this->httpAdapter->call('place' . '/', $this->config, $params, false, true);
 
         return new PlaceList((isset($response['places'])) ? $response['places'] : []);
     }
@@ -166,7 +167,7 @@ class Search
     {
         $params = $this->getParameters($recordingFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
-        $response = $this->httpAdapter->call('recording' . '/', $params, $this->httpOptions, false, true);
+        $response = $this->httpAdapter->call('recording' . '/', $this->config, $params, false, true);
 
         return new RecordingList((isset($response['recordings'])) ? $response['recordings'] : []);
     }
@@ -185,7 +186,7 @@ class Search
     {
         $params = $this->getParameters($releaseGroupFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
-        $response = $this->httpAdapter->call('release-group' . '/', $params, $this->httpOptions, false, true);
+        $response = $this->httpAdapter->call('release-group' . '/', $this->config, $params, false, true);
 
         return new ReleaseGroupList((isset($response['release-groups'])) ? $response['release-groups'] : []);
     }
@@ -204,7 +205,7 @@ class Search
     {
         $params = $this->getParameters($releaseFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
-        $response = $this->httpAdapter->call('release' . '/', $params, $this->httpOptions, false, true);
+        $response = $this->httpAdapter->call('release' . '/', $this->config, $params, false, true);
 
         return new ReleaseList((isset($response['releases'])) ? $response['releases'] : []);
     }
@@ -215,7 +216,7 @@ class Search
      * @param TagFilter  $tagFilter  A tag filter
      * @param PageFilter $pageFilter A page filter
      *
-     * @return ReleaseList
+     * @return TagList
      *
      * @throws Exception
      */
@@ -223,7 +224,7 @@ class Search
     {
         $params = $this->getParameters($tagFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
-        $response = $this->httpAdapter->call('tag' . '/', $params, $this->httpOptions, false, true);
+        $response = $this->httpAdapter->call('tag' . '/', $this->config, $params, true, true);
 
         return new TagList((isset($response['tags'])) ? $response['tags'] : []);
     }

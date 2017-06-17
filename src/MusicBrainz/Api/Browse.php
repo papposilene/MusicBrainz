@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Api;
 
+use MusicBrainz\Config;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Relation\AbstractRelation;
@@ -39,22 +40,22 @@ class Browse
     private $httpAdapter;
 
     /**
-     * A list of http options.
+     * The API client configuration
      *
-     * @var array
+     * @var Config
      */
-    private $httpOptions;
+    private $config;
 
     /**
      * Constructs the search API.
      *
      * @param AbstractHttpAdapter $httpAdapter An HTTP adapter
-     * @param array               $httpOptions A list of http options
+     * @param Config              $config      The API client configuration
      */
-    public function __construct(AbstractHttpAdapter $httpAdapter, array $httpOptions)
+    public function __construct(AbstractHttpAdapter $httpAdapter, Config $config)
     {
         $this->httpAdapter = $httpAdapter;
-        $this->httpOptions = $httpOptions;
+        $this->config      = $config;
     }
 
     /**
@@ -257,7 +258,7 @@ class Browse
             'fmt'                                       => 'json'
         ];
 
-        $response = $this->httpAdapter->call((string) $entity . '/', $params, $this->httpOptions);
+        $response = $this->httpAdapter->call((string) $entity . '/', $params, $this->config);
 
         return $response;
     }
