@@ -14,8 +14,9 @@
         }
     ],
     "require": {
-        "xenos/asklucy": "1.*",
-        "php": ">=7.1.0"
+        "php": ">=7.1.0",
+        "psr/log": "~1.0",
+        "xenos/asklucy": "1.*"
     },
     "require-dev": {
         "guzzle/guzzle": "~3.8.0",
