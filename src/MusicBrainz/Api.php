@@ -8,8 +8,9 @@ use MusicBrainz\Api\Lookup;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 
 /**
- * Represents a MusicBrainz tag object
- * @package MusicBrainz
+ * Provides methods to get classes for each type of API call: browse, lookup and search.
+ *
+ * @see https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2/
  */
 class Api
 {

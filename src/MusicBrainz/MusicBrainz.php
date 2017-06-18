@@ -2,15 +2,12 @@
 
 namespace MusicBrainz;
 
-use GuzzleHttp\Tests\Logger;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
 /**
- * Connect to the MusicBrainz web service
- *
- * http://musicbrainz.org/doc/Development
+ * The library's main class
  */
 class MusicBrainz
 {
