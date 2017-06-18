@@ -13,6 +13,7 @@ use MusicBrainz\Relation\Entity\EventRelation;
 use MusicBrainz\Relation\Entity\LabelRelation;
 use MusicBrainz\Relation\Entity\PlaceRelation;
 use MusicBrainz\Relation\Entity\RecordingRelation;
+use MusicBrainz\Relation\Entity\ReleaseGroupRelation;
 use MusicBrainz\Relation\Entity\ReleaseRelation;
 use MusicBrainz\Supplement\Browse\AreaFields;
 use MusicBrainz\Supplement\Browse\ArtistFields;
@@ -21,6 +22,7 @@ use MusicBrainz\Supplement\Browse\LabelFields;
 use MusicBrainz\Supplement\Browse\PlaceFields;
 use MusicBrainz\Supplement\Browse\RecordingFields;
 use MusicBrainz\Supplement\Browse\ReleaseFields;
+use MusicBrainz\Supplement\Browse\ReleaseGroupFields;
 use MusicBrainz\Value\AreaList;
 use MusicBrainz\Value\ArtistList;
 use MusicBrainz\Value\CollectionList;
@@ -29,6 +31,7 @@ use MusicBrainz\Value\EventList;
 use MusicBrainz\Value\LabelList;
 use MusicBrainz\Value\PlaceList;
 use MusicBrainz\Value\RecordingList;
+use MusicBrainz\Value\ReleaseGroupList;
 use MusicBrainz\Value\ReleaseList;
 
 /**
@@ -267,8 +270,8 @@ class Browse
      * Looks up for all releases standing in a certain relation.
      *
      * @param ReleaseRelation $releaseRelation A relation, the requested releases stand in
-     * @param ReleaseFields    $releaseFields   A list of properties of the releases to be included in the response
-     * @param PageFilter       $pageFilter      A page filter
+     * @param ReleaseFields   $releaseFields   A list of properties of the releases to be included in the response
+     * @param PageFilter      $pageFilter      A page filter
      *
      * @return ReleaseList
      */
@@ -293,6 +296,40 @@ class Browse
         );
 
         return new ReleaseList($result['releases']);
+    }
+
+    /**
+     * Looks up for all release groups standing in a certain relation.
+     *
+     * @param ReleaseGroupRelation $releaseRelation    A relation, the requested release groups stand in
+     * @param ReleaseGroupFields   $releaseGroupFields A list of properties of the release groups to be included in the
+     *                                                 response
+     * @param PageFilter           $pageFilter         A page filter
+     *
+     * @return ReleaseGroupList
+     */
+    public function releaseGroup(
+        ReleaseGroupRelation $releaseRelation,
+        ReleaseGroupFields $releaseGroupFields,
+        PageFilter $pageFilter
+    ) {
+        $fields = [
+            'annotation'     => $releaseGroupFields->getIncludeFlagForAnnotation(),
+            'artist-credits' => $releaseGroupFields->getIncludeFlagForArtistCredits(),
+            'ratings'        => $releaseGroupFields->getIncludeFlagForRatings(),
+            'tags'           => $releaseGroupFields->getIncludeFlagForTags(),
+            'user-ratings'   => $releaseGroupFields->getIncludeFlagForUserRatings(),
+            'user-tags'      => $releaseGroupFields->getIncludeFlagForUserTags()
+        ];
+
+        $result = $this->browse(
+            new EntityType(EntityType::RELEASE_GROUP),
+            $releaseRelation,
+            $fields,
+            $pageFilter
+        );
+
+        return new ReleaseGroupList($result['release-groups']);
     }
 
     /**
