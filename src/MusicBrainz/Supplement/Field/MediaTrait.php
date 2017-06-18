@@ -16,7 +16,7 @@ trait MediaTrait
      *
      * @return bool
      */
-    public function isMedia(): bool
+    public function getIncludeFlagForMedia(): bool
     {
         return $this->media;
     }
@@ -28,7 +28,7 @@ trait MediaTrait
      *
      * @return self
      */
-    public function setMedia(bool $media = true): self
+    public function includeMedia(bool $media = true): self
     {
         $this->media = $media;
 

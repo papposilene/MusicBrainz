@@ -16,7 +16,7 @@ trait DiscIdsTrait
      *
      * @return bool
      */
-    public function isDiscIds(): bool
+    public function getIncludeFlagForDiscIds(): bool
     {
         return $this->discIds;
     }
@@ -28,7 +28,7 @@ trait DiscIdsTrait
      *
      * @return static
      */
-    public function setDiscIds(bool $discIds = true): self
+    public function includeDiscIds(bool $discIds = true): self
     {
         $this->discIds = $discIds;
 

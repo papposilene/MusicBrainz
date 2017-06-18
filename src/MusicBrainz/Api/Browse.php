@@ -70,12 +70,12 @@ class Browse
     public function area(AreaRelation $areaRelation, AreaFields $areaFields, PageFilter $pageFilter)
     {
         $fields = [
-            'aliases'      => $areaFields->isAliases(),
-            'annotation'   => $areaFields->isAnnotation(),
-            'ratings'      => $areaFields->isRatings(),
-            'tags'         => $areaFields->isTags(),
-            'user-ratings' => $areaFields->isUserRatings(),
-            'user-tags'    => $areaFields->isUserTags()
+            'aliases'      => $areaFields->getIncludeFlagForAliases(),
+            'annotation'   => $areaFields->getIncludeFlagForAnnotation(),
+            'ratings'      => $areaFields->getIncludeFlagForRatings(),
+            'tags'         => $areaFields->getIncludeFlagForTags(),
+            'user-ratings' => $areaFields->getIncludeFlagForUserRatings(),
+            'user-tags'    => $areaFields->getIncludeFlagForUserTags()
         ];
 
         $result = $this->browse(
@@ -100,12 +100,12 @@ class Browse
     public function artist(ArtistRelation $artistRelation, ArtistFields $artistFields, PageFilter $pageFilter)
     {
         $fields = [
-            'aliases'      => $artistFields->isAliases(),
-            'annotation'   => $artistFields->isAnnotation(),
-            'ratings'      => $artistFields->isRatings(),
-            'tags'         => $artistFields->isTags(),
-            'user-ratings' => $artistFields->isUserRatings(),
-            'user-tags'    => $artistFields->isUserTags()
+            'aliases'      => $artistFields->getIncludeFlagForAliases(),
+            'annotation'   => $artistFields->getIncludeFlagForAnnotation(),
+            'ratings'      => $artistFields->getIncludeFlagForRatings(),
+            'tags'         => $artistFields->getIncludeFlagForTags(),
+            'user-ratings' => $artistFields->getIncludeFlagForUserRatings(),
+            'user-tags'    => $artistFields->getIncludeFlagForUserTags()
         ];
 
         $result = $this->browse(
@@ -152,12 +152,12 @@ class Browse
     public function event(EventRelation $eventRelation, EventFields $eventFields, PageFilter $pageFilter)
     {
         $fields = [
-            'aliases'      => $eventFields->isAliases(),
-            'annotation'   => $eventFields->isAnnotation(),
-            'ratings'      => $eventFields->isRatings(),
-            'tags'         => $eventFields->isTags(),
-            'user-ratings' => $eventFields->isUserRatings(),
-            'user-tags'    => $eventFields->isUserTags()
+            'aliases'      => $eventFields->getIncludeFlagForAliases(),
+            'annotation'   => $eventFields->getIncludeFlagForAnnotation(),
+            'ratings'      => $eventFields->getIncludeFlagForRatings(),
+            'tags'         => $eventFields->getIncludeFlagForTags(),
+            'user-ratings' => $eventFields->getIncludeFlagForUserRatings(),
+            'user-tags'    => $eventFields->getIncludeFlagForUserTags()
         ];
 
         $result = $this->browse(
@@ -182,12 +182,12 @@ class Browse
     public function label(LabelRelation $labelRelation, LabelFields $labelFields, PageFilter $pageFilter)
     {
         $fields = [
-            'aliases'      => $labelFields->isAliases(),
-            'annotation'   => $labelFields->isAnnotation(),
-            'ratings'      => $labelFields->isRatings(),
-            'tags'         => $labelFields->isTags(),
-            'user-ratings' => $labelFields->isUserRatings(),
-            'user-tags'    => $labelFields->isUserTags()
+            'aliases'      => $labelFields->getIncludeFlagForAliases(),
+            'annotation'   => $labelFields->getIncludeFlagForAnnotation(),
+            'ratings'      => $labelFields->getIncludeFlagForRatings(),
+            'tags'         => $labelFields->getIncludeFlagForTags(),
+            'user-ratings' => $labelFields->getIncludeFlagForUserRatings(),
+            'user-tags'    => $labelFields->getIncludeFlagForUserTags()
         ];
 
         $result = $this->browse(
@@ -212,14 +212,14 @@ class Browse
     public function release(ReleaseRelation $releaseRelation, ReleaseFields $releaseFields, PageFilter $pageFilter)
     {
         $fields = [
-            'annotation'     => $releaseFields->isAnnotation(),
-            'artist-credits' => $releaseFields->isArtistCredits(),
-            'discids'        => $releaseFields->isDiscIds(),
-            'isrcs'          => $releaseFields->isIsrcs(),
-            'labels'         => $releaseFields->isLabels(),
-            'media'          => $releaseFields->isMedia(),
-            'recordings'     => $releaseFields->isRecordings(),
-            'release-groups' => $releaseFields->isReleaseGroups()
+            'annotation'     => $releaseFields->getIncludeFlagForAnnotation(),
+            'artist-credits' => $releaseFields->getIncludeFlagForArtistCredits(),
+            'discids'        => $releaseFields->getIncludeFlagForDiscIds(),
+            'isrcs'          => $releaseFields->getIncludeFlagForIsrcs(),
+            'labels'         => $releaseFields->getIncludeFlagForLabels(),
+            'media'          => $releaseFields->getIncludeFlagForMedia(),
+            'recordings'     => $releaseFields->getIncludeFlagForRecordings(),
+            'release-groups' => $releaseFields->getIncludeFlagForReleaseGroups()
         ];
 
         $result = $this->browse(
@@ -252,10 +252,10 @@ class Browse
 
         $params = [
             (string) $relation->getEntityType()  => (string) $relation->getEntityId(),
-            'inc'                                       => implode('+', $includes),
-            'limit'                                     => $pageFilter->getLimit(),
-            'offset'                                    => $pageFilter->getOffset(),
-            'fmt'                                       => 'json'
+            'inc'                                => implode('+', $includes),
+            'limit'                              => $pageFilter->getLimit(),
+            'offset'                             => $pageFilter->getOffset(),
+            'fmt'                                => 'json'
         ];
 
         $response = $this->httpAdapter->call((string) $entity . '/', $params, $this->config);

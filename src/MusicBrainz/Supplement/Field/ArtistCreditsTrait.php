@@ -16,7 +16,7 @@ trait ArtistCreditsTrait
      *
      * @return bool
      */
-    public function isArtistCredits(): bool
+    public function getIncludeFlagForArtistCredits(): bool
     {
         return $this->artistCredits;
     }
@@ -28,7 +28,7 @@ trait ArtistCreditsTrait
      *
      * @return self
      */
-    public function setArtistCredits(bool $artistCredits = true): self
+    public function includeArtistCredits(bool $artistCredits = true): self
     {
         $this->artistCredits = $artistCredits;
 

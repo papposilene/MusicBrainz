@@ -16,7 +16,7 @@ trait CollectionsTrait
      *
      * @return bool
      */
-    public function isCollections(): bool
+    public function getIncludeFlagForCollections(): bool
     {
         return $this->collections;
     }
@@ -28,7 +28,7 @@ trait CollectionsTrait
      *
      * @return self
      */
-    public function setCollections(bool $collections = true): self
+    public function includeCollections(bool $collections = true): self
     {
         $this->collections = $collections;
 

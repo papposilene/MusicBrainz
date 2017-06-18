@@ -16,7 +16,7 @@ trait AliasesTrait
      *
      * @return bool
      */
-    public function isAliases(): bool
+    public function getIncludeFlagForAliases(): bool
     {
         return $this->aliases;
     }
@@ -28,7 +28,7 @@ trait AliasesTrait
      *
      * @return self
      */
-    public function setAliases(bool $aliases = true): self
+    public function includeAliases(bool $aliases = true): self
     {
         $this->aliases = $aliases;
 

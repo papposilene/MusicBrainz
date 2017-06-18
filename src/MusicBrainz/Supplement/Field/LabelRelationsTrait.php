@@ -16,7 +16,7 @@ trait LabelRelationsTrait
      *
      * @return bool
      */
-    public function isLabelRelations(): bool
+    public function getIncludeFlagForLabelRelations(): bool
     {
         return $this->labelRelations;
     }
@@ -28,7 +28,7 @@ trait LabelRelationsTrait
      *
      * @return self
      */
-    public function setLabelRelations(bool $labelRelations = true): self
+    public function includeLabelRelations(bool $labelRelations = true): self
     {
         $this->labelRelations = $labelRelations;
 

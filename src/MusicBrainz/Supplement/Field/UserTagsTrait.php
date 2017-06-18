@@ -16,7 +16,7 @@ trait UserTagsTrait
      *
      * @return bool
      */
-    public function isUserTags(): bool
+    public function getIncludeFlagForUserTags(): bool
     {
         return $this->userTags;
     }
@@ -28,7 +28,7 @@ trait UserTagsTrait
      *
      * @return self
      */
-    public function setUserTags(bool $userTags = true): self
+    public function includeUserTags(bool $userTags = true): self
     {
         $this->userTags = $userTags;
 

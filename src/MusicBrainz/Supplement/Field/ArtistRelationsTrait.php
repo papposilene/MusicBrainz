@@ -16,7 +16,7 @@ trait ArtistRelationsTrait
      *
      * @return bool
      */
-    public function isArtistRelations(): bool
+    public function getIncludeFlagForArtistRelations(): bool
     {
         return $this->artistRelations;
     }
@@ -28,7 +28,7 @@ trait ArtistRelationsTrait
      *
      * @return self
      */
-    public function setArtistRelations(bool $artistRelations = true): self
+    public function includeArtistRelations(bool $artistRelations = true): self
     {
         $this->artistRelations = $artistRelations;
 

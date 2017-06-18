@@ -16,7 +16,7 @@ trait ReleaseGroupRelationsTrait
      *
      * @return bool
      */
-    public function isReleaseGroupRelations(): bool
+    public function getIncludeFlagForReleaseGroupRelations(): bool
     {
         return $this->releaseGroupRelations;
     }
@@ -28,7 +28,7 @@ trait ReleaseGroupRelationsTrait
      *
      * @return self
      */
-    public function setReleaseGroupRelations(bool $releaseGroupRelations = true): self
+    public function includeReleaseGroupRelations(bool $releaseGroupRelations = true): self
     {
         $this->releaseGroupRelations = $releaseGroupRelations;
 

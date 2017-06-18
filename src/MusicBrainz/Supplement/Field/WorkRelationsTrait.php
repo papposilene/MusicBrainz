@@ -16,7 +16,7 @@ trait WorkRelationsTrait
      *
      * @return bool
      */
-    public function isWorkRelations(): bool
+    public function getIncludeFlagForWorkRelations(): bool
     {
         return $this->workRelations;
     }
@@ -28,7 +28,7 @@ trait WorkRelationsTrait
      *
      * @return self
      */
-    public function setWorkRelations(bool $workRelations = true): self
+    public function includeWorkRelations(bool $workRelations = true): self
     {
         $this->workRelations = $workRelations;
 

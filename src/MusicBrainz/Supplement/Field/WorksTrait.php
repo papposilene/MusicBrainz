@@ -16,7 +16,7 @@ trait WorksTrait
      *
      * @return bool
      */
-    public function isWorks(): bool
+    public function getIncludeFlagForWorks(): bool
     {
         return $this->works;
     }
@@ -28,7 +28,7 @@ trait WorksTrait
      *
      * @return self
      */
-    public function setWorks(bool $works = true): self
+    public function includeWorks(bool $works = true): self
     {
         $this->works = $works;
 

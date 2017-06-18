@@ -16,7 +16,7 @@ trait ReleaseRelationsTrait
      *
      * @return bool
      */
-    public function isReleaseRelations(): bool
+    public function getIncludeFlagForReleaseRelations(): bool
     {
         return $this->releaseRelations;
     }
@@ -28,7 +28,7 @@ trait ReleaseRelationsTrait
      *
      * @return self
      */
-    public function setReleaseRelations(bool $releaseRelations = true): self
+    public function includeReleaseRelations(bool $releaseRelations = true): self
     {
         $this->releaseRelations = $releaseRelations;
 

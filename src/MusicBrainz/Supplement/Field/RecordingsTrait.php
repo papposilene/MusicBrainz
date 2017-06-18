@@ -16,7 +16,7 @@ trait RecordingsTrait
      *
      * @return bool
      */
-    public function isRecordings(): bool
+    public function getIncludeFlagForRecordings(): bool
     {
         return $this->recordings;
     }
@@ -28,7 +28,7 @@ trait RecordingsTrait
      *
      * @return self
      */
-    public function setRecordings(bool $recordings = true): self
+    public function includeRecordings(bool $recordings = true): self
     {
         $this->recordings = $recordings;
 

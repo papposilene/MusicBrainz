@@ -16,7 +16,7 @@ trait ReleasesTrait
      *
      * @return bool
      */
-    public function isReleases(): bool
+    public function getIncludeFlagForReleases(): bool
     {
         return $this->releases;
     }
@@ -28,7 +28,7 @@ trait ReleasesTrait
      *
      * @return self
      */
-    public function setReleases(bool $releases = true): self
+    public function includeReleases(bool $releases = true): self
     {
         $this->releases = $releases;
 

@@ -16,7 +16,7 @@ trait IsrcsTrait
      *
      * @return bool
      */
-    public function isIsrcs(): bool
+    public function getIncludeFlagForIsrcs(): bool
     {
         return $this->isrcs;
     }
@@ -28,7 +28,7 @@ trait IsrcsTrait
      *
      * @return self
      */
-    public function setIsrcs(bool $isrcs = true): self
+    public function includeIsrcs(bool $isrcs = true): self
     {
         $this->isrcs = $isrcs;
 

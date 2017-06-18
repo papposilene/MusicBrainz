@@ -16,7 +16,7 @@ trait RatingsTrait
      *
      * @return bool
      */
-    public function isRatings(): bool
+    public function getIncludeFlagForRatings(): bool
     {
         return $this->ratings;
     }
@@ -28,7 +28,7 @@ trait RatingsTrait
      *
      * @return self
      */
-    public function setRatings(bool $ratings = true): self
+    public function includeRatings(bool $ratings = true): self
     {
         $this->ratings = $ratings;
 

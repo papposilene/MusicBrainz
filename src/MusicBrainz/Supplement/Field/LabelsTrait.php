@@ -16,7 +16,7 @@ trait LabelsTrait
      *
      * @return bool
      */
-    public function isLabels(): bool
+    public function getIncludeFlagForLabels(): bool
     {
         return $this->labels;
     }
@@ -28,7 +28,7 @@ trait LabelsTrait
      *
      * @return self
      */
-    public function setLabels(bool $labels = true): self
+    public function includeLabels(bool $labels = true): self
     {
         $this->labels = $labels;
 

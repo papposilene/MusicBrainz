@@ -16,7 +16,7 @@ trait URLRelationsTrait
      *
      * @return bool
      */
-    public function isURLRelations(): bool
+    public function getIncludeFlagForURLRelations(): bool
     {
         return $this->URLRelations;
     }
@@ -28,7 +28,7 @@ trait URLRelationsTrait
      *
      * @return self
      */
-    public function setURLRelations(bool $URLRelations = true): self
+    public function includeURLRelations(bool $URLRelations = true): self
     {
         $this->URLRelations = $URLRelations;
 

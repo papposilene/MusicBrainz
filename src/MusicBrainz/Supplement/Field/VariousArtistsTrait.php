@@ -16,7 +16,7 @@ trait VariousArtistsTrait
      *
      * @return bool
      */
-    public function isVariousArtists(): bool
+    public function getIncludeFlagForVariousArtists(): bool
     {
         return $this->variousArtists;
     }
@@ -28,7 +28,7 @@ trait VariousArtistsTrait
      *
      * @return self
      */
-    public function setVariousArtists(bool $variousArtists = true): self
+    public function includeVariousArtists(bool $variousArtists = true): self
     {
         $this->variousArtists = $variousArtists;
 

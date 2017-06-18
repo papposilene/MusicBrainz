@@ -16,7 +16,7 @@ trait RecordingRelationsTrait
      *
      * @return bool
      */
-    public function isRecordingRelations(): bool
+    public function getIncludeFlagForRecordingRelations(): bool
     {
         return $this->recordingRelations;
     }
@@ -28,7 +28,7 @@ trait RecordingRelationsTrait
      *
      * @return self
      */
-    public function setRecordingRelations(bool $recordingRelations = true): self
+    public function includeRecordingRelations(bool $recordingRelations = true): self
     {
         $this->recordingRelations = $recordingRelations;
 

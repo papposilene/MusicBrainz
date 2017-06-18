@@ -16,7 +16,7 @@ trait AnnotationTrait
      *
      * @return bool
      */
-    public function isAnnotation(): bool
+    public function getIncludeFlagForAnnotation(): bool
     {
         return $this->annotation;
     }
@@ -28,7 +28,7 @@ trait AnnotationTrait
      *
      * @return self
      */
-    public function setAnnotation(bool $annotation = true): self
+    public function includeAnnotation(bool $annotation = true): self
     {
         $this->annotation = $annotation;
 

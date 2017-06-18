@@ -16,7 +16,7 @@ trait TagsRelationsTrait
      *
      * @return bool
      */
-    public function isTagsRelations(): bool
+    public function getIncludeFlagForTagsRelations(): bool
     {
         return $this->tagsRelations;
     }
@@ -28,7 +28,7 @@ trait TagsRelationsTrait
      *
      * @return self
      */
-    public function setTagsRelations(bool $tagsRelations = true): self
+    public function includeTagsRelations(bool $tagsRelations = true): self
     {
         $this->tagsRelations = $tagsRelations;
 
