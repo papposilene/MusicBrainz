@@ -12,12 +12,14 @@ use MusicBrainz\Relation\Entity\CollectionRelation;
 use MusicBrainz\Relation\Entity\EventRelation;
 use MusicBrainz\Relation\Entity\LabelRelation;
 use MusicBrainz\Relation\Entity\PlaceRelation;
+use MusicBrainz\Relation\Entity\RecordingRelation;
 use MusicBrainz\Relation\Entity\ReleaseRelation;
 use MusicBrainz\Supplement\Browse\AreaFields;
 use MusicBrainz\Supplement\Browse\ArtistFields;
 use MusicBrainz\Supplement\Browse\EventFields;
 use MusicBrainz\Supplement\Browse\LabelFields;
 use MusicBrainz\Supplement\Browse\PlaceFields;
+use MusicBrainz\Supplement\Browse\RecordingFields;
 use MusicBrainz\Supplement\Browse\ReleaseFields;
 use MusicBrainz\Value\AreaList;
 use MusicBrainz\Value\ArtistList;
@@ -26,6 +28,7 @@ use MusicBrainz\Value\EntityType;
 use MusicBrainz\Value\EventList;
 use MusicBrainz\Value\LabelList;
 use MusicBrainz\Value\PlaceList;
+use MusicBrainz\Value\RecordingList;
 use MusicBrainz\Value\ReleaseList;
 
 /**
@@ -229,6 +232,35 @@ class Browse
         );
 
         return new PlaceList($result['places']);
+    }
+
+    /**
+     * Looks up for all recordings standing in a certain relation.
+     *
+     * @param RecordingRelation $recordingRelation A relation, the requested recording stand in
+     * @param RecordingFields   $recordingFields   A list of properties of the recordings to be included in the response
+     * @param PageFilter        $pageFilter        A page filter
+     *
+     * @return RecordingList
+     */
+    public function recording(RecordingRelation $recordingRelation, RecordingFields $recordingFields, PageFilter $pageFilter)
+    {
+        $fields = [
+            'annotation'     => $recordingFields->getIncludeFlagForAnnotation(),
+            'artist-credits' => $recordingFields->getIncludeFlagForArtistCredits(),
+            'isrcs'          => $recordingFields->getIncludeFlagForIsrcs(),
+            'tags'           => $recordingFields->getIncludeFlagForTags(),
+            'user-tags'      => $recordingFields->getIncludeFlagForUserTags()
+        ];
+
+        $result = $this->browse(
+            new EntityType(EntityType::RECORDING),
+            $recordingRelation,
+            $fields,
+            $pageFilter
+        );
+
+        return new RecordingList($result['recordings']);
     }
 
     /**
