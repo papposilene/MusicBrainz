@@ -6,12 +6,12 @@ use MusicBrainz\Config;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Relation\AbstractRelation;
-use MusicBrainz\Relation\Entity\AreaRelation as AreaRelation;
-use MusicBrainz\Relation\Entity\ArtistRelation as ArtistRelation;
-use MusicBrainz\Relation\Entity\CollectionRelation as CollectionRelation;
-use MusicBrainz\Relation\Entity\EventRelation as EventRelation;
-use MusicBrainz\Relation\Entity\LabelRelation as LabelRelation;
-use MusicBrainz\Relation\Entity\ReleaseRelation as ReleaselRelation;
+use MusicBrainz\Relation\Entity\AreaRelation;
+use MusicBrainz\Relation\Entity\ArtistRelation;
+use MusicBrainz\Relation\Entity\CollectionRelation;
+use MusicBrainz\Relation\Entity\EventRelation;
+use MusicBrainz\Relation\Entity\LabelRelation;
+use MusicBrainz\Relation\Entity\ReleaseRelation;
 use MusicBrainz\Supplement\Browse\AreaFields;
 use MusicBrainz\Supplement\Browse\ArtistFields;
 use MusicBrainz\Supplement\Browse\EventFields;
@@ -203,13 +203,13 @@ class Browse
     /**
      * Looks up for all releases standing in a certain relation.
      *
-     * @param ReleaselRelation $releaseRelation A relation, the requested releases stand in
+     * @param ReleaseRelation $releaseRelation A relation, the requested releases stand in
      * @param ReleaseFields    $releaseFields   A list of properties of the releases to be included in the response
      * @param PageFilter       $pageFilter      A page filter
      *
      * @return ReleaseList
      */
-    public function release(ReleaselRelation $releaseRelation, ReleaseFields $releaseFields, PageFilter $pageFilter)
+    public function release(ReleaseRelation $releaseRelation, ReleaseFields $releaseFields, PageFilter $pageFilter)
     {
         $fields = [
             'annotation'     => $releaseFields->isAnnotation(),
