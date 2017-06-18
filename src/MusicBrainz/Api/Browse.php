@@ -11,11 +11,13 @@ use MusicBrainz\Relation\Entity\ArtistRelation;
 use MusicBrainz\Relation\Entity\CollectionRelation;
 use MusicBrainz\Relation\Entity\EventRelation;
 use MusicBrainz\Relation\Entity\LabelRelation;
+use MusicBrainz\Relation\Entity\PlaceRelation;
 use MusicBrainz\Relation\Entity\ReleaseRelation;
 use MusicBrainz\Supplement\Browse\AreaFields;
 use MusicBrainz\Supplement\Browse\ArtistFields;
 use MusicBrainz\Supplement\Browse\EventFields;
 use MusicBrainz\Supplement\Browse\LabelFields;
+use MusicBrainz\Supplement\Browse\PlaceFields;
 use MusicBrainz\Supplement\Browse\ReleaseFields;
 use MusicBrainz\Value\AreaList;
 use MusicBrainz\Value\ArtistList;
@@ -23,6 +25,7 @@ use MusicBrainz\Value\CollectionList;
 use MusicBrainz\Value\EntityType;
 use MusicBrainz\Value\EventList;
 use MusicBrainz\Value\LabelList;
+use MusicBrainz\Value\PlaceList;
 use MusicBrainz\Value\ReleaseList;
 
 /**
@@ -198,6 +201,34 @@ class Browse
         );
 
         return new LabelList($result['labels']);
+    }
+
+    /**
+     * Looks up for all places standing in a certain relation.
+     *
+     * @param PlaceRelation $placeRelation A relation, the requested place stand in
+     * @param PlaceFields   $placeFields   A list of properties of the places to be included in the response
+     * @param PageFilter    $pageFilter    A page filter
+     *
+     * @return PlaceList
+     */
+    public function place(PlaceRelation $placeRelation, PlaceFields $placeFields, PageFilter $pageFilter)
+    {
+        $fields = [
+            'aliases'      => $placeFields->getIncludeFlagForAliases(),
+            'annotation'   => $placeFields->getIncludeFlagForAnnotation(),
+            'tags'         => $placeFields->getIncludeFlagForTags(),
+            'user-tags'    => $placeFields->getIncludeFlagForUserTags()
+        ];
+
+        $result = $this->browse(
+            new EntityType(EntityType::PLACE),
+            $placeRelation,
+            $fields,
+            $pageFilter
+        );
+
+        return new PlaceList($result['places']);
     }
 
     /**
