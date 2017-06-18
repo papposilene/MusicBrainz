@@ -289,7 +289,7 @@ class Browse
             'fmt'                                => 'json'
         ];
 
-        $response = $this->httpAdapter->call((string) $entity . '/', $params, $this->config);
+        $response = $this->httpAdapter->call((string) $entity . '/', $this->config, $params);
 
         return $response;
     }
