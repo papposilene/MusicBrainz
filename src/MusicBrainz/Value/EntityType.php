@@ -92,6 +92,13 @@ class EntityType
     public const RELEASE_GROUP = 'release-group';
 
     /**
+     * A series
+     *
+     * @var string
+     */
+    public const SERIES = 'series';
+
+    /**
      * A track
      *
      * @var string
