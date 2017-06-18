@@ -144,6 +144,7 @@ class EntityType
         self::RECOURCE,
         self::RELEASE,
         self::RELEASE_GROUP,
+        self::SERIES,
         self::TRACK,
         self::URL,
         self::WORK
