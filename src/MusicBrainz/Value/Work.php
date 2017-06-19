@@ -30,7 +30,7 @@ class Work
         $this->attributes     = new AttributeList(isset($work['attributes']) ? $work['attributes'] : []);
         $this->disambiguation = new Disambiguation(isset($work['disambiguation']) ? $work['disambiguation'] : '');
         $this->iswcs          = new ISWCList(isset($work['iswcs']) ? $work['iswcs'] : []);
-        $this->language       = new Language(isset($work['language']) ? $work['language'] : []);
+        $this->language       = new Language(isset($work['language']) ? $work['language'] : '');
         $this->MBID           = new MBID(isset($work['id']) ? $work['id'] : '');
         $this->title          = new Title(isset($work['title']) ? $work['title'] : '');
         $this->workType       = new WorkType(isset($work['type']) ? $work['type'] : '');
