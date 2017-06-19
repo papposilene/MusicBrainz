@@ -15,6 +15,7 @@ use MusicBrainz\Relation\Entity\PlaceRelation;
 use MusicBrainz\Relation\Entity\RecordingRelation;
 use MusicBrainz\Relation\Entity\ReleaseGroupRelation;
 use MusicBrainz\Relation\Entity\ReleaseRelation;
+use MusicBrainz\Relation\Entity\SeriesRelation;
 use MusicBrainz\Supplement\Browse\AreaFields;
 use MusicBrainz\Supplement\Browse\ArtistFields;
 use MusicBrainz\Supplement\Browse\EventFields;
@@ -23,6 +24,7 @@ use MusicBrainz\Supplement\Browse\PlaceFields;
 use MusicBrainz\Supplement\Browse\RecordingFields;
 use MusicBrainz\Supplement\Browse\ReleaseFields;
 use MusicBrainz\Supplement\Browse\ReleaseGroupFields;
+use MusicBrainz\Supplement\Browse\SeriesFields;
 use MusicBrainz\Value\AreaList;
 use MusicBrainz\Value\ArtistList;
 use MusicBrainz\Value\CollectionList;
@@ -33,6 +35,7 @@ use MusicBrainz\Value\PlaceList;
 use MusicBrainz\Value\RecordingList;
 use MusicBrainz\Value\ReleaseGroupList;
 use MusicBrainz\Value\ReleaseList;
+use MusicBrainz\Value\SeriesList;
 
 /**
  * Browse requests are a direct lookup of all the entities directly linked to another entity.
@@ -330,6 +333,36 @@ class Browse
         );
 
         return new ReleaseGroupList($result['release-groups']);
+    }
+
+    /**
+     * Looks up for all series standing in a certain relation.
+     *
+     * @param SeriesRelation $seriesRelation A relation, the requested series stand in
+     * @param SeriesFields   $seriesFields   A list of properties of the series to be included in the response
+     * @param PageFilter      $pageFilter    A page filter
+     *
+     * @return SeriesList
+     */
+    public function series(SeriesRelation $seriesRelation, SeriesFields $seriesFields, PageFilter $pageFilter)
+    {
+        $fields = [
+            'aliases'      => $seriesFields->getIncludeFlagForAliases(),
+            'annotation'   => $seriesFields->getIncludeFlagForAnnotation(),
+            'ratings'      => $seriesFields->getIncludeFlagForRatings(),
+            'tags'         => $seriesFields->getIncludeFlagForTags(),
+            'user-ratings' => $seriesFields->getIncludeFlagForUserRatings(),
+            'user-tags'    => $seriesFields->getIncludeFlagForUserTags()
+        ];
+
+        $result = $this->browse(
+            new EntityType(EntityType::SERIES),
+            $seriesRelation,
+            $fields,
+            $pageFilter
+        );
+
+        return new SeriesList($result['series']);
     }
 
     /**
