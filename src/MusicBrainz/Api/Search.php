@@ -14,6 +14,7 @@ use MusicBrainz\Filter\Search\RecordingFilter;
 use MusicBrainz\Filter\Search\ReleaseFilter;
 use MusicBrainz\Filter\Search\ReleaseGroupFilter;
 use MusicBrainz\Filter\Search\TagFilter;
+use MusicBrainz\Filter\Search\WorkFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Value\AnnotationList;
@@ -26,6 +27,7 @@ use MusicBrainz\Value\RecordingList;
 use MusicBrainz\Value\ReleaseGroupList;
 use MusicBrainz\Value\ReleaseList;
 use MusicBrainz\Value\TagList;
+use MusicBrainz\Value\WorkList;
 
 /**
  * The search API provides methods for searching entities based on the parameters supplied in the filter objects.
@@ -248,6 +250,25 @@ class Search
         $response = $this->httpAdapter->call('tag' . '/', $this->config, $params, true, true);
 
         return new TagList((isset($response['tags'])) ? $response['tags'] : []);
+    }
+
+    /**
+     * Searches for works and returns the result.
+     *
+     * @param WorkFilter $workFilter A work filter
+     * @param PageFilter $pageFilter A page filter
+     *
+     * @return WorkList
+     *
+     * @throws Exception
+     */
+    public function work(WorkFilter $workFilter, PageFilter $pageFilter)
+    {
+        $params = $this->getParameters($workFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+
+        $response = $this->httpAdapter->call('work' . '/', $this->config, $params, false, true);
+
+        return new WorkList((isset($response['works'])) ? $response['works'] : []);
     }
 
     /**
