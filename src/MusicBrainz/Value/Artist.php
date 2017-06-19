@@ -12,7 +12,7 @@ class Artist
     use Property\MBIDTrait;
     use Property\ArtistTypeTrait;
     use Property\ScoreTrait;
-    use Property\NameTrait;
+    use Property\ArtistNameTrait;
     use Property\SortNameTrait;
     use Property\GenderTrait;
     use Property\CountryTrait;
@@ -35,7 +35,7 @@ class Artist
         $this->MBID           = new MBID(isset($artist['id']) ? (string) $artist['id'] : '');
         $this->artistType     = new ArtistType(isset($artist['type']) ? (string) $artist['type'] : '');
         $this->score          = new Score(isset($artist['score']) ? (int) $artist['score'] : 0);
-        $this->name           = new Name(isset($artist['name']) ? (string) $artist['name'] : '');
+        $this->artistName     = new Name(isset($artist['name']) ? (string) $artist['name'] : '');
         $this->sortName       = new SortName(isset($artist['sort-name']) ? (string) $artist['sort-name'] : '');
         $this->gender         = new Gender(isset($artist['gender']) ? (string) $artist['gender'] : Gender::UNDEFINED);
         $this->country        = new Country(isset($artist['country']) ? (string) $artist['country'] : '');
