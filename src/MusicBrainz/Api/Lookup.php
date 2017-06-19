@@ -113,7 +113,7 @@ class Lookup
      *
      * @param MBID $mbid A Music Brainz Identifier (MBID) of a collection
      *
-     * @return Artist
+     * @return Collection
      */
     public function collection(MBID $mbid)
     {
@@ -225,7 +225,7 @@ class Lookup
      *
      * @param MBID $mbid A Music Brainz Identifier (MBID) of a release
      *
-     * @return Recording
+     * @return Release
      */
     public function release(MBID $mbid, ReleaseFields $releaseFields)
     {
@@ -261,7 +261,7 @@ class Lookup
      *
      * @param MBID $mbid A Music Brainz Identifier (MBID) of a release group
      *
-     * @return Recording
+     * @return ReleaseGroup
      */
     public function releaseGroup(MBID $mbid, ReleaseGroupFields $releaseGroupFields)
     {
@@ -296,7 +296,7 @@ class Lookup
      *
      * @param MBID $mbid A Music Brainz Identifier (MBID) of an URL
      *
-     * @return U
+     * @return URL
      */
     public function url(MBID $mbid)
     {
@@ -310,7 +310,7 @@ class Lookup
      *
      * @param MBID $mbid A Music Brainz Identifier (MBID) of a work
      *
-     * @return Recording
+     * @return Work
      */
     public function work(MBID $mbid, WorkFields $workFields)
     {
