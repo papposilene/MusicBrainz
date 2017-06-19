@@ -29,8 +29,8 @@ class CdStub
     {
         $this->artistName     = new Name(isset($cdStub['artist']) ? $cdStub['artist'] : '');
         $this->barcode        = new Barcode(isset($cdStub['barcode']) ? $cdStub['barcode'] : '');
-        $this->disambiguation = new Disambiguation(isset($cdStub['iso-3166-1-codes']) ? $cdStub['iso-3166-1-codes'] : []);
-        $this->title          = new Title(isset($cdStub['iso-3166-2-codes']) ? $cdStub['iso-3166-2-codes'] : []);
+        $this->disambiguation = new Disambiguation(isset($cdStub['comment']) ? $cdStub['comment'] : '');
+        $this->title          = new Title(isset($cdStub['title']) ? $cdStub['title'] : '');
     }
 
     /**
