@@ -240,8 +240,8 @@ class Lookup
             'discids'              => $releaseFields->getIncludeFlagForDiscIds(),
             'artist-rels'          => $releaseFields->getIncludeFlagForArtistRelations(),
             'label-rels'           => $releaseFields->getIncludeFlagForLabelRelations(), // misc
-            'artist-rels'          => $releaseFields->getIncludeFlagForRecordingRelations(),
-            'recording-rels'       => $releaseFields->getIncludeFlagForReleaseRelations(),
+            'recording-rels'       => $releaseFields->getIncludeFlagForRecordingRelations(),
+            'release-rels'         => $releaseFields->getIncludeFlagForReleaseRelations(),
             'release-group-rels'   => $releaseFields->getIncludeFlagForReleaseGroupRelations(),
             'url-rels'             => $releaseFields->getIncludeFlagForURLRelations(),
             'work-rels'            => $releaseFields->getIncludeFlagForWorkRelations(),
