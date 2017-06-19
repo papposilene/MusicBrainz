@@ -16,6 +16,7 @@ use MusicBrainz\Relation\Entity\RecordingRelation;
 use MusicBrainz\Relation\Entity\ReleaseGroupRelation;
 use MusicBrainz\Relation\Entity\ReleaseRelation;
 use MusicBrainz\Relation\Entity\SeriesRelation;
+use MusicBrainz\Relation\Entity\WorkRelation;
 use MusicBrainz\Supplement\Browse\AreaFields;
 use MusicBrainz\Supplement\Browse\ArtistFields;
 use MusicBrainz\Supplement\Browse\EventFields;
@@ -25,6 +26,7 @@ use MusicBrainz\Supplement\Browse\RecordingFields;
 use MusicBrainz\Supplement\Browse\ReleaseFields;
 use MusicBrainz\Supplement\Browse\ReleaseGroupFields;
 use MusicBrainz\Supplement\Browse\SeriesFields;
+use MusicBrainz\Supplement\Browse\WorkFields;
 use MusicBrainz\Value\AreaList;
 use MusicBrainz\Value\ArtistList;
 use MusicBrainz\Value\CollectionList;
@@ -36,6 +38,7 @@ use MusicBrainz\Value\RecordingList;
 use MusicBrainz\Value\ReleaseGroupList;
 use MusicBrainz\Value\ReleaseList;
 use MusicBrainz\Value\SeriesList;
+use MusicBrainz\Value\WorkList;
 
 /**
  * Browse requests are a direct lookup of all the entities directly linked to another entity.
@@ -363,6 +366,36 @@ class Browse
         );
 
         return new SeriesList($result['series']);
+    }
+
+    /**
+     * Looks up for all works standing in a certain relation.
+     *
+     * @param WorkRelation $workRelation A relation, the requested series stand in
+     * @param WorkFields   $workFields   A list of properties of the series to be included in the response
+     * @param PageFilter   $pageFilter   A page filter
+     *
+     * @return WorkList
+     */
+    public function work(WorkRelation $workRelation, WorkFields $workFields, PageFilter $pageFilter)
+    {
+        $fields = [
+            'aliases'      => $workFields->getIncludeFlagForAliases(),
+            'annotation'   => $workFields->getIncludeFlagForAnnotation(),
+            'ratings'      => $workFields->getIncludeFlagForRatings(),
+            'tags'         => $workFields->getIncludeFlagForTags(),
+            'user-ratings' => $workFields->getIncludeFlagForUserRatings(),
+            'user-tags'    => $workFields->getIncludeFlagForUserTags()
+        ];
+
+        $result = $this->browse(
+            new EntityType(EntityType::WORK),
+            $workRelation,
+            $fields,
+            $pageFilter
+        );
+
+        return new WorkList($result['works']);
     }
 
     /**
