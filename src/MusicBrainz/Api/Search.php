@@ -7,6 +7,7 @@ use MusicBrainz\Exception;
 use MusicBrainz\Filter\Search\AnnotationFilter;
 use MusicBrainz\Filter\Search\AreaFilter;
 use MusicBrainz\Filter\Search\ArtistFilter;
+use MusicBrainz\Filter\Search\CdStubFilter;
 use MusicBrainz\Filter\Search\LabelFilter;
 use MusicBrainz\Filter\Search\PlaceFilter;
 use MusicBrainz\Filter\Search\RecordingFilter;
@@ -18,6 +19,7 @@ use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Value\AnnotationList;
 use MusicBrainz\Value\AreaList;
 use MusicBrainz\Value\ArtistList;
+use MusicBrainz\Value\CdStubListList;
 use MusicBrainz\Value\LabelList;
 use MusicBrainz\Value\PlaceList;
 use MusicBrainz\Value\RecordingList;
@@ -116,6 +118,25 @@ class Search
     }
 
     /**
+     * Searches for CD stubs and returns the result.
+     *
+     * @param CdStubFilter $cdStubFilter A CD stub filter
+     * @param PageFilter   $pageFilter   A page filter
+     *
+     * @return CdStubListList
+     *
+     * @throws Exception
+     */
+    public function cdStub(CdStubFilter $cdStubFilter, PageFilter $pageFilter)
+    {
+        $params = $this->getParameters($cdStubFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+
+        $response = $this->httpAdapter->call('cdstub' . '/', $this->config, $params, false, true);
+
+        return new CdStubListList((isset($response['cdstubs'])) ? $response['cdstubs'] : []);
+    }
+
+    /**
      * Searches for labels and returns the result.
      *
      * @param LabelFilter $labelFilter A label filter
@@ -173,25 +194,6 @@ class Search
     }
 
     /**
-     * Searches for release groups and returns the result.
-     *
-     * @param ReleaseGroupFilter $releaseGroupFilter A release group filter
-     * @param PageFilter         $pageFilter         A page filter
-     *
-     * @return ReleaseGroupList
-     *
-     * @throws Exception
-     */
-    public function releaseGroup(ReleaseGroupFilter $releaseGroupFilter, PageFilter $pageFilter)
-    {
-        $params = $this->getParameters($releaseGroupFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
-
-        $response = $this->httpAdapter->call('release-group' . '/', $this->config, $params, false, true);
-
-        return new ReleaseGroupList((isset($response['release-groups'])) ? $response['release-groups'] : []);
-    }
-
-    /**
      * Searches for releases and returns the result.
      *
      * @param ReleaseFilter $releaseFilter A release group filter
@@ -208,6 +210,25 @@ class Search
         $response = $this->httpAdapter->call('release' . '/', $this->config, $params, false, true);
 
         return new ReleaseList((isset($response['releases'])) ? $response['releases'] : []);
+    }
+
+    /**
+     * Searches for release groups and returns the result.
+     *
+     * @param ReleaseGroupFilter $releaseGroupFilter A release group filter
+     * @param PageFilter         $pageFilter         A page filter
+     *
+     * @return ReleaseGroupList
+     *
+     * @throws Exception
+     */
+    public function releaseGroup(ReleaseGroupFilter $releaseGroupFilter, PageFilter $pageFilter)
+    {
+        $params = $this->getParameters($releaseGroupFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+
+        $response = $this->httpAdapter->call('release-group' . '/', $this->config, $params, false, true);
+
+        return new ReleaseGroupList((isset($response['release-groups'])) ? $response['release-groups'] : []);
     }
 
     /**
