@@ -1,0 +1,32 @@
+<?php
+namespace MusicBrainz\Filter\Property;
+
+use AskLucy\Term;
+use MusicBrainz\Value\MBID;
+
+trait WorkIdTrait
+{
+    use AbstractAdderTrait;
+
+    /**
+     * Returns the field name for the work ID.
+     *
+     * @return string
+     */
+    public static function workId(): string
+    {
+        return 'wid';
+    }
+
+    /**
+     * Adds the MusicBrainz Identifier (MBID) of a work.
+     *
+     * @param MBID $workId The MusicBrainz Identifier (MBID) of a work
+     *
+     * @return Term
+     */
+    public function addWorkId(MBID $workId): Term
+    {
+        return $this->addTerm($workId, self::workId());
+    }
+}
