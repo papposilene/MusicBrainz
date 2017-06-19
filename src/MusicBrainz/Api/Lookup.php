@@ -81,26 +81,26 @@ class Lookup
     public function artist(MBID $mbid, ArtistFields $artistFields)
     {
         $fields = [
-            'recordings'         => $artistFields->isRecordings(),
-            'releases'           => $artistFields->isReleases(),
-            'release-groups'     => $artistFields->isReleaseGroups(),
-            'works'              => $artistFields->isWorks(),
-            'various-artists'    => $artistFields->isVariousArtists(),
-            'discids'            => $artistFields->isDiscIds(),
-            'media'              => $artistFields->isMedia(),
-            'aliases'            => $artistFields->isAliases(),
-            'tags'               => $artistFields->isTags(),
-            'user-tags'          => $artistFields->isUserTags(),
-            'ratings'            => $artistFields->isRatings(),
-            'user-ratings'       => $artistFields->isUserRatings(), // misc
-            'artist-rels'        => $artistFields->isArtistRelations(),
-            'label-rels'         => $artistFields->isLabelRelations(),
-            'recording-rels'     => $artistFields->isRecordingRelations(),
-            'release-rels'       => $artistFields->isReleaseRelations(),
-            'release-group-rels' => $artistFields->isReleaseGroupRelations(),
-            'url-rels'           => $artistFields->isURLRelations(),
-            'work-rels'          => $artistFields->isWorkRelations(),
-            'annotation'         => $artistFields->isAnnotation()
+            'recordings'         => $artistFields->getIncludeFlagForRecordings(),
+            'releases'           => $artistFields->getIncludeFlagForReleases(),
+            'release-groups'     => $artistFields->getIncludeFlagForReleaseGroups(),
+            'works'              => $artistFields->getIncludeFlagForWorks(),
+            'various-artists'    => $artistFields->getIncludeFlagForVariousArtists(),
+            'discids'            => $artistFields->getIncludeFlagForDiscIds(),
+            'media'              => $artistFields->getIncludeFlagForMedia(),
+            'aliases'            => $artistFields->getIncludeFlagForAliases(),
+            'tags'               => $artistFields->getIncludeFlagForTags(),
+            'user-tags'          => $artistFields->getIncludeFlagForUserTags(),
+            'ratings'            => $artistFields->getIncludeFlagForRatings(),
+            'user-ratings'       => $artistFields->getIncludeFlagForUserRatings(), // misc
+            'artist-rels'        => $artistFields->getIncludeFlagForArtistRelations(),
+            'label-rels'         => $artistFields->getIncludeFlagForLabelRelations(),
+            'recording-rels'     => $artistFields->getIncludeFlagForRecordingRelations(),
+            'release-rels'       => $artistFields->getIncludeFlagForReleaseRelations(),
+            'release-group-rels' => $artistFields->getIncludeFlagForReleaseGroupRelations(),
+            'url-rels'           => $artistFields->getIncludeFlagForURLRelations(),
+            'work-rels'          => $artistFields->getIncludeFlagForWorkRelations(),
+            'annotation'         => $artistFields->getIncludeFlagForAnnotation()
         ];
 
         $result = $this->lookup(new EntityType(EntityType::ARTIST), $mbid, $fields);
@@ -162,22 +162,22 @@ class Lookup
     public function label(MBID $mbid, LabelFields $labelFields)
     {
         $fields = [
-            'releases'           => $labelFields->isReleases(),
-            'discids'            => $labelFields->isDiscIds(),
-            'media'              => $labelFields->isMedia(),
-            'aliases'            => $labelFields->isAliases(),
-            'tags'               => $labelFields->isTags(),
-            'user-tags'          => $labelFields->isUserTags(),
-            'ratings'            => $labelFields->isRatings(),
-            'user-ratings'       => $labelFields->isUserRatings(), // misc
-            'artist-rels'        => $labelFields->isArtistRelations(),
-            'label-rels'         => $labelFields->isLabelRelations(),
-            'recording-rels'     => $labelFields->isRecordingRelations(),
-            'release-rels'       => $labelFields->isReleaseRelations(),
-            'release-group-rels' => $labelFields->isReleaseGroupRelations(),
-            'url-rels'           => $labelFields->isURLRelations(),
-            'work-rels'          => $labelFields->isWorkRelations(),
-            'annotation'         => $labelFields->isAnnotation()
+            'releases'           => $labelFields->getIncludeFlagForReleases(),
+            'discids'            => $labelFields->getIncludeFlagForDiscIds(),
+            'media'              => $labelFields->getIncludeFlagForMedia(),
+            'aliases'            => $labelFields->getIncludeFlagForAliases(),
+            'tags'               => $labelFields->getIncludeFlagForTags(),
+            'user-tags'          => $labelFields->getIncludeFlagForUserTags(),
+            'ratings'            => $labelFields->getIncludeFlagForRatings(),
+            'user-ratings'       => $labelFields->getIncludeFlagForUserRatings(), // misc
+            'artist-rels'        => $labelFields->getIncludeFlagForArtistRelations(),
+            'label-rels'         => $labelFields->getIncludeFlagForLabelRelations(),
+            'recording-rels'     => $labelFields->getIncludeFlagForRecordingRelations(),
+            'release-rels'       => $labelFields->getIncludeFlagForReleaseRelations(),
+            'release-group-rels' => $labelFields->getIncludeFlagForReleaseGroupRelations(),
+            'url-rels'           => $labelFields->getIncludeFlagForURLRelations(),
+            'work-rels'          => $labelFields->getIncludeFlagForWorkRelations(),
+            'annotation'         => $labelFields->getIncludeFlagForAnnotation()
         ];
 
         $result = $this->lookup(new EntityType(EntityType::LABEL), $mbid, $fields);
@@ -195,24 +195,24 @@ class Lookup
     public function recording(MBID $mbid, RecordingFields $recordingFields)
     {
         $fields = [
-            'artists' =>            $recordingFields->isArtists(),
-            'releases' =>           $recordingFields->isReleases(), // sub queries
-            'discids' =>            $recordingFields->isDiscIds(),
-            'media' =>              $recordingFields->isMedia(),
-            'artist-credits' =>     $recordingFields->isArtistCredits(),
-            'tags' =>               $recordingFields->isTags(),
-            'user-tags' =>          $recordingFields->isUserTags(),
-            'ratings' =>            $recordingFields->isRatings(),
-            'user-ratings' =>       $recordingFields->isUserRatings(), // misc
-            'artist-rels' =>        $recordingFields->isArtistRelations(),
-            'label-rels' =>         $recordingFields->isLabelRelations(),
-            'recording-rels' =>     $recordingFields->isRecordingRelations(),
-            'release-rels' =>       $recordingFields->isReleaseRelations(),
-            'release-group-rels' => $recordingFields->isReleaseGroupRelations(),
-            'url-rels' =>           $recordingFields->isURLRelations(),
-            'work-rels' =>          $recordingFields->isWorkRelations(),
-            'annotation' =>         $recordingFields->isAnnotation(),
-            'aliases' =>            $recordingFields->isAliases()
+            'artists' =>            $recordingFields->getIncludeFlagForArtists(),
+            'releases' =>           $recordingFields->getIncludeFlagForReleases(), // sub queries
+            'discids' =>            $recordingFields->getIncludeFlagForDiscIds(),
+            'media' =>              $recordingFields->getIncludeFlagForMedia(),
+            'artist-credits' =>     $recordingFields->getIncludeFlagForArtistCredits(),
+            'tags' =>               $recordingFields->getIncludeFlagForTags(),
+            'user-tags' =>          $recordingFields->getIncludeFlagForUserTags(),
+            'ratings' =>            $recordingFields->getIncludeFlagForRatings(),
+            'user-ratings' =>       $recordingFields->getIncludeFlagForUserRatings(), // misc
+            'artist-rels' =>        $recordingFields->getIncludeFlagForArtistRelations(),
+            'label-rels' =>         $recordingFields->getIncludeFlagForLabelRelations(),
+            'recording-rels' =>     $recordingFields->getIncludeFlagForRecordingRelations(),
+            'release-rels' =>       $recordingFields->getIncludeFlagForReleaseRelations(),
+            'release-group-rels' => $recordingFields->getIncludeFlagForReleaseGroupRelations(),
+            'url-rels' =>           $recordingFields->getIncludeFlagForURLRelations(),
+            'work-rels' =>          $recordingFields->getIncludeFlagForWorkRelations(),
+            'annotation' =>         $recordingFields->getIncludeFlagForAnnotation(),
+            'aliases' =>            $recordingFields->getIncludeFlagForAliases()
         ];
 
         $result = $this->lookup(new EntityType(EntityType::RECORDING), $mbid, $fields);
@@ -230,25 +230,25 @@ class Lookup
     public function release(MBID $mbid, ReleaseFields $releaseFields)
     {
         $fields = [
-            'artists'              => $releaseFields->isArtists(),
-            'collections'          => $releaseFields->isCollections(),
-            'labels'               => $releaseFields->isLabels(), // sub queries
-            'recordings'           => $releaseFields->isRecordings(),
-            'release-groups'       => $releaseFields->isReleaseGroups(),
-            'media'                => $releaseFields->isMedia(),
-            'artist-credits'       => $releaseFields->isArtistCredits(),
-            'discids'              => $releaseFields->isDiscIds(),
-            'artist-rels'          => $releaseFields->isArtistRelations(),
-            'label-rels'           => $releaseFields->isLabelRelations(), // misc
-            'artist-rels'          => $releaseFields->isRecordingRelations(),
-            'recording-rels'       => $releaseFields->isReleaseRelations(),
-            'release-group-rels'   => $releaseFields->isReleaseGroupRelations(),
-            'url-rels'             => $releaseFields->isURLRelations(),
-            'work-rels'            => $releaseFields->isWorkRelations(),
-            'recording-level-rels' => $releaseFields->isRecordingLevelRelations(),
-            'work-level-rels'      => $releaseFields->isWorkLevelRelations(),
-            'annotation'           => $releaseFields->isAnnotation(),
-            'aliases'              => $releaseFields->isAliases()
+            'artists'              => $releaseFields->getIncludeFlagForArtists(),
+            'collections'          => $releaseFields->getIncludeFlagForCollections(),
+            'labels'               => $releaseFields->getIncludeFlagForLabels(), // sub queries
+            'recordings'           => $releaseFields->getIncludeFlagForRecordings(),
+            'release-groups'       => $releaseFields->getIncludeFlagForReleaseGroups(),
+            'media'                => $releaseFields->getIncludeFlagForMedia(),
+            'artist-credits'       => $releaseFields->getIncludeFlagForArtistCredits(),
+            'discids'              => $releaseFields->getIncludeFlagForDiscIds(),
+            'artist-rels'          => $releaseFields->getIncludeFlagForArtistRelations(),
+            'label-rels'           => $releaseFields->getIncludeFlagForLabelRelations(), // misc
+            'artist-rels'          => $releaseFields->getIncludeFlagForRecordingRelations(),
+            'recording-rels'       => $releaseFields->getIncludeFlagForReleaseRelations(),
+            'release-group-rels'   => $releaseFields->getIncludeFlagForReleaseGroupRelations(),
+            'url-rels'             => $releaseFields->getIncludeFlagForURLRelations(),
+            'work-rels'            => $releaseFields->getIncludeFlagForWorkRelations(),
+            'recording-level-rels' => $releaseFields->getIncludeFlagForRecordingLevelRelations(),
+            'work-level-rels'      => $releaseFields->getIncludeFlagForWorkLevelRelations(),
+            'annotation'           => $releaseFields->getIncludeFlagForAnnotation(),
+            'aliases'              => $releaseFields->getIncludeFlagForAliases()
         ];
 
         $result = $this->lookup(new EntityType(EntityType::RELEASE), $mbid, $fields);
@@ -266,24 +266,24 @@ class Lookup
     public function releaseGroup(MBID $mbid, ReleaseGroupFields $releaseGroupFields)
     {
         $fields = [
-            'artists'            => $releaseGroupFields->isArtists(),
-            'releases'           => $releaseGroupFields->isReleases(),
-            'discids'            => $releaseGroupFields->isDiscIds(),
-            'media'              => $releaseGroupFields->isMedia(),
-            'artist-credits'     => $releaseGroupFields->isArtistCredits(),
-            'tags'               => $releaseGroupFields->isTags(),
-            'user-tags'          => $releaseGroupFields->isUserTags(),
-            'ratings'            => $releaseGroupFields->isRatings(),
-            'user-ratings'       => $releaseGroupFields->isUserRatings(),
-            'artist-rels'        => $releaseGroupFields->isArtistRelations(),
-            'label-rels'         => $releaseGroupFields->isLabelRelations(),
-            'recording-rels'     => $releaseGroupFields->isRecordingRelations(),
-            'release-rels'       => $releaseGroupFields->isReleaseRelations(),
-            'release-group-rels' => $releaseGroupFields->isReleaseGroupRelations(),
-            'url-rels'           => $releaseGroupFields->isURLRelations(),
-            'work-level-rels'    => $releaseGroupFields->isWorkLevelRelations(),
-            'annotations'        => $releaseGroupFields->isAnnotation(),
-            'aliases'            => $releaseGroupFields->isAliases()
+            'artists'            => $releaseGroupFields->getIncludeFlagForArtists(),
+            'releases'           => $releaseGroupFields->getIncludeFlagForReleases(),
+            'discids'            => $releaseGroupFields->getIncludeFlagForDiscIds(),
+            'media'              => $releaseGroupFields->getIncludeFlagForMedia(),
+            'artist-credits'     => $releaseGroupFields->getIncludeFlagForArtistCredits(),
+            'tags'               => $releaseGroupFields->getIncludeFlagForTags(),
+            'user-tags'          => $releaseGroupFields->getIncludeFlagForUserTags(),
+            'ratings'            => $releaseGroupFields->getIncludeFlagForRatings(),
+            'user-ratings'       => $releaseGroupFields->getIncludeFlagForUserRatings(),
+            'artist-rels'        => $releaseGroupFields->getIncludeFlagForArtistRelations(),
+            'label-rels'         => $releaseGroupFields->getIncludeFlagForLabelRelations(),
+            'recording-rels'     => $releaseGroupFields->getIncludeFlagForRecordingRelations(),
+            'release-rels'       => $releaseGroupFields->getIncludeFlagForReleaseRelations(),
+            'release-group-rels' => $releaseGroupFields->getIncludeFlagForReleaseGroupRelations(),
+            'url-rels'           => $releaseGroupFields->getIncludeFlagForURLRelations(),
+            'work-level-rels'    => $releaseGroupFields->getIncludeFlagForWorkLevelRelations(),
+            'annotations'        => $releaseGroupFields->getIncludeFlagForAnnotation(),
+            'aliases'            => $releaseGroupFields->getIncludeFlagForAliases()
         ];
 
         $result = $this->lookup(new EntityType(EntityType::RELEASE_GROUP), $mbid, $fields);
@@ -315,20 +315,20 @@ class Lookup
     public function work(MBID $mbid, WorkFields $workFields)
     {
         $fields = [
-            'artists'       => $workFields->isArtists(),
-            'aliases'       => $workFields->isAliases(),
-            'tags'          => $workFields->isTags(),
-            'user-tags'     => $workFields->isUserTags(),
-            'ratings'       => $workFields->isRatings(),
-            'user-ratings'  => $workFields->isUserRatings(),
-            'artist-rels'   => $workFields->isArtistRelations(),
-            'label-rels'    => $workFields->isLabelRelations(),
-            'recording-rels'=> $workFields->isRecordingRelations(),
-            'release-rels'  => $workFields->isReleaseRelations(),
-            'release-group' => $workFields->isReleaseGroups(),
-            'url-rels'      => $workFields->isURLRelations(),
-            'work-rels'     => $workFields->isWorkRelations(),
-            'annotations'   => $workFields->isAnnotation()
+            'artists'       => $workFields->getIncludeFlagForArtists(),
+            'aliases'       => $workFields->getIncludeFlagForAliases(),
+            'tags'          => $workFields->getIncludeFlagForTags(),
+            'user-tags'     => $workFields->getIncludeFlagForUserTags(),
+            'ratings'       => $workFields->getIncludeFlagForRatings(),
+            'user-ratings'  => $workFields->getIncludeFlagForUserRatings(),
+            'artist-rels'   => $workFields->getIncludeFlagForArtistRelations(),
+            'label-rels'    => $workFields->getIncludeFlagForLabelRelations(),
+            'recording-rels'=> $workFields->getIncludeFlagForRecordingRelations(),
+            'release-rels'  => $workFields->getIncludeFlagForReleaseRelations(),
+            'release-group' => $workFields->getIncludeFlagForReleaseGroups(),
+            'url-rels'      => $workFields->getIncludeFlagForURLRelations(),
+            'work-rels'     => $workFields->getIncludeFlagForWorkRelations(),
+            'annotations'   => $workFields->getIncludeFlagForAnnotation()
         ];
 
         $result = $this->lookup(new EntityType(EntityType::WORK), $mbid, $fields);
