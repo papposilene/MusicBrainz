@@ -64,7 +64,7 @@ class Lookup
      *
      * @return Area
      */
-    public function area(MBID $mbid)
+    public function area(MBID $mbid): Area
     {
         $result = $this->lookup(new EntityType(EntityType::AREA), $mbid);
 
@@ -78,7 +78,7 @@ class Lookup
      *
      * @return Artist
      */
-    public function artist(MBID $mbid, ArtistFields $artistFields)
+    public function artist(MBID $mbid, ArtistFields $artistFields): Artist
     {
         $fields = [
             'recordings'         => $artistFields->getIncludeFlagForRecordings(),
@@ -115,7 +115,7 @@ class Lookup
      *
      * @return Collection
      */
-    public function collection(MBID $mbid)
+    public function collection(MBID $mbid): Collection
     {
         $fields = [];
 
@@ -145,7 +145,7 @@ class Lookup
      *
      * @return Instrument
      */
-    public function instrument(MBID $mbid)
+    public function instrument(MBID $mbid): Instrument
     {
         $result = $this->lookup(new EntityType(EntityType::INSTRUMENT), $mbid);
 
@@ -159,7 +159,7 @@ class Lookup
      *
      * @return Label
      */
-    public function label(MBID $mbid, LabelFields $labelFields)
+    public function label(MBID $mbid, LabelFields $labelFields): Label
     {
         $fields = [
             'releases'           => $labelFields->getIncludeFlagForReleases(),
@@ -192,7 +192,7 @@ class Lookup
      *
      * @return Recording
      */
-    public function recording(MBID $mbid, RecordingFields $recordingFields)
+    public function recording(MBID $mbid, RecordingFields $recordingFields): Recording
     {
         $fields = [
             'artists' =>            $recordingFields->getIncludeFlagForArtists(),
@@ -227,7 +227,7 @@ class Lookup
      *
      * @return Release
      */
-    public function release(MBID $mbid, ReleaseFields $releaseFields)
+    public function release(MBID $mbid, ReleaseFields $releaseFields): Release
     {
         $fields = [
             'artists'              => $releaseFields->getIncludeFlagForArtists(),
@@ -263,7 +263,7 @@ class Lookup
      *
      * @return ReleaseGroup
      */
-    public function releaseGroup(MBID $mbid, ReleaseGroupFields $releaseGroupFields)
+    public function releaseGroup(MBID $mbid, ReleaseGroupFields $releaseGroupFields): ReleaseGroup
     {
         $fields = [
             'artists'            => $releaseGroupFields->getIncludeFlagForArtists(),
@@ -298,7 +298,7 @@ class Lookup
      *
      * @return URL
      */
-    public function url(MBID $mbid)
+    public function url(MBID $mbid): URL
     {
         $result = $this->lookup(new EntityType(EntityType::URL), $mbid);
 
@@ -312,7 +312,7 @@ class Lookup
      *
      * @return Work
      */
-    public function work(MBID $mbid, WorkFields $workFields)
+    public function work(MBID $mbid, WorkFields $workFields): Work
     {
         $fields = [
             'artists'       => $workFields->getIncludeFlagForArtists(),
