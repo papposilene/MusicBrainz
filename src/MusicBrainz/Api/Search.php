@@ -72,7 +72,7 @@ class Search
      *
      * @throws Exception
      */
-    public function annotation(AnnotationFilter $annotationFilter, PageFilter $pageFilter)
+    public function annotation(AnnotationFilter $annotationFilter, PageFilter $pageFilter): AnnotationList
     {
         $params = $this->getParameters($annotationFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
@@ -91,7 +91,7 @@ class Search
      *
      * @throws Exception
      */
-    public function area(AreaFilter $areaFilter, PageFilter $pageFilter)
+    public function area(AreaFilter $areaFilter, PageFilter $pageFilter): AreaList
     {
         $params = $this->getParameters($areaFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
@@ -110,7 +110,7 @@ class Search
      *
      * @throws Exception
      */
-    public function artist(ArtistFilter $artistFilter, PageFilter $pageFilter)
+    public function artist(ArtistFilter $artistFilter, PageFilter $pageFilter): ArtistList
     {
         $params = $this->getParameters($artistFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
@@ -129,7 +129,7 @@ class Search
      *
      * @throws Exception
      */
-    public function cdStub(CdStubFilter $cdStubFilter, PageFilter $pageFilter)
+    public function cdStub(CdStubFilter $cdStubFilter, PageFilter $pageFilter): CdStubListList
     {
         $params = $this->getParameters($cdStubFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
@@ -148,7 +148,7 @@ class Search
      *
      * @throws Exception
      */
-    public function label(LabelFilter $labelFilter, PageFilter $pageFilter)
+    public function label(LabelFilter $labelFilter, PageFilter $pageFilter): LabelList
     {
         $params = $this->getParameters($labelFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
@@ -167,7 +167,7 @@ class Search
      *
      * @throws Exception
      */
-    public function place(PlaceFilter $placeFilter, PageFilter $pageFilter)
+    public function place(PlaceFilter $placeFilter, PageFilter $pageFilter): PlaceList
     {
         $params = $this->getParameters($placeFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
@@ -186,7 +186,7 @@ class Search
      *
      * @throws Exception
      */
-    public function recording(RecordingFilter $recordingFilter, PageFilter $pageFilter)
+    public function recording(RecordingFilter $recordingFilter, PageFilter $pageFilter): RecordingList
     {
         $params = $this->getParameters($recordingFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
@@ -205,7 +205,7 @@ class Search
      *
      * @throws Exception
      */
-    public function release(ReleaseFilter $releaseFilter, PageFilter $pageFilter)
+    public function release(ReleaseFilter $releaseFilter, PageFilter $pageFilter): ReleaseList
     {
         $params = $this->getParameters($releaseFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
@@ -224,7 +224,7 @@ class Search
      *
      * @throws Exception
      */
-    public function releaseGroup(ReleaseGroupFilter $releaseGroupFilter, PageFilter $pageFilter)
+    public function releaseGroup(ReleaseGroupFilter $releaseGroupFilter, PageFilter $pageFilter): ReleaseGroupList
     {
         $params = $this->getParameters($releaseGroupFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
@@ -243,7 +243,7 @@ class Search
      *
      * @throws Exception
      */
-    public function tag(TagFilter $tagFilter, PageFilter $pageFilter)
+    public function tag(TagFilter $tagFilter, PageFilter $pageFilter): TagList
     {
         $params = $this->getParameters($tagFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
@@ -262,7 +262,7 @@ class Search
      *
      * @throws Exception
      */
-    public function work(WorkFilter $workFilter, PageFilter $pageFilter)
+    public function work(WorkFilter $workFilter, PageFilter $pageFilter): WorkList
     {
         $params = $this->getParameters($workFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
 
