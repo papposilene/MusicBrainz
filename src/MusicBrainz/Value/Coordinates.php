@@ -2,26 +2,17 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * The latitude and longitude describe the location of the place using geographic coordinates.
  *
  * @link https://musicbrainz.org/doc/Place
  */
-class Coordinates
+class Coordinates implements Value
 {
-    /**
-     * The latitude
-     *
-     * @var null|float
-     */
-    private $latitude;
-
-    /**
-     * The longitude
-     *
-     * @var null|float
-     */
-    private $longitude;
+    use Property\LatitudeTrait;
+    use Property\LongitudeTrait;
 
     /**
      * Constructs the coordinates.
@@ -41,8 +32,8 @@ class Coordinates
      */
     public function __toString(): string
     {
-        return (!empty((string) $this->latitude) && !empty((string) $this->longitude))
-            ? $this->latitude . ', ' . $this->longitude
+        return (!empty((string) $this->getLatitude()) && !empty((string) $this->getLongitude()))
+            ? $this->getLatitude() . ', ' . $this->getLongitude()
             : '';
     }
 }
