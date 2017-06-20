@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An artist
  *
  * @see https://musicbrainz.org/doc/Artist
  */
-class Artist
+class Artist implements Value
 {
     use Property\MBIDTrait;
     use Property\ArtistTypeTrait;
@@ -47,5 +49,15 @@ class Artist
         $this->lifeSpan       = new LifeSpan(isset($artist['life-span']) ? $artist['life-span'] : []);
         $this->aliases        = new AliasList(isset($artist['aliases']) ? $artist['aliases'] : []);
         $this->tags           = new TagList(isset($artist['tags']) ? $artist['tags'] : []);
+    }
+
+    /**
+     * Returns the artist as string.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->getArtistName();
     }
 }

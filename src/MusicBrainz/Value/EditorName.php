@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An editor name
  */
-class EditorName
+class EditorName implements Value
 {
     /**
      * The editor name

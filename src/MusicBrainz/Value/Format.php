@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A releases format
  *
  * @see https://musicbrainz.org/doc/Release/Format
  */
-class Format
+class Format implements Value
 {
     /**
      * The code of the format

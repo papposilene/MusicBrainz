@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An entity type
  */
-class EntityType
+class EntityType implements Value
 {
     /**
      * An area

@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An artist credit
  */
-class ArtistCredit
+class ArtistCredit implements Value
 {
     use Property\NameTrait;
     use Property\ArtistTrait;
@@ -30,9 +32,8 @@ class ArtistCredit
      */
     public function __toString(): string
     {
-        $joinPhrase = (empty($this->joinPhrase)) ? '' : $this->joinPhrase . ' ';
-        $joinPhrase .= $this->name;
+        $joinPhrase = (empty($this->getJoinPhrase())) ? '' : $this->getJoinPhrase() . ' ';
 
-        return $joinPhrase;
+        return $joinPhrase . $this->getName();
     }
 }

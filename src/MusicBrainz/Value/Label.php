@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A label
  */
-class Label
+class Label implements Value
 {
     use Property\AliasesTrait;
     use Property\AreaTrait;
@@ -41,5 +43,15 @@ class Label
         $this->name           = new Name(isset($label['name']) ? (string) $label['name'] : '');
         $this->score          = isset($label['score']) ? (int)$label['score'] : 0;
         $this->sortName       = new SortName(isset($label['sort-name']) ? (string)$label['sort-name'] : '');
+    }
+
+    /**
+     * Returns the label as string.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->getName();
     }
 }

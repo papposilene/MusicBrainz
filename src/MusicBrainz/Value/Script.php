@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A script
  */
-class Script
+class Script implements Value
 {
     /**
      * The script code

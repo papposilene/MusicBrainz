@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A disc
  */
-class Disc
+class Disc implements Value
 {
     use Property\DiscIdTrait;
     use Property\SectorsTrait;

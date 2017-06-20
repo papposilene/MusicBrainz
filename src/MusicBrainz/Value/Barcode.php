@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * Barcodes are numbers used as stock control mechanisms by retailers: as such they are highly standardised and well
  * recognised, and form an invaluable identifier for communication between companies. On physical releases, they usually
@@ -9,7 +11,7 @@ namespace MusicBrainz\Value;
  *
  * @see https://musicbrainz.org/doc/Barcode
  */
-class Barcode
+class Barcode implements Value
 {
     /**
      * The barcode

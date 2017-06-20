@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A sort index for a name
  */
-class SortName
+class SortName implements Value
 {
     /**
      * The sort index

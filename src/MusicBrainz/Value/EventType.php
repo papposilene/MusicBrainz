@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An event type
  */
-class EventType
+class EventType implements Value
 {
     /**
      * A concert

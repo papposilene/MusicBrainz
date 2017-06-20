@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A length
  */
-class Length
+class Length implements Value
 {
     /**
      * The length in milli seconds

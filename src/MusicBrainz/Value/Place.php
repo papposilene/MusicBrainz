@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A place
  *
  * @link https://musicbrainz.org/doc/Place
  */
-class Place
+class Place implements Value
 {
     use Property\AddressTrait;
     use Property\AreaTrait;

@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An URL
  * A URL in MusicBrainz is a specific entity representing a regular internet Uniform Resource Locator. A MusicBrainz URL
@@ -10,7 +12,7 @@ namespace MusicBrainz\Value;
  *
  * @link https://musicbrainz.org/doc/URL
  */
-class URL
+class URL implements Value
 {
     use Property\MBIDTrait;
     use Property\ResourceTrait;
@@ -33,6 +35,6 @@ class URL
      */
     public function __toString(): string
     {
-        return (string) $this->getResource();
+        return $this->getResource();
     }
 }

@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An instrument type
  */
-class InstrumentType
+class InstrumentType implements Value
 {
     /**
      * An electronic instrument

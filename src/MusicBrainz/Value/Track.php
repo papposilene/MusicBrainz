@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A track
  */
-class Track
+class Track implements Value
 {
     use Property\MBIDTrait;
     use Property\TitleTrait;

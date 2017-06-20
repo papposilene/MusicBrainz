@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A medium
  */
-class Medium
+class Medium implements Value
 {
     use Property\TracksTrait;
     use Property\TitleTrait;
@@ -30,6 +32,6 @@ class Medium
      */
     public function __toString(): string
     {
-        return (string) $this->getTitle();
+        return $this->getTitle();
     }
 }

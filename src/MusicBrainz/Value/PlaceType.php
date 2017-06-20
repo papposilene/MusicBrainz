@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A type of place
  *
  * @see https://musicbrainz.org/doc/Place
  */
-class PlaceType
+class PlaceType implements Value
 {
     /**
      * A place consisting of a large enclosed area with a central event space surrounded by tiered seating for

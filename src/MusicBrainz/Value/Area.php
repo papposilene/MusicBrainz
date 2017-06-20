@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An area
  */
-class Area
+class Area implements Value
 {
     use Property\AreaTypeTrait;
     use Property\DisambiguationTrait;
@@ -40,6 +42,6 @@ class Area
      */
     public function __toString(): string
     {
-        return (string) $this->name;
+        return $this->getName();
     }
 }

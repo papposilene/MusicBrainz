@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * Label Code
  * "The Label Code (LC) was introduced in 1977 by the IFPI (International Federation of Phonogram and Videogram
@@ -13,7 +15,7 @@ namespace MusicBrainz\Value;
  * @link http://www.iasa-web.org/icat/08_0.htm
  * @link https://musicbrainz.org/doc/Label/Label_Code
  */
-class LabelCode
+class LabelCode implements Value
 {
     /**
      * The Label Code with "LC-" prefix and 5 digits

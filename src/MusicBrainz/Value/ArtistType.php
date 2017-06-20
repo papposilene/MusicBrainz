@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An artist type
  *
  * @see https://musicbrainz.org/doc/Artist
  */
-class ArtistType
+class ArtistType implements Value
 {
     /**
      * This indicates an individual person.

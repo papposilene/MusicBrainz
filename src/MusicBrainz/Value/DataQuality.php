@@ -2,13 +2,15 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * The data quality
  * Data quality indicates how good the data for a release is. It is not a mark of how good or bad the music itself is.
  *
  * @link https://musicbrainz.org/doc/Release
  */
-class DataQuality
+class DataQuality implements Value
 {
     /**
      * Low data quality

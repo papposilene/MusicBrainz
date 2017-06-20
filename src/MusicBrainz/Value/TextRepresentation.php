@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A text representation
  */
-class TextRepresentation
+class TextRepresentation implements Value
 {
     use Property\LanguageTrait;
     use Property\ScriptTrait;
@@ -19,5 +21,26 @@ class TextRepresentation
     {
         $this->language = new Language(isset($textRepresentation['language']) ? $textRepresentation['language'] : '');
         $this->script   = new Script(isset($textRepresentation['script']) ? $textRepresentation['script'] : '');
+    }
+
+    /**
+     * Returns the text representation as string.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        if (empty((string) $this->getScript())) {
+            $textRepresentation = (empty((string) $this->getLanguage()))
+                ? ''
+                : $this->getLanguage();
+        } else {
+            $textRepresentation = $this->getScript();
+            $textRepresentation .= (empty((string) $this->getLanguage()))
+                ? ''
+                : ' (' . $this->getLanguage() . ')';
+        }
+
+        return $textRepresentation;
     }
 }

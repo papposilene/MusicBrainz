@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A number of rating votes
  *
  * @link https://musicbrainz.org/doc/Rating_System
  */
-class RatingVotes
+class RatingVotes implements Value
 {
     /**
      * The number of votes
@@ -35,6 +37,6 @@ class RatingVotes
      */
     public function __toString(): string
     {
-        return (string) $this->votes;
+        return $this->votes;
     }
 }

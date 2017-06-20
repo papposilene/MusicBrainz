@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A rating value
  *
  * @link https://musicbrainz.org/doc/Rating_System
  */
-class RatingValue
+class RatingValue implements Value
 {
     /**
      * A value between 0 and 5
@@ -35,6 +37,6 @@ class RatingValue
      */
     public function __toString(): string
     {
-        return (string) $this->value;
+        return $this->value;
     }
 }

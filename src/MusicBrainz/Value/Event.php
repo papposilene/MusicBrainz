@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An event
  * An event refers to an organised event which people can attend, and is relevant to MusicBrainz. Generally this means
@@ -9,7 +11,7 @@ namespace MusicBrainz\Value;
  *
  * @link https://musicbrainz.org/doc/Event
  */
-class Event
+class Event implements Value
 {
     use Property\CancelledTrait;
     use Property\DisambiguationTrait;
@@ -42,6 +44,6 @@ class Event
      */
     public function __toString(): string
     {
-        return (string) $this->getEventName();
+        return $this->getEventName();
     }
 }

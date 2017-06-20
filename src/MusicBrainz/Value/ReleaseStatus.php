@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A release status
  *
  * @link https://musicbrainz.org/doc/Style/Release
  */
-class ReleaseStatus
+class ReleaseStatus implements Value
 {
     /**
      * Official

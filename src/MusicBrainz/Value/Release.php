@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A release
  */
-class Release
+class Release implements Value
 {
     use Property\AliasesTrait;
     use Property\AnnotationTextTrait;
@@ -49,5 +51,15 @@ class Release
         $this->releaseStatus      = new ReleaseStatus(isset($release['status']) ? $release['status'] : '');
         $this->textRepresentation = new TextRepresentation(isset($release['text-representation']) ? $release['text-representation'] : []);
         $this->title              = new Title(isset($release['title']) ? $release['title'] : '');
+    }
+
+    /**
+     * Returns the release as string.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->getTitle();
     }
 }

@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A track number
  */
-class TrackNumber
+class TrackNumber implements Value
 {
     /**
      * The track number

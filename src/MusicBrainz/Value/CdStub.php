@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A CD stub
  * A CD stub is an anonymously submitted track list that contains a disc ID, barcode, comment field, and basic metadata
@@ -13,7 +15,7 @@ namespace MusicBrainz\Value;
  * unwilling, to create an account and add a release. They also enable us to store "untrusted" metadata like the CD Baby
  * music catalog, and to actively serve all this content without cluttering the main database.
  */
-class CdStub
+class CdStub implements Value
 {
     use Property\ArtistNameTrait;
     use Property\BarcodeTrait;
@@ -40,6 +42,6 @@ class CdStub
      */
     public function __toString(): string
     {
-        return $this->title . '(' . $this->artistName . ')';
+        return $this->getTitle() . '(' . $this->getArtistName() . ')';
     }
 }

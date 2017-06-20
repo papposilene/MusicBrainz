@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A life span.
  *
  * @link https://musicbrainz.org/doc/Artist
  */
-class LifeSpan
+class LifeSpan implements Value
 {
     /**
      * The begin date indicates when an artist started its existence. Its exact meaning depends on the type of artist:
@@ -84,5 +86,17 @@ class LifeSpan
     public function getEnded(): ?bool
     {
         return $this->ended;
+    }
+
+    /**
+     * Returns the life span as string.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return ($this->getEnded())
+            ? $this->getBegin()
+            : $this->getBegin() . '–' . $this->getEnded();
     }
 }

@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A day time
  */
-class Time
+class Time implements Value
 {
     /**
      * The hour

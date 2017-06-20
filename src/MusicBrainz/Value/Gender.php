@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A gender
  */
-class Gender
+class Gender implements Value
 {
     /**
      * Male

@@ -2,13 +2,15 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A disc ID
  * A disc ID is the code number which MusicBrainz uses to link a physical CD to a release listing.
  *
  * @link https://musicbrainz.org/doc/Disc_ID
  */
-class DiscId
+class DiscId implements Value
 {
     /**
      * The ID

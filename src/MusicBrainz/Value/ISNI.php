@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * International Standard Name Identifier
  * The International Standard Name Identifier (ISNI) is an ISO standard for uniquely identifying the public identities
@@ -14,7 +16,7 @@ namespace MusicBrainz\Value;
  * @link http://www.isni.org/
  * @link https://en.wikipedia.org/wiki/International_Standard_Name_Identifier
  */
-class ISNI
+class ISNI implements Value
 {
     /**
      * The ISNI code

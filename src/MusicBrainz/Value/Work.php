@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A work
  * In MusicBrainz terminology, a work is a distinct intellectual or artistic creation, which can be expressed in the
@@ -10,7 +12,7 @@ namespace MusicBrainz\Value;
  *
  * @link https://musicbrainz.org/doc/Work
  */
-class Work
+class Work implements Value
 {
     use Property\AttributesTrait;
     use Property\DisambiguationTrait;
@@ -43,6 +45,6 @@ class Work
      */
     public function __toString(): string
     {
-        return (string) $this->getTitle();
+        return $this->getTitle();
     }
 }

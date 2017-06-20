@@ -2,13 +2,15 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A type of series
  * The type primarily describes what type of entity the series contains.
  *
  * @see https://wiki.musicbrainz.org/Series#Type
  */
-class SeriesType
+class SeriesType implements Value
 {
     /**
      * A series of works which form a catalogue of classical compositions

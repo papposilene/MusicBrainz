@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * Locale code
  *
  * @link https://wiki.musicbrainz.org/Internationalization
  */
-class LocaleCode
+class LocaleCode implements Value
 {
     /**
      * The locale code

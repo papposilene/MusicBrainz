@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A MusicBrainz Identifier (MBID)
  *
  * @see https://musicbrainz.org/doc/MusicBrainz_Identifier
  */
-class MBID
+class MBID implements Value
 {
     /**
      * The MusicBrainz Identifier (MBID)

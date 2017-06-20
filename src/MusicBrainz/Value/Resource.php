@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A resource
  */
-class Resource
+class Resource implements Value
 {
     /**
      * The resource

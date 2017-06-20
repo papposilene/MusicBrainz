@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A relevance score for search results
  */
-class Score
+class Score implements Value
 {
     /**
      * The relevance score

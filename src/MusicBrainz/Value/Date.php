@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A date
  */
-class Date
+class Date implements Value
 {
     /**
      * The original given date format
@@ -108,8 +110,8 @@ class Date
      */
     public function __toString(): string
     {
-        return ($this->dateTime)
-            ? $this->dateTime->format($this->originalFormat)
+        return ($this->getDateTime())
+            ? $this->getDateTime()->format($this->getOriginalFormat())
             : '';
     }
 }

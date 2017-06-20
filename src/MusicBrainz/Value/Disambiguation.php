@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A disambiguation
  *
  * @link https://musicbrainz.org/doc/Disambiguation_Comment
  */
-class Disambiguation
+class Disambiguation implements Value
 {
     /**
      * The disambiguation comment

@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A packaging
  *
  * @link https://musicbrainz.org/doc/Release/Packaging
  */
-class Packaging
+class Packaging implements Value
 {
     /**
      * Jewel Case

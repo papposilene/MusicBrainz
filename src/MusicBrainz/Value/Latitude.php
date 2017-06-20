@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A latitude
  *
  * @link https://musicbrainz.org/doc/Place
  */
-class Latitude
+class Latitude implements Value
 {
     /**
      * The latitude

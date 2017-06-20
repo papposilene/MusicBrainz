@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An instrument
  *
  * @link https://musicbrainz.org/instruments
  */
-class Instrument
+class Instrument implements Value
 {
     use Property\Description;
     use Property\DisambiguationTrait;
@@ -36,6 +38,6 @@ class Instrument
      */
     public function __toString(): string
     {
-        return (string) $this->getInstrumentName();
+        return $this->getInstrumentName();
     }
 }

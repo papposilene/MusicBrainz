@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A release type
  */
-class ReleaseType
+class ReleaseType implements Value
 {
     /**
      * An album

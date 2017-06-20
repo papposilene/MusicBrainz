@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An area type
  *
  * @link https://musicbrainz.org/doc/Area
  */
-class AreaType
+class AreaType implements Value
 {
     /**
      * Country

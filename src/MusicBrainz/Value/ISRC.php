@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * The International Standard Recording Code (ISRC)
  * The International Standard Recording Code, abbreviated to ISRC, is an identification system for audio and music video
@@ -16,7 +18,7 @@ namespace MusicBrainz\Value;
  *
  * @link https://musicbrainz.org/doc/ISRC
  */
-class ISRC
+class ISRC implements Value
 {
     /**
      * The code

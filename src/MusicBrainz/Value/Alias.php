@@ -2,13 +2,15 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * Aliases are variant names that are mostly used as search help: if a search matches an entity's alias, the entity will
  * be given as a result - even if the actual name wouldn't be.
  *
  * @see https://musicbrainz.org/doc/Aliases
  */
-class Alias
+class Alias implements Value
 {
     use Property\SortNameTrait;
     use Property\NameTrait;
@@ -39,8 +41,8 @@ class Alias
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        return (string) $this->getName();
+        return $this->getName();
     }
 }

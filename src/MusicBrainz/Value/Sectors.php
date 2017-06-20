@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A number of sectors
  */
-class Sectors
+class Sectors implements Value
 {
     /**
      * The number of sectors

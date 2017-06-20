@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * The address describes the location of the place using the standard addressing format for the country it is located in.
  *
  * @see https://musicbrainz.org/doc/Place
  */
-class Address
+class Address implements Value
 {
     /**
      * The MusicBrainz Identifier (MBID)

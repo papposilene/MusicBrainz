@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A catalog number
  */
-class CatalogNumber
+class CatalogNumber implements Value
 {
     /**
      * A catalog number

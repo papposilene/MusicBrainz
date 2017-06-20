@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A rating
  *
  * @link https://musicbrainz.org/doc/Rating_System
  */
-class Rating
+class Rating implements Value
 {
     use Property\RatingValueTrait;
     use Property\RatingVotesTrait;
@@ -30,6 +32,6 @@ class Rating
      */
     public function __toString(): string
     {
-        return (string) $this->getRatingValue();
+        return $this->getRatingValue();
     }
 }

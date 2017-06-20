@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A flag to mark recordings as videos
  */
-class VideoFlag
+class VideoFlag implements Value
 {
     /**
      * True for a video recording, otherwise false
@@ -31,6 +33,6 @@ class VideoFlag
      */
     public function __toString(): string
     {
-        return (string) $this->video;
+        return $this->video;
     }
 }

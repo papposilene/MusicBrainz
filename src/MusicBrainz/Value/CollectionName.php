@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A collection name
  */
-class CollectionName
+class CollectionName implements Value
 {
     /**
      * The collection name

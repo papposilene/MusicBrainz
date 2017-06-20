@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An event name
  */
-class EventName
+class EventName implements Value
 {
     /**
      * The event name

@@ -2,13 +2,15 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An IPI (interested party information) code is an identifying number assigned by the CISAC database for musical rights
  * management.
  *
  * @see https://musicbrainz.org/doc/IPI
  */
-class IPI
+class IPI implements Value
 {
     /**
      * The IPI code

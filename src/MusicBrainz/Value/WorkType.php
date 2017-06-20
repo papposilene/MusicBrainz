@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A type of work
  *
  * @see https://musicbrainz.org/doc/Workes
  */
-class WorkType
+class WorkType implements Value
 {
     /**
      * The code for the type of work

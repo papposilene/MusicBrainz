@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A name
  *
@@ -11,7 +13,7 @@ namespace MusicBrainz\Value;
  * - The name of an area
  * - The name of a tag
  */
-class Name
+class Name implements Value
 {
     /**
      * The name

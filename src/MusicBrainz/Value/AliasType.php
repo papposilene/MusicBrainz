@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An alias type code
  *
  * @see https://musicbrainz.org/doc/Aliases
  */
-class AliasType
+class AliasType implements Value
 {
     /**
      * The alias type code

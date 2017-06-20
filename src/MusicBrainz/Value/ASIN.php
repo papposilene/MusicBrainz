@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An Amazon Standard Identification Number (ASIN)
  *
  * @link https://musicbrainz.org/doc/ASIN
  */
-class ASIN
+class ASIN implements Value
 {
     /**
      * The Amazon Standard Identification Number (ASIN) as string

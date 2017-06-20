@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A tag
  */
-class Tag
+class Tag implements Value
 {
     /**
      * Number of occurrences
@@ -39,6 +41,6 @@ class Tag
      */
     public function __toString(): string
     {
-        return (string) $this->name;
+        return $this->name;
     }
 }

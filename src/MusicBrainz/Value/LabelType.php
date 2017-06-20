@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * The type describes the main activity of the label.
  *
  * @see https://musicbrainz.org/doc/Label/Type
  */
-class LabelType
+class LabelType implements Value
 {
     /**
      * Imprint: Should be used where the label is just a logo (usually either created by a company for a specific
@@ -15,7 +17,6 @@ class LabelType
      * purchased, or both).
      *
      * @var string
-     *
      */
     public const IMPRINT = 'Imprint';
 

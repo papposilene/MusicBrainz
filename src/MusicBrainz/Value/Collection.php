@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A collection
  */
-class Collection
+class Collection implements Value
 {
     use Property\CollectionNameTrait;
     use Property\EditorNameTrait;
@@ -32,6 +34,6 @@ class Collection
      */
     public function __toString(): string
     {
-        return (string) $this->getCollectionName();
+        return $this->getCollectionName();
     }
 }

@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A recording
  * A recording is an entity in MusicBrainz which can be linked to tracks on releases. Each track must always be
@@ -13,7 +15,7 @@ namespace MusicBrainz\Value;
  *
  * @link https://musicbrainz.org/doc/Recording
  */
-class Recording
+class Recording implements Value
 {
     use Property\MBIDTrait;
     use Property\LengthTrait;
@@ -60,5 +62,15 @@ class Recording
         $this->artistCredits  = new ArtistCreditList(isset($recording['artist-credit']) ? $recording['artist-credit'] : []);
         $this->videoFlag      = new VideoFlag(isset($recording['video']) && true === (bool) $recording['video']);
         $this->score          = isset($recording['score']) ? (int)$recording['score'] : 0;
+    }
+
+    /**
+     * Returns the recording as string.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->getTitle();
     }
 }

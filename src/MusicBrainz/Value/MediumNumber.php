@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A medium number
  */
-class MediumNumber
+class MediumNumber implements Value
 {
     /**
      * The track number
@@ -31,6 +33,6 @@ class MediumNumber
      */
     public function __toString(): string
     {
-        return ($this->number) ? (string) $this->number : '';
+        return ($this->number) ? $this->number : '';
     }
 }

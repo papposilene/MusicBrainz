@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A title
  */
-class Title
+class Title implements Value
 {
     /**
      * The title

@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An annotation text
  */
-class AnnotationText
+class AnnotationText implements Value
 {
     /**
      * The text

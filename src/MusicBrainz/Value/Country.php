@@ -2,12 +2,14 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A country
  *
  * @link https://wiki.musicbrainz.org/Release_Country
  */
-class Country
+class Country implements Value
 {
     /**
      * The country code

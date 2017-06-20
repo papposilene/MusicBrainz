@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A description
  */
-class Description
+class Description implements Value
 {
     /**
      * The describing text

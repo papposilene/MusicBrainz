@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A language
  */
-class Language
+class Language implements Value
 {
     /**
      * The language code

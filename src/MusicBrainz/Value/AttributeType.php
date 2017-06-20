@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An attribute type
  */
-class AttributeType
+class AttributeType implements Value
 {
     use Property\MBIDTrait;
     use Property\NameTrait;
@@ -28,6 +30,6 @@ class AttributeType
      */
     public function __toString(): string
     {
-        return (string) $this->name;
+        return $this->getName();
     }
 }

@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A release group
  * A release group, just as the name suggests, is used to group several different releases into a single logical entity.
@@ -18,7 +20,7 @@ namespace MusicBrainz\Value;
  *
  * @link https://musicbrainz.org/doc/Release_Group
  */
-class ReleaseGroup
+class ReleaseGroup implements Value
 {
     use Property\TitleTrait;
     use Property\MBIDTrait;
@@ -38,5 +40,15 @@ class ReleaseGroup
         $this->disambiguation        = new Disambiguation(isset($releaseGroup['disambiguation']) ? $releaseGroup['disambiguation'] : '');
         $this->primaryReleaseType    = new ReleaseType(isset($releaseGroup['primary-type']) ? $releaseGroup['primary-type'] : '');
         $this->secondaryReleaseTypes = new ReleaseTypeList(isset($releaseGroup['secondary-types']) ? $releaseGroup['secondary-types'] : []);
+    }
+
+    /**
+     * Returns the release group as string.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->getTitle();
     }
 }

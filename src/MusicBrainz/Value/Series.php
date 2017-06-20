@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A series
  * A series is a sequence of separate release groups, releases, recordings, works or events with a common theme. The
@@ -10,7 +12,7 @@ namespace MusicBrainz\Value;
  *
  * @see https://wiki.musicbrainz.org/Series
  */
-class Series
+class Series implements Value
 {
     use Property\AliasesTrait;
     use Property\DisambiguationTrait;
@@ -28,5 +30,15 @@ class Series
         $this->disambiguation = new Disambiguation(isset($series['disambiguation']) ? $series['disambiguation'] : []);
         $this->name           = new Name(isset($series['name']) ? $series['name'] : '');
         $this->MBID           = new MBID(isset($series['id']) ? $series['id'] : '');
+    }
+
+    /**
+     * Returns the series as string.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->getName();
     }
 }

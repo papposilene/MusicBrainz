@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * Annotations are text fields, functioning like a miniature wiki, that can be added to any existing artists, labels,
  * recordings, releases, release groups and works.
@@ -11,7 +13,7 @@ namespace MusicBrainz\Value;
  *
  * @see https://musicbrainz.org/doc/Annotation
  */
-class Annotation
+class Annotation implements Value
 {
     use Property\EntityTypeTrait;
     use Property\ScoreTrait;
@@ -38,8 +40,8 @@ class Annotation
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        return (string) $this->getName();
+        return $this->getName();
     }
 }

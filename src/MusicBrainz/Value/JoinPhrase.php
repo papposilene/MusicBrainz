@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A join phrase
  */
-class JoinPhrase
+class JoinPhrase implements Value
 {
     /**
      * The join phrase

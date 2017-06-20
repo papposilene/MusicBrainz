@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A count
  */
-class Count
+class Count implements Value
 {
     /**
      * The ID

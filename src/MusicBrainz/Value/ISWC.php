@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * An International Standard Musical Work Code (ISWC)
  * The International Standard Musical Work Code (ISWC) is an ISO standard similar to ISBNs for identifying musical
@@ -9,7 +11,7 @@ namespace MusicBrainz\Value;
  *
  * @link https://musicbrainz.org/doc/ISWC
  */
-class ISWC
+class ISWC implements Value
 {
     /**
      * The code

@@ -2,10 +2,12 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Value;
+
 /**
  * A "cancelled" flag
  */
-class Cancelled
+class Cancelled implements Value
 {
     /**
      * True, if cancelled, otherwise false
@@ -31,6 +33,6 @@ class Cancelled
      */
     public function __toString(): string
     {
-        return (string) $this->cancelled;
+        return $this->cancelled;
     }
 }
