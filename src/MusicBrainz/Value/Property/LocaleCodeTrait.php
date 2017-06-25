@@ -21,7 +21,7 @@ trait LocaleCodeTrait
      *
      * @return LocaleCode
      */
-    public function getGender(): LocaleCode
+    public function getLocaleCode(): LocaleCode
     {
         return $this->localeCode;
     }
