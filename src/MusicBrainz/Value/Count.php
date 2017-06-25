@@ -23,7 +23,7 @@ class Count implements Value
      */
     public function __construct(int $count = 0)
     {
-        $this->id = ($count >= 0) ? $count : 0;
+        $this->count = ($count >= 0) ? $count : 0;
     }
 
     /**
