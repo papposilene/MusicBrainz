@@ -361,8 +361,8 @@ class Lookup
             (string) $entityType .
             '/' .
             (string) $mbid,
-            $params,
             $this->config,
+            $params,
             $authRequired
         );
 
