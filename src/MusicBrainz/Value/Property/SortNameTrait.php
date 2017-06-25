@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\SortName;
 
 /**
@@ -29,5 +30,19 @@ trait SortNameTrait
     public function getSortName(): SortName
     {
         return $this->sortName;
+    }
+
+    /**
+     * Sets the sort index for the name by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setSortNameFromArray(array $input): void
+    {
+        $this->sortName = is_null($sortName = ArrayAccess::getString($input, 'sort-name'))
+            ? new SortName
+            : new SortName($sortName);
     }
 }

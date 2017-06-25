@@ -2,25 +2,42 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Value\PrimaryName;
+
 /**
- * Provides a getter for the primary name flag.
+ * Provides a getter for the "primary name" flag.
  */
 trait PrimaryNameTrait
 {
     /**
-     * True, if the name is a primary name, otherwise false
+     * A "primary name" flag
      *
-     * @var bool
+     * @var PrimaryName
      */
     private $primaryName;
 
     /**
-     * Returns true, if the name is a primary name, otherwise false
+     * Returns the "primary name" flag
      *
-     * @return bool
+     * @return PrimaryName
      */
-    public function getPrimaryName(): bool
+    public function getPrimaryName(): PrimaryName
     {
         return $this->primaryName;
+    }
+
+    /**
+     * Sets the primary name by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setPrimaryNameFromArray(array $input): void
+    {
+        $this->primaryName = is_null($primaryName = ArrayAccess::getBool($input, 'primary'))
+            ? new PrimaryName
+            : new PrimaryName($primaryName);
     }
 }

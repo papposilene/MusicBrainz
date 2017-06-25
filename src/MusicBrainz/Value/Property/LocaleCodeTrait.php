@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\LocaleCode;
 
 /**
@@ -24,5 +25,19 @@ trait LocaleCodeTrait
     public function getLocaleCode(): LocaleCode
     {
         return $this->localeCode;
+    }
+
+    /**
+     * Sets the locale code by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setLocaleCodeFromArray(array $input): void
+    {
+        $this->localeCode = is_null($localeCode = ArrayAccess::getString($input, 'locale'))
+            ? new LocaleCode
+            : new LocaleCode($localeCode);
     }
 }

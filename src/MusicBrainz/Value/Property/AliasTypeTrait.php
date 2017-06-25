@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\AliasType;
 
 /**
@@ -24,5 +25,19 @@ trait AliasTypeTrait
     public function getAliasType(): AliasType
     {
         return $this->aliasType;
+    }
+
+    /**
+     * Sets the alias type by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setAliasTypeFromArray(array $input): void
+    {
+        $this->aliasType = is_null($aliasType = ArrayAccess::getString($input, 'type'))
+            ? new AliasType
+            : new AliasType($aliasType);
     }
 }

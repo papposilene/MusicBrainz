@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value;
 
 /**
@@ -12,13 +13,13 @@ use MusicBrainz\Value;
  */
 class Alias implements Value
 {
-    use Property\SortNameTrait;
-    use Property\NameTrait;
-    use Property\LocaleCodeTrait;
     use Property\AliasTypeTrait;
-    use Property\PrimaryNameTrait;
     use Property\BeginDateTrait;
     use Property\EndDateTrait;
+    use Property\LocaleCodeTrait;
+    use Property\NameTrait;
+    use Property\PrimaryNameTrait;
+    use Property\SortNameTrait;
 
     /**
      * Constructs an alias.
@@ -27,13 +28,12 @@ class Alias implements Value
      */
     public function __construct(array $alias = [])
     {
-        $this->sortName    = new SortName(isset($alias['sort-name']) ? (string) $alias['sort-name'] : '');
-        $this->name        = new Name(isset($alias['name']) ? (string) $alias['name'] : '');
-        $this->localeCode  = new LocaleCode(isset($alias['locale']) ? (string) $alias['locale'] : '');
-        $this->aliasType   = new AliasType(isset($alias['type']) ? (string) $alias['type'] : '');
-        $this->primaryName = isset($alias['primary']) && true == $alias['primary'];
-        $this->beginDate   = new Date(isset($alias['begin']) ? (string) $alias['begin'] : '');
-        $this->endDate     = new Date(isset($alias['ended']) ? (string) $alias['ended'] : '');
+        $this->setAliasTypeFromArray($alias);
+        $this->setBeginDateFromArray($alias);
+        $this->setEndDateFromArray($alias);
+        $this->setLocaleCodeFromArray($alias);
+        $this->setPrimaryNameFromArray($alias);
+        $this->setSortNameFromArray($alias);
     }
 
     /**
