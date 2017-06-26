@@ -9,20 +9,20 @@ use MusicBrainz\Value;
  */
 class ArtistCredit implements Value
 {
-    use Property\NameTrait;
     use Property\ArtistTrait;
     use Property\JoinPhraseTrait;
+    use Property\NameTrait;
 
     /**
      * Constructs an artist credit.
      *
      * @param array $artistCredit An array of information about the artist credit
      */
-    public function __construct(array $artistCredit)
+    public function __construct(array $artistCredit = [])
     {
-        $this->name       = new Name(isset($artistCredit['name']) ? (string) $artistCredit['name'] : '');
-        $this->artist     = new ArtistType(isset($artistCredit['artist']) ? (string) $artistCredit['artist'] : '');
-        $this->joinPhrase = new JoinPhrase(isset($artistCredit['joinphrase']) ? (string) $artistCredit['joinphrase'] : '');
+        $this->setArtist($artistCredit);
+        $this->setJoinPhraseFromArray($artistCredit);
+        $this->setNameFromArray($artistCredit);
     }
 
     /**
