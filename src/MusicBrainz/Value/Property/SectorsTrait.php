@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Sectors;
 
 /**
@@ -24,5 +25,19 @@ trait SectorsTrait
     public function getSectors(): Sectors
     {
         return $this->sectors;
+    }
+
+    /**
+     * Sets the sectors by extracting them from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setSectorsFromArray(array $input): void
+    {
+        $this->sectors = is_null($sectors = ArrayAccess::getInteger($input, 'sectors'))
+            ? new Sectors
+            : new Sectors($sectors);
     }
 }

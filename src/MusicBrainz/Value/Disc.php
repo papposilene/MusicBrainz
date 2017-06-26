@@ -10,8 +10,8 @@ use MusicBrainz\Value;
 class Disc implements Value
 {
     use Property\DiscIdTrait;
-    use Property\SectorsTrait;
     use Property\SectorOffsetsTrait;
+    use Property\SectorsTrait;
 
     /**
      * Constructs a disc.
@@ -20,9 +20,9 @@ class Disc implements Value
      */
     public function __construct(array $disc = [])
     {
-        $this->discId        = new DiscId(isset($disc['id']) ? $disc['id'] : '');
-        $this->sectors       = new Sectors(isset($disc['sectors']) ? $disc['sectors'] : 0);
-        $this->sectorOffsets = new SectorOffsetList(isset($disc['offsets']) ? $disc['offsets'] : []);
+        $this->setDiscIdFromArray($disc);
+        $this->setSectorOffsetsFromArray($disc);
+        $this->setSectorsFromArray($disc);
     }
 
     /**
