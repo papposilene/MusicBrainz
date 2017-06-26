@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\MBID;
 
 /**
@@ -26,5 +27,20 @@ trait MBIDTrait
     public function getMBID(): MBID
     {
         return $this->MBID;
+    }
+
+    /**
+     * Sets the MusicBrainz Identifier (MBID) by extracting it from a given input array.
+     *
+     * @param array  $input An array returned by the webservice
+     * @param string $key   An array key. Default: 'id'
+     *
+     * @return void
+     */
+    private function setMbidFromArray(array $input, string $key = 'id'): void
+    {
+        $this->score = is_null($mbid = ArrayAccess::getString($input, $key))
+            ? new MBID
+            : new MBID($mbid);
     }
 }

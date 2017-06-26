@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Helper\GetValue;
 use MusicBrainz\Value;
 
 /**
@@ -15,11 +17,11 @@ use MusicBrainz\Value;
  */
 class Annotation implements Value
 {
-    use Property\EntityTypeTrait;
-    use Property\ScoreTrait;
-    use Property\MBIDTrait;
-    use Property\NameTrait;
     use Property\AnnotationTextTrait;
+    use Property\EntityTypeTrait;
+    use Property\NameTrait;
+    use Property\MBIDTrait;
+    use Property\ScoreTrait;
 
     /**
      * Constructs an annotation.
@@ -28,11 +30,11 @@ class Annotation implements Value
      */
     public function __construct(array $alias = [])
     {
-        $this->entityType = new EntityType(isset($alias['type']) ? (string) $alias['type'] : '');
-        $this->score      = new Score(isset($alias['score']) ? (string) $alias['score'] : null);
-        $this->MBID       = new MBID(isset($alias['entity']) ? (string) $alias['entity'] : '');
-        $this->name       = new Name(isset($alias['name']) ? (string) $alias['name'] : '');
-        $this->text       = new AnnotationText(isset($alias['text']) ? (string) $alias['text'] : '');
+        $this->setAnnotationTextFromArray($alias);
+        $this->setEntityTypeFromArray($alias);
+        $this->setMbidFromArray($alias, 'entity');
+        $this->setNameFromArray($alias);
+        $this->setScoreFromArray($alias);
     }
 
     /**
