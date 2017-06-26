@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\CollectionName;
 
 /**
@@ -24,5 +25,19 @@ trait CollectionNameTrait
     public function getCollectionName(): CollectionName
     {
         return $this->collectionName;
+    }
+
+    /**
+     * Sets the collection name by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setCollectionNameFromArray(array $input): void
+    {
+        $this->collectionName = is_null($collectionName = ArrayAccess::getString($input, 'name'))
+            ? new CollectionName
+            : new CollectionName($collectionName);
     }
 }

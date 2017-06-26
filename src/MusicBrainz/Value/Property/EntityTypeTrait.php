@@ -30,13 +30,14 @@ trait EntityTypeTrait
     /**
      * Sets the entity type by extracting it from a given input array.
      *
-     * @param array $input An array returned by the webservice
+     * @param array  $input An array returned by the webservice
+     * @param string $key   An array key. Default: 'entity-type'
      *
      * @return void
      */
-    private function setEntityTypeFromArray(array $input): void
+    private function setEntityTypeFromArray(array $input, string $key = 'entity-type'): void
     {
-        $this->entityType = is_null($entityType = ArrayAccess::getString($input, 'type'))
+        $this->entityType = is_null($entityType = ArrayAccess::getString($input, $key))
             ? new EntityType
             : new EntityType($entityType);
     }
