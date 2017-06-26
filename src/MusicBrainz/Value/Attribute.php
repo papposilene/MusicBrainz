@@ -19,8 +19,8 @@ class Attribute implements Value
      */
     public function __construct(array $attribute = [])
     {
-        $this->attributeType  = new AttributeType($attribute);
-        $this->attributeValue = new AttributeValue($attribute);
+        $this->setAttributeTypeFromArray($attribute);
+        $this->setAttributeValueFromArray($attribute);
     }
 
     /**

@@ -15,12 +15,12 @@ class AttributeType implements Value
     /**
      * Constructs an attribute type.
      *
-     * @param array $area Information about the attribute type
+     * @param array $attributeType Information about the attribute type
      */
-    public function __construct(array $area = [])
+    public function __construct(array $attributeType = [])
     {
-        $this->MBID = new MBID(isset($area['type-id']) ? (string) $area['type-id'] : '');
-        $this->name = new Name(isset($area['type']) ? (string) $area['type'] : '');
+        $this->setMbidFromArray($attributeType, 'type-id');
+        $this->setNameFromArray($attributeType, 'type');
     }
 
     /**
