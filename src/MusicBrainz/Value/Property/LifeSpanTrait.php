@@ -36,7 +36,7 @@ trait LifeSpanTrait
      */
     private function setLifeSpanFromArray(array $input): void
     {
-        $this->score = is_null($lifeSpan = ArrayAccess::getArray($input, 'life-span'))
+        $this->lifeSpan = is_null($lifeSpan = ArrayAccess::getArray($input, 'life-span'))
             ? new LifeSpan
             : new LifeSpan($lifeSpan);
     }

@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Area;
 use MusicBrainz\Value\ArtistType;
 
@@ -11,7 +12,8 @@ use MusicBrainz\Value\ArtistType;
 trait BeginAreaTrait
 {
     /**
-     * The begin area indicates where an artist started its existence. Its exact meaning depends on the type of artist:
+     * The beginning area indicates where an artist started its existence. Its exact meaning depends on the type of
+     * artist:
      *
      * - For a person: The person's birthplace
      * - For a group (or orchestra/choir): The area where the group first formed
@@ -30,5 +32,19 @@ trait BeginAreaTrait
     public function getBeginArea(): Area
     {
         return $this->beginArea;
+    }
+
+    /**
+     * Sets the artist's beginning area by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setBeginAreaFromArray(array $input): void
+    {
+        $this->area = is_null($beginArea = ArrayAccess::getArray($input, 'area'))
+            ? new Area
+            : new Area($beginArea);
     }
 }

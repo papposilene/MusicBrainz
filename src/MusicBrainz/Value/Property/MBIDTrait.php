@@ -39,7 +39,7 @@ trait MBIDTrait
      */
     private function setMbidFromArray(array $input, string $key = 'id'): void
     {
-        $this->score = is_null($mbid = ArrayAccess::getString($input, $key))
+        $this->MBID = is_null($mbid = ArrayAccess::getString($input, $key))
             ? new MBID
             : new MBID($mbid);
     }

@@ -36,7 +36,7 @@ trait DisambiguationTrait
      */
     private function setDisambiguationFromArray(array $input): void
     {
-        $this->score = is_null($disambiguation = ArrayAccess::getString($input, 'type'))
+        $this->disambiguation = is_null($disambiguation = ArrayAccess::getString($input, 'type'))
             ? new Disambiguation
             : new Disambiguation($disambiguation);
     }

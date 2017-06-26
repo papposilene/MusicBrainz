@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Name;
 
 /**
@@ -26,4 +27,17 @@ trait ArtistNameTrait
         return $this->artistName;
     }
 
+    /**
+     * Sets the artist name by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setArtistNameFromArray(array $input): void
+    {
+        $this->artistName = is_null($artistName = ArrayAccess::getString($input, 'name'))
+            ? new Name
+            : new Name($artistName);
+    }
 }

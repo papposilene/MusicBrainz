@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\AliasList;
 
 /**
@@ -24,5 +25,19 @@ trait AliasesTrait
     public function getAliases(): AliasList
     {
         return $this->aliases;
+    }
+
+    /**
+     * Sets a list of aliases by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setAliasesFromArray(array $input): void
+    {
+        $this->ipis = is_null($aliases = ArrayAccess::getArray($input, 'aliases'))
+            ? new AliasList
+            : new AliasList($aliases);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\TagList;
 
 /**
@@ -24,5 +25,19 @@ trait TagsTrait
     public function getTags(): TagList
     {
         return $this->tags;
+    }
+
+    /**
+     * Sets a list of tags by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setTagsFromArray(array $input): void
+    {
+        $this->tags = is_null($tags = ArrayAccess::getArray($input, 'tags'))
+            ? new TagList
+            : new TagList($tags);
     }
 }

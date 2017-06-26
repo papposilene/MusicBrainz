@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Area;
 
 /**
@@ -25,5 +26,19 @@ trait AreaTrait
     public function getArea(): Area
     {
         return $this->area;
+    }
+
+    /**
+     * Sets the artist's area by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setAreaFromArray(array $input): void
+    {
+        $this->area = is_null($area = ArrayAccess::getArray($input, 'area'))
+            ? new Area
+            : new Area($area);
     }
 }

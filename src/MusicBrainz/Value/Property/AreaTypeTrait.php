@@ -36,7 +36,7 @@ trait AreaTypeTrait
      */
     private function setAreaTypeFromArray(array $input): void
     {
-        $this->score = is_null($areaType = ArrayAccess::getString($input, 'type'))
+        $this->areaType = is_null($areaType = ArrayAccess::getString($input, 'type'))
             ? new AreaType
             : new AreaType($areaType);
     }

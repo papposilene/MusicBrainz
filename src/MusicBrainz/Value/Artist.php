@@ -11,20 +11,20 @@ use MusicBrainz\Value;
  */
 class Artist implements Value
 {
-    use Property\MBIDTrait;
-    use Property\ArtistTypeTrait;
-    use Property\ScoreTrait;
-    use Property\ArtistNameTrait;
-    use Property\SortNameTrait;
-    use Property\GenderTrait;
-    use Property\CountryTrait;
+    use Property\AliasesTrait;
     use Property\AreaTrait;
+    use Property\ArtistNameTrait;
+    use Property\ArtistTypeTrait;
     use Property\BeginAreaTrait;
-    use Property\EndAreaTrait;
+    use Property\CountryTrait;
     use Property\DisambiguationTrait;
+    use Property\EndAreaTrait;
+    use Property\GenderTrait;
     use Property\IpisTrait;
     use Property\LifeSpanTrait;
-    use Property\AliasesTrait;
+    use Property\MBIDTrait;
+    use Property\ScoreTrait;
+    use Property\SortNameTrait;
     use Property\TagsTrait;
 
     /**
@@ -34,21 +34,20 @@ class Artist implements Value
      */
     public function __construct(array $artist = [])
     {
-        $this->MBID           = new MBID(isset($artist['id']) ? (string) $artist['id'] : '');
-        $this->artistType     = new ArtistType(isset($artist['type']) ? (string) $artist['type'] : '');
-        $this->score          = new Score(isset($artist['score']) ? (int) $artist['score'] : 0);
-        $this->artistName     = new Name(isset($artist['name']) ? (string) $artist['name'] : '');
-        $this->sortName       = new SortName(isset($artist['sort-name']) ? (string) $artist['sort-name'] : '');
-        $this->gender         = new Gender(isset($artist['gender']) ? (string) $artist['gender'] : Gender::UNDEFINED);
-        $this->country        = new Country(isset($artist['country']) ? (string) $artist['country'] : '');
-        $this->area           = new Area(isset($artist['area']) ? $artist['area'] : []);
-        $this->beginArea      = new Area(isset($artist['begin-area']) ? $artist['begin-area'] : []);
-        $this->endArea        = new Area(isset($artist['end-area']) ? $artist['end-area'] : []);
-        $this->disambiguation = new Disambiguation(isset($artist['disambiguation']) ? (string) $artist['disambiguation'] : '');
-        $this->ipis           = new IPIList(isset($artist['ipis']) ? $artist['ipis'] : []);
-        $this->lifeSpan       = new LifeSpan(isset($artist['life-span']) ? $artist['life-span'] : []);
-        $this->aliases        = new AliasList(isset($artist['aliases']) ? $artist['aliases'] : []);
-        $this->tags           = new TagList(isset($artist['tags']) ? $artist['tags'] : []);
+        $this->setAliasesFromArray($artist);
+        $this->setAreaFromArray($artist);
+        $this->setArtistNameFromArray($artist);
+        $this->setArtistTypeFromArray($artist);
+        $this->setBeginAreaFromArray($artist);
+        $this->setDisambiguationFromArray($artist);
+        $this->setEndAreaFromArray($artist);
+        $this->setGenderFromArray($artist);
+        $this->setIpisFromArray($artist);
+        $this->setLifeSpanFromArray($artist);
+        $this->setMbidFromArray($artist);
+        $this->setScoreFromArray($artist);
+        $this->setSortNameFromArray($artist);
+        $this->setTagsFromArray($artist);
     }
 
     /**

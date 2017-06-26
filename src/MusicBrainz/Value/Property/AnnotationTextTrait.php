@@ -35,7 +35,7 @@ trait AnnotationTextTrait
      */
     private function setAnnotationTextFromArray(array $input): void
     {
-        $this->score = is_null($annotationText = ArrayAccess::getString($input, 'text'))
+        $this->annotationText = is_null($annotationText = ArrayAccess::getString($input, 'text'))
             ? new AnnotationText
             : new AnnotationText($annotationText);
     }

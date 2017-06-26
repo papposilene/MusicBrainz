@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\ArtistType;
 
 /**
@@ -24,5 +25,19 @@ trait ArtistTypeTrait
     public function getArtistType(): ArtistType
     {
         return $this->artistType;
+    }
+
+    /**
+     * Sets the artist type by extracting it from a given input array.
+     *
+     * @param array  $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setArtistTypeFromArray(array $input): void
+    {
+        $this->score = is_null($artistType = ArrayAccess::getString($input, 'type'))
+            ? new ArtistType
+            : new ArtistType($artistType);
     }
 }

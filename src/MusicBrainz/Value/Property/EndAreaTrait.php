@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Area;
 use MusicBrainz\Value\ArtistType;
 
@@ -11,7 +12,7 @@ use MusicBrainz\Value\ArtistType;
 trait EndAreaTrait
 {
     /**
-     * The end area indicates where an artist started its existence. Its exact meaning depends on the type of artist:
+     * The ending area indicates where an artist started its existence. Its exact meaning depends on the type of artist:
      *
      * - For a person: The person's place of death
      * - For a group (or orchestra/choir): The area when the group last dissolved
@@ -25,12 +26,26 @@ trait EndAreaTrait
     private $endArea;
 
     /**
-     * Returns the artist's end area.
+     * Returns the artist's ending area.
      *
      * @return Area
      */
     public function getEndArea(): Area
     {
         return $this->endArea;
+    }
+
+    /**
+     * Sets the artist's ending area by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setEndAreaFromArray(array $input): void
+    {
+        $this->area = is_null($endArea = ArrayAccess::getArray($input, 'end-area'))
+            ? new Area
+            : new Area($endArea);
     }
 }

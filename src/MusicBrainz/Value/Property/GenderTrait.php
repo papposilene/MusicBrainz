@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Gender;
 
 /**
@@ -25,5 +26,19 @@ trait GenderTrait
     public function getGender(): Gender
     {
         return $this->gender;
+    }
+
+    /**
+     * Sets the gender by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setGenderFromArray(array $input): void
+    {
+        $this->gender = is_null($sortName = ArrayAccess::getString($input, 'gender'))
+            ? new Gender
+            : new Gender($sortName);
     }
 }

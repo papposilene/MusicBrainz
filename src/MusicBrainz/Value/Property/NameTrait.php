@@ -36,7 +36,7 @@ trait NameTrait
      */
     private function setNameFromArray(array $input): void
     {
-        $this->score = is_null($name = ArrayAccess::getString($input, 'name'))
+        $this->name = is_null($name = ArrayAccess::getString($input, 'name'))
             ? new Name
             : new Name($name);
     }
