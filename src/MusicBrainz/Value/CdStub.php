@@ -29,10 +29,10 @@ class CdStub implements Value
      */
     public function __construct(array $cdStub = [])
     {
-        $this->artistName     = new Name(isset($cdStub['artist']) ? $cdStub['artist'] : '');
-        $this->barcode        = new Barcode(isset($cdStub['barcode']) ? $cdStub['barcode'] : '');
-        $this->disambiguation = new Disambiguation(isset($cdStub['comment']) ? $cdStub['comment'] : '');
-        $this->title          = new Title(isset($cdStub['title']) ? $cdStub['title'] : '');
+        $this->setArtistNameFromArray($cdStub);
+        $this->setBarcodeFromArray($cdStub);
+        $this->setDisambiguationFromArray($cdStub);
+        $this->setTitleFromArray($cdStub);
     }
 
     /**

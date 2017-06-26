@@ -30,13 +30,14 @@ trait NameTrait
     /**
      * Sets the name by extracting it from a given input array.
      *
-     * @param array $input An array returned by the webservice
+     * @param array  $input An array returned by the webservice
+     * @param string $key   An array key. Default: 'name'
      *
      * @return void
      */
-    private function setNameFromArray(array $input): void
+    private function setNameFromArray(array $input, string $key = 'name'): void
     {
-        $this->name = is_null($name = ArrayAccess::getString($input, 'name'))
+        $this->name = is_null($name = ArrayAccess::getString($input, $key))
             ? new Name
             : new Name($name);
     }

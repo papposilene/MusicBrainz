@@ -30,13 +30,14 @@ trait ArtistNameTrait
     /**
      * Sets the artist name by extracting it from a given input array.
      *
-     * @param array $input An array returned by the webservice
+     * @param array  $input An array returned by the webservice
+     * @param string $key   An array key. Default: 'artist'
      *
      * @return void
      */
-    private function setArtistNameFromArray(array $input): void
+    private function setArtistNameFromArray(array $input, string $key = 'artist'): void
     {
-        $this->artistName = is_null($artistName = ArrayAccess::getString($input, 'name'))
+        $this->artistName = is_null($artistName = ArrayAccess::getString($input, $key))
             ? new Name
             : new Name($artistName);
     }
