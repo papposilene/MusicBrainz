@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Disambiguation;
 
 /**
@@ -24,5 +25,19 @@ trait DisambiguationTrait
     public function getDisambiguation(): Disambiguation
     {
         return $this->disambiguation;
+    }
+
+    /**
+     * Sets the disambiguation by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setDisambiguationFromArray(array $input): void
+    {
+        $this->score = is_null($disambiguation = ArrayAccess::getString($input, 'type'))
+            ? new Disambiguation
+            : new Disambiguation($disambiguation);
     }
 }

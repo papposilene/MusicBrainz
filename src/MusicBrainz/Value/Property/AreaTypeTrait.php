@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\AreaType;
 
 /**
@@ -24,5 +25,19 @@ trait AreaTypeTrait
     public function getAreaType(): AreaType
     {
         return $this->areaType;
+    }
+
+    /**
+     * Sets the area type by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setAreaTypeFromArray(array $input): void
+    {
+        $this->score = is_null($areaType = ArrayAccess::getString($input, 'type'))
+            ? new AreaType
+            : new AreaType($areaType);
     }
 }

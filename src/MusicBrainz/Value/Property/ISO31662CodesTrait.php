@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\ISO31662CodeList;
 
 /**
@@ -24,5 +25,19 @@ trait ISO31662CodesTrait
     public function getISO31662Codes(): ISO31662CodeList
     {
         return $this->ISO31662Codes;
+    }
+
+    /**
+     * Sets a list of ISO 3166-2 by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setIso31662CodesFromArray(array $input): void
+    {
+        $this->score = is_null($ISO31662Codes = ArrayAccess::getArray($input, 'iso-3166-2-codes'))
+            ? new ISO31662CodeList
+            : new ISO31662CodeList($ISO31662Codes);
     }
 }

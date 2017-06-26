@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\LifeSpan;
 
 /**
@@ -24,5 +25,19 @@ trait LifeSpanTrait
     public function getLifeSpan(): LifeSpan
     {
         return $this->lifeSpan;
+    }
+
+    /**
+     * Sets the life span by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setLifeSpanFromArray(array $input): void
+    {
+        $this->score = is_null($lifeSpan = ArrayAccess::getArray($input, 'life-span'))
+            ? new LifeSpan
+            : new LifeSpan($lifeSpan);
     }
 }
