@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Longitude;
 
 /**
@@ -26,4 +27,17 @@ trait LongitudeTrait
         return $this->longitude;
     }
 
+    /**
+     * Sets the longitude by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setLongitudeFromArray(array $input): void
+    {
+        $this->longitude = is_null($longitude = ArrayAccess::getString($input, 'longitude'))
+            ? new Longitude
+            : new Longitude($longitude);
+    }
 }

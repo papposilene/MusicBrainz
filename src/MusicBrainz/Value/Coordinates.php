@@ -21,8 +21,8 @@ class Coordinates implements Value
      */
     public function __construct(array $coordinates = [])
     {
-        $this->latitude  = new Latitude(isset($coordinates['latitude']) ? (float) $coordinates['latitude'] : null);
-        $this->longitude = new Longitude(isset($coordinates['longitude']) ? (float) $coordinates['longitude'] : null);
+        $this->setLatitudeFromArray($coordinates);
+        $this->setLongitudeFromArray($coordinates);
     }
 
     /**
