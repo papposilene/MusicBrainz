@@ -22,9 +22,9 @@ class LifeSpan implements Value
      */
     public function __construct(array $lifeSpan = [])
     {
-        $this->beginDate = isset($lifeSpan['begin']) ? new Date($lifeSpan['begin'])  : new Date;
-        $this->endDate   = isset($lifeSpan['end'])   ? new Date($lifeSpan['end'])    : new Date;
-        $this->ended     = isset($lifeSpan['ended']) ? new Ended($lifeSpan['ended']) : new Ended;
+        $this->setBeginDateFromArray($lifeSpan);
+        $this->setEndDateFromArray($lifeSpan);
+        $this->setEndedFromArray($lifeSpan);
     }
 
     /**

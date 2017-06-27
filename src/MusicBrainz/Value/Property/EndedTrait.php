@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Ended;
 
 /**
@@ -24,5 +25,19 @@ trait EndedTrait
     public function getEnded(): Ended
     {
         return $this->ended;
+    }
+
+    /**
+     * Sets the "ended" flag by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setEndedFromArray(array $input): void
+    {
+        $this->ended = is_null($ended = ArrayAccess::getBool($input, 'ended'))
+            ? new Ended
+            : new Ended($ended);
     }
 }

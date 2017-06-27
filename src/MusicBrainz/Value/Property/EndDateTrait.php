@@ -44,8 +44,8 @@ trait EndDateTrait
      */
     private function setEndDateFromArray(array $input): void
     {
-        $this->endDate = is_null($beginDate = ArrayAccess::getString($input, 'end'))
+        $this->endDate = is_null($endDate = ArrayAccess::getString($input, 'end'))
             ? new Date
-            : new Date($beginDate);
+            : new Date($endDate);
     }
 }
