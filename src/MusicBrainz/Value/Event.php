@@ -28,13 +28,13 @@ class Event implements Value
      */
     public function __construct(array $event = [])
     {
-        $this->cancelled      = new Cancelled(isset($event['cancelled']) ? $event['cancelled'] : false);
-        $this->disambiguation = new Disambiguation(isset($event['disambiguation']) ? (string) $event['disambiguation'] : '');
-        $this->eventName      = new EventName(isset($event['name']) ? $event['name'] : '');
-        $this->eventType      = new EventType(isset($event['type']) ? $event['type'] : []);
-        $this->lifeSpan       = new LifeSpan(isset($event['life-span']) ? $event['life-span'] : []);
-        $this->MBID           = new MBID(isset($event['id']) ? (string) $event['id'] : '');
-        $this->time           = new Time(isset($event['time']) ? (string) $event['time'] : '');
+        $this->setCancelledFromArray($event);
+        $this->setDisambiguationFromArray($event);
+        $this->setEventNameFromArray($event);
+        $this->setEventTypeFromArray($event);
+        $this->setLifeSpanFromArray($event);
+        $this->setMbidFromArray($event);
+        $this->setTimeFromArray($event);
     }
 
     /**

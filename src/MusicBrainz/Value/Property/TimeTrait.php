@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Time;
 
 /**
@@ -26,4 +27,17 @@ trait TimeTrait
         return $this->time;
     }
 
+    /**
+     * Sets the time by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setTimeFromArray(array $input): void
+    {
+        $this->time = is_null($time = ArrayAccess::getString($input, 'time'))
+            ? new Time
+            : new Time($time);
+    }
 }

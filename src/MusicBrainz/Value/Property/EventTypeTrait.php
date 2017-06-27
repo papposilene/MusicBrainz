@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\EventType;
 
 /**
@@ -24,5 +25,19 @@ trait EventTypeTrait
     public function getEventType(): EventType
     {
         return $this->eventType;
+    }
+
+    /**
+     * Sets the event type by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setEventTypeFromArray(array $input): void
+    {
+        $this->eventType = is_null($eventType = ArrayAccess::getString($input, 'type'))
+            ? new EventType
+            : new EventType($eventType);
     }
 }
