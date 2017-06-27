@@ -9,9 +9,9 @@ use MusicBrainz\Value;
  */
 class Medium implements Value
 {
-    use Property\TracksTrait;
-    use Property\TitleTrait;
     use Property\DiscsTrait;
+    use Property\TitleTrait;
+    use Property\TracksTrait;
 
     /**
      * Constructs a medium.
@@ -20,9 +20,9 @@ class Medium implements Value
      */
     public function __construct(array $medium = [])
     {
-        $this->tracks = new TrackList(isset($medium['tracks']) ? $medium['tracks'] : []);
-        $this->title  = new Title(isset($medium['title']) ? $medium['title'] : '');
-        $this->discs  = new DiscList(isset($medium['discs']) ? $medium['discs'] : []);
+        $this->setDiscsFromArray($medium);
+        $this->setTitleFromArray($medium);
+        $this->setTracksFromArray($medium);
     }
 
     /**

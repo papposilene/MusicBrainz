@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\DiscList;
 
 /**
@@ -24,5 +25,19 @@ trait DiscsTrait
     public function getDiscs(): DiscList
     {
         return $this->discs;
+    }
+
+    /**
+     * Sets the list of discs by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setDiscsFromArray(array $input): void
+    {
+        $this->discs = is_null($discs = ArrayAccess::getArray($input, 'discs'))
+            ? new DiscList
+            : new DiscList($discs);
     }
 }
