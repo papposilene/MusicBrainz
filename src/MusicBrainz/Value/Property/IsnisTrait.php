@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\ISNIList;
 
 /**
@@ -24,5 +25,19 @@ trait IsnisTrait
     public function getIsnis(): ISNIList
     {
         return $this->isnis;
+    }
+
+    /**
+     * Sets a list of ISNI codes by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setIsnisFromArray(array $input): void
+    {
+        $this->isnis = is_null($isnis = ArrayAccess::getArray($input, 'ipis'))
+            ? new ISNIList
+            : new ISNIList($isnis);
     }
 }

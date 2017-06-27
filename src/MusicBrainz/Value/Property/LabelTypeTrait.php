@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\LabelType;
 
 /**
@@ -24,5 +25,19 @@ trait LabelTypeTrait
     public function getLabelType(): LabelType
     {
         return $this->labelType;
+    }
+
+    /**
+     * Sets the label type by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setLabelTypeFromArray(array $input): void
+    {
+        $this->labelType = is_null($labelType = ArrayAccess::getString($input, 'type'))
+            ? new LabelType
+            : new LabelType($labelType);
     }
 }

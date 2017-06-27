@@ -11,14 +11,14 @@ use MusicBrainz\Value\Country;
 trait CountryTrait
 {
     /**
-     * The artist's country
+     * The country
      *
      * @var Country
      */
     private $country;
 
     /**
-     * Returns the artist's country.
+     * Returns the country.
      *
      * @return Country
      */

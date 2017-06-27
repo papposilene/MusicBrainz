@@ -11,15 +11,16 @@ use MusicBrainz\Value\Area;
 trait AreaTrait
 {
     /**
-     * The artist area, as the name suggests, indicates the area with which an artist is primarily identified with. It
-     * is often, but not always, its birth/formation country.
+     * An area
+     * For artists: The area, as the name suggests, indicates the area with which an artist is primarily identified with.
+     * It is often, but not always, its birth/formation country.
      *
      * @var Area
      */
     private $area;
 
     /**
-     * Returns the artist's area.
+     * Returns the area.
      *
      * @return Area
      */
@@ -29,7 +30,7 @@ trait AreaTrait
     }
 
     /**
-     * Sets the artist's area by extracting it from a given input array.
+     * Sets the area by extracting it from a given input array.
      *
      * @param array $input An array returned by the webservice
      *

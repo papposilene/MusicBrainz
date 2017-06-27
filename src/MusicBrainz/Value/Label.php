@@ -30,19 +30,19 @@ class Label implements Value
      */
     public function __construct(array $label = [])
     {
-        $this->aliases        = new AliasList(isset($label['aliases']) ? $label['aliases'] : []);
-        $this->area           = new Area(isset($label['area']) ? $label['area'] : []);
-        $this->country        = new Country(isset($label['country']) ? (string) $label['country'] : '');
-        $this->disambiguation = new Disambiguation(isset($label['disambiguation']) ? (string)$label['disambiguation'] : '');
-        $this->ipis           = new IPIList(isset($label['ipis']) ? $label['ipis'] : []);
-        $this->isnis          = new ISNIList(isset($label['isnis']) ? $label['isnis'] : []);
-        $this->labelCode      = new LabelCode(isset($label['label-code']) ? (string) $label['label-code'] : '');
-        $this->labelType      = new LabelType(isset($label['type']) ? (string) $label['type'] : '');
-        $this->lifeSpan       = new LifeSpan(isset($label['life-span']) ? $label['life-span'] : []);
-        $this->MBID           = new MBID(isset($label['id']) ? (string) $label['id'] : '');
-        $this->name           = new Name(isset($label['name']) ? (string) $label['name'] : '');
-        $this->score          = isset($label['score']) ? (int)$label['score'] : 0;
-        $this->sortName       = new SortName(isset($label['sort-name']) ? (string)$label['sort-name'] : '');
+        $this->setAliasesFromArray($label);
+        $this->setAreaFromArray($label);
+        $this->setCountryFromArray($label);
+        $this->setDisambiguationFromArray($label);
+        $this->setIpisFromArray($label);
+        $this->setIsnisFromArray($label);
+        $this->setLabelCodeFromArray($label);
+        $this->setLabelTypeFromArray($label);
+        $this->setLifeSpanFromArray($label);
+        $this->setMbidFromArray($label);
+        $this->setNameFromArray($label);
+        $this->setScoreFromArray($label);
+        $this->setSortNameFromArray($label);
     }
 
     /**

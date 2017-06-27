@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\LabelCode;
 
 /**
@@ -21,8 +22,22 @@ trait LabelCodeTrait
      *
      * @return LabelCode
      */
-    public function getGender(): LabelCode
+    public function getLabelCode(): LabelCode
     {
         return $this->labelCode;
+    }
+
+    /**
+     * Sets the label code by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setLabelCodeFromArray(array $input): void
+    {
+        $this->labelCode = is_null($labelCode = ArrayAccess::getString($input, 'label-code'))
+            ? new LabelCode
+            : new LabelCode($labelCode);
     }
 }
