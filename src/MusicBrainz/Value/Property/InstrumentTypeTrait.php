@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\InstrumentType;
 
 /**
@@ -24,5 +25,19 @@ trait InstrumentTypeTrait
     public function getInstrumentType(): InstrumentType
     {
         return $this->instrumentType;
+    }
+
+    /**
+     * Sets the instrument type by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setInstrumentTypeFromArray(array $input): void
+    {
+        $this->instrumentType = is_null($instrumentType = ArrayAccess::getString($input, 'type'))
+            ? new InstrumentType
+            : new InstrumentType($instrumentType);
     }
 }

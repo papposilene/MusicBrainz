@@ -61,7 +61,8 @@ class InstrumentType implements Value
         self::PERCUSSION_INSTRUMENT,
         self::STRING_INSTRUMENT,
         self::WIND_INSTRUMENT,
-        self::OTHER_INSTRUMENT
+        self::OTHER_INSTRUMENT,
+        self::UNDEFINED
     ];
 
     /**

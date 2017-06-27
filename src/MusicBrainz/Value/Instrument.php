@@ -11,7 +11,7 @@ use MusicBrainz\Value;
  */
 class Instrument implements Value
 {
-    use Property\Description;
+    use Property\DescriptionTrait;
     use Property\DisambiguationTrait;
     use Property\InstrumentNameTrait;
     use Property\InstrumentTypeTrait;
@@ -24,11 +24,11 @@ class Instrument implements Value
      */
     public function __construct(array $instrument = [])
     {
-        $this->description    = new Description(isset($instrument['description']) ? $instrument['description'] : '');
-        $this->disambiguation = new Disambiguation(isset($instrument['disambiguation']) ? (string) $instrument['disambiguation'] : '');
-        $this->instrumentName = new InstrumentName(isset($instrument['name']) ? $instrument['name'] : []);
-        $this->instrumentType = new InstrumentType(isset($instrument['type']) ? $instrument['type'] : []);
-        $this->MBID           = new MBID(isset($instrument['id']) ? (string) $instrument['id'] : '');
+        $this->setDescriptionFromArray($instrument);
+        $this->setDisambiguationFromArray($instrument);
+        $this->setInstrumentNameFromArray($instrument);
+        $this->setInstrumentTypeFromArray($instrument);
+        $this->setMbidFromArray($instrument);
     }
 
     /**

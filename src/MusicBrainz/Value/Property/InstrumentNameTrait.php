@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\InstrumentName;
 
 /**
@@ -24,5 +25,19 @@ trait InstrumentNameTrait
     public function getInstrumentName(): InstrumentName
     {
         return $this->instrumentName;
+    }
+
+    /**
+     * Sets the instrument name by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setInstrumentNameFromArray(array $input): void
+    {
+        $this->instrumentName = is_null($instrumentName = ArrayAccess::getString($input, 'name'))
+            ? new InstrumentName
+            : new InstrumentName($instrumentName);
     }
 }
