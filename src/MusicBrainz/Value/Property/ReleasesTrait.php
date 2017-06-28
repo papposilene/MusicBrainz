@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\ReleaseList;
 
 /**
@@ -24,5 +25,19 @@ trait ReleasesTrait
     public function getReleases(): ReleaseList
     {
         return $this->releases;
+    }
+
+    /**
+     * Sets the releases by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setReleasesFromArray(array $input): void
+    {
+        $this->releases = is_null($rating = ArrayAccess::getArray($input, 'releases'))
+            ? new ReleaseList
+            : new ReleaseList($rating);
     }
 }

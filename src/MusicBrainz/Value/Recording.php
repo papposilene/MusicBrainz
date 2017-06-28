@@ -44,24 +44,24 @@ class Recording implements Value
      */
     public function __construct(array $recording = [])
     {
-        $this->MBID           = new MBID(isset($recording['id']) ? (string) $recording['id'] : '');
-        $this->length         = new Length(isset($recording['length']) ? (string) $recording['length'] : '');
-        $this->title          = new Title(isset($recording['title']) ? (string) $recording['title'] : '');
-        $this->aliases        = new AliasList(isset($recording['aliases']) ? $recording['aliases'] : []);
-        $this->ipis           = new IPIList(isset($recording['ipis']) ? $recording['ipis'] : []);
-        $this->country        = new Country(isset($recording['country']) ? (string) $recording['country'] : '');
-        $this->labelCode      = new LabelCode(isset($recording['label-code']) ? (string) $recording['label-code'] : '');
-        $this->labelType      = new LabelType(isset($recording['type']) ? (string) $recording['type'] : '');
-        $this->area           = new Area(isset($recording['area']) ? $recording['area'] : []);
-        $this->lifeSpan       = new LifeSpan(isset($recording['life-span']) ? $recording['life-span'] : []);
-        $this->sortName       = new SortName(isset($recording['sort-name']) ? (string)$recording['sort-name'] : '');
-        $this->disambiguation = new Disambiguation(isset($recording['disambiguation']) ? (string)$recording['disambiguation'] : '');
-        $this->rating         = new Rating(isset($recording['rating']) ? $recording['rating'] : []);
-        $this->releases       = new ReleaseList(isset($recording['releases']) ? $recording['releases'] : []);
-        $this->tags           = new TagList(isset($recording['tags']) ? $recording['tags'] : []);
-        $this->artistCredits  = new ArtistCreditList(isset($recording['artist-credit']) ? $recording['artist-credit'] : []);
-        $this->videoFlag      = new VideoFlag(isset($recording['video']) && true === (bool) $recording['video']);
-        $this->score          = isset($recording['score']) ? (int)$recording['score'] : 0;
+        $this->setMbidFromArray($recording);
+        $this->setLengthFromArray($recording);
+        $this->setTitleFromArray($recording);
+        $this->setAliasesFromArray($recording);
+        $this->setIpisFromArray($recording);
+        $this->setCountryFromArray($recording);
+        $this->setLabelCodeFromArray($recording);
+        $this->setLabelTypeFromArray($recording);
+        $this->setAreaFromArray($recording);
+        $this->setLifeSpanFromArray($recording);
+        $this->setSortNameFromArray($recording);
+        $this->setDisambiguationFromArray($recording);
+        $this->setRatingFromArray($recording);
+        $this->setReleasesFromArray($recording);
+        $this->setTagsFromArray($recording);
+        $this->setArtistCreditsFromArray($recording);
+        $this->setVideoFlagFromArray($recording);
+        $this->setScoreFromArray($recording);
     }
 
     /**
