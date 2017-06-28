@@ -27,14 +27,14 @@ class Place implements Value
      */
     public function __construct(array $place = [])
     {
-        $this->address        = new Address(isset($place['address']) ? $place['address'] : '');
-        $this->area           = new Area(isset($place['area']) ? $place['area'] : []);
-        $this->coordinates    = new Coordinates(isset($place['coordinates']) ? $place['coordinates'] : []);
-        $this->disambiguation = new Disambiguation(isset($place['disambiguation']) ? $place['disambiguation'] : '');
-        $this->lifeSpan       = new LifeSpan(isset($place['life-span']) ? $place['life-span'] : []);
-        $this->MBID           = new MBID(isset($place['id']) ? $place['id'] : '');
-        $this->name           = new Name(isset($place['name']) ? $place['name'] : '');
-        $this->placeType      = new PlaceType(isset($place['type']) ? $place['type'] : PlaceType::OTHER);
+        $this->setAddressFromArray($place);
+        $this->setAreaFromArray($place);
+        $this->setCoordinatesFromArray($place);
+        $this->setDisambiguationFromArray($place);
+        $this->setLifeSpanFromArray($place);
+        $this->setMbidFromArray($place);
+        $this->setNameFromArray($place);
+        $this->setPlaceTypeFromArray($place);
     }
 
     /**

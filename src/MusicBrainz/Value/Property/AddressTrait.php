@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Address;
 
 /**
@@ -10,19 +11,33 @@ use MusicBrainz\Value\Address;
 trait AddressTrait
 {
     /**
-     * The artist
+     * The address
      *
      * @var Address
      */
     private $address;
 
     /**
-     * Returns the artist.
+     * Returns the address.
      *
      * @return Address
      */
-    public function getArtist(): Address
+    public function getAddress(): Address
     {
         return $this->address;
+    }
+
+    /**
+     * Sets the address by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setAddressFromArray(array $input): void
+    {
+        $this->address = is_null($address = ArrayAccess::getString($input, 'address'))
+            ? new Address
+            : new Address($address);
     }
 }
