@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\RatingVotes;
 
 /**
@@ -24,5 +25,19 @@ trait RatingVotesTrait
     public function getRatingVotes(): RatingVotes
     {
         return $this->ratingVotes;
+    }
+
+    /**
+     * Sets the rating votes by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setRatingVotesFromArray(array $input): void
+    {
+        $this->ratingVotes = is_null($ratingVotes = ArrayAccess::getInteger($input, 'votes-count'))
+            ? new RatingVotes
+            : new RatingVotes($ratingVotes);
     }
 }

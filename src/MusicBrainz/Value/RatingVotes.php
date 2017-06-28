@@ -23,7 +23,7 @@ class RatingVotes implements Value
      *
      * @param int $ratingVotes A number of rating votes
      */
-    public function __construct(int $ratingVotes)
+    public function __construct(int $ratingVotes = 0)
     {
         $this->votes = ($ratingVotes > 0)
             ? $ratingVotes

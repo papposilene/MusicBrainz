@@ -21,8 +21,8 @@ class Rating implements Value
      */
     public function __construct(array $rating = [])
     {
-        $this->ratingValue = new RatingValue(isset($rating['value']) ? (float) $rating['value'] : null);
-        $this->ratingVotes = new RatingVotes(isset($rating['votes-count']) ? (int) $rating['votes-count'] : 0);
+        $this->setRatingValueFromArray($rating);
+        $this->setRatingVotesFromArray($rating);
     }
 
     /**

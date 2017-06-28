@@ -23,7 +23,7 @@ class RatingValue implements Value
      *
      * @param float $ratingValue A rating value
      */
-    public function __construct(?float $ratingValue)
+    public function __construct(float $ratingValue = null)
     {
         $this->value = ($ratingValue >= 0 && $ratingValue <= 5)
             ? $ratingValue
