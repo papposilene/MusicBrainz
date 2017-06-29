@@ -21,10 +21,10 @@ class Collection implements Value
      */
     public function __construct(array $collection = [])
     {
-        $this->collectionName = new CollectionName(isset($collection['name']) ? $collection['name'] : '');
-        $this->editorName     = new EditorName(isset($collection['editor']) ? $collection['editor'] : '');
-        $this->entityType     = new EntityType(isset($collection['entity-type']) ? $collection['entity-type'] : '');
-        $this->MBID           = new MBID(isset($collection['id']) ? $collection['id'] : '');
+        $this->setCollectionNameFromArray($collection);
+        $this->setEditorNameFromArray($collection);
+        $this->setEntityTypeFromArray($collection);
+        $this->setMbidFromArray($collection);
     }
 
     /**
