@@ -64,6 +64,33 @@ class ArrayAccess
     }
 
     /**
+     * Extracts a float from a certain key of a given input array, and returns it. Returns null, if the array key
+     * doesn't exist or doesn't contain a value of type float. Logs an error in the latter case.
+     *
+     * @param array  $array The input array
+     * @param string $key   An array key
+     *
+     * @return null|float
+     */
+    static public function getFloat(array $array, string $key): ?float
+    {
+        if (!isset($array[$key])) {
+
+            return null;
+        }
+
+        if (is_float($array[$key])) {
+
+            return $array[$key];
+        }
+
+        MusicBrainz::log()
+            ->error('Unexpected API behavior: Expected "' . $key . '" to be of type float, but got ' . gettype($array[$key]));
+
+        return null;
+    }
+
+    /**
      * Extracts an integer from a certain key of a given input array, and returns it. Returns null, if the array key
      * doesn't exist or doesn't contain a value of type integer. Logs an error in the latter case.
      *
