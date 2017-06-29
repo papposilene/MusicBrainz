@@ -45,7 +45,8 @@ class Gender implements Value
     public const GENDERS = [
         self::MALE,
         self::FEMALE,
-        self::OTHER
+        self::OTHER,
+        self::UNDEFINED
     ];
 
     /**
