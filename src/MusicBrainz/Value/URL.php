@@ -24,8 +24,8 @@ class URL implements Value
      */
     public function __construct(array $resource = [])
     {
-        $this->MBID     = new MBID(isset($resource['id']) ? $resource['id'] : '');
-        $this->resource = new Resource(isset($resource['resource']) ? $resource['resource'] : []);
+        $this->setMbidFromArray($resource);
+        $this->setResourceFromArray($resource);
     }
 
     /**
