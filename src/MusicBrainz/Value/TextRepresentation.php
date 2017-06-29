@@ -19,8 +19,8 @@ class TextRepresentation implements Value
      */
     public function __construct(array $textRepresentation = [])
     {
-        $this->language = isset($textRepresentation['language']) ? new Language($textRepresentation['language']) : new Language;
-        $this->script   = isset($textRepresentation['script'])   ? new Script($textRepresentation['script'])     : new Script;
+        $this->setLanguageFromArray($textRepresentation);
+        $this->setScriptFromArray($textRepresentation);
     }
 
     /**
