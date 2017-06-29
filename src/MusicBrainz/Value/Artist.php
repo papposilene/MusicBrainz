@@ -36,7 +36,7 @@ class Artist implements Value
     {
         $this->setAliasesFromArray($artist);
         $this->setAreaFromArray($artist);
-        $this->setArtistNameFromArray($artist);
+        $this->setArtistNameFromArray($artist, 'name');
         $this->setArtistTypeFromArray($artist);
         $this->setBeginAreaFromArray($artist);
         $this->setDisambiguationFromArray($artist);
