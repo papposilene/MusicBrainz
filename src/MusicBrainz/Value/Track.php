@@ -22,11 +22,11 @@ class Track implements Value
      */
     public function __construct(array $track = [])
     {
-        $this->MBID               = new MBID(isset($track['id']) ? $track['id'] : '');
-        $this->title              = new Title(isset($track['title']) ? $track['title'] : '');
-        $this->length             = new Length(isset($track['length']) ? (int) $track['length'] : 0);
-        $this->artistCredits      = new ArtistCreditList(isset($track['artist-credit']) ? $track['artist-credit'] : []);
-        $this->trackDisplayNumber = new TrackDisplayNumber(isset($track['number']) ? $track['number'] : null);
+        $this->setMbidFromArray($track);
+        $this->setTitleFromArray($track);
+        $this->setLengthFromArray($track);
+        $this->setArtistCreditsFromArray($track);
+        $this->setTrackDisplayNumberFromArray($track);
     }
 
     /**
