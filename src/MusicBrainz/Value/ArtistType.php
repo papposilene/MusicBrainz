@@ -71,7 +71,8 @@ class ArtistType implements Value
         self::ORCHESTRA,
         self::CHOIR,
         self::CHARACTER,
-        self::OTHER
+        self::OTHER,
+        self::UNDEFINED
         ];
 
     /**
@@ -86,7 +87,7 @@ class ArtistType implements Value
      *
      * @param string $type An artist type code
      */
-    public function __construct(string $type)
+    public function __construct(string $type = self::UNDEFINED)
     {
         $this->type = (in_array($type, self::TYPES))
             ? $type
