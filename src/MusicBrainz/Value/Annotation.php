@@ -31,7 +31,7 @@ class Annotation implements Value
     public function __construct(array $alias = [])
     {
         $this->setAnnotationTextFromArray($alias);
-        $this->setEntityTypeFromArray($alias);
+        $this->setEntityTypeFromArray($alias, 'type');
         $this->setMbidFromArray($alias, 'entity');
         $this->setNameFromArray($alias);
         $this->setScoreFromArray($alias);
