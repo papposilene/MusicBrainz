@@ -16,8 +16,8 @@ class Series implements Value
 {
     use Property\AliasesTrait;
     use Property\DisambiguationTrait;
-    use Property\NameTrait;
     use Property\MBIDTrait;
+    use Property\NameTrait;
 
     /**
      * Constructs a series.
@@ -26,10 +26,10 @@ class Series implements Value
      */
     public function __construct(array $series = [])
     {
-        $this->aliases        = new AliasList(isset($series['aliases']) ? $series['aliases'] : []);
-        $this->disambiguation = new Disambiguation(isset($series['disambiguation']) ? $series['disambiguation'] : []);
-        $this->name           = new Name(isset($series['name']) ? $series['name'] : '');
-        $this->MBID           = new MBID(isset($series['id']) ? $series['id'] : '');
+        $this->setAliasesFromArray($series);
+        $this->setDisambiguationFromArray($series);
+        $this->setMbidFromArray($series);
+        $this->setNameFromArray($series);
     }
 
     /**
