@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\WorkType;
 
 /**
@@ -24,5 +25,19 @@ trait WorkTypeTrait
     public function getWorkType(): WorkType
     {
         return $this->workType;
+    }
+
+    /**
+     * Sets the type of work by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setWorkTypeFromArray(array $input): void
+    {
+        $this->workType = is_null($workType = ArrayAccess::getString($input, 'type'))
+            ? new WorkType
+            : new WorkType($workType);
     }
 }

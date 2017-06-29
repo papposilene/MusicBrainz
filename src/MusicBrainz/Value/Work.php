@@ -29,13 +29,13 @@ class Work implements Value
      */
     public function __construct(array $work = [])
     {
-        $this->attributes     = new AttributeList(isset($work['attributes']) ? $work['attributes'] : []);
-        $this->disambiguation = new Disambiguation(isset($work['disambiguation']) ? $work['disambiguation'] : '');
-        $this->iswcs          = new ISWCList(isset($work['iswcs']) ? $work['iswcs'] : []);
-        $this->language       = new Language(isset($work['language']) ? $work['language'] : '');
-        $this->MBID           = new MBID(isset($work['id']) ? $work['id'] : '');
-        $this->title          = new Title(isset($work['title']) ? $work['title'] : '');
-        $this->workType       = new WorkType(isset($work['type']) ? $work['type'] : '');
+        $this->setAttributesFromArray($work);
+        $this->setDisambiguationFromArray($work);
+        $this->setDisambiguationFromArray($work);
+        $this->setIswcsFromArray($work);
+        $this->setLanguageFromArray($work);
+        $this->setMbidFromArray($work);
+        $this->setWorkTypeFromArray($work);
     }
 
     /**

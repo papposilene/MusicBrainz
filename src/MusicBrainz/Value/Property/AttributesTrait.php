@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\AttributeList;
 
 /**
@@ -24,5 +25,19 @@ trait AttributesTrait
     public function getAttributes(): AttributeList
     {
         return $this->attributes;
+    }
+
+    /**
+     * Sets the list of attributes by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setAttributesFromArray(array $input): void
+    {
+        $this->attributes = is_null($attributes = ArrayAccess::getArray($input, 'attributes'))
+            ? new AttributeList
+            : new AttributeList($attributes);
     }
 }

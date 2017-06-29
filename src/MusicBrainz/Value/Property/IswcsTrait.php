@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\ISWCList;
 
 /**
@@ -24,5 +25,19 @@ trait IswcsTrait
     public function getIswcs(): ISWCList
     {
         return $this->iswcs;
+    }
+
+    /**
+     * Sets the list of International Standard Musical Work Codes (ISWC) by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setIswcsFromArray(array $input): void
+    {
+        $this->iswcs = is_null($iswcs = ArrayAccess::getArray($input, 'iswcs'))
+            ? new ISWCList
+            : new ISWCList($iswcs);
     }
 }
