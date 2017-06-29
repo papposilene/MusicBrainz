@@ -9,19 +9,8 @@ use MusicBrainz\Value;
  */
 class Tag implements Value
 {
-    /**
-     * Number of occurrences
-     *
-     * @var int
-     */
-    private $count;
-
-    /**
-     * The tag
-     *
-     * @var Name
-     */
-    private $name;
+    use Value\Property\CountTrait;
+    use Value\Property\NameTrait;
 
     /**
      * Constructs a tag.
@@ -30,8 +19,8 @@ class Tag implements Value
      */
     public function __construct(array $tag = [])
     {
-        $this->count = isset($tag['count']) ? (int) $tag['count'] : 0;
-        $this->name  = new Name(isset($tag['name']) ? (string) $tag['name'] : '');
+        $this->setCountFromArray($tag);
+        $this->setNameFromArray($tag);
     }
 
     /**
