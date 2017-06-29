@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\ASIN;
 
 /**
@@ -24,5 +25,19 @@ trait ASINTrait
     public function getArea(): ASIN
     {
         return $this->asin;
+    }
+
+    /**
+     * Sets the asin by extracting it from a given input array.
+     *
+     * @param array  $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setAsinFromArray(array $input): void
+    {
+        $this->asin = is_null($asin = ArrayAccess::getString($input, 'asin'))
+            ? new ASIN
+            : new ASIN($asin);
     }
 }

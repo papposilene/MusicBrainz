@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\DataQuality;
 
 /**
@@ -24,5 +25,19 @@ trait DataQualityTrait
     public function getQuality(): DataQuality
     {
         return $this->quality;
+    }
+
+    /**
+     * Sets the data quality by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setDataQualityFromArray(array $input): void
+    {
+        $this->quality = is_null($quality = ArrayAccess::getString($input, 'quality'))
+            ? new DataQuality
+            : new DataQuality($quality);
     }
 }
