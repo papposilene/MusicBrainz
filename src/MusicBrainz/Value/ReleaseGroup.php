@@ -35,11 +35,11 @@ class ReleaseGroup implements Value
      */
     public function __construct(array $releaseGroup = [])
     {
-        $this->title                 = new Title(isset($releaseGroup['title']) ? $releaseGroup['title'] : '');
-        $this->MBID                  = new MBID(isset($releaseGroup['id']) ? $releaseGroup['id'] : '');
-        $this->disambiguation        = new Disambiguation(isset($releaseGroup['disambiguation']) ? $releaseGroup['disambiguation'] : '');
-        $this->primaryReleaseType    = new ReleaseType(isset($releaseGroup['primary-type']) ? $releaseGroup['primary-type'] : '');
-        $this->secondaryReleaseTypes = new ReleaseTypeList(isset($releaseGroup['secondary-types']) ? $releaseGroup['secondary-types'] : []);
+        $this->setTitleFromArray($releaseGroup);
+        $this->setMbidFromArray($releaseGroup);
+        $this->setDisambiguationFromArray($releaseGroup);
+        $this->setPrimaryReleaseTypeFromArray($releaseGroup);
+        $this->setSecondaryReleaseTypesFromArray($releaseGroup);
     }
 
     /**

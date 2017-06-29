@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\ReleaseTypeList;
 
 /**
@@ -23,6 +24,20 @@ trait SecondaryReleaseTypesListTrait
      */
     public function getSecondaryReleaseTypes(): ReleaseTypeList
     {
-        return $this->releaseTypeList;
+        return $this->secondaryReleaseTypes;
+    }
+
+    /**
+     * Sets the list of secondary release types by extracting it from a given input array.
+     *
+     * @param array $input An array returned by the webservice
+     *
+     * @return void
+     */
+    private function setSecondaryReleaseTypesFromArray(array $input): void
+    {
+        $this->secondaryReleaseTypes = is_null($secondaryReleaseTypes = ArrayAccess::getArray($input, 'secondary-types'))
+            ? new ReleaseTypeList
+            : new ReleaseTypeList($secondaryReleaseTypes);
     }
 }
