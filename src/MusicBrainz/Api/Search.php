@@ -182,11 +182,10 @@ class Search
      */
     public function recording(RecordingFilter $recordingFilter, PageFilter $pageFilter): RecordingList
     {
-        $params = $this->getParameters($recordingFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
-
+        $params   = $this->getParameters($recordingFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
         $response = $this->httpAdapter->call('recording' . '/', $this->config, $params, false, true);
 
-        return new RecordingList((isset($response['recordings'])) ? $response['recordings'] : []);
+        return new RecordingList($response);
     }
 
     /**
