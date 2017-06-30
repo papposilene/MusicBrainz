@@ -17,7 +17,6 @@ use MusicBrainz\Filter\Search\TagFilter;
 use MusicBrainz\Filter\Search\WorkFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
-use MusicBrainz\Value\ReleaseGroupList;
 use MusicBrainz\Value\SearchResult\AnnotationList;
 use MusicBrainz\Value\SearchResult\AreaList;
 use MusicBrainz\Value\SearchResult\ArtistList;
@@ -26,6 +25,7 @@ use MusicBrainz\Value\SearchResult\LabelList;
 use MusicBrainz\Value\SearchResult\PlaceList;
 use MusicBrainz\Value\SearchResult\RecordingList;
 use MusicBrainz\Value\SearchResult\ReleaseList;
+use MusicBrainz\Value\SearchResult\ReleaseGroupList;
 use MusicBrainz\Value\TagList;
 use MusicBrainz\Value\WorkList;
 
@@ -218,11 +218,10 @@ class Search
      */
     public function releaseGroup(ReleaseGroupFilter $releaseGroupFilter, PageFilter $pageFilter): ReleaseGroupList
     {
-        $params = $this->getParameters($releaseGroupFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
-
+        $params   = $this->getParameters($releaseGroupFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
         $response = $this->httpAdapter->call('release-group' . '/', $this->config, $params, false, true);
 
-        return new ReleaseGroupList((isset($response['release-groups'])) ? $response['release-groups'] : []);
+        return new ReleaseGroupList($response);
     }
 
     /**
