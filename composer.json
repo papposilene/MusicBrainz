@@ -27,13 +27,9 @@
         "rmccue/requests": "Allows you to use the RequestsHttpAdapter. You must install one of the supported adapters."
     },
     "autoload": {
-        "psr-0": {
-            "MusicBrainz": "src/"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.2.x-dev"
+        "psr-4": {
+            "MusicBrainz\\": "src",
+            "MusicBrainz\\Test\\": "tests"
         }
     }
 }
