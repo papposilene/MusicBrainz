@@ -27,7 +27,7 @@ use MusicBrainz\Value\SearchResult\RecordingList;
 use MusicBrainz\Value\SearchResult\ReleaseList;
 use MusicBrainz\Value\SearchResult\ReleaseGroupList;
 use MusicBrainz\Value\SearchResult\TagList;
-use MusicBrainz\Value\WorkList;
+use MusicBrainz\Value\SearchResult\WorkList;
 
 /**
  * The search API provides methods for searching entities based on the parameters supplied in the filter objects.
@@ -254,11 +254,10 @@ class Search
      */
     public function work(WorkFilter $workFilter, PageFilter $pageFilter): WorkList
     {
-        $params = $this->getParameters($workFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
-
+        $params   = $this->getParameters($workFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
         $response = $this->httpAdapter->call('work' . '/', $this->config, $params, false, true);
 
-        return new WorkList((isset($response['works'])) ? $response['works'] : []);
+        return new WorkList($response);
     }
 
     /**
