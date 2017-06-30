@@ -4,6 +4,7 @@ namespace MusicBrainz\Api;
 
 use MusicBrainz\Config;
 use MusicBrainz\Exception;
+use MusicBrainz\Filter\Search\AbstractFilter;
 use MusicBrainz\Filter\Search\AnnotationFilter;
 use MusicBrainz\Filter\Search\AreaFilter;
 use MusicBrainz\Filter\Search\ArtistFilter;
@@ -74,7 +75,7 @@ class Search
      */
     public function annotation(AnnotationFilter $annotationFilter, PageFilter $pageFilter): AnnotationList
     {
-        $params   = $this->getParameters($annotationFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params   = $this->getParameters($annotationFilter, $pageFilter);
         $response = $this->httpAdapter->call('annotation' . '/', $this->config, $params, false, true);
 
         return new AnnotationList($response);
@@ -92,7 +93,7 @@ class Search
      */
     public function area(AreaFilter $areaFilter, PageFilter $pageFilter): AreaList
     {
-        $params   = $this->getParameters($areaFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params   = $this->getParameters($areaFilter, $pageFilter);
         $response = $this->httpAdapter->call('area' . '/', $this->config, $params, false, true);
 
         return new AreaList($response);
@@ -110,7 +111,7 @@ class Search
      */
     public function artist(ArtistFilter $artistFilter, PageFilter $pageFilter): ArtistList
     {
-        $params   = $this->getParameters($artistFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params   = $this->getParameters($artistFilter, $pageFilter);
         $response = $this->httpAdapter->call('artist' . '/', $this->config, $params, false, true);
 
         return new ArtistList($response);
@@ -128,7 +129,7 @@ class Search
      */
     public function cdStub(CdStubFilter $cdStubFilter, PageFilter $pageFilter): CdStubList
     {
-        $params   = $this->getParameters($cdStubFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params   = $this->getParameters($cdStubFilter, $pageFilter);
         $response = $this->httpAdapter->call('cdstub' . '/', $this->config, $params, false, true);
 
         return new CdStubList($response);
@@ -146,7 +147,7 @@ class Search
      */
     public function label(LabelFilter $labelFilter, PageFilter $pageFilter): LabelList
     {
-        $params   = $this->getParameters($labelFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params   = $this->getParameters($labelFilter, $pageFilter);
         $response = $this->httpAdapter->call('label' . '/', $this->config, $params, false, true);
 
         return new LabelList($response);
@@ -164,7 +165,7 @@ class Search
      */
     public function place(PlaceFilter $placeFilter, PageFilter $pageFilter): PlaceList
     {
-        $params   = $this->getParameters($placeFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params   = $this->getParameters($placeFilter, $pageFilter);
         $response = $this->httpAdapter->call('place' . '/', $this->config, $params, false, true);
 
         return new PlaceList($response);
@@ -182,7 +183,7 @@ class Search
      */
     public function recording(RecordingFilter $recordingFilter, PageFilter $pageFilter): RecordingList
     {
-        $params   = $this->getParameters($recordingFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params   = $this->getParameters($recordingFilter, $pageFilter);
         $response = $this->httpAdapter->call('recording' . '/', $this->config, $params, false, true);
 
         return new RecordingList($response);
@@ -200,7 +201,7 @@ class Search
      */
     public function release(ReleaseFilter $releaseFilter, PageFilter $pageFilter): ReleaseList
     {
-        $params   = $this->getParameters($releaseFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params   = $this->getParameters($releaseFilter, $pageFilter);
         $response = $this->httpAdapter->call('release' . '/', $this->config, $params, false, true);
 
         return new ReleaseList($response);
@@ -218,7 +219,7 @@ class Search
      */
     public function releaseGroup(ReleaseGroupFilter $releaseGroupFilter, PageFilter $pageFilter): ReleaseGroupList
     {
-        $params   = $this->getParameters($releaseGroupFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params   = $this->getParameters($releaseGroupFilter, $pageFilter);
         $response = $this->httpAdapter->call('release-group' . '/', $this->config, $params, false, true);
 
         return new ReleaseGroupList($response);
@@ -236,7 +237,7 @@ class Search
      */
     public function tag(TagFilter $tagFilter, PageFilter $pageFilter): TagList
     {
-        $params   = $this->getParameters($tagFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params   = $this->getParameters($tagFilter, $pageFilter);
         $response = $this->httpAdapter->call('tag' . '/', $this->config, $params, true, true);
 
         return new TagList($response);
@@ -254,7 +255,7 @@ class Search
      */
     public function work(WorkFilter $workFilter, PageFilter $pageFilter): WorkList
     {
-        $params   = $this->getParameters($workFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
+        $params   = $this->getParameters($workFilter, $pageFilter);
         $response = $this->httpAdapter->call('work' . '/', $this->config, $params, false, true);
 
         return new WorkList($response);
@@ -263,26 +264,25 @@ class Search
     /**
      * Returns a list of parameters.
      *
-     * @param array $filterValues
-     * @param int   $limit
-     * @param int   $offset
+     * @param AbstractFilter $searchFilter A search filter
+     * @param PageFilter     $pageFilter   A page filter
      *
      * @return array
      *
      * @throws Exception
      */
-    private function getParameters($query, int $limit, int $offset): array
+    private function getParameters(AbstractFilter $searchFilter, PageFilter $pageFilter): array
     {
-        if (empty((string) $query)) {
+        if (empty((string) $searchFilter)) {
 
             throw new Exception('The filter needs at least one argument to create a query.');
         }
 
         return [
-            'limit'  => $limit,
-            'offset' => $offset,
+            'limit'  => $pageFilter->getLimit(),
+            'offset' => $pageFilter->getOffset(),
             'fmt'    => 'json',
-            'query'  => (string) $query
+            'query'  => (string) $searchFilter
         ];
     }
 }
