@@ -17,7 +17,6 @@ use MusicBrainz\Filter\Search\TagFilter;
 use MusicBrainz\Filter\Search\WorkFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
-use MusicBrainz\Value\LabelList;
 use MusicBrainz\Value\PlaceList;
 use MusicBrainz\Value\RecordingList;
 use MusicBrainz\Value\ReleaseGroupList;
@@ -26,6 +25,7 @@ use MusicBrainz\Value\SearchResult\AnnotationList;
 use MusicBrainz\Value\SearchResult\AreaList;
 use MusicBrainz\Value\SearchResult\ArtistList;
 use MusicBrainz\Value\SearchResult\CdStubList;
+use MusicBrainz\Value\SearchResult\LabelList;
 use MusicBrainz\Value\TagList;
 use MusicBrainz\Value\WorkList;
 
@@ -146,11 +146,10 @@ class Search
      */
     public function label(LabelFilter $labelFilter, PageFilter $pageFilter): LabelList
     {
-        $params = $this->getParameters($labelFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
-
+        $params   = $this->getParameters($labelFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
         $response = $this->httpAdapter->call('label' . '/', $this->config, $params, false, true);
 
-        return new LabelList((isset($response['labels'])) ? $response['labels'] : []);
+        return new LabelList($response);
     }
 
     /**
