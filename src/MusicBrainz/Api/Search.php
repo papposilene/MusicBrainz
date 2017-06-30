@@ -17,7 +17,6 @@ use MusicBrainz\Filter\Search\TagFilter;
 use MusicBrainz\Filter\Search\WorkFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
-use MusicBrainz\Value\CdStubListList;
 use MusicBrainz\Value\LabelList;
 use MusicBrainz\Value\PlaceList;
 use MusicBrainz\Value\RecordingList;
@@ -26,6 +25,7 @@ use MusicBrainz\Value\ReleaseList;
 use MusicBrainz\Value\SearchResult\AnnotationList;
 use MusicBrainz\Value\SearchResult\AreaList;
 use MusicBrainz\Value\SearchResult\ArtistList;
+use MusicBrainz\Value\SearchResult\CdStubList;
 use MusicBrainz\Value\TagList;
 use MusicBrainz\Value\WorkList;
 
@@ -122,17 +122,16 @@ class Search
      * @param CdStubFilter $cdStubFilter A CD stub filter
      * @param PageFilter   $pageFilter   A page filter
      *
-     * @return CdStubListList
+     * @return CdStubList
      *
      * @throws Exception
      */
-    public function cdStub(CdStubFilter $cdStubFilter, PageFilter $pageFilter): CdStubListList
+    public function cdStub(CdStubFilter $cdStubFilter, PageFilter $pageFilter): CdStubList
     {
-        $params = $this->getParameters($cdStubFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
-
+        $params   = $this->getParameters($cdStubFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
         $response = $this->httpAdapter->call('cdstub' . '/', $this->config, $params, false, true);
 
-        return new CdStubListList((isset($response['cdstubs'])) ? $response['cdstubs'] : []);
+        return new CdStubList($response);
     }
 
     /**
