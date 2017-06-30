@@ -10,25 +10,11 @@ use MusicBrainz\Value;
 class TimeStamp implements Value
 {
     /**
-     * The hour
-     *
-     * @var null|int
-     */
-    private $hour;
-
-    /**
-     * The minute
-     *
-     * @var null|int
-     */
-    private $minute;
-
-    /**
      * The time of day as string, formatted like 00:00, ..., 23:59
      *
-     * @var string
+     * @var null|\DateTime
      */
-    private $time = '';
+    private $dateTime;
 
     /**
      * Constructs a time of day.
@@ -37,40 +23,45 @@ class TimeStamp implements Value
      */
     public function __construct(string $time = '')
     {
-        if (preg_match('/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/', $time)) {
-            $this->hour   = (int) substr($time, 0, 2);
-            $this->minute = (int) substr($time, 3, 2);
-            $this->time   = $time;
+        if (preg_match
+        (
+            '/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9].[0-9][0-9][0-9]Z$/',
+            $time
+        )
+        ) {
+            /**
+             * - 'T' has a meaning in the time format given to createFromFormat(). So we replace it by '-' with strtr().
+             * - \DateTime::format() doesn't work, if the DateTime object was created with milliseconds. So we remove
+             * them with substr()
+             */
+            $dateTime = \DateTime::createFromFormat(
+                'Y-m-d-H:i:s',
+                substr(strtr($time, 'T', '-'), 0, 19)
+            );
+
+            $this->dateTime = (false === $dateTime) ? null : $dateTime;
         }
     }
 
     /**
-     * Returns the hour.
+     * Returns the DateTime object.
      *
-     * @return null|int
+     * @return null|\DateTime
      */
-    public function getHour(): ?int
+    public function getDateTime(): ?\DateTime
     {
-        return $this->hour;
+        return $this->dateTime;
     }
 
     /**
-     * Returns the minute.
-     *
-     * @return null|int
-     */
-    public function getMinute(): ?int
-    {
-        return $this->minute;
-    }
-
-    /**
-     * Returns the time of day as string, formatted like 00:00, ..., 23:59.
+     * Returns the time of day as string, formatted like "2017/07/01 09:05".
      *
      * @return string
      */
     public function __toString(): string
     {
-        return $this->time;
+        return (null !== $this->dateTime)
+            ? $this->dateTime->format('Y/m/d H:i:s')
+            : '';
     }
 }
