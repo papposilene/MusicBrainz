@@ -17,8 +17,6 @@ use MusicBrainz\Filter\Search\TagFilter;
 use MusicBrainz\Filter\Search\WorkFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
-use MusicBrainz\Value\PlaceList;
-use MusicBrainz\Value\RecordingList;
 use MusicBrainz\Value\ReleaseGroupList;
 use MusicBrainz\Value\ReleaseList;
 use MusicBrainz\Value\SearchResult\AnnotationList;
@@ -26,6 +24,8 @@ use MusicBrainz\Value\SearchResult\AreaList;
 use MusicBrainz\Value\SearchResult\ArtistList;
 use MusicBrainz\Value\SearchResult\CdStubList;
 use MusicBrainz\Value\SearchResult\LabelList;
+use MusicBrainz\Value\SearchResult\PlaceList;
+use MusicBrainz\Value\SearchResult\RecordingList;
 use MusicBrainz\Value\TagList;
 use MusicBrainz\Value\WorkList;
 
@@ -164,11 +164,10 @@ class Search
      */
     public function place(PlaceFilter $placeFilter, PageFilter $pageFilter): PlaceList
     {
-        $params = $this->getParameters($placeFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
-
+        $params   = $this->getParameters($placeFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
         $response = $this->httpAdapter->call('place' . '/', $this->config, $params, false, true);
 
-        return new PlaceList((isset($response['places'])) ? $response['places'] : []);
+        return new PlaceList($response);
     }
 
     /**
