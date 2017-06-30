@@ -26,7 +26,7 @@ use MusicBrainz\Value\SearchResult\PlaceList;
 use MusicBrainz\Value\SearchResult\RecordingList;
 use MusicBrainz\Value\SearchResult\ReleaseList;
 use MusicBrainz\Value\SearchResult\ReleaseGroupList;
-use MusicBrainz\Value\TagList;
+use MusicBrainz\Value\SearchResult\TagList;
 use MusicBrainz\Value\WorkList;
 
 /**
@@ -236,11 +236,10 @@ class Search
      */
     public function tag(TagFilter $tagFilter, PageFilter $pageFilter): TagList
     {
-        $params = $this->getParameters($tagFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
-
+        $params   = $this->getParameters($tagFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
         $response = $this->httpAdapter->call('tag' . '/', $this->config, $params, true, true);
 
-        return new TagList((isset($response['tags'])) ? $response['tags'] : []);
+        return new TagList($response);
     }
 
     /**
