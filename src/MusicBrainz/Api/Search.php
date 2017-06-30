@@ -17,8 +17,6 @@ use MusicBrainz\Filter\Search\TagFilter;
 use MusicBrainz\Filter\Search\WorkFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
-use MusicBrainz\Value\AreaList;
-use MusicBrainz\Value\ArtistList;
 use MusicBrainz\Value\CdStubListList;
 use MusicBrainz\Value\LabelList;
 use MusicBrainz\Value\PlaceList;
@@ -26,7 +24,7 @@ use MusicBrainz\Value\RecordingList;
 use MusicBrainz\Value\ReleaseGroupList;
 use MusicBrainz\Value\ReleaseList;
 use MusicBrainz\Value\SearchResult\AnnotationList;
-use MusicBrainz\Value\SearchResultList;
+use MusicBrainz\Value\SearchResult\AreaList;
 use MusicBrainz\Value\TagList;
 use MusicBrainz\Value\WorkList;
 
@@ -93,11 +91,10 @@ class Search
      */
     public function area(AreaFilter $areaFilter, PageFilter $pageFilter): AreaList
     {
-        $params = $this->getParameters($areaFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
-
+        $params   = $this->getParameters($areaFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
         $response = $this->httpAdapter->call('area' . '/', $this->config, $params, false, true);
 
-        return new AreaList((isset($response['areas'])) ? $response['areas'] : []);
+        return new AreaList($response);
     }
 
     /**
