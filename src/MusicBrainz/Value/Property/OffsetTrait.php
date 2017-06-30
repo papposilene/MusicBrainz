@@ -8,23 +8,23 @@ use MusicBrainz\Value\Count;
 /**
  * Provides a getter for the offset.
  */
-trait CountTrait
+trait OffsetTrait
 {
     /**
      * The offset
      *
      * @var Count
      */
-    private $count;
+    private $offset;
 
     /**
      * Returns the offset.
      *
      * @return Count
      */
-    public function getCount(): Count
+    public function getOffset(): Count
     {
-        return $this->count;
+        return $this->offset;
     }
 
     /**
@@ -34,9 +34,9 @@ trait CountTrait
      *
      * @return void
      */
-    private function setCountFromArray(array $input): void
+    private function setOffsetFromArray(array $input): void
     {
-        $this->count = is_null($count = ArrayAccess::getInteger($input, 'count'))
+        $this->offset = is_null($count = ArrayAccess::getInteger($input, 'offset'))
             ? new Count
             : new Count($count);
     }

@@ -21,7 +21,6 @@ class Annotation implements Value
     use Property\EntityTypeTrait;
     use Property\NameTrait;
     use Property\MBIDTrait;
-    use Property\ScoreTrait;
 
     /**
      * Constructs an annotation.
@@ -34,7 +33,6 @@ class Annotation implements Value
         $this->setEntityTypeFromArray($alias, 'type');
         $this->setMbidFromArray($alias, 'entity');
         $this->setNameFromArray($alias);
-        $this->setScoreFromArray($alias);
     }
 
     /**
