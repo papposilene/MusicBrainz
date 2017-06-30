@@ -25,6 +25,7 @@ use MusicBrainz\Value\ReleaseGroupList;
 use MusicBrainz\Value\ReleaseList;
 use MusicBrainz\Value\SearchResult\AnnotationList;
 use MusicBrainz\Value\SearchResult\AreaList;
+use MusicBrainz\Value\SearchResult\ArtistList;
 use MusicBrainz\Value\TagList;
 use MusicBrainz\Value\WorkList;
 
@@ -109,11 +110,10 @@ class Search
      */
     public function artist(ArtistFilter $artistFilter, PageFilter $pageFilter): ArtistList
     {
-        $params = $this->getParameters($artistFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
-
+        $params   = $this->getParameters($artistFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
         $response = $this->httpAdapter->call('artist' . '/', $this->config, $params, false, true);
 
-        return new ArtistList((isset($response['artists'])) ? $response['artists'] : []);
+        return new ArtistList($response);
     }
 
     /**
