@@ -18,7 +18,6 @@ use MusicBrainz\Filter\Search\WorkFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Value\ReleaseGroupList;
-use MusicBrainz\Value\ReleaseList;
 use MusicBrainz\Value\SearchResult\AnnotationList;
 use MusicBrainz\Value\SearchResult\AreaList;
 use MusicBrainz\Value\SearchResult\ArtistList;
@@ -26,6 +25,7 @@ use MusicBrainz\Value\SearchResult\CdStubList;
 use MusicBrainz\Value\SearchResult\LabelList;
 use MusicBrainz\Value\SearchResult\PlaceList;
 use MusicBrainz\Value\SearchResult\RecordingList;
+use MusicBrainz\Value\SearchResult\ReleaseList;
 use MusicBrainz\Value\TagList;
 use MusicBrainz\Value\WorkList;
 
@@ -200,11 +200,10 @@ class Search
      */
     public function release(ReleaseFilter $releaseFilter, PageFilter $pageFilter): ReleaseList
     {
-        $params = $this->getParameters($releaseFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
-
+        $params   = $this->getParameters($releaseFilter, $pageFilter->getLimit(), $pageFilter->getOffset());
         $response = $this->httpAdapter->call('release' . '/', $this->config, $params, false, true);
 
-        return new ReleaseList((isset($response['releases'])) ? $response['releases'] : []);
+        return new ReleaseList($response);
     }
 
     /**
