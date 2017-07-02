@@ -31,5 +31,5 @@ abstract class AbstractHttpAdapter
         array $params = array(),
         bool $isAuthRequired = false,
         bool $returnArray = false
-    );
+    ): array;
 }
