@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Collection\ArrayAccessTrait;
 use MusicBrainz\Collection\CollectionTrait;
 use MusicBrainz\Collection\IteratorTrait;
 
@@ -10,8 +11,11 @@ use MusicBrainz\Collection\IteratorTrait;
  *
  * @link http://php.net/manual/en/class.iterator.php
  */
-abstract class ValueList implements \Iterator
+abstract class ValueList implements
+    \ArrayAccess,
+    \Iterator
 {
+    use ArrayAccessTrait;
     use CollectionTrait;
     use IteratorTrait;
 
