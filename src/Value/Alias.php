@@ -32,6 +32,7 @@ class Alias implements Value
         $this->setBeginDateFromArray($alias);
         $this->setEndDateFromArray($alias);
         $this->setLocaleCodeFromArray($alias);
+        $this->setNameFromArray($alias);
         $this->setPrimaryNameFromArray($alias);
         $this->setSortNameFromArray($alias);
     }
