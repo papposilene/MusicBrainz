@@ -2,13 +2,21 @@
 namespace MusicBrainz\Test\Api;
 
 use MusicBrainz\Filter\Search\AnnotationFilter;
+use MusicBrainz\Filter\Search\AreaFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\MusicBrainz;
+use MusicBrainz\Value\Alias;
+use MusicBrainz\Value\AliasList;
+use MusicBrainz\Value\AliasType;
 use MusicBrainz\Value\Annotation;
 use MusicBrainz\Value\AnnotationText;
+use MusicBrainz\Value\Area;
+use MusicBrainz\Value\AreaType;
 use MusicBrainz\Value\EntityType;
+use MusicBrainz\Value\Name;
 use MusicBrainz\Value\SearchResult;
 use MusicBrainz\Value\SearchResult\AnnotationList;
+use MusicBrainz\Value\SearchResult\AreaList;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -49,7 +57,7 @@ class SearchTest extends TestCase
      *
      * @return void
      */
-    public function testSearchAnnotaion(): void
+    public function testAnnotaion(): void
     {
         /** Setting up the mock object of the abstract HTTP adapter */
         $this->httpAdapter->expects($this->once())
@@ -68,7 +76,7 @@ class SearchTest extends TestCase
                 json_decode(file_get_contents(__DIR__ . '/../Fixtures/Search/Annotation.json'), true)
             );
 
-        /** Performing the test $annotationFilter */
+        /** Performing the test */
         $annotationFilter = new AnnotationFilter;
         $annotationFilter->addAnnotationText(new AnnotationText('awesome'));
         $pageFilter = new \MusicBrainz\Filter\PageFilter(0, 5);
@@ -91,7 +99,7 @@ class SearchTest extends TestCase
         $this->assertSame(
             0,
             $result->getOffset()->getNumber(),
-            'Expected the offset to be 68, as given in Fixtures/Search/Annotation.json.'
+            'Expected the offset to be 0, as given in Fixtures/Search/Annotation.json.'
         );
 
         $this->assertSame(
@@ -146,6 +154,166 @@ class SearchTest extends TestCase
             'Echo Ricochet',
             (string) $annotation->getName(),
             'Expected the name of the annotated entity to be "Echo Ricochet", as given in Fixtures/Search/Annotation.json.'
+        );
+    }
+
+    /**
+     * Tests, if Search::area() properly converts the given JSON response into a domain model and returns it.
+     *
+     * @return void
+     */
+    public function testArea(): void
+    {
+        /** Setting up the mock object of the abstract HTTP adapter */
+        $this->httpAdapter->expects($this->once())
+            ->method('call')
+            ->with(
+                'area/',
+                $this->musicBrainz->config(),
+                [
+                    'limit'  => 5,
+                    'offset' => 0,
+                    'fmt'    => 'json',
+                    'query'  => 'area:Leipzig'
+                ]
+            )
+            ->willReturn(
+                json_decode(file_get_contents(__DIR__ . '/../Fixtures/Search/Area.json'), true)
+            );
+
+        /** Performing the test */
+        $areaFilter = new AreaFilter;
+        $areaFilter->addAreaName(new Name('Leipzig'));
+        $pageFilter = new \MusicBrainz\Filter\PageFilter(0, 5);
+
+        $result = $this->musicBrainz->api()->search()->area($areaFilter, $pageFilter);
+
+        $this->assertInstanceOf(
+            AreaList::class,
+            $result,
+            'Expected Search::area() to return a search result list of areas.'
+        );
+
+        /** Validating the search result list */
+        $this->assertSame(
+            2,
+            $result->getCount()->getNumber(),
+            'Expected the total number of search results to be 2, as given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertSame(
+            0,
+            $result->getOffset()->getNumber(),
+            'Expected the offset to be 0, as given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertSame(
+            '2017/07/09 17:54:44',
+            (string) $result->getCreationTime(),
+            'Expected the creation time to be "2017-07-09 17:54:44", as given in Fixtures/Search/Area.json.'
+        );
+
+        /**
+         * Validating the first search result of the list
+         *
+         * @var SearchResult $searchResult The first search result of the list
+         */
+        $searchResult = $result[0];
+
+        $this->assertInstanceOf(
+            SearchResult::class,
+            $searchResult
+        );
+
+        $this->assertSame(
+            100,
+            $searchResult->getScore()->getNumber()
+        );
+
+        /**
+         * Validating the value of the first search result.
+         *
+         * @var Area $area The value of the first search result
+         */
+        $area = $searchResult->getValue();
+
+        $this->assertSame(
+            AreaType::CITY,
+            (string) $area->getAreaType(),
+            'Expected the first area to be of type city, as given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertEmpty(
+            (string) $area->getLifeSpan()->getBeginDate(),
+            'Expected the beginning date to be unset, as not given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertEmpty(
+            (string) $area->getLifeSpan()->getEndDate(),
+            'Expected the ending date to be unset, as not given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertFalse(
+            $area->getLifeSpan()->getEnded()->isEnded(),
+            'Expected the first area not to be ended, as given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertSame(
+            'Leipzig',
+            (string) $area->getName(),
+            'Expected the first areas name to be "Leipzig", as given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertSame(
+            'Leipzig',
+            (string) $area->getSortName(),
+            'Expected the first areas sort name to be "Leipzig", as given in Fixtures/Search/Area.json.'
+        );
+
+        /**
+         * Validating the alias list of the first search result
+         *
+         * @var Alias $alias The first alias of the list
+         */
+        $alias = $area->getAliases()[0];
+
+        $this->assertSame(
+            AliasType::AREA_NAME,
+            (string) $alias->getAliasType(),
+            'Expected the first alias to be an area name, as given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertEmpty(
+            (string) $alias->getBeginDate(),
+            'Expected the first alias\' beginning date to be unset, as not given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertEmpty(
+            (string) $alias->getEndDate(),
+            'Expected the first alias\s ending date to be unset, as not given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertSame(
+            'ja',
+            (string) $alias->getLocaleCode(),
+            'Expected the first alias\' locale code to be "ja", as given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertSame(
+            'ライプツィヒ',
+            (string) $alias->getName(),
+            'Expected the first alias\' name to be "ライプツィヒ", as given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertTrue(
+            $alias->getPrimaryName()->isPrimaryName(),
+            'Expected the first alias to be a primary name, as given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertSame(
+            'ライプツィヒ',
+            (string) $alias->getSortName(),
+            'Expected the first alias\' sort name to be "ライプツィヒ", as given in Fixtures/Search/Area.json.'
         );
     }
 }
