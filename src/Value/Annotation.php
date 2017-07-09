@@ -2,7 +2,6 @@
 
 namespace MusicBrainz\Value;
 
-use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Helper\GetValue;
 use MusicBrainz\Value;
 
@@ -36,12 +35,12 @@ class Annotation implements Value
     }
 
     /**
-     * Returns the annotation text.
+     * Returns the annotation as string.
      *
      * @return string
      */
     public function __toString(): string
     {
-        return $this->getName();
+        return $this->getName() . ': ' . $this->getAnnotationText();
     }
 }
