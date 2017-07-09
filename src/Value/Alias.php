@@ -18,7 +18,7 @@ class Alias implements Value
     use Property\EndDateTrait;
     use Property\LocaleCodeTrait;
     use Property\NameTrait;
-    use Property\PrimaryNameTrait;
+    use Property\PrimaryNameFlagTrait;
     use Property\SortNameTrait;
 
     /**

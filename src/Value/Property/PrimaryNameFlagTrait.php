@@ -3,26 +3,26 @@
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
-use MusicBrainz\Value\PrimaryName;
+use MusicBrainz\Value\PrimaryNameFlag;
 
 /**
  * Provides a getter for the "primary name" flag.
  */
-trait PrimaryNameTrait
+trait PrimaryNameFlagTrait
 {
     /**
      * A "primary name" flag
      *
-     * @var PrimaryName
+     * @var PrimaryNameFlag
      */
     private $primaryName;
 
     /**
      * Returns the "primary name" flag
      *
-     * @return PrimaryName
+     * @return PrimaryNameFlag
      */
-    public function getPrimaryName(): PrimaryName
+    public function getPrimaryName(): PrimaryNameFlag
     {
         return $this->primaryName;
     }
@@ -37,7 +37,7 @@ trait PrimaryNameTrait
     private function setPrimaryNameFromArray(array $input): void
     {
         $this->primaryName = is_null($primaryName = ArrayAccess::getBool($input, 'primary'))
-            ? new PrimaryName
-            : new PrimaryName($primaryName);
+            ? new PrimaryNameFlag
+            : new PrimaryNameFlag($primaryName);
     }
 }

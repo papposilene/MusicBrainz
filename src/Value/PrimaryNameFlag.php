@@ -7,7 +7,7 @@ use MusicBrainz\Value;
 /**
  * A "primary name" flag
  */
-class PrimaryName implements Value
+class PrimaryNameFlag implements Value
 {
     /**
      * True, if the name is a primary name, otherwise false
@@ -32,6 +32,16 @@ class PrimaryName implements Value
      * @return string
      */
     public function __toString(): string
+    {
+        return $this->primaryName;
+    }
+
+    /**
+     * Returns true, if the name is a primary name, otherwise false.
+     *
+     * @return bool
+     */
+    public function isPrimaryName(): bool
     {
         return $this->primaryName;
     }
