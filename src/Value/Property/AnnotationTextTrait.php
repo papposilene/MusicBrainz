@@ -12,16 +12,16 @@ trait AnnotationTextTrait
     /**
      * The annotation text
      *
-     * @var string
+     * @var AnnotationText
      */
     private $annotationText;
 
     /**
      * Returns the annotation text.
      *
-     * @return string
+     * @return AnnotationText
      */
-    public function getAnnotationText(): string
+    public function getAnnotationText(): AnnotationText
     {
         return $this->annotationText;
     }
