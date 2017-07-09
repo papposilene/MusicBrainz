@@ -4,6 +4,7 @@ namespace MusicBrainz\Value;
 
 use MusicBrainz\Collection\ArrayAccessTrait;
 use MusicBrainz\Collection\CollectionTrait;
+use MusicBrainz\Collection\CountableTrait;
 use MusicBrainz\Collection\IteratorTrait;
 
 /**
@@ -13,10 +14,12 @@ use MusicBrainz\Collection\IteratorTrait;
  */
 abstract class ValueList implements
     \ArrayAccess,
+    \Countable,
     \Iterator
 {
     use ArrayAccessTrait;
     use CollectionTrait;
+    use CountableTrait;
     use IteratorTrait;
 
     /**
