@@ -10,21 +10,21 @@ use MusicBrainz\Value;
 class Score implements Value
 {
     /**
-     * The relevance score
+     * The number
      *
      * @var null|int
      */
-    private $score;
+    private $number;
 
     /**
      * Constructs a relevance score.
      *
-     * @param null|int $score The score
+     * @param null|int $number The number
      */
-    public function __construct(int $score = null)
+    public function __construct(int $number = null)
     {
-        $this->score = ((0 <= $score && $score <= 100) || null === $score)
-            ? $score
+        $this->number = ((0 <= $number && $number <= 100) || null === $number)
+            ? $number
             : null;
     }
 
@@ -35,8 +35,18 @@ class Score implements Value
      */
     public function __toString(): string
     {
-        return (null === $this->score)
+        return (null === $this->number)
             ? ''
-            : $this->score;
+            : $this->number;
+    }
+
+    /**
+     * Returns the number.
+     *
+     * @return null|int
+     */
+    public function getNumber(): ?int
+    {
+        return $this->number;
     }
 }
