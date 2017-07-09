@@ -10,6 +10,7 @@ use MusicBrainz\Value;
  */
 class Area implements Value
 {
+    use Property\AliasesTrait;
     use Property\AreaTypeTrait;
     use Property\DisambiguationTrait;
     use Property\ISO31661CodesTrait;
@@ -26,6 +27,7 @@ class Area implements Value
      */
     public function __construct(array $area = [])
     {
+        $this->setAliasesFromArray($area);
         $this->setAreaTypeFromArray($area);
         $this->setDisambiguationFromArray($area);
         $this->setIso31661CodesFromArray($area);
