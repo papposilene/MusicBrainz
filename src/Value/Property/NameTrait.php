@@ -15,7 +15,7 @@ trait NameTrait
      *
      * @var Name
      */
-    public $name;
+    private $name;
 
     /**
      * Returns the name.
