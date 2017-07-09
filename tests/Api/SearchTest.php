@@ -260,6 +260,12 @@ class SearchTest extends TestCase
         );
 
         $this->assertSame(
+            '20619e36-fca8-4499-bcc8-be01a3ea3e41',
+            (string) $area->getMBID(),
+            'Expected the MusicBrainz Identifier (MBID) of the first area to be "20619e36-fca8-4499-bcc8-be01a3ea3e41", as given in Fixtures/Search/Area.json.'
+        );
+
+        $this->assertSame(
             'Leipzig',
             (string) $area->getName(),
             'Expected the first areas name to be "Leipzig", as given in Fixtures/Search/Area.json.'
