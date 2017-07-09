@@ -10,20 +10,20 @@ use MusicBrainz\Value;
 class Count implements Value
 {
     /**
-     * The ID
+     * The number
      *
-     * @var string
+     * @var null|int
      */
-    private $count;
+    private $number;
 
     /**
      * Constructs a count.
      *
-     * @param int $count A count
+     * @param int $number A number
      */
-    public function __construct(int $count = 0)
+    public function __construct(int $number = null)
     {
-        $this->count = ($count >= 0) ? $count : 0;
+        $this->number = ($number >= 0) ? $number : null;
     }
 
     /**
@@ -33,6 +33,16 @@ class Count implements Value
      */
     public function __toString(): string
     {
-        return $this->count;
+        return $this->number;
+    }
+
+    /**
+     * Returns the number.
+     *
+     * @return null|int
+     */
+    public function getNumber(): ?int
+    {
+        return $this->number;
     }
 }
