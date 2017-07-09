@@ -60,21 +60,16 @@ class SearchTest extends TestCase
     public function testAnnotaion(): void
     {
         /** Setting up the mock object of the abstract HTTP adapter */
-        $this->httpAdapter->expects($this->once())
-            ->method('call')
-            ->with(
-                'annotation/',
-                $this->musicBrainz->config(),
-                [
-                    'limit'  => 5,
-                    'offset' => 0,
-                    'fmt'    => 'json',
-                    'query'  => 'text:awesome'
-                ]
-            )
-            ->willReturn(
-                json_decode(file_get_contents(__DIR__ . '/../Fixtures/Search/Annotation.json'), true)
-            );
+        $this->expectApiCall(
+            'annotation/',
+            [
+                'limit'  => 5,
+                'offset' => 0,
+                'fmt'    => 'json',
+                'query'  => 'text:awesome'
+            ],
+            'Annotation.json'
+        );
 
         /** Performing the test */
         $annotationFilter = new AnnotationFilter;
@@ -165,21 +160,16 @@ class SearchTest extends TestCase
     public function testArea(): void
     {
         /** Setting up the mock object of the abstract HTTP adapter */
-        $this->httpAdapter->expects($this->once())
-            ->method('call')
-            ->with(
-                'area/',
-                $this->musicBrainz->config(),
-                [
-                    'limit'  => 5,
-                    'offset' => 0,
-                    'fmt'    => 'json',
-                    'query'  => 'area:Leipzig'
-                ]
-            )
-            ->willReturn(
-                json_decode(file_get_contents(__DIR__ . '/../Fixtures/Search/Area.json'), true)
-            );
+        $this->expectApiCall(
+            'area/',
+            [
+                'limit'  => 5,
+                'offset' => 0,
+                'fmt'    => 'json',
+                'query'  => 'area:Leipzig'
+            ],
+            'Area.json'
+        );
 
         /** Performing the test */
         $areaFilter = new AreaFilter;
@@ -315,5 +305,28 @@ class SearchTest extends TestCase
             (string) $alias->getSortName(),
             'Expected the first alias\' sort name to be "ライプツィヒ", as given in Fixtures/Search/Area.json.'
         );
+    }
+
+    /**
+     * Setting up the mock object of the abstract HTTP adapter by expecting an API call and defining a fixture as result.
+     *
+     * @param string $path       An expected path
+     * @param array  $parameters A list of expected parameters
+     * @param string $fixture    A fixture placed in Fixtures/Search
+     *
+     * @return void
+     */
+    private function expectApiCall(string $path, array $parameters, string $fixture): void
+    {
+        $this->httpAdapter->expects($this->once())
+            ->method('call')
+            ->with(
+                $path,
+                $this->musicBrainz->config(),
+                $parameters
+            )
+            ->willReturn(
+                json_decode(file_get_contents(__DIR__ . '/../Fixtures/Search/' . $fixture), true)
+            );
     }
 }
