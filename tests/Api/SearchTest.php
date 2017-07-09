@@ -6,7 +6,6 @@ use MusicBrainz\Filter\Search\AreaFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\MusicBrainz;
 use MusicBrainz\Value\Alias;
-use MusicBrainz\Value\AliasList;
 use MusicBrainz\Value\AliasType;
 use MusicBrainz\Value\Annotation;
 use MusicBrainz\Value\AnnotationText;
@@ -78,13 +77,19 @@ class SearchTest extends TestCase
 
         $result = $this->musicBrainz->api()->search()->annotation($annotationFilter, $pageFilter);
 
+        /** Validating the search result list */
         $this->assertInstanceOf(
             AnnotationList::class,
             $result,
             'Expected Search::annotation() to return a search result list of annotations.'
         );
 
-        /** Validating the search result list */
+        $this->assertSame(
+            5,
+            count($result),
+            'Expected the number of returned search results to be 5, as given in Fixtures/Search/Annotation.json.'
+        );
+
         $this->assertSame(
             68,
             $result->getCount()->getNumber(),
@@ -178,13 +183,19 @@ class SearchTest extends TestCase
 
         $result = $this->musicBrainz->api()->search()->area($areaFilter, $pageFilter);
 
+        /** Validating the search result list */
         $this->assertInstanceOf(
             AreaList::class,
             $result,
             'Expected Search::area() to return a search result list of areas.'
         );
 
-        /** Validating the search result list */
+        $this->assertSame(
+            2,
+            count($result),
+            'Expected the number of returned search results to be 2, as given in Fixtures/Search/Area.json.'
+        );
+
         $this->assertSame(
             2,
             $result->getCount()->getNumber(),
