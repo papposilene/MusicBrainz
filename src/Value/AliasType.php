@@ -8,9 +8,18 @@ use MusicBrainz\Value;
  * An alias type code
  *
  * @see https://musicbrainz.org/doc/Aliases
+ *
+ * @todo Define possible values!
  */
 class AliasType implements Value
 {
+    /**
+     * An alias for an area name.
+     *
+     * @var string
+     */
+    public const AREA_NAME = 'Area name';
+
     /**
      * The alias type code
      *
