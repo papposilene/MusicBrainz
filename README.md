@@ -17,7 +17,8 @@ git clone https://github.com/XenosEleatikos/MusicBrainz.git
 ```
 
 ### Install with Composer
-This project is available at [Packagist](https://packagist.org): https://packagist.org/packages/xenos/musicbrainz
+This project is available at [Packagist](https://packagist.org): https://packagist.org/packages/xenos/musicbrainz.
+
 You can install it with the following command:
 ```bash
 composer require xenos/musicbrainz
