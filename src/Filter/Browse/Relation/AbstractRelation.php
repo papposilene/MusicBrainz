@@ -1,6 +1,6 @@
 <?php
 
-namespace MusicBrainz\Relation;
+namespace MusicBrainz\Filter\Browse\Relation;
 
 use MusicBrainz\Value\EntityType;
 use MusicBrainz\Value\MBID;

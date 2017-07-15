@@ -1,6 +1,6 @@
 <?php
 
-namespace MusicBrainz\Relation\RelatedEntity;
+namespace MusicBrainz\Filter\Browse\Relation\RelatedEntity;
 
 use MusicBrainz\Value\EntityType;
 

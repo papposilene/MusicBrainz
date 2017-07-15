@@ -1,0 +1,13 @@
+<?php
+
+namespace MusicBrainz\Filter\Browse\Relation\Entity;
+
+use MusicBrainz\Filter\Browse\Relation\AbstractRelation;
+
+/**
+ * A relation between an URL and another entity.
+ */
+class UrlRelation extends AbstractRelation
+{
+    use \MusicBrainz\Filter\Browse\Relation\RelatedEntity\RecourceTrait;
+}
