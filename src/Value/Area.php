@@ -2,7 +2,6 @@
 
 namespace MusicBrainz\Value;
 
-use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value;
 
 /**
@@ -18,6 +17,7 @@ class Area implements Value
     use Property\LifeSpanTrait;
     use Property\MBIDTrait;
     use Property\NameTrait;
+    use Property\RelationList\AreaRelationListTrait;
     use Property\SortNameTrait;
 
     /**
@@ -35,6 +35,7 @@ class Area implements Value
         $this->setLifeSpanFromArray($area);
         $this->setMbidFromArray($area);
         $this->setNameFromArray($area);
+        $this->setRelationsFromArray($area);
         $this->setSortNameFromArray($area);
     }
 
