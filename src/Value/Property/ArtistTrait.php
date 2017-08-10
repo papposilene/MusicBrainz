@@ -34,7 +34,7 @@ trait ArtistTrait
      *
      * @return void
      */
-    private function setArtist(array $input): void
+    private function setArtistFromArray(array $input): void
     {
         $this->name = is_null($artist = ArrayAccess::getArray($input, 'artist'))
             ? new Artist
