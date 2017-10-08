@@ -18,7 +18,7 @@ class ArrayAccess
      *
      * @return null|array
      */
-    static public function getArray(array $array, string $key): ?array
+    public static function getArray(array $array, string $key): ?array
     {
         if (!isset($array[$key])) {
 
@@ -45,7 +45,7 @@ class ArrayAccess
      *
      * @return null|bool
      */
-    static public function getBool(array $array, string $key): ?bool
+    public static function getBool(array $array, string $key): ?bool
     {
         if (!isset($array[$key])) {
 
@@ -72,7 +72,7 @@ class ArrayAccess
      *
      * @return null|float
      */
-    static public function getFloat(array $array, string $key): ?float
+    public static function getFloat(array $array, string $key): ?float
     {
         if (!isset($array[$key])) {
 
@@ -99,7 +99,7 @@ class ArrayAccess
      *
      * @return null|string
      */
-    static public function getInteger(array $array, string $key): ?string
+    public static function getInteger(array $array, string $key): ?string
     {
         if (!isset($array[$key])) {
 
@@ -126,7 +126,7 @@ class ArrayAccess
      *
      * @return null|string
      */
-    static public function getString(array $array, string $key): ?string
+    public static function getString(array $array, string $key): ?string
     {
         if (!isset($array[$key])) {
 
