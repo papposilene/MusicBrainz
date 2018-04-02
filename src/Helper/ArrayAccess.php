@@ -1,5 +1,4 @@
 <?php
-
 namespace MusicBrainz\Helper;
 
 use MusicBrainz\MusicBrainz;

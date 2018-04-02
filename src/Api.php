@@ -1,5 +1,4 @@
 <?php
-
 namespace MusicBrainz;
 
 use MusicBrainz\Api\Browse;

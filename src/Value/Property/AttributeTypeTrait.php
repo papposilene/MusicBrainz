@@ -1,5 +1,4 @@
 <?php
-
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Value\AttributeType;

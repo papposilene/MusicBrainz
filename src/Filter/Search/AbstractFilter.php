@@ -1,5 +1,4 @@
 <?php
-
 namespace MusicBrainz\Filter\Search;
 
 use AskLucy\Clause;

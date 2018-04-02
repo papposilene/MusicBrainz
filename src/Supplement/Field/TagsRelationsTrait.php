@@ -1,5 +1,4 @@
 <?php
-
 namespace MusicBrainz\Supplement\Field;
 
 trait TagsRelationsTrait

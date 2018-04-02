@@ -1,5 +1,4 @@
 <?php
-
 namespace MusicBrainz\Supplement\Browse;
 
 class AliasFields

@@ -1,5 +1,4 @@
 <?php
-
 namespace MusicBrainz\Value;
 use MusicBrainz\Value\Property\CountTrait;
 use MusicBrainz\Value\Property\CreationTimeTrait;

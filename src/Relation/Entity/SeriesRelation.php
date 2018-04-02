@@ -1,5 +1,4 @@
 <?php
-
 namespace MusicBrainz\Relation\Entity;
 
 use MusicBrainz\Relation\AbstractRelation;

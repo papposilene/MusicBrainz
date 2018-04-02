@@ -1,5 +1,4 @@
 <?php
-
 namespace MusicBrainz\Value\SearchResult;
 
 use MusicBrainz\Value\Annotation;

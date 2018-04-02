@@ -1,5 +1,4 @@
 <?php
-
 namespace MusicBrainz\Api;
 
 use AppBundle\Entity\Label;

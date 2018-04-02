@@ -1,5 +1,4 @@
 <?php
-
 namespace MusicBrainz\HttpAdapter;
 
 use GuzzleHttp\ClientInterface;
