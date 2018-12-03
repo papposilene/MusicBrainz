@@ -63,6 +63,7 @@ class Gender implements Value
      */
     public function __construct(string $genderCode = self::UNDEFINED)
     {
+        $genderCode = strtolower(trim($genderCode));
         $this->genderCode = (in_array($genderCode, self::GENDERS))
             ? $genderCode
             : self::UNDEFINED;
