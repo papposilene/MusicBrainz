@@ -3,6 +3,7 @@
 namespace MusicBrainz\Value;
 
 use MusicBrainz\Value;
+use Symfony\Component\DependencyInjection\Loader\Configurator\Traits\PropertyTrait;
 
 /**
  * An artist
@@ -20,6 +21,7 @@ class Artist implements Value
     use Property\DisambiguationTrait;
     use Property\EndAreaTrait;
     use Property\GenderTrait;
+    use Property\IsnisTrait;
     use Property\IpisTrait;
     use Property\LifeSpanTrait;
     use Property\MBIDTrait;
@@ -43,6 +45,7 @@ class Artist implements Value
         $this->setEndAreaFromArray($artist);
         $this->setGenderFromArray($artist);
         $this->setIpisFromArray($artist);
+        $this->setIsnisFromArray($artist);
         $this->setLifeSpanFromArray($artist);
         $this->setMbidFromArray($artist);
         $this->setScoreFromArray($artist);

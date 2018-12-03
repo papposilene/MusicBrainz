@@ -19,7 +19,7 @@ class ISNIList extends ValueList
         parent::__construct(
             array_map(
                 function($isniCode) {
-                    return new IPI($isniCode);
+                    return new ISNI($isniCode);
                 },
                 $isniCodes
             )
