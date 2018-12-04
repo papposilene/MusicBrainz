@@ -3,6 +3,7 @@
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Packaging;
 
 /**
@@ -36,8 +37,11 @@ trait PackagingTrait
      */
     private function setPackagingFromArray(array $input): void
     {
-        $this->packaging = is_null($packaging = ArrayAccess::getString($input, 'packaging'))
+        $packaging   = ArrayAccess::getString($input, 'packaging');
+        $packagingId = ArrayAccess::getString($input, 'packaging-id');
+
+            $this->packaging = (is_null($packaging) && is_null($packagingId))
             ? new Packaging
-            : new Packaging($packaging);
+            : new Packaging($packaging, new MBID($packagingId ?: ''));
     }
 }
