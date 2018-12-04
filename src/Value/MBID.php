@@ -23,7 +23,7 @@ class MBID implements Value
      *
      * @param string $mbid A MusicBrainz Identifier (MBID)
      */
-    public function __construct(string $mbid ='')
+    public function __construct(string $mbid = '')
     {
         $this->mbid = ($this->isValidMBID($mbid))
             ? $mbid

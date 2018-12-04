@@ -68,15 +68,25 @@ class ReleaseStatus implements Value
     private $statusCode;
 
     /**
+     * Music Brainz Identifier (MBID) of the status code
+     *
+     * @var MBID
+     */
+    private $statusId;
+
+    /**
      * Constructs a release status.
      *
      * @param null|string $statusCode A release status code
+     * @param null|MBID   $statusId   Music Brainz Identifier (MBID) of the status code
      */
-    public function __construct(?string $statusCode = self::UNDEFINED)
+    public function __construct(?string $statusCode = self::UNDEFINED, ?MBID $statusId = null)
     {
         $this->statusCode = (in_array($statusCode, self::STATUS_CODES))
             ? $statusCode
             : self::UNDEFINED;
+
+        $this->statusId = $statusId ?: new MBID;
     }
 
     /**

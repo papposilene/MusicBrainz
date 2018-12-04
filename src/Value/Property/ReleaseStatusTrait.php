@@ -3,6 +3,7 @@
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\ReleaseStatus;
 
 /**
@@ -36,8 +37,11 @@ trait ReleaseStatusTrait
      */
     private function setReleaseStatusFromArray(array $input): void
     {
-        $this->releaseStatus = is_null($releaseStatus = ArrayAccess::getString($input, 'status'))
+        $releaseStatus   = ArrayAccess::getString($input, 'status');
+        $releaseStatusId = ArrayAccess::getString($input, 'status-id');
+
+        $this->releaseStatus = (is_null($releaseStatus) && is_null($releaseStatusId))
             ? new ReleaseStatus
-            : new ReleaseStatus($releaseStatus);
+            : new ReleaseStatus($releaseStatus, new MBID($releaseStatusId ?: ''));
     }
 }
