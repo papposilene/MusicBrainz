@@ -92,7 +92,7 @@ class Lookup
             'tags'               => $artistFields->getIncludeFlagForTags(),
             'user-tags'          => $artistFields->getIncludeFlagForUserTags(),
             'ratings'            => $artistFields->getIncludeFlagForRatings(),
-            'user-ratings'       => $artistFields->getIncludeFlagForUserRatings(), // misc
+            'user-ratings'       => $artistFields->getIncludeFlagForUserRatings(),
             'artist-rels'        => $artistFields->getIncludeFlagForArtistRelations(),
             'label-rels'         => $artistFields->getIncludeFlagForLabelRelations(),
             'recording-rels'     => $artistFields->getIncludeFlagForRecordingRelations(),
@@ -103,7 +103,9 @@ class Lookup
             'annotation'         => $artistFields->getIncludeFlagForAnnotation()
         ];
 
-        $result = $this->lookup(new EntityType(EntityType::ARTIST), $mbid, $fields);
+        $authRequired = ($fields['user-ratings'] || $fields['user-tags']);
+
+        $result = $this->lookup(new EntityType(EntityType::ARTIST), $mbid, $fields, $authRequired);
 
         return new Artist($result);
     }
