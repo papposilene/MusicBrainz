@@ -42,6 +42,7 @@ class Artist implements Value
         $this->setArtistNameFromArray($artist, 'name');
         $this->setArtistTypeFromArray($artist);
         $this->setBeginAreaFromArray($artist);
+        $this->setCountryFromArray($artist);
         $this->setDisambiguationFromArray($artist);
         $this->setEndAreaFromArray($artist);
         $this->setGenderFromArray($artist);
