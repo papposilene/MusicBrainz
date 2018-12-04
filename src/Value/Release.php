@@ -49,6 +49,7 @@ class Release implements Value
         $this->setReleaseStatusFromArray($release);
         $this->setTextRepresentationFromArray($release);
         $this->setTitleFromArray($release);
+        $this->setPackagingFromArray($release);
     }
 
     /**
