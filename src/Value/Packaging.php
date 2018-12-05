@@ -154,10 +154,17 @@ class Packaging implements Value
     private $packagingCode;
 
     /**
+     * The Music Brainz Identifier (MBID) of the packaging
+     *
+     * @var MBID
+     */
+    private $MBID;
+
+    /**
      * Constructs a packaging.
      *
      * @param null|string $packagingCode The packaging code
-     * @param null|MBID   $packagingId   Music Brainz Identifier (MBID) of the packaging
+     * @param null|MBID   $packagingId   The Music Brainz Identifier (MBID) of the packaging
      */
     public function __construct(?string $packagingCode = self::UNDEFINED, ?MBID $packagingId = null)
     {
@@ -165,7 +172,17 @@ class Packaging implements Value
             ? $packagingCode
             : self::UNDEFINED;
 
-        $this->packagingId = $packagingId ?: new MBID;
+        $this->MBID = $packagingId ?: new MBID;
+    }
+
+    /**
+     * Returns the Music Brainz Identifier (MBID) of the packaging.
+     *
+     * @return MBID
+     */
+    public function getMBID(): MBID
+    {
+        return $this->MBID;
     }
 
     /**
