@@ -36,8 +36,8 @@ trait ReleaseEventListTrait
      */
     private function setReleaseEventsFromArray(array $input): void
     {
-        $this->aliases = is_null($aliases = ArrayAccess::getArray($input, 'release-events'))
+        $this->releaseEventList = is_null($releaseEventList = ArrayAccess::getArray($input, 'release-events'))
             ? new ReleaseEventList
-            : new ReleaseEventList($aliases);
+            : new ReleaseEventList($releaseEventList);
     }
 }
