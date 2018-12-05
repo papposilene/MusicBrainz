@@ -193,7 +193,7 @@ class Packaging implements Value
     public function __toString(): string
     {
         return (self::UNDEFINED === $this->packagingCode)
-            ? $this->packagingCode
-            : '';
+            ? ''
+            : $this->packagingCode;
     }
 }
