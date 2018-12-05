@@ -3,6 +3,7 @@
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Value\ISNI;
 use MusicBrainz\Value\ISNIList;
 
 /**
@@ -13,14 +14,14 @@ trait IsnisTrait
     /**
      * A list of ISNI codes
      *
-     * @var ISNIList
+     * @var ISNI|ISNIList
      */
     private $isnis;
 
     /**
      * Returns a list of ISNI codes.
      *
-     * @return ISNIList
+     * @return ISNI|ISNIList
      */
     public function getIsnis(): ISNIList
     {

@@ -4,6 +4,7 @@ namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\MediaList;
+use MusicBrainz\Value\Medium;
 
 /**
  * Provides a getter for a list of media.
@@ -13,14 +14,14 @@ trait MediaTrait
     /**
      * A list of media
      *
-     * @var MediaList
+     * @var Medium[]|MediaList
      */
     private $media;
 
     /**
      * Returns a list of media.
      *
-     * @return MediaList
+     * @return Medium[]|MediaList
      */
     public function getMedia(): MediaList
     {

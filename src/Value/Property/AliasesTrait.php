@@ -3,6 +3,7 @@
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Value\Alias;
 use MusicBrainz\Value\AliasList;
 
 /**
@@ -13,14 +14,14 @@ trait AliasesTrait
     /**
      * A list of aliases
      *
-     * @var AliasList
+     * @var Alias[]|AliasList
      */
     private $aliases;
 
     /**
      * Returns a list of aliases.
      *
-     * @return AliasList
+     * @return Alias[]|AliasList
      */
     public function getAliases(): AliasList
     {

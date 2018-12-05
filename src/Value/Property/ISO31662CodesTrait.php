@@ -3,6 +3,7 @@
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Value\ISO31662Code;
 use MusicBrainz\Value\ISO31662CodeList;
 
 /**
@@ -13,14 +14,14 @@ trait ISO31662CodesTrait
     /**
      * A list of ISO 3166-2 codes associated to the artist
      *
-     * @var ISO31662CodeList
+     * @var ISO31662Code[]|ISO31662CodeList
      */
     private $ISO31662Codes;
 
     /**
      * Returns a list of ISO 3166-2 codes.
      *
-     * @return ISO31662CodeList
+     * @return ISO31662Code[]|ISO31662CodeList
      */
     public function getISO31662Codes(): ISO31662CodeList
     {

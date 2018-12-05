@@ -3,6 +3,7 @@
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Value\ReleaseEvent;
 use MusicBrainz\Value\ReleaseEventList;
 
 /**
@@ -13,14 +14,14 @@ trait ReleaseEventListTrait
     /**
      * A list of release events
      *
-     * @var ReleaseEventList
+     * @var ReleaseEvent[]|ReleaseEventList
      */
     private $releaseEventList;
 
     /**
      * Returns the list of release events.
      *
-     * @return ReleaseEventList
+     * @return ReleaseEvent[]|ReleaseEventList
      */
     public function getReleaseEvents(): ReleaseEventList
     {

@@ -3,6 +3,7 @@
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Value\Track;
 use MusicBrainz\Value\TrackList;
 
 /**
@@ -13,14 +14,14 @@ trait TracksTrait
     /**
      * A list of tracks
      *
-     * @var TrackList
+     * @var Track[]|TrackList
      */
     private $tracks;
 
     /**
      * Returns a list of tracks.
      *
-     * @return TrackList
+     * @return Track[]|TrackList
      */
     public function getTracks(): TrackList
     {

@@ -3,6 +3,7 @@
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Value\ISWC;
 use MusicBrainz\Value\ISWCList;
 
 /**
@@ -13,14 +14,14 @@ trait IswcsTrait
     /**
      * A list of International Standard Musical Work Codes (ISWC)
      *
-     * @var ISWCList
+     * @var ISWC[]|ISWCList
      */
     private $iswcs;
 
     /**
      * Returns a list of International Standard Musical Work Codes (ISWC).
      *
-     * @return ISWCList
+     * @return ISWC[]|ISWCList
      */
     public function getIswcs(): ISWCList
     {

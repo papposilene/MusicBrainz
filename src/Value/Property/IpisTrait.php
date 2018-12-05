@@ -3,6 +3,7 @@
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Value\IPI;
 use MusicBrainz\Value\IPIList;
 
 /**
@@ -13,7 +14,7 @@ trait IpisTrait
     /**
      * A list of IPI codes
      *
-     * @var IPIList
+     * @var IPI[]|IPIList
      *
      * @see https://musicbrainz.org/doc/IPI
      */
@@ -22,7 +23,7 @@ trait IpisTrait
     /**
      * Returns a list of IPI codes.
      *
-     * @return IPIList
+     * @return IPI[]|IPIList
      */
     public function getIpis(): IPIList
     {

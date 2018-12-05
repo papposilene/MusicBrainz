@@ -3,6 +3,7 @@
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Value\Attribute;
 use MusicBrainz\Value\AttributeList;
 
 /**
@@ -13,14 +14,14 @@ trait AttributesTrait
     /**
      * A list of attributes
      *
-     * @var AttributeList
+     * @var Attribute|AttributeList
      */
     private $attributes;
 
     /**
      * Returns a list of attributes.
      *
-     * @return AttributeList
+     * @return Attribute|AttributeList
      */
     public function getAttributes(): AttributeList
     {

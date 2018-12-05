@@ -3,6 +3,7 @@
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Value\ReleaseType;
 use MusicBrainz\Value\ReleaseTypeList;
 
 /**
@@ -13,14 +14,14 @@ trait SecondaryReleaseTypesListTrait
     /**
      * A list of secondary release types
      *
-     * @var ReleaseTypeList
+     * @var ReleaseType[]|ReleaseTypeList
      */
     private $secondaryReleaseTypes;
 
     /**
      * Returns the list of secondary release types.
      *
-     * @return ReleaseTypeList
+     * @return ReleaseType[]|ReleaseTypeList
      */
     public function getSecondaryReleaseTypes(): ReleaseTypeList
     {
