@@ -2,7 +2,6 @@
 
 namespace MusicBrainz\Value\Property;
 
-use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Format;
 
 /**
@@ -36,8 +35,6 @@ trait FormatTrait
      */
     private function setFormatFromArray(array $input): void
     {
-        $this->format = is_null($format = ArrayAccess::getString($input, 'format'))
-            ? new Format
-            : new Format($format);
+        $this->format = new Format($input);
     }
 }

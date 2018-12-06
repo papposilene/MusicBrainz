@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value;
 
 /**
@@ -11,6 +12,8 @@ use MusicBrainz\Value;
  */
 class Format implements Value
 {
+    use Value\Property\MBIDTrait;
+
     /**
      * The code of the format
      *
@@ -21,11 +24,12 @@ class Format implements Value
     /**
      * Constructs a format.
      *
-     * @param string $format A format
+     * @param string $format Information about the format from the webservice
      */
-    public function __construct(string $format = '')
+    public function __construct(array $format = [])
     {
-        $this->code = $format;
+        $this->code = ArrayAccess::getString($format, 'format');
+        $this->setMbidFromArray($format, 'format-id');
     }
 
     /**
