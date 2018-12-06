@@ -10,6 +10,7 @@ use MusicBrainz\Value;
 class Medium implements Value
 {
     use Property\DiscsTrait;
+    use Property\FormatTrait;
     use Property\TitleTrait;
     use Property\TracksTrait;
 
@@ -21,6 +22,7 @@ class Medium implements Value
     public function __construct(array $medium = [])
     {
         $this->setDiscsFromArray($medium);
+        $this->setFormatFromArray($medium);
         $this->setTitleFromArray($medium);
         $this->setTracksFromArray($medium);
     }
