@@ -2,6 +2,7 @@
 namespace MusicBrainz\Test\Api\Lookup;
 
 use MusicBrainz\Supplement\Lookup\ArtistFields;
+use MusicBrainz\Test\Api\ApiTestCase;
 use MusicBrainz\Value\Area;
 use MusicBrainz\Value\Artist;
 use MusicBrainz\Value\Barcode;
@@ -36,7 +37,7 @@ use MusicBrainz\Value\Title;
 /**
  * Unit tests for the lookup API.
  */
-class LookupTestCase extends \MusicBrainz\Test\Api\LookupTestCase
+class LookupTestCase extends ApiTestCase
 {
     /**
      * Test instance of the artist
@@ -67,7 +68,7 @@ class LookupTestCase extends \MusicBrainz\Test\Api\LookupTestCase
                 'fmt' => 'json',
                 'inc' => 'recordings+releases+release-groups+works+various-artists+discids+media+aliases+tags+user-tags+ratings+user-ratings+artist-rels+label-rels+recording-rels+release-rels+release-group-rels+url-rels+work-rels+annotation'
             ],
-            'Artist.json'
+            'Lookup/Artist.json'
         );
 
         /**

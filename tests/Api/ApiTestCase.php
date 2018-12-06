@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Unit tests for the lookup API.
  */
-class LookupTestCase extends TestCase
+abstract class ApiTestCase extends TestCase
 {
     /**
      * A mock object of the abstract HTTP adapter
@@ -57,7 +57,7 @@ class LookupTestCase extends TestCase
                 $parameters
             )
             ->willReturn(
-                json_decode(file_get_contents(__DIR__ . '/../Fixtures/Lookup/' . $fixture), true)
+                json_decode(file_get_contents(__DIR__ . '/../Fixtures/' . $fixture), true)
             );
     }
 }
