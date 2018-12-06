@@ -1,0 +1,699 @@
+{
+  "country": "AU",
+  "releases": [
+    {
+      "release-events": [
+        {
+          "area": {
+            "iso-3166-1-codes": [
+              "GB"
+            ],
+            "id": "8a754a16-0027-3a29-b6d7-2b40ea0481ed",
+            "disambiguation": "The UK",
+            "sort-name": "Kingdom, United",
+            "name": "United Kingdom"
+          },
+          "date": "1989"
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "aliases": [],
+      "packaging": "Cardboard/Paper Sleeve",
+      "quality": "normal",
+      "barcode": "0724354300424",
+      "country": "GB",
+      "packaging-id": "f7101ce3-0384-39ce-9fde-fbbd0044d35f",
+      "id": "06aa6fbf-5018-3648-8bc6-0aac2ef01ea4",
+      "release-group": null,
+      "disambiguation": "",
+      "title": "The Bridge: A Tribute to Neil Young",
+      "annotation": null,
+      "date": "1989",
+      "status": "Official",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "media": [
+        {
+          "format": "CD",
+          "position": 1,
+          "track-count": 2,
+          "format-id": "9712d52a-4509-3d4b-a1a2-67c88c643e31",
+          "title": "",
+          "discs": [
+            {
+              "id": "jR3tHyJp8_mAuHwe02_0cdux8GI-",
+              "sectors": 254935,
+              "offsets": [
+                150,
+                13042
+              ],
+              "offset-count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "gender-id": "36d3d30a-839d-3eda-8cb3-29be4384e4a9",
+  "works": [
+    {
+      "id": "0199d412-d38b-33d3-8622-fcdd35ad291a",
+      "aliases": [],
+      "disambiguation": "",
+      "title": "A Box for Black Paul",
+      "annotation": null,
+      "language": null,
+      "type-id": null,
+      "type": null,
+      "iswcs": [],
+      "languages": [],
+      "attributes": []
+    }
+  ],
+  "aliases": [
+    {
+      "ended": false,
+      "locale": "en",
+      "primary": false,
+      "type-id": "d4dcd0c0-b341-3612-a332-c0ce797b25cf",
+      "type": "Legal name",
+      "begin": null,
+      "end": null,
+      "sort-name": "Cave, Nicholas Edward",
+      "name": "Nicholas Edward Cave"
+    }
+  ],
+  "release-groups": [
+    {
+      "secondary-types": [
+        "Live"
+      ],
+      "id": "0093d63c-733a-3d7b-a906-e8eaf4eb953e",
+      "annotation": null,
+      "title": "2007-04-29: All Tomorrows Parties, Minehead, UK",
+      "aliases": [],
+      "disambiguation": "",
+      "releases": [],
+      "first-release-date": "",
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+      "primary-type": "Album",
+      "secondary-type-ids": [
+        "6fd474e2-6b58-3102-9d17-d6f7eb7da0a0"
+      ]
+    }
+  ],
+  "rating": {
+    "value": null,
+    "votes-count": 0
+  },
+  "ipis": [
+    "00067877617"
+  ],
+  "life-span": {
+    "end": null,
+    "begin": "1957-09-22",
+    "ended": false
+  },
+  "type": "Person",
+  "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+  "relations": [
+    {
+      "begin": null,
+      "end": null,
+      "attribute-values": {},
+      "url": {
+        "resource": "http://www.bbc.co.uk/music/artists/4aae17a7-9f0c-487b-b60e-f8eafb410b1d",
+        "id": "40c1c047-fa88-4f4a-bcc6-4e29a5c42679"
+      },
+      "target-credit": "",
+      "source-credit": "",
+      "attributes": [],
+      "ended": false,
+      "type-id": "d028a975-000c-4525-9333-d3c8425e4b54",
+      "target-type": "url",
+      "type": "BBC Music page",
+      "direction": "forward"
+    },
+    {
+      "attribute-values": {},
+      "begin": null,
+      "end": null,
+      "url": {
+        "resource": "http://www.imdb.com/name/nm0147022/",
+        "id": "c4aff8c5-b3b0-4ac8-bf8e-b6073284cdaf"
+      },
+      "target-credit": "",
+      "source-credit": "",
+      "attributes": [],
+      "ended": false,
+      "type": "IMDb",
+      "target-type": "url",
+      "type-id": "94c8b0cc-4477-4106-932c-da60e63de61c",
+      "direction": "forward"
+    },
+    {
+      "direction": "forward",
+      "target-type": "url",
+      "type-id": "e8571dcc-35d4-4e91-a577-a3382fd84460",
+      "type": "VIAF",
+      "ended": false,
+      "attributes": [],
+      "source-credit": "",
+      "target-credit": "",
+      "url": {
+        "id": "580fcbb4-4f5c-4973-ab9b-6cdd083ba86e",
+        "resource": "http://viaf.org/viaf/76424897"
+      },
+      "begin": null,
+      "end": null,
+      "attribute-values": {}
+    },
+    {
+      "attributes": [],
+      "ended": false,
+      "type": "allmusic",
+      "type-id": "6b3e3c85-0002-4f34-aca6-80ace0d7e846",
+      "target-type": "url",
+      "direction": "forward",
+      "attribute-values": {},
+      "end": null,
+      "begin": null,
+      "url": {
+        "resource": "http://www.allmusic.com/artist/mn0000397880",
+        "id": "7ae2ece1-4aaa-4c89-ac6e-1edca9a4b017"
+      },
+      "target-credit": "",
+      "source-credit": ""
+    },
+    {
+      "recording": {
+        "length": 210333,
+        "annotation": null,
+        "title": "Queenie’s Suite",
+        "disambiguation": "",
+        "aliases": [],
+        "id": "2695629d-24c0-4d7a-b275-bb29f4ba385a",
+        "video": false
+      },
+      "direction": "forward",
+      "type": "arranger",
+      "type-id": "22661fb8-cdb7-4f67-8385-b2a8be6c9f0d",
+      "target-type": "recording",
+      "ended": false,
+      "attributes": [],
+      "target-credit": "",
+      "source-credit": "",
+      "attribute-values": {},
+      "begin": null,
+      "end": null
+    },
+    {
+      "target-credit": "",
+      "source-credit": "",
+      "attribute-values": {},
+      "end": null,
+      "begin": null,
+      "direction": "forward",
+      "recording": {
+        "length": 213827,
+        "id": "27d151f0-a718-4b8e-a4af-aeae5c76969b",
+        "video": false,
+        "title": "Clean Hands, Dirty Hands",
+        "annotation": null,
+        "aliases": [],
+        "disambiguation": ""
+      },
+      "type": "arranger",
+      "target-type": "recording",
+      "type-id": "22661fb8-cdb7-4f67-8385-b2a8be6c9f0d",
+      "ended": false,
+      "attributes": []
+    },
+    {
+      "ended": false,
+      "attributes": [],
+      "direction": "forward",
+      "recording": {
+        "length": 187573,
+        "video": false,
+        "id": "adb4e5fa-545d-484b-ba0d-e560858810dc",
+        "annotation": null,
+        "title": "Martha’s Dream",
+        "disambiguation": "",
+        "aliases": []
+      },
+      "type": "arranger",
+      "target-type": "recording",
+      "type-id": "22661fb8-cdb7-4f67-8385-b2a8be6c9f0d",
+      "attribute-values": {},
+      "begin": null,
+      "end": null,
+      "target-credit": "",
+      "source-credit": ""
+    },
+    {
+      "attribute-values": {},
+      "begin": null,
+      "end": null,
+      "source-credit": "",
+      "target-credit": "",
+      "ended": false,
+      "attributes": [],
+      "direction": "forward",
+      "type": "collaboration",
+      "artist": {
+        "aliases": [],
+        "sort-name": "Tuff Monks",
+        "disambiguation": "",
+        "name": "Tuff Monks",
+        "annotation": null,
+        "id": "2a002957-2652-4622-a03f-48caec973c74"
+      },
+      "type-id": "75c09861-6857-4ec0-9729-84eefde7fc86",
+      "target-type": "artist"
+    },
+    {
+      "work": {
+        "id": "007dbbb1-89e4-36f7-b280-2648e96a27a0",
+        "disambiguation": "",
+        "aliases": [],
+        "title": "Man in the Moon",
+        "annotation": null,
+        "language": "mul",
+        "type-id": null,
+        "iswcs": [
+          "T-061.106.135-8"
+        ],
+        "type": null,
+        "languages": [
+          "eng",
+          "eng"
+        ],
+        "attributes": []
+      },
+      "ended": false,
+      "attributes": [],
+      "direction": "forward",
+      "type": "composer",
+      "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+      "target-type": "work",
+      "attribute-values": {},
+      "begin": null,
+      "end": null,
+      "target-credit": "",
+      "source-credit": ""
+    },
+    {
+      "target-credit": "",
+      "source-credit": "",
+      "attribute-values": {},
+      "begin": null,
+      "end": null,
+      "direction": "forward",
+      "type": "composer",
+      "target-type": "work",
+      "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+      "work": {
+        "language": "mul",
+        "id": "0143e4e3-8964-3f2d-ad45-34020339a94f",
+        "disambiguation": "",
+        "aliases": [],
+        "annotation": null,
+        "title": "Get Ready for Love",
+        "languages": [
+          "eng",
+          "eng"
+        ],
+        "attributes": [],
+        "type-id": null,
+        "iswcs": [],
+        "type": null
+      },
+      "ended": false,
+      "attributes": []
+    },
+    {
+      "work": {
+        "languages": [
+          "eng",
+          "eng"
+        ],
+        "attributes": [],
+        "type": null,
+        "iswcs": [
+          "T-060.098.324-1"
+        ],
+        "type-id": null,
+        "language": "mul",
+        "id": "0152c50c-7284-3f8e-a294-923ba40122e1",
+        "annotation": null,
+        "title": "The Ship Song",
+        "disambiguation": "",
+        "aliases": []
+      },
+      "ended": false,
+      "attributes": [],
+      "direction": "forward",
+      "type": "composer",
+      "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+      "target-type": "work",
+      "attribute-values": {},
+      "begin": null,
+      "end": null,
+      "target-credit": "",
+      "source-credit": ""
+    },
+    {
+      "ended": false,
+      "work": {
+        "iswcs": [],
+        "type": null,
+        "type-id": null,
+        "languages": [],
+        "attributes": [],
+        "id": "0199d412-d38b-33d3-8622-fcdd35ad291a",
+        "annotation": null,
+        "title": "A Box for Black Paul",
+        "aliases": [],
+        "disambiguation": "",
+        "language": null
+      },
+      "attributes": [],
+      "direction": "forward",
+      "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+      "target-type": "work",
+      "type": "composer",
+      "begin": null,
+      "end": null,
+      "attribute-values": {},
+      "target-credit": "",
+      "source-credit": ""
+    },
+    {
+      "source-credit": "",
+      "target-credit": "",
+      "begin": null,
+      "end": null,
+      "attribute-values": {},
+      "target-type": "work",
+      "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+      "type": "composer",
+      "direction": "forward",
+      "attributes": [],
+      "ended": false,
+      "work": {
+        "id": "03322c1e-158b-4807-97f6-271354dac201",
+        "annotation": null,
+        "title": "Rom",
+        "disambiguation": "",
+        "aliases": [],
+        "language": null,
+        "iswcs": [],
+        "type": null,
+        "type-id": null,
+        "languages": [],
+        "attributes": []
+      }
+    }
+  ],
+  "isnis": [
+    "0000000083954977"
+  ],
+  "gender": "Male",
+  "begin_area": {
+    "id": "9d469438-97c3-4316-bbfa-93232ef601bb",
+    "sort-name": "Warracknabeal",
+    "disambiguation": "",
+    "name": "Warracknabeal"
+  },
+  "id": "4aae17a7-9f0c-487b-b60e-f8eafb410b1d",
+  "name": "Nick Cave",
+  "annotation": null,
+  "tags": [
+    {
+      "count": 1,
+      "name": "alternative"
+    },
+    {
+      "name": "australia",
+      "count": 1
+    },
+    {
+      "count": 1,
+      "name": "blues"
+    },
+    {
+      "name": "has german audiobooks",
+      "count": 1
+    },
+    {
+      "name": "rock",
+      "count": 1
+    },
+    {
+      "name": "rock and indie",
+      "count": 1
+    }
+  ],
+  "disambiguation": "",
+  "sort-name": "Cave, Nick",
+  "recordings": [
+    {
+      "length": 13000,
+      "video": false,
+      "id": "10968da2-2c2c-4733-8393-4e5c69d3db82",
+      "disambiguation": "",
+      "aliases": [],
+      "title": "[introduction]",
+      "annotation": null
+    },
+    {
+      "video": false,
+      "id": "269c1596-baed-4915-8261-547011b02414",
+      "aliases": [],
+      "disambiguation": "",
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": Bunny sitzt zusammengesackt auf dem Sofa",
+      "length": 328840
+    },
+    {
+      "id": "2c471b01-213b-410b-b445-137af6cdf7cf",
+      "video": false,
+      "aliases": [],
+      "disambiguation": "",
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": Bunny liegt völlig fertig auf dem Sofa",
+      "length": 259506
+    },
+    {
+      "title": "1. Teil \"Stecher\": Die Kellnerin fummelt an ihrer Halskette",
+      "annotation": null,
+      "disambiguation": "",
+      "aliases": [],
+      "id": "35feeb04-7aa1-49f2-a1bf-bb4302f478c6",
+      "video": false,
+      "length": 317626
+    },
+    {
+      "length": 267600,
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": Die nächsten Tage bringt Bunny damit zu",
+      "disambiguation": "",
+      "aliases": [],
+      "video": false,
+      "id": "37507a29-a866-4ed8-98a5-89774824eff3"
+    },
+    {
+      "length": 319826,
+      "video": false,
+      "id": "61903c49-8db4-4e72-8e3c-14d0cdbfe500",
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": Bunny sieht für einen Moment verwirrt aus",
+      "disambiguation": "",
+      "aliases": []
+    },
+    {
+      "length": 331573,
+      "aliases": [],
+      "disambiguation": "",
+      "title": "1. Teil \"Stecher\": Bunny öffnet und wird von zwei Sozialarbeitern begrüßt",
+      "annotation": null,
+      "video": false,
+      "id": "651b7698-a271-4230-ace2-85ecc76421db"
+    },
+    {
+      "video": false,
+      "id": "77fa4038-66d9-4e1a-9fb4-a3f9f936af2a",
+      "disambiguation": "",
+      "aliases": [],
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": \"Hopps, rein mit dir!\", sagt River",
+      "length": 282933
+    },
+    {
+      "length": 418560,
+      "video": false,
+      "id": "8696b160-1fdc-4975-a32a-9bd45246103e",
+      "title": "1. Teil \"Stecher\": Als er die Tür öffnet, ist es in der Wohnung dunkel",
+      "annotation": null,
+      "disambiguation": "",
+      "aliases": []
+    },
+    {
+      "length": 203920,
+      "title": "1. Teil \"Stecher\": Bunny Junior wünscht sich, er hätte so eine Sonnenbrille wie sein Vater",
+      "annotation": null,
+      "disambiguation": "",
+      "aliases": [],
+      "video": false,
+      "id": "89a8e092-1b59-43ae-94ce-6ee98bd6d4df"
+    },
+    {
+      "aliases": [],
+      "disambiguation": "",
+      "title": "1. Teil \"Stecher\": Bunny öffnet die Wohnungstür",
+      "annotation": null,
+      "video": false,
+      "id": "98cf6a56-97ef-4a2f-abfa-850820118ee1",
+      "length": 219960
+    },
+    {
+      "id": "99e84bc3-dca1-4eb5-99ca-011ac4d4d034",
+      "video": false,
+      "title": "1. Teil \"Stecher\": Bunny beugt sich ruckartig vor",
+      "annotation": null,
+      "aliases": [],
+      "disambiguation": "",
+      "length": 208946
+    },
+    {
+      "video": false,
+      "id": "a9f69c38-afad-4e86-9db9-bcbdfd625c17",
+      "annotation": null,
+      "title": "[Audience Noise]",
+      "aliases": [],
+      "disambiguation": "live, 1999-06-30: Meltdown, Royal Festival Hall, London, UK",
+      "length": null
+    },
+    {
+      "id": "aa692685-2a05-431c-9d12-b7d86c7c154d",
+      "video": false,
+      "disambiguation": "",
+      "aliases": [],
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": Die Sozialarbeiter gehen",
+      "length": 383786
+    },
+    {
+      "aliases": [],
+      "disambiguation": "",
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": Geduscht, gegelt und deodoriert",
+      "video": false,
+      "id": "ad893606-9e8e-4b9c-a948-c2bf728fb882",
+      "length": 366693
+    },
+    {
+      "length": 381880,
+      "video": false,
+      "id": "bd48bba9-2993-41d2-ade3-1956227f3ded",
+      "aliases": [],
+      "disambiguation": "",
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": Eine dunkle Wolke von Staren"
+    },
+    {
+      "length": 252946,
+      "video": false,
+      "id": "c2a51b9c-0a38-4766-9b35-75a219abf3ca",
+      "disambiguation": "",
+      "aliases": [],
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": Bunny steht auf dem Balkon vor seiner Wohnung"
+    },
+    {
+      "length": 392973,
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": Bunny Junior hüpft von einem Fuß auf den anderen",
+      "disambiguation": "",
+      "aliases": [],
+      "id": "c786ef0a-3d52-4385-99ae-70fd116bfa3f",
+      "video": false
+    },
+    {
+      "length": 405586,
+      "video": false,
+      "id": "ceb996e9-ac7d-484b-b0d6-69cbd8c4da8f",
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": Bunny dreht den Zündschlüssel um",
+      "disambiguation": "",
+      "aliases": []
+    },
+    {
+      "video": false,
+      "id": "d3b111e0-fe82-473f-be90-8b00a9970a51",
+      "title": "1. Teil \"Stecher\": \"Ich geh jetzt besser schlafen, Dad.\"",
+      "annotation": null,
+      "aliases": [],
+      "disambiguation": "",
+      "length": 202373
+    },
+    {
+      "length": 352213,
+      "id": "e8b33f3a-2bfe-4cb2-bd81-9620fcd34a47",
+      "video": false,
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": Der nächste Schwindelanfall kündigt sich an",
+      "aliases": [],
+      "disambiguation": ""
+    },
+    {
+      "length": 312426,
+      "video": false,
+      "id": "eb3e695e-1715-4a7c-aba0-a2eb064fef22",
+      "title": "1. Teil \"Stecher\": Bunny Junior kommt ins Wohnzimmer",
+      "annotation": null,
+      "aliases": [],
+      "disambiguation": ""
+    },
+    {
+      "length": 283293,
+      "id": "ef1c5fcb-f7f6-4fea-a14c-551488ea3137",
+      "video": false,
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": Bunny biegt in die Church Road ein",
+      "disambiguation": "",
+      "aliases": []
+    },
+    {
+      "id": "f4716779-f46f-4a0e-aaf2-156f6cbfec54",
+      "video": false,
+      "disambiguation": "",
+      "aliases": [],
+      "annotation": null,
+      "title": "1. Teil \"Stecher\": Bunny sitzt auf einer Bank unter einer kleinen Eiche",
+      "length": 426466
+    },
+    {
+      "length": 442626,
+      "title": "1. Teil \"Stecher\": \"Ich bin verdammt.\", denkt Bunny Munro",
+      "annotation": null,
+      "aliases": [],
+      "disambiguation": "",
+      "video": false,
+      "id": "fb915ec4-f828-4ef5-a7d1-18d376d0305d"
+    }
+  ],
+  "end_area": null,
+  "area": {
+    "iso-3166-1-codes": [
+      "AU"
+    ],
+    "id": "106e0bec-b638-3b37-b731-f53d507dc00e",
+    "sort-name": "Australia",
+    "disambiguation": "",
+    "name": "Australia"
+  }
+}
