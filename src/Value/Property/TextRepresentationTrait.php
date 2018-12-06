@@ -22,7 +22,7 @@ trait TextRepresentationTrait
      *
      * @return TextRepresentation
      */
-    public function getText(): TextRepresentation
+    public function getTextRepresentation(): TextRepresentation
     {
         return $this->textRepresentation;
     }
