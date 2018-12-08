@@ -1,14 +1,19 @@
 <?php
 namespace MusicBrainz\Test\Api;
 
+use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Filter\Search\AreaFilter;
-use MusicBrainz\Value\Alias;
 use MusicBrainz\Value\AliasType;
 use MusicBrainz\Value\Area;
 use MusicBrainz\Value\AreaType;
+use MusicBrainz\Value\Date;
+use MusicBrainz\Value\LifeSpan;
+use MusicBrainz\Value\LocaleCode;
+use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Name;
 use MusicBrainz\Value\SearchResult;
 use MusicBrainz\Value\SearchResult\AreaList;
+use MusicBrainz\Value\SortName;
 
 /**
  * Unit tests for the search API.
@@ -18,7 +23,7 @@ class AreaTest extends ApiTestCase
     /**
      * Test instance of the area list
      *
-     * @var AreaList
+     * @var SearchResult[]|AreaList
      */
     private static $areaList;
 
@@ -50,7 +55,7 @@ class AreaTest extends ApiTestCase
         /** Performing the test */
         $areaFilter = new AreaFilter;
         $areaFilter->addAreaName(new Name('Leipzig'));
-        $pageFilter = new \MusicBrainz\Filter\PageFilter(0, 5);
+        $pageFilter = new PageFilter(0, 5);
 
         self::$areaList = $this->musicBrainz->api()->search()->area($areaFilter, $pageFilter);
     }
@@ -64,68 +69,54 @@ class AreaTest extends ApiTestCase
     {
         $areaList = self::$areaList;
 
-        /** Validating the search result list */
         $this->assertInstanceOf(AreaList::class, $areaList);
-
         $this->assertSame(2, count($areaList));
-
         $this->assertSame(2, $areaList->getCount()->getNumber());
-
         $this->assertSame(0, $areaList->getOffset()->getNumber());
-
         $this->assertSame('2017/07/09 17:54:44', (string) $areaList->getCreationTime());
 
-        /**
-         * Validating the first search result of the list
-         *
-         * @var SearchResult $searchResult The first search result of the list
-         */
         $searchResult = $areaList[0];
-
         $this->assertInstanceOf(SearchResult::class, $searchResult);
-
         $this->assertSame(100, $searchResult->getScore()->getNumber());
 
-        /**
-         * Validating the value of the first search result.
-         *
-         * @var Area $area The value of the first search result
-         */
+        /** @var Area $area */
         $area = $searchResult->getValue();
+        $this->assertInstanceOf(Area::class, $area);
 
+        $this->assertInstanceOf(AreaType::class, $area->getAreaType());
         $this->assertSame(AreaType::CITY, (string) $area->getAreaType());
 
+        /** @todo Test not-empty life spans */
+        $this->assertInstanceOf(LifeSpan::class, $area->getLifeSpan());
+        $this->assertInstanceOf(Date::class, $area->getLifeSpan()->getBeginDate());
         $this->assertEmpty((string) $area->getLifeSpan()->getBeginDate());
-
+        $this->assertInstanceOf(Date::class, $area->getLifeSpan()->getEndDate());
         $this->assertEmpty((string) $area->getLifeSpan()->getEndDate());
-
         $this->assertFalse($area->getLifeSpan()->getEnded()->isEnded());
 
-        $this->assertSame('20619e36-fca8-4499-bcc8-be01a3ea3e41', (string) $area->getMBID());
+        $this->assertInstanceOf(MBID::class, $area->getMBID());
+        $this->assertEquals('20619e36-fca8-4499-bcc8-be01a3ea3e41', $area->getMBID());
 
-        $this->assertSame('Leipzig', (string) $area->getName());
+        $this->assertInstanceOf(Name::class, $area->getName());
+        $this->assertEquals('Leipzig', $area->getName());
 
-        $this->assertSame('Leipzig', (string) $area->getSortName());
+        $this->assertInstanceOf(SortName::class, $area->getSortName());
+        $this->assertEquals('Leipzig', $area->getSortName());
 
-        /**
-         * Validating the alias list of the first search result
-         *
-         * @var Alias $alias The first alias of the list
-         */
         $alias = $area->getAliases()[0];
+        $this->assertEquals(AliasType::AREA_NAME, $alias->getAliasType());
 
-        $this->assertSame(AliasType::AREA_NAME, (string) $alias->getAliasType());
-
+        /** @todo Test not-empty dates */
+        $this->assertInstanceOf(Date::class, $alias->getBeginDate());
         $this->assertEmpty((string) $alias->getBeginDate());
-
+        $this->assertInstanceOf(Date::class, $alias->getEndDate());
         $this->assertEmpty((string) $alias->getEndDate());
-
-        $this->assertSame('ja', (string) $alias->getLocaleCode());
-
-        $this->assertSame('ライプツィヒ', (string) $alias->getName());
-
+        $this->assertInstanceOf(LocaleCode::class, $alias->getLocaleCode());
+        $this->assertEquals('ja', $alias->getLocaleCode());
+        $this->assertInstanceOf(Name::class, $alias->getName());
+        $this->assertEquals('ライプツィヒ', $alias->getName());
         $this->assertTrue($alias->getPrimaryName()->isPrimaryName());
-
-        $this->assertSame('ライプツィヒ', (string) $alias->getSortName());
+        $this->assertInstanceOf(SortName::class, $alias->getSortName());
+        $this->assertEquals('ライプツィヒ', $alias->getSortName());
     }
 }

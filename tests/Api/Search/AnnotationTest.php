@@ -1,10 +1,14 @@
 <?php
 namespace MusicBrainz\Test\Api;
 
+use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Filter\Search\AnnotationFilter;
 use MusicBrainz\Value\Annotation;
 use MusicBrainz\Value\AnnotationText;
+use MusicBrainz\Value\ArtistType;
 use MusicBrainz\Value\EntityType;
+use MusicBrainz\Value\MBID;
+use MusicBrainz\Value\Name;
 use MusicBrainz\Value\SearchResult;
 use MusicBrainz\Value\SearchResult\AnnotationList;
 
@@ -16,7 +20,7 @@ class AnnotationTest extends ApiTestCase
     /**
      * Test instance of the annotation list
      *
-     * @var AnnotationList
+     * @var SearchResult[]|AnnotationList
      */
     private static $annotationList;
 
@@ -48,7 +52,7 @@ class AnnotationTest extends ApiTestCase
         /** Performing the test */
         $annotationFilter = new AnnotationFilter;
         $annotationFilter->addAnnotationText(new AnnotationText('awesome'));
-        $pageFilter = new \MusicBrainz\Filter\PageFilter(0, 5);
+        $pageFilter = new PageFilter(0, 5);
 
         self::$annotationList = $this->musicBrainz->api()->search()->annotation($annotationFilter, $pageFilter);
     }
@@ -63,38 +67,26 @@ class AnnotationTest extends ApiTestCase
         $annotationList = self::$annotationList;
 
         $this->assertInstanceOf(AnnotationList::class, $annotationList);
-
         $this->assertSame(5, count($annotationList));
-
         $this->assertSame(68,$annotationList->getCount()->getNumber());
-
         $this->assertSame(0, $annotationList->getOffset()->getNumber());
-
         $this->assertSame('2017/07/09 11:49:48',(string) $annotationList->getCreationTime());
 
-        /**
-         * Validating the first search result of the list
-         *
-         * @var SearchResult $searchResult The first search result of the list
-         */
         $searchResult = $annotationList[0];
-
         $this->assertInstanceOf(SearchResult::class, $searchResult);
-
         $this->assertSame(100, $searchResult->getScore()->getNumber());
 
-        /**
-         * Validating the value of the first search result.
-         *
-         * @var Annotation $annotation The value of the first search result
-         */
+        /** @var Annotation $annotation */
         $annotation = $searchResult->getValue();
+        $this->assertInstanceOf(Annotation::class, $annotation);
 
-        $this->assertSame('Label: Awesome Arts - Cat#: AA001', (string) $annotation->getAnnotationText());
+        $this->assertInstanceOf(MBID::class, $annotation->getMBID());
+        $this->assertEquals('6370e01e-4fd4-49c4-858b-6f1df7c7fe91', $annotation->getMBID());
 
-        $this->assertSame('6370e01e-4fd4-49c4-858b-6f1df7c7fe91', (string) $annotation->getMBID());
+        $this->assertInstanceOf(EntityType::class, $annotation->getEntityType());
+        $this->assertEquals(EntityType::RELEASE, $annotation->getEntityType());
 
-        $this->assertSame(EntityType::RELEASE, (string) $annotation->getEntityType());
-        $this->assertSame('Echo Ricochet', (string) $annotation->getName());
+        $this->assertInstanceOf(Name::class, $annotation->getName());
+        $this->assertEquals('Echo Ricochet', $annotation->getName());
     }
 }
