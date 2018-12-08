@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value;
 
 /**
@@ -83,15 +84,33 @@ class ArtistType implements Value
     private $type;
 
     /**
+     * Music Brainz Identifier (MBID) of the artist type
+     *
+     * @var MBID
+     */
+    private $MBID;
+
+    /**
      * Constructs an artist type.
      *
-     * @param string $type An artist type code
+     * @param array $artistType Information about the artist type
      */
-    public function __construct(string $type = self::UNDEFINED)
+    public function __construct(array $artistType)
     {
-        $this->type = (in_array($type, self::TYPES))
-            ? $type
-            : self::UNDEFINED;
+        $type = ArrayAccess::getString($artistType, 'type') ?: self::UNDEFINED;
+
+        $this->type   = (in_array($type, self::TYPES)) ? $type : self::UNDEFINED;
+        $this->MBID = new MBID(ArrayAccess::getString($artistType, 'type-id') ?: '');
+    }
+
+    /**
+     * Returns the Music Brainz Identifier (MBID) of the artist type.
+     *
+     * @return MBID
+     */
+    public function getMBID(): MBID
+    {
+        return $this->MBID;
     }
 
     /**

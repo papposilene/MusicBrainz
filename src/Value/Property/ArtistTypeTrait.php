@@ -36,8 +36,6 @@ trait ArtistTypeTrait
      */
     private function setArtistTypeFromArray(array $input): void
     {
-        $this->score = is_null($artistType = ArrayAccess::getString($input, 'type'))
-            ? new ArtistType
-            : new ArtistType($artistType);
+        $this->artistType = new ArtistType($input);
     }
 }
