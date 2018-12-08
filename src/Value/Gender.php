@@ -77,7 +77,7 @@ class Gender implements Value
     public function __toString(): string
     {
         return (self::UNDEFINED === $this->genderCode)
-            ? $this->genderCode
-            : '';
+            ? ''
+            : $this->genderCode;
     }
 }
