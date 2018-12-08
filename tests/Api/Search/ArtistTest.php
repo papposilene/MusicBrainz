@@ -2,26 +2,28 @@
 namespace MusicBrainz\Test\Api;
 
 use MusicBrainz\Filter\PageFilter;
-use MusicBrainz\Filter\Search\AreaFilter;
-use MusicBrainz\Value\Alias;
-use MusicBrainz\Value\AliasType;
-use MusicBrainz\Value\Area;
-use MusicBrainz\Value\AreaType;
+use MusicBrainz\Filter\Search\ArtistFilter;
+use MusicBrainz\Value\Artist;
+use MusicBrainz\Value\ArtistType;
+use MusicBrainz\Value\Date;
+use MusicBrainz\Value\Gender;
+use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Name;
 use MusicBrainz\Value\SearchResult;
-use MusicBrainz\Value\SearchResult\AreaList;
+use MusicBrainz\Value\SearchResult\ArtistList;
+use MusicBrainz\Value\SortName;
 
 /**
  * Unit tests for the search API.
  */
-class AreaTest extends ApiTestCase
+class ArtistTest extends ApiTestCase
 {
     /**
-     * Test instance of the area list
+     * Test instance of the artist list
      *
-     * @var SearchResult[]|AreaList
+     * @var SearchResult[]|ArtistList
      */
-    private static $areaList;
+    private static $artistList;
 
     /**
      * Sets up a mock object of the abstract HTTP adapter and the MusicBrainz API client to be tested.
@@ -30,7 +32,7 @@ class AreaTest extends ApiTestCase
      */
     public function setUp(): void
     {
-        if (!is_null(self::$areaList)) {
+        if (!is_null(self::$artistList)) {
             return;
         }
 
@@ -38,60 +40,88 @@ class AreaTest extends ApiTestCase
 
         /** Setting up the mock object of the abstract HTTP adapter */
         $this->expectApiCall(
-            'area/',
+            'artist/',
             [
-                'limit'  => 5,
-                'offset' => 0,
                 'fmt'    => 'json',
-                'query' => 'area:Leipzig'
+                'query'  => 'artist:Waite',
+                'limit'  => 25,
+                'offset' => 0
             ],
-            'Search/Area.json'
+            'Search/Artist.json'
         );
 
         /** Performing the test */
-        $areaFilter = new AreaFilter;
-        $areaFilter->addAreaName(new Name('Leipzig'));
-        $pageFilter = new PageFilter(0, 5);
+        $artistFilter = new ArtistFilter;
+        $artistFilter->addArtistNameWithoutAccents(new Name('Waite'));
 
-        self::$areaList = $this->musicBrainz->api()->search()->area($areaFilter, $pageFilter);
+        self::$artistList = $this->musicBrainz->api()->search()->artist($artistFilter, new PageFilter);
     }
 
     /**
-     * Tests, if Search::area() properly converts the given JSON response into a domain model and returns it.
+     * Tests, if Search::artist() properly converts the given JSON response into a domain model and returns it.
      *
      * @return void
      */
-    public function testArea(): void
+    public function testArtist(): void
     {
-        $areaList = self::$areaList;
+        $artistList = self::$artistList;
 
-        $this->assertInstanceOf(AreaList::class, $areaList);
-        $this->assertSame(2, count($areaList));
-        $this->assertSame(2, $areaList->getCount()->getNumber());
-        $this->assertSame(0, $areaList->getOffset()->getNumber());
-        $this->assertSame('2017/07/09 17:54:44', (string) $areaList->getCreationTime());
+        $this->assertInstanceOf(ArtistList::class, $artistList);
+        $this->assertSame(21, count($artistList));
+        $this->assertSame(21, $artistList->getCount()->getNumber());
+        $this->assertSame(0, $artistList->getOffset()->getNumber());
+        $this->assertSame('2018/12/08 19:13:37', (string) $artistList->getCreationTime());
 
-        $searchResult = $areaList[0];
+        $searchResult = $artistList[4];
         $this->assertInstanceOf(SearchResult::class, $searchResult);
-        $this->assertSame(100, $searchResult->getScore()->getNumber());
+        $this->assertSame(84, $searchResult->getScore()->getNumber());
 
-        /** @var Area $area */
-        $area = $searchResult->getValue();
-        $this->assertSame(AreaType::CITY, (string) $area->getAreaType());
-        $this->assertEmpty((string) $area->getLifeSpan()->getBeginDate());
-        $this->assertEmpty((string) $area->getLifeSpan()->getEndDate());
-        $this->assertFalse($area->getLifeSpan()->getEnded()->isEnded());
-        $this->assertSame('20619e36-fca8-4499-bcc8-be01a3ea3e41', (string) $area->getMBID());
-        $this->assertSame('Leipzig', (string) $area->getName());
-        $this->assertSame('Leipzig', (string) $area->getSortName());
+        /** @var Artist $artist */
+        $artist = $searchResult->getValue();
+        $this->assertInstanceOf(Artist::class, $artist);
 
-        $alias = $area->getAliases()[0];
-        $this->assertSame(AliasType::AREA_NAME, (string) $alias->getAliasType());
-        $this->assertEmpty((string) $alias->getBeginDate());
-        $this->assertEmpty((string) $alias->getEndDate());
-        $this->assertSame('ja', (string) $alias->getLocaleCode());
-        $this->assertSame('ライプツィヒ', (string) $alias->getName());
-        $this->assertTrue($alias->getPrimaryName()->isPrimaryName());
-        $this->assertSame('ライプツィヒ', (string) $alias->getSortName());
+        $this->assertInstanceOf(ArtistType::class, $artist->getArtistType());
+        $this->assertEquals(ArtistType::PERSON, $artist->getArtistType());
+        $this->assertInstanceOf(MBID::class, $artist->getArtistType()->getMBID());
+        $this->assertEquals('b6e035f4-3ce9-331c-97df-83397230b0df', $artist->getArtistType()->getMBID());
+        $this->assertSame('b856b4ae-5c73-4476-a61c-f1fddc573a4e', (string) $artist->getMBID());
+
+        $this->assertInstanceOf(Name::class, $artist->getArtistName());
+        $this->assertEquals('Xanthe Waite', $artist->getArtistName());
+
+        $this->assertInstanceOf(SortName::class, $artist->getSortName());
+        $this->assertEquals('Waite, Xanthe', $artist->getSortName());
+
+        $this->assertInstanceOf(Gender::class, $artist->getGender());
+        $this->assertEquals(Gender::FEMALE, $artist->getGender());
+
+        /**
+         * "life-span": {
+         *     "ended": null
+         * }
+         */
+        $this->assertInstanceOf(Date::class, $artist->getLifeSpan()->getBeginDate());
+        $this->assertEmpty((string) $artist->getLifeSpan()->getBeginDate());
+        $this->assertInstanceOf(Date::class, $artist->getLifeSpan()->getEndDate());
+        $this->assertEmpty((string) $artist->getLifeSpan()->getEndDate());
+        $this->assertFalse($artist->getLifeSpan()->getEnded()->isEnded());
+
+        /**
+         * "life-span": {
+         *     "begin": "1963-06-16",
+         *     "end": "1993-02-18",
+         *     "ended": true
+         * }
+         *
+         * @var Artist $artist
+         */
+        $artist = $artistList[16]->getValue();
+        $this->assertInstanceOf(Date::class, $artist->getLifeSpan()->getBeginDate());
+        $this->assertEquals('1963-06-16', $artist->getLifeSpan()->getBeginDate());
+        $this->assertInstanceOf(Date::class, $artist->getLifeSpan()->getEndDate());
+        $this->assertEquals('1993-02-18', $artist->getLifeSpan()->getEndDate());
+        $this->assertTrue($artist->getLifeSpan()->getEnded()->isEnded());
+
+        /** @todo Test country and area */
     }
 }
