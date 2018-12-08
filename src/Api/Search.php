@@ -18,6 +18,7 @@ use MusicBrainz\Filter\Search\TagFilter;
 use MusicBrainz\Filter\Search\WorkFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\PageFilter;
+use MusicBrainz\Value\SearchResult;
 use MusicBrainz\Value\SearchResult\AnnotationList;
 use MusicBrainz\Value\SearchResult\AreaList;
 use MusicBrainz\Value\SearchResult\ArtistList;
@@ -69,7 +70,7 @@ class Search
      * @param AnnotationFilter $annotationFilter An annotation filter
      * @param PageFilter       $pageFilter       A page filter
      *
-     * @return AnnotationList
+     * @return SearchResult[]|AnnotationList
      *
      * @throws Exception
      */
@@ -87,7 +88,7 @@ class Search
      * @param AreaFilter $areaFilter An area filter
      * @param PageFilter $pageFilter A page filter
      *
-     * @return AreaList
+     * @return SearchResult[]|AreaList
      *
      * @throws Exception
      */
@@ -105,7 +106,7 @@ class Search
      * @param ArtistFilter $artistFilter An artist filter
      * @param PageFilter   $pageFilter   A page filter
      *
-     * @return ArtistList
+     * @return SearchResult[]|ArtistList
      *
      * @throws Exception
      */
@@ -123,7 +124,7 @@ class Search
      * @param CdStubFilter $cdStubFilter A CD stub filter
      * @param PageFilter   $pageFilter   A page filter
      *
-     * @return CdStubList
+     * @return SearchResult[]|CdStubList
      *
      * @throws Exception
      */
@@ -141,7 +142,7 @@ class Search
      * @param LabelFilter $labelFilter A label filter
      * @param PageFilter  $pageFilter  A page filter
      *
-     * @return LabelList
+     * @return SearchResult[]|LabelList
      *
      * @throws Exception
      */
@@ -159,7 +160,7 @@ class Search
      * @param PlaceFilter $placeFilter A place filter
      * @param PageFilter  $pageFilter  A page filter
      *
-     * @return PlaceList
+     * @return SearchResult[]|PlaceList
      *
      * @throws Exception
      */
@@ -177,7 +178,7 @@ class Search
      * @param RecordingFilter $recordingFilter A recording filter
      * @param PageFilter      $pageFilter      A page filter
      *
-     * @return RecordingList
+     * @return SearchResult[]|RecordingList
      *
      * @throws Exception
      */
@@ -195,7 +196,7 @@ class Search
      * @param ReleaseFilter $releaseFilter A release group filter
      * @param PageFilter    $pageFilter    A page filter
      *
-     * @return ReleaseList
+     * @return SearchResult[]|ReleaseList
      *
      * @throws Exception
      */
@@ -213,7 +214,7 @@ class Search
      * @param ReleaseGroupFilter $releaseGroupFilter A release group filter
      * @param PageFilter         $pageFilter         A page filter
      *
-     * @return ReleaseGroupList
+     * @return SearchResult[]|ReleaseGroupList
      *
      * @throws Exception
      */
@@ -231,7 +232,7 @@ class Search
      * @param TagFilter  $tagFilter  A tag filter
      * @param PageFilter $pageFilter A page filter
      *
-     * @return TagList
+     * @return SearchResult[]|TagList
      *
      * @throws Exception
      */
@@ -249,7 +250,7 @@ class Search
      * @param WorkFilter $workFilter A work filter
      * @param PageFilter $pageFilter A page filter
      *
-     * @return WorkList
+     * @return SearchResult[]|WorkList
      *
      * @throws Exception
      */
