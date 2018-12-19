@@ -27,10 +27,7 @@ composer require xenos/musicbrainz
 ## Usage
 
 ### Set up
-The task of this API client is to create requests to MusicBrainz web service and provide its responses as PHP objects.
-It does not perform other tasks and it is not dependent of software performing other tasks. But for using it in your
-project, you need other software: You _must_ have an HTTP client and you _may_ have a logger. If you already have an
-HTTP client and a logger in you project, use them, otherwise you may take any other.
+You _must_ have an HTTP client and you _may_ have a logger to use this software.
 As an HTTP client is necessary to the the MusicBrainz API client, you have to provide it as constructor argument. You
 may use any HTTP client by using an adapter instantiating ```MusicBrainz\AbstractHttpAdapter```. This projects delivers
 an adapter for [Guzzle 6](http://docs.guzzlephp.org/en/stable/), but you may write your own adapter for your preferred

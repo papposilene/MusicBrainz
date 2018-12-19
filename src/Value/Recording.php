@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Relation\RelationList\Property\RecordingRelationListTrait;
 use MusicBrainz\Value;
 
 /**
@@ -36,6 +37,7 @@ class Recording implements Value
     use Property\ArtistCreditsTrait;
     use Property\VideoFlagTrait;
     use Property\ScoreTrait;
+    use RecordingRelationListTrait;
 
     /**
      * Constructs a recording.
@@ -62,6 +64,7 @@ class Recording implements Value
         $this->setArtistCreditsFromArray($recording);
         $this->setVideoFlagFromArray($recording);
         $this->setScoreFromArray($recording);
+        $this->setRelationsFromArray($recording);
     }
 
     /**

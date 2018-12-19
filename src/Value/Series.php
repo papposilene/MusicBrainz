@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Relation\RelationList\Property\SeriesRelationListTrait;
 use MusicBrainz\Value;
 
 /**
@@ -14,6 +15,7 @@ use MusicBrainz\Value;
  */
 class Series implements Value
 {
+    use SeriesRelationListTrait;
     use Property\AliasesTrait;
     use Property\DisambiguationTrait;
     use Property\MBIDTrait;
@@ -30,6 +32,7 @@ class Series implements Value
         $this->setDisambiguationFromArray($series);
         $this->setMbidFromArray($series);
         $this->setNameFromArray($series);
+        $this->setRelationsFromArray($series);
     }
 
     /**

@@ -2,17 +2,16 @@
 
 namespace MusicBrainz\Relation\Type\Artist\Release\PerformedOn\PerformedOn;
 
-use MusicBrainz\Relation\Type\Artist\Release\PerformedOn\PerformedOn;
-use MusicBrainz\Value\MBID;
+use MusicBrainz\Relation\Type\Artist\Release\PerformedOn\Performance;
 use MusicBrainz\Value\Name;
 
 /**
  * An "performed vocals on" relation
  * Indicates an artist that performed vocals on this release.
  *
- * @link https://musicbrainz.org/relationship/0fdbe3c6-7700-4a31-ae54-b53f06ae1cfa
+ * @link https://musicbrainz.org/relationship/eb10f8a0-0f4c-4dce-aa47-87bcb2bc42f3
  */
-class PerformedVocalsOn extends PerformedOn
+class PerformedVocalsOn extends Performance
 {
     /**
      * Returns the name of the relation.

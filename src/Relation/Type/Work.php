@@ -6,7 +6,7 @@ use MusicBrainz\Value\EntityType;
 use MusicBrainz\Relation\Type;
 
 /**
- * A relation of an work
+ * A relation of a work
  */
 abstract class Work extends Type
 {

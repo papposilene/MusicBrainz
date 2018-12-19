@@ -2,8 +2,7 @@
 
 namespace MusicBrainz\Relation\Type\Artist\Release\Produced;
 
-use MusicBrainz\Relation\Type\Artist\Release\Produced;
-use MusicBrainz\Value\MBID;
+use MusicBrainz\Relation\Type\Artist\Release\Production;
 use MusicBrainz\Value\Name;
 
 /**
@@ -13,7 +12,7 @@ use MusicBrainz\Value\Name;
  *
  * @link https://musicbrainz.org/relationship/87e922ba-872e-418a-9f41-0a63aa3c30cc
  */
-class Engineered extends Produced
+class Engineered extends Production
 {
     /**
      * Returns the name of the relation.

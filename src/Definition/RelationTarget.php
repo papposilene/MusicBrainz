@@ -2,18 +2,18 @@
 
 namespace MusicBrainz\Definition;
 
-use MusicBrainz\Relation\Target\AreaRelation;
-use MusicBrainz\Relation\Target\ArtistRelation;
-use MusicBrainz\Relation\Target\EventRelation;
-use MusicBrainz\Relation\Target\InstrumentRelation;
-use MusicBrainz\Relation\Target\LabelRelation;
-use MusicBrainz\Relation\Target\PlaceRelation;
-use MusicBrainz\Relation\Target\RecordingRelation;
-use MusicBrainz\Relation\Target\ReleaseGroupRelation;
-use MusicBrainz\Relation\Target\ReleaseRelation;
-use MusicBrainz\Relation\Target\SeriesRelation;
-use MusicBrainz\Relation\Target\UrlRelation;
-use MusicBrainz\Relation\Target\WorkRelation;
+use MusicBrainz\Relation\Target\RelationToArea;
+use MusicBrainz\Relation\Target\RelationToArtist;
+use MusicBrainz\Relation\Target\RelationToEvent;
+use MusicBrainz\Relation\Target\RelationToInstrument;
+use MusicBrainz\Relation\Target\RelationToLabel;
+use MusicBrainz\Relation\Target\RelationToPlace;
+use MusicBrainz\Relation\Target\RelationToRecording;
+use MusicBrainz\Relation\Target\RelationToReleaseGroup;
+use MusicBrainz\Relation\Target\RelationToRelease;
+use MusicBrainz\Relation\Target\RelationToSeries;
+use MusicBrainz\Relation\Target\RelationToUrl;
+use MusicBrainz\Relation\Target\RelationToWork;
 use MusicBrainz\Value\EntityType;
 
 class RelationTarget
@@ -26,18 +26,18 @@ class RelationTarget
     public static function getClassMap(): array
     {
         return [
-            EntityType::AREA          => AreaRelation::class,
-            EntityType::ARTIST        => ArtistRelation::class,
-            EntityType::EVENT         => EventRelation::class,
-            EntityType::INSTRUMENT    => InstrumentRelation::class,
-            EntityType::LABEL         => LabelRelation::class,
-            EntityType::PLACE         => PlaceRelation::class,
-            EntityType::RECORDING     => RecordingRelation::class,
-            EntityType::RELEASE       => ReleaseRelation::class,
-            EntityType::RELEASE_GROUP => ReleaseGroupRelation::class,
-            EntityType::SERIES        => SeriesRelation::class,
-            EntityType::URL           => UrlRelation::class,
-            EntityType::WORK          => WorkRelation::class
+            EntityType::AREA          => RelationToArea::class,
+            EntityType::ARTIST        => RelationToArtist::class,
+            EntityType::EVENT         => RelationToEvent::class,
+            EntityType::INSTRUMENT    => RelationToInstrument::class,
+            EntityType::LABEL         => RelationToLabel::class,
+            EntityType::PLACE         => RelationToPlace::class,
+            EntityType::RECORDING     => RelationToRecording::class,
+            EntityType::RELEASE       => RelationToRelease::class,
+            EntityType::RELEASE_GROUP => RelationToReleaseGroup::class,
+            EntityType::SERIES        => RelationToSeries::class,
+            EntityType::URL           => RelationToUrl::class,
+            EntityType::WORK          => RelationToWork::class
         ];
     }
 }

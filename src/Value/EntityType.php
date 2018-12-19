@@ -73,11 +73,11 @@ class EntityType implements Value
     public const RECORDING = 'recording';
 
     /**
-     * A recource
+     * A resource
      *
      * @var string
      */
-    public const RECOURCE = 'recource';
+    public const RESOURCE = 'resource';
 
     /**
      * A release
@@ -91,7 +91,7 @@ class EntityType implements Value
      *
      * @var string
      */
-    public const RELEASE_GROUP = 'release-group';
+    public const RELEASE_GROUP = 'release_group';
 
     /**
      * A series
@@ -143,7 +143,7 @@ class EntityType implements Value
         self::LABEL,
         self::PLACE,
         self::RECORDING,
-        self::RECOURCE,
+        self::RESOURCE,
         self::RELEASE,
         self::RELEASE_GROUP,
         self::SERIES,

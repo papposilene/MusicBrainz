@@ -4,7 +4,6 @@ namespace MusicBrainz\Relation\Type\Artist\Release\Produced\Engineered;
 
 use MusicBrainz\Relation\Type\Artist\Release\PerfomedOn\Remixed;
 use MusicBrainz\Relation\Type\Artist\Release\Produced\Engineered;
-use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Name;
 
 /**
@@ -13,7 +12,7 @@ use MusicBrainz\Value\Name;
  * This describes an engineer responsible for using a mixing console to mix a recorded track into a single piece of
  * music suitable for release. For remixing, see remixer.
  *
- * @see  Remixed
+ * @see  RemixesAndCompilations
  * @link https://musicbrainz.org/relationship/6cc958c0-533b-4540-a281-058fbb941890
  */
 class Mixed extends Engineered

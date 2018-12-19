@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Relation\RelationList\Property\UrlRelationListTrait;
 use MusicBrainz\Value;
 
 /**
@@ -16,6 +17,7 @@ class URL implements Value
 {
     use Property\MBIDTrait;
     use Property\ResourceTrait;
+    use UrlRelationListTrait;
 
     /**
      * Constructs an URL.
@@ -26,6 +28,7 @@ class URL implements Value
     {
         $this->setMbidFromArray($resource);
         $this->setResourceFromArray($resource);
+        $this->setRelationsFromArray($resource);
     }
 
     /**

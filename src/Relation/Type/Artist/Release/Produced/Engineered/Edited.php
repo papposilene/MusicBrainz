@@ -3,7 +3,6 @@
 namespace MusicBrainz\Relation\Type\Artist\Release\Produced\Engineered;
 
 use MusicBrainz\Relation\Type\Artist\Release\Produced\Engineered;
-use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Name;
 
 /**

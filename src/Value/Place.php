@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Relation\RelationList\Property\PlaceRelationListTrait;
 use MusicBrainz\Value;
 
 /**
@@ -11,6 +12,7 @@ use MusicBrainz\Value;
  */
 class Place implements Value
 {
+    use PlaceRelationListTrait;
     use Property\AddressTrait;
     use Property\AreaTrait;
     use Property\CoordinatesTrait;
@@ -27,6 +29,7 @@ class Place implements Value
      */
     public function __construct(array $place = [])
     {
+        $this->setRelationsFromArray($place);
         $this->setAddressFromArray($place);
         $this->setAreaFromArray($place);
         $this->setCoordinatesFromArray($place);

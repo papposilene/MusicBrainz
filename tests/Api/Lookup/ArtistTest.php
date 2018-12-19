@@ -1,15 +1,25 @@
 <?php
 namespace MusicBrainz\Test\Api\Lookup;
 
+use MusicBrainz\Relation\Target\RelationList\RelationToAreaList;
+use MusicBrainz\Relation\Target\RelationList\RelationToArtistList;
+use MusicBrainz\Relation\Target\RelationList\RelationToEventList;
+use MusicBrainz\Relation\Target\RelationList\RelationToInstrumentList;
+use MusicBrainz\Relation\Target\RelationList\RelationToLabelList;
+use MusicBrainz\Relation\Target\RelationList\RelationToPlaceList;
+use MusicBrainz\Relation\Target\RelationList\RelationToRecordingList;
+use MusicBrainz\Relation\Target\RelationList\RelationToReleaseGroupList;
+use MusicBrainz\Relation\Target\RelationList\RelationToReleaseList;
+use MusicBrainz\Relation\Target\RelationList\RelationToSeriesList;
+use MusicBrainz\Relation\Target\RelationList\RelationToUrlList;
+use MusicBrainz\Relation\Target\RelationList\RelationToWorkList;
 use MusicBrainz\Supplement\Lookup\ArtistFields;
 use MusicBrainz\Test\Api\ApiTestCase;
 use MusicBrainz\Value\Area;
 use MusicBrainz\Value\Artist;
-use MusicBrainz\Value\Barcode;
 use MusicBrainz\Value\Country;
 use MusicBrainz\Value\DataQuality;
 use MusicBrainz\Value\Date;
-use MusicBrainz\Value\Disambiguation;
 use MusicBrainz\Value\Disc;
 use MusicBrainz\Value\DiscId;
 use MusicBrainz\Value\DiscList;
@@ -20,7 +30,6 @@ use MusicBrainz\Value\Language;
 use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\MediaList;
 use MusicBrainz\Value\Medium;
-use MusicBrainz\Value\Packaging;
 use MusicBrainz\Value\Release;
 use MusicBrainz\Value\ReleaseEvent;
 use MusicBrainz\Value\ReleaseEventList;
@@ -29,7 +38,6 @@ use MusicBrainz\Value\ReleaseStatus;
 use MusicBrainz\Value\Script;
 use MusicBrainz\Value\SectorOffsetList;
 use MusicBrainz\Value\Sectors;
-use MusicBrainz\Value\SortName;
 use MusicBrainz\Value\Name;
 use MusicBrainz\Value\TextRepresentation;
 use MusicBrainz\Value\Title;
@@ -37,7 +45,7 @@ use MusicBrainz\Value\Title;
 /**
  * Unit tests for the lookup API.
  */
-class LookupTestCase extends ApiTestCase
+class ArtistTest extends ApiTestCase
 {
     /**
      * Test instance of the artist
@@ -66,7 +74,7 @@ class LookupTestCase extends ApiTestCase
             'artist/4aae17a7-9f0c-487b-b60e-f8eafb410b1d',
             [
                 'fmt' => 'json',
-                'inc' => 'recordings+releases+release-groups+works+various-artists+discids+media+aliases+tags+user-tags+ratings+user-ratings+artist-rels+label-rels+recording-rels+release-rels+release-group-rels+url-rels+work-rels+annotation'
+                'inc' => 'recordings+releases+release-groups+works+various-artists+discids+media+aliases+tags+user-tags+ratings+user-ratings+annotation+artist-rels+event-rels+instrument-rels+label-rels+place-rels+recording-rels+release-group-rels+release-rels+series-rels+url-rels+work-rels'
             ],
             'Lookup/Artist.json'
         );
@@ -77,24 +85,30 @@ class LookupTestCase extends ApiTestCase
         $fields = (new ArtistFields)
             ->includeAliases()
             ->includeAnnotation()
-            ->includeArtistRelations()
             ->includeDiscIds()
-            ->includeLabelRelations()
             ->includeMedia()
             ->includeRatings()
-            ->includeRecordingRelations()
             ->includeRecordings()
-            ->includeReleaseGroupRelations()
             ->includeReleaseGroups()
-            ->includeReleaseRelations()
             ->includeReleases()
             ->includeTags()
-            ->includeURLRelations()
             ->includeUserRatings()
             ->includeUserTags()
             ->includeVariousArtists()
-            ->includeWorkRelations()
-            ->includeWorks();
+            ->includeWorks()
+            // Relations
+            ->includeAreaRelations()
+            ->includeArtistRelations()
+            ->includeEventRelations()
+            ->includeInstrumentRelations()
+            ->includeLabelRelations()
+            ->includePlaceRelations()
+            ->includeReleaseGroupRelations()
+            ->includeRecordingRelations()
+            ->includeReleaseRelations()
+            ->includeSeriesRelations()
+            ->includeURLRelations()
+            ->includeWorkRelations();
 
         self::$artist = $this->musicBrainz->api()->lookup()->artist(
             new MBID('4aae17a7-9f0c-487b-b60e-f8eafb410b1d'),
@@ -118,6 +132,8 @@ class LookupTestCase extends ApiTestCase
         $this->assertEquals('AU', $artist->getCountry());
 
         /** @see testReleases() */
+
+        /** @see testRelations() */
     }
 
     /**
@@ -130,7 +146,7 @@ class LookupTestCase extends ApiTestCase
         $releases = self::$artist->getReleases();
 
         $this->assertInstanceOf(ReleaseList::class, $releases);
-        $this->assertCount(1, $releases);
+        $this->assertCount(25, $releases);
 
         $release = $releases[0];
 
@@ -146,18 +162,13 @@ class LookupTestCase extends ApiTestCase
 
         /** @todo Test release aliases */
 
-        $packaging = $release->getPackaging();
-        $this->assertInstanceOf(Packaging::class, $packaging);
-        $this->assertEquals('Cardboard/Paper Sleeve', $packaging);
-        $this->assertInstanceOf(MBID::class, $packaging->getMBID());
+        /** @todo Test packaging */
 
         $quality = $release->getQuality();
         $this->assertInstanceOf(DataQuality::class, $quality);
         $this->assertEquals('normal', $quality);
 
-        $barcode = $release->getBarcode();
-        $this->assertInstanceOf(Barcode::class, $barcode);
-        $this->assertEquals('0724354300424', $barcode);
+        /** @todo Test barcode */
 
         $country = $release->getCountry();
         $this->assertInstanceOf(Country::class, $country);
@@ -209,10 +220,11 @@ class LookupTestCase extends ApiTestCase
         $this->assertEquals('GB', $iso31661Code);
         $this->assertInstanceOf(MBID::class, $area->getMBID());
         $this->assertEquals('8a754a16-0027-3a29-b6d7-2b40ea0481ed', $area->getMBID());
-        $this->assertInstanceOf(Disambiguation::class, $area->getDisambiguation());
-        $this->assertEquals('The UK', $area->getDisambiguation());
-        $this->assertInstanceOf(SortName::class, $area->getSortName());
-        $this->assertEquals('Kingdom, United', $area->getSortName());
+
+        /** @todo Test disambiguation */
+
+        /** @todo Test sort name */
+
         $this->assertInstanceOf(Name::class, $area->getName());
         $this->assertEquals('United Kingdom', $area->getName());
 
@@ -279,10 +291,29 @@ class LookupTestCase extends ApiTestCase
         $this->assertInstanceOf(Sectors::class, $disc->getSectors());
         $this->assertEquals('254935', $disc->getSectors());
         $this->assertInstanceOf(SectorOffsetList::class, $disc->getSectorOffsets());
-        $this->assertCount(2, $disc->getSectorOffsets());
+        $this->assertCount(14, $disc->getSectorOffsets());
         $this->assertInstanceOf(Sectors::class, $disc->getSectorOffsets()[0]);
         $this->assertEquals('150', $disc->getSectorOffsets()[0]);
         $this->assertInstanceOf(Sectors::class, $disc->getSectorOffsets()[1]);
         $this->assertEquals('13042', $disc->getSectorOffsets()[1]);
+    }
+
+    public function testRelations(): void
+    {
+        $relationList = self::$artist->getRelations();
+
+        $this->assertInstanceOf(\MusicBrainz\Relation\RelationList\ArtistRelationList::class, $relationList);
+        $this->assertInstanceOf(RelationToAreaList::class, $relationList->getAreaRelations());
+        $this->assertInstanceOf(RelationToArtistList::class, $relationList->getArtistRelations());
+        $this->assertInstanceOf(RelationToEventList::class, $relationList->getEventRelations());
+        $this->assertInstanceOf(RelationToInstrumentList::class, $relationList->getInstrumentRelations());
+        $this->assertInstanceOf(RelationToLabelList::class, $relationList->getLabelRelations());
+        $this->assertInstanceOf(RelationToPlaceList::class, $relationList->getPlaceRelations());
+        $this->assertInstanceOf(RelationToRecordingList::class, $relationList->getRecordingRelations());
+        $this->assertInstanceOf(RelationToReleaseGroupList::class, $relationList->getReleaseGroupRelations());
+        $this->assertInstanceOf(RelationToReleaseList::class, $relationList->getReleaseRelations());
+        $this->assertInstanceOf(RelationToSeriesList::class, $relationList->getSeriesRelations());
+        $this->assertInstanceOf(RelationToUrlList::class, $relationList->getUrlRelations());
+        $this->assertInstanceOf(RelationToWorkList::class, $relationList->getWorkRelations());
     }
 }

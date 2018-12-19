@@ -4,6 +4,7 @@ namespace MusicBrainz\Supplement\Lookup;
 
 class ReleaseGroupFields
 {
+    use \MusicBrainz\Supplement\Field\AliasesTrait;
     use \MusicBrainz\Supplement\Field\ArtistsTrait;
     use \MusicBrainz\Supplement\Field\ReleasesTrait;
     use \MusicBrainz\Supplement\Field\DiscIdsTrait;
@@ -13,13 +14,11 @@ class ReleaseGroupFields
     use \MusicBrainz\Supplement\Field\UserTagsTrait;
     use \MusicBrainz\Supplement\Field\RatingsTrait;
     use \MusicBrainz\Supplement\Field\UserRatingsTrait;
+    // relations
     use \MusicBrainz\Supplement\Field\ArtistRelationsTrait;
+    use \MusicBrainz\Supplement\Field\EventRelationsTrait;
     use \MusicBrainz\Supplement\Field\LabelRelationsTrait;
-    use \MusicBrainz\Supplement\Field\RecordingRelationsTrait;
-    use \MusicBrainz\Supplement\Field\ReleaseRelationsTrait;
     use \MusicBrainz\Supplement\Field\ReleaseGroupRelationsTrait;
+    use \MusicBrainz\Supplement\Field\SeriesRelationsTrait;
     use \MusicBrainz\Supplement\Field\URLRelationsTrait;
-    use \MusicBrainz\Supplement\Field\WorkLevelRelationsTrait;
-    use \MusicBrainz\Supplement\Field\AnnotationTrait;
-    use \MusicBrainz\Supplement\Field\AliasesTrait;
 }

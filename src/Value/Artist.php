@@ -2,8 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Relation\RelationList\Property\ArtistRelationListTrait;
 use MusicBrainz\Value;
-use Symfony\Component\DependencyInjection\Loader\Configurator\Traits\PropertyTrait;
 
 /**
  * An artist
@@ -12,6 +12,7 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\Traits\PropertyTra
  */
 class Artist implements Value
 {
+    use ArtistRelationListTrait;
     use Property\AliasesTrait;
     use Property\AreaTrait;
     use Property\ArtistNameTrait;
@@ -37,6 +38,7 @@ class Artist implements Value
      */
     public function __construct(array $artist = [])
     {
+        $this->setRelationsFromArray($artist);
         $this->setAliasesFromArray($artist);
         $this->setAreaFromArray($artist);
         $this->setArtistNameFromArray($artist, 'name');

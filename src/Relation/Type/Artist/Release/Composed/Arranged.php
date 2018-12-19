@@ -2,8 +2,7 @@
 
 namespace MusicBrainz\Relation\Type\Artist\Release\Composed;
 
-use MusicBrainz\Relation\Type\Artist\Release\Composed;
-use MusicBrainz\Value\MBID;
+use MusicBrainz\Relation\Type\Artist\Release\Composition;
 use MusicBrainz\Value\Name;
 
 /**
@@ -14,7 +13,7 @@ use MusicBrainz\Value\Name;
  *
  * @link https://musicbrainz.org/relationship/34d5334e-a4c8-4b65-a5f8-bbcc9c81d13d
  */
-class Arranged extends Composed
+class Arranged extends Composition
 {
     /**
      * Returns the name of the relation.

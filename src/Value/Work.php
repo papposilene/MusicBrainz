@@ -17,7 +17,7 @@ class Work implements Value
     use Property\AttributesTrait;
     use Property\DisambiguationTrait;
     use Property\IswcsTrait;
-    use Property\LanguageTrait;
+    use Property\LanguagesTrait;
     use Property\MBIDTrait;
     use Property\TitleTrait;
     use Property\WorkTypeTrait;
@@ -33,8 +33,9 @@ class Work implements Value
         $this->setDisambiguationFromArray($work);
         $this->setDisambiguationFromArray($work);
         $this->setIswcsFromArray($work);
-        $this->setLanguageFromArray($work);
+        $this->setLanguagesFromArray($work);
         $this->setMbidFromArray($work);
+        $this->setTitleFromArray($work);
         $this->setWorkTypeFromArray($work);
     }
 

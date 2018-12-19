@@ -2,14 +2,19 @@
 
 namespace MusicBrainz\Api;
 
-use AppBundle\Entity\Label;
 use MusicBrainz\Config;
+use MusicBrainz\Supplement\Lookup\AreaFields;
 use MusicBrainz\Supplement\Lookup\ArtistFields;
+use MusicBrainz\Supplement\Lookup\PlaceFields;
+use MusicBrainz\Supplement\Lookup\EventFields;
+use MusicBrainz\Supplement\Lookup\InstrumentFields;
 use MusicBrainz\Supplement\Lookup\LabelFields;
 use MusicBrainz\Supplement\Lookup\RecordingFields;
 use MusicBrainz\Supplement\Lookup\ReleaseFields;
+use MusicBrainz\Supplement\Lookup\UrlFields;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Supplement\Lookup\ReleaseGroupFields;
+use MusicBrainz\Supplement\Lookup\SeriesFields;
 use MusicBrainz\Supplement\Lookup\WorkFields;
 use MusicBrainz\Value\Area;
 use MusicBrainz\Value\Artist;
@@ -17,10 +22,13 @@ use MusicBrainz\Value\Collection;
 use MusicBrainz\Value\EntityType;
 use MusicBrainz\Value\Event;
 use MusicBrainz\Value\Instrument;
+use MusicBrainz\Value\Label;
 use MusicBrainz\Value\MBID;
+use MusicBrainz\Value\Place;
 use MusicBrainz\Value\Recording;
 use MusicBrainz\Value\Release;
 use MusicBrainz\Value\ReleaseGroup;
+use MusicBrainz\Value\Series;
 use MusicBrainz\Value\URL;
 use MusicBrainz\Value\Work;
 
@@ -60,13 +68,24 @@ class Lookup
     /**
      * Looks up for an area and returns the result.
      *
-     * @param MBID $mbid A Music Brainz Identifier (MBID) of an area
+     * @param MBID       $mbid       A Music Brainz Identifier (MBID) of an area
+     * @param AreaFields $areaFields List of fields to be included in the response
      *
      * @return Area
      */
-    public function area(MBID $mbid): Area
+    public function area(MBID $mbid, AreaFields $areaFields): Area
     {
-        $result = $this->lookup(new EntityType(EntityType::AREA), $mbid);
+        $fields = [
+            'area-rels'          => $areaFields->getIncludeFlagForAreaRelations(),
+            'event-rels'         => $areaFields->getIncludeFlagForEventRelations(),
+            'instrument-rels'    => $areaFields->includeInstrumentRelations(),
+            'recording-rels'     => $areaFields->getIncludeFlagForRecordingRelations(),
+            'release-rels'       => $areaFields->getIncludeFlagForReleaseRelations(),
+            'url-rels'           => $areaFields->getIncludeFlagForURLRelations(),
+            'work-rels'          => $areaFields->getIncludeFlagForWorkRelations()
+        ];
+
+        $result = $this->lookup(new EntityType(EntityType::AREA), $mbid, $fields);
 
         return new Area($result);
     }
@@ -74,8 +93,8 @@ class Lookup
     /**
      * Looks up for an artist and returns the result.
      *
-     * @param MBID $mbid A Music Brainz Identifier (MBID) of an artist
-     *
+     * @param MBID         $mbid         A Music Brainz Identifier (MBID) of an artist
+     * @param ArtistFields $artistFields List of fields to be included in the response
      * @return Artist
      */
     public function artist(MBID $mbid, ArtistFields $artistFields): Artist
@@ -93,14 +112,19 @@ class Lookup
             'user-tags'          => $artistFields->getIncludeFlagForUserTags(),
             'ratings'            => $artistFields->getIncludeFlagForRatings(),
             'user-ratings'       => $artistFields->getIncludeFlagForUserRatings(),
+            'annotation'         => $artistFields->getIncludeFlagForAnnotation(),
+            // relations
             'artist-rels'        => $artistFields->getIncludeFlagForArtistRelations(),
+            'event-rels'         => $artistFields->getIncludeFlagForEventRelations(),
+            'instrument-rels'    => $artistFields->includeInstrumentRelations(),
             'label-rels'         => $artistFields->getIncludeFlagForLabelRelations(),
+            'place-rels'         => $artistFields->getIncludeFlagForPlaceRelations(),
             'recording-rels'     => $artistFields->getIncludeFlagForRecordingRelations(),
-            'release-rels'       => $artistFields->getIncludeFlagForReleaseRelations(),
             'release-group-rels' => $artistFields->getIncludeFlagForReleaseGroupRelations(),
+            'release-rels'       => $artistFields->getIncludeFlagForReleaseRelations(),
+            'series-rels'        => $artistFields->getIncludeFlagForSeriesRelations(),
             'url-rels'           => $artistFields->getIncludeFlagForURLRelations(),
-            'work-rels'          => $artistFields->getIncludeFlagForWorkRelations(),
-            'annotation'         => $artistFields->getIncludeFlagForAnnotation()
+            'work-rels'          => $artistFields->getIncludeFlagForWorkRelations()
         ];
 
         $authRequired = ($fields['user-ratings'] || $fields['user-tags']);
@@ -129,13 +153,28 @@ class Lookup
     /**
      * Looks up for an event and returns the result.
      *
-     * @param MBID $mbid A Music Brainz Identifier (MBID) of an event
+     * @param MBID        $mbid        A Music Brainz Identifier (MBID) of an event
+     * @param EventFields $eventFields List of fields to be included in the response
      *
      * @return Event
      */
-    public function event(MBID $mbid)
+    public function event(MBID $mbid, EventFields $eventFields)
     {
-        $result = $this->lookup(new EntityType(EntityType::EVENT), $mbid);
+        $fields = [
+            // relations
+            'area-rels'          => $eventFields->getIncludeFlagForAreaRelations(),
+            'artist-rels'        => $eventFields->getIncludeFlagForArtistRelations(),
+            'event-rels'         => $eventFields->getIncludeFlagForEventRelations(),
+            'place-rels'         => $eventFields->getIncludeFlagForPlaceRelations(),
+            'recording-rels'     => $eventFields->getIncludeFlagForRecordingRelations(),
+            'release-group-rels' => $eventFields->getIncludeFlagForReleaseGroupRelations(),
+            'release-rels'       => $eventFields->getIncludeFlagForReleaseRelations(),
+            'series-rels'        => $eventFields->getIncludeFlagForSeriesRelations(),
+            'url-rels'           => $eventFields->getIncludeFlagForURLRelations(),
+            'work-rels'          => $eventFields->getIncludeFlagForWorkRelations()
+        ];
+
+        $result = $this->lookup(new EntityType(EntityType::EVENT), $mbid, $fields);
 
         return new Event($result);
     }
@@ -143,13 +182,23 @@ class Lookup
     /**
      * Looks up for an instrument and returns the result.
      *
-     * @param MBID $mbid A Music Brainz Identifier (MBID) of an instrument
+     * @param MBID             $mbid             A Music Brainz Identifier (MBID) of an instrument
+     * @param InstrumentFields $instrumentFields List of fields to be included in the response
      *
      * @return Instrument
      */
-    public function instrument(MBID $mbid): Instrument
+    public function instrument(MBID $mbid, $instrumentFields): Instrument
     {
-        $result = $this->lookup(new EntityType(EntityType::INSTRUMENT), $mbid);
+        $fields = [
+            // relations
+            'area-rels'       => $instrumentFields->getIncludeFlagForAreaRelations(),
+            'artist-rels'     => $instrumentFields->getIncludeFlagForArtistRelations(),
+            'instrument-rels' => $instrumentFields->getIncludeFlagForInstrumentRelations(),
+            'label-rels'      => $instrumentFields->getIncludeFlagForLabelRelations(),
+            'url-rels'        => $instrumentFields->getIncludeFlagForURLRelations(),
+        ];
+
+        $result = $this->lookup(new EntityType(EntityType::INSTRUMENT), $mbid, $fields);
 
         return new Instrument($result);
     }
@@ -188,33 +237,50 @@ class Lookup
     }
 
     /**
+     * Looks up for a place and returns the result.
+     *
+     * @param MBID        $mbid        A Music Brainz Identifier (MBID) of a label
+     * @param PlaceFields $placeFields List of fields to be included in the response
+     *
+     * @return Place
+     */
+    public function place(MBID $mbid, PlaceFields $placeFields): Place
+    {
+        $fields = [
+            'artist-rels'    => $placeFields->getIncludeFlagForArtistRelations(),
+            'place-rels'     => $placeFields->getIncludeFlagForPlaceRelations(),
+            'recording-rels' => $placeFields->getIncludeFlagForRecordingRelations(),
+            'release-rels'   => $placeFields->getIncludeFlagForReleaseRelations(),
+            'url-rels'       => $placeFields->getIncludeFlagForURLRelations(),
+            'work-rels'      => $placeFields->getIncludeFlagForWorkRelations(),
+        ];
+
+        $result = $this->lookup(new EntityType(EntityType::PLACE), $mbid, $fields);
+
+        return new Place($result);
+    }
+
+    /**
      * Looks up for a recording and returns the result.
      *
-     * @param MBID $mbid A Music Brainz Identifier (MBID) of a recording
+     * @param MBID            $mbid        A Music Brainz Identifier (MBID) of a recording
+     * @param RecordingFields $placeFields List of fields to be included in the response
      *
      * @return Recording
      */
     public function recording(MBID $mbid, RecordingFields $recordingFields): Recording
     {
         $fields = [
-            'artists' =>            $recordingFields->getIncludeFlagForArtists(),
-            'releases' =>           $recordingFields->getIncludeFlagForReleases(), // sub queries
-            'discids' =>            $recordingFields->getIncludeFlagForDiscIds(),
-            'media' =>              $recordingFields->getIncludeFlagForMedia(),
-            'artist-credits' =>     $recordingFields->getIncludeFlagForArtistCredits(),
-            'tags' =>               $recordingFields->getIncludeFlagForTags(),
-            'user-tags' =>          $recordingFields->getIncludeFlagForUserTags(),
-            'ratings' =>            $recordingFields->getIncludeFlagForRatings(),
-            'user-ratings' =>       $recordingFields->getIncludeFlagForUserRatings(), // misc
-            'artist-rels' =>        $recordingFields->getIncludeFlagForArtistRelations(),
-            'label-rels' =>         $recordingFields->getIncludeFlagForLabelRelations(),
-            'recording-rels' =>     $recordingFields->getIncludeFlagForRecordingRelations(),
-            'release-rels' =>       $recordingFields->getIncludeFlagForReleaseRelations(),
-            'release-group-rels' => $recordingFields->getIncludeFlagForReleaseGroupRelations(),
-            'url-rels' =>           $recordingFields->getIncludeFlagForURLRelations(),
-            'work-rels' =>          $recordingFields->getIncludeFlagForWorkRelations(),
-            'annotation' =>         $recordingFields->getIncludeFlagForAnnotation(),
-            'aliases' =>            $recordingFields->getIncludeFlagForAliases()
+            'area-rels'      => $recordingFields->getIncludeFlagForAreaRelations(),
+            'artist-rels'    => $recordingFields->getIncludeFlagForArtistRelations(),
+            'event-rels'     => $recordingFields->getIncludeFlagForEventRelations(),
+            'label-rels'     => $recordingFields->getIncludeFlagForLabelRelations(),
+            'place-rels'     => $recordingFields->getIncludeFlagForPlaceRelations(),
+            'recording-rels' => $recordingFields->getIncludeFlagForRecordingRelations(),
+            'release-rels'   => $recordingFields->getIncludeFlagForReleaseRelations(),
+            'series-rels'    => $recordingFields->getIncludeFlagForSeriesRelations(),
+            'url-rels'       => $recordingFields->getIncludeFlagForURLRelations(),
+            'work-rels'      => $recordingFields->getIncludeFlagForWorkRelations(),
         ];
 
         $result = $this->lookup(new EntityType(EntityType::RECORDING), $mbid, $fields);
@@ -225,7 +291,8 @@ class Lookup
     /**
      * Looks up for a release and returns the result.
      *
-     * @param MBID $mbid A Music Brainz Identifier (MBID) of a release
+     * @param MBID            $mbid          A Music Brainz Identifier (MBID) of a release
+     * @param RecordingFields $releaseFields List of fields to be included in the response
      *
      * @return Release
      */
@@ -236,21 +303,25 @@ class Lookup
             'collections'          => $releaseFields->getIncludeFlagForCollections(),
             'labels'               => $releaseFields->getIncludeFlagForLabels(), // sub queries
             'recordings'           => $releaseFields->getIncludeFlagForRecordings(),
-            'release-groups'       => $releaseFields->getIncludeFlagForReleaseGroups(),
+            'release-groups'       => $releaseFields->getIncludeFlagForReleases(),
+            //
             'media'                => $releaseFields->getIncludeFlagForMedia(),
             'artist-credits'       => $releaseFields->getIncludeFlagForArtistCredits(),
             'discids'              => $releaseFields->getIncludeFlagForDiscIds(),
+            'annotation'           => $releaseFields->getIncludeFlagForAnnotation(),
+            'aliases'              => $releaseFields->getIncludeFlagForAliases(),
+            // relations
+            'area-rels'            => $releaseFields->getIncludeFlagForAreaRelations(),
             'artist-rels'          => $releaseFields->getIncludeFlagForArtistRelations(),
+            'event-rels'           => $releaseFields->getIncludeFlagForEventRelations(),
             'label-rels'           => $releaseFields->getIncludeFlagForLabelRelations(), // misc
             'recording-rels'       => $releaseFields->getIncludeFlagForRecordingRelations(),
             'release-rels'         => $releaseFields->getIncludeFlagForReleaseRelations(),
-            'release-group-rels'   => $releaseFields->getIncludeFlagForReleaseGroupRelations(),
+            'series-rels'          => $releaseFields->getIncludeFlagForSeriesRelations(),
             'url-rels'             => $releaseFields->getIncludeFlagForURLRelations(),
-            'work-rels'            => $releaseFields->getIncludeFlagForWorkRelations(),
+            //
             'recording-level-rels' => $releaseFields->getIncludeFlagForRecordingLevelRelations(),
             'work-level-rels'      => $releaseFields->getIncludeFlagForWorkLevelRelations(),
-            'annotation'           => $releaseFields->getIncludeFlagForAnnotation(),
-            'aliases'              => $releaseFields->getIncludeFlagForAliases()
         ];
 
         $result = $this->lookup(new EntityType(EntityType::RELEASE), $mbid, $fields);
@@ -261,13 +332,15 @@ class Lookup
     /**
      * Looks up for a release group and returns the result.
      *
-     * @param MBID $mbid A Music Brainz Identifier (MBID) of a release group
+     * @param MBID               $mbid          A Music Brainz Identifier (MBID) of a release
+     * @param ReleaseGroupFields $releaseFields List of fields to be included in the response
      *
      * @return ReleaseGroup
      */
     public function releaseGroup(MBID $mbid, ReleaseGroupFields $releaseGroupFields): ReleaseGroup
     {
         $fields = [
+            'aliases'            => $releaseGroupFields->getIncludeFlagForAliases(),
             'artists'            => $releaseGroupFields->getIncludeFlagForArtists(),
             'releases'           => $releaseGroupFields->getIncludeFlagForReleases(),
             'discids'            => $releaseGroupFields->getIncludeFlagForDiscIds(),
@@ -277,15 +350,13 @@ class Lookup
             'user-tags'          => $releaseGroupFields->getIncludeFlagForUserTags(),
             'ratings'            => $releaseGroupFields->getIncludeFlagForRatings(),
             'user-ratings'       => $releaseGroupFields->getIncludeFlagForUserRatings(),
+            // relations
             'artist-rels'        => $releaseGroupFields->getIncludeFlagForArtistRelations(),
+            'event-rels'         => $releaseGroupFields->getIncludeFlagForEventRelations(),
             'label-rels'         => $releaseGroupFields->getIncludeFlagForLabelRelations(),
-            'recording-rels'     => $releaseGroupFields->getIncludeFlagForRecordingRelations(),
-            'release-rels'       => $releaseGroupFields->getIncludeFlagForReleaseRelations(),
             'release-group-rels' => $releaseGroupFields->getIncludeFlagForReleaseGroupRelations(),
+            'series-rels'        => $releaseGroupFields->getIncludeFlagForSeriesRelations(),
             'url-rels'           => $releaseGroupFields->getIncludeFlagForURLRelations(),
-            'work-level-rels'    => $releaseGroupFields->getIncludeFlagForWorkLevelRelations(),
-            'annotations'        => $releaseGroupFields->getIncludeFlagForAnnotation(),
-            'aliases'            => $releaseGroupFields->getIncludeFlagForAliases()
         ];
 
         $result = $this->lookup(new EntityType(EntityType::RELEASE_GROUP), $mbid, $fields);
@@ -296,13 +367,57 @@ class Lookup
     /**
      * Looks up for an URL and returns the result.
      *
-     * @param MBID $mbid A Music Brainz Identifier (MBID) of an URL
+     * @param MBID         $mbid          A Music Brainz Identifier (MBID) of a release
+     * @param SeriesFields $releaseFields List of fields to be included in the response
+     *
+     * @return Series
+     */
+    public function series(MBID $mbid, SeriesFields $seriesFields): Series
+    {
+        $fields = [
+            // relations
+            'artist-rels'        => $seriesFields->getIncludeFlagForArtistRelations(),
+            'event-rels'         => $seriesFields->getIncludeFlagForEventRelations(),
+            'label-rels'         => $seriesFields->getIncludeFlagForLabelRelations(),
+            'recording-rels'     => $seriesFields->getIncludeFlagForRecordingRelations(),
+            'release-rels'       => $seriesFields->getIncludeFlagForReleaseRelations(),
+            'release-group-rels' => $seriesFields->getIncludeFlagForReleaseGroupRelations(),
+            'series-rels'        => $seriesFields->getIncludeFlagForSeriesRelations(),
+            'url-rels'           => $seriesFields->getIncludeFlagForURLRelations(),
+            'work-rels'          => $seriesFields->getIncludeFlagForWorkRelations(),
+        ];
+
+        $result = $this->lookup(new EntityType(EntityType::SERIES), $mbid, $fields);
+
+        return new Series($result);
+    }
+
+    /**
+     * Looks up for an URL and returns the result.
+     *
+     * @param MBID         $mbid          A Music Brainz Identifier (MBID) of a release
+     * @param UrlFields $urlFields List of fields to be included in the response
      *
      * @return URL
      */
-    public function url(MBID $mbid): URL
+    public function url(MBID $mbid, $urlFields): URL
     {
-        $result = $this->lookup(new EntityType(EntityType::URL), $mbid);
+        $fields = [
+            // relations
+            'area-rels'          => $urlFields->getIncludeFlagForAreaRelations(),
+            'artist-rels'        => $urlFields->getIncludeFlagForArtistRelations(),
+            'event-rels'         => $urlFields->getIncludeFlagForEventRelations(),
+            'instrument-rels'    => $urlFields->getIncludeFlagForInstrumentRelations(),
+            'label-rels'         => $urlFields->getIncludeFlagForLabelRelations(),
+            'place-rels'         => $urlFields->getIncludeFlagForPlaceRelations(),
+            'recording-rels'     => $urlFields->getIncludeFlagForRecordingRelations(),
+            'release-rels'       => $urlFields->getIncludeFlagForReleaseRelations(),
+            'release-group-rels' => $urlFields->getIncludeFlagForReleaseGroupRelations(),
+            'series-rels'        => $urlFields->getIncludeFlagForSeriesRelations(),
+            'work-rels'          => $urlFields->getIncludeFlagForWorkRelations(),
+        ];
+
+        $result = $this->lookup(new EntityType(EntityType::URL), $mbid, $fields);
 
         return new URL($result);
     }
@@ -360,7 +475,7 @@ class Lookup
         ];
 
         $response = $this->httpAdapter->call(
-            (string) $entityType .
+            str_replace('_' , '-', (string) $entityType) .
             '/' .
             (string) $mbid,
             $this->config,

@@ -5,6 +5,7 @@ namespace MusicBrainz\Helper;
 use MusicBrainz\Definition\RelationTarget;
 use MusicBrainz\Definition\RelationTypeId;
 use MusicBrainz\Relation;
+use MusicBrainz\Relation\NullType;
 use MusicBrainz\Relation\Type;
 use MusicBrainz\Value\Direction;
 use MusicBrainz\Value\MBID;
@@ -29,7 +30,14 @@ class RelationFactory
 
         /** @var Type $relationType */
         $relationType = self::getRelationType(new MBID($relationTypeId));
-        $direction    = new Direction(ArrayAccess::getString($relation, 'direction'));
+
+        if ($relationType instanceof NullType) {
+            /** @todo Implement fallback for undefined relation */
+        }
+
+        $direction = new Direction(ArrayAccess::getString($relation, 'direction'));
+
+
 
         $relatedEntityType = (Direction::FORWARD == $direction)
             ? $relationType::getRelatedEntityType()
@@ -37,29 +45,16 @@ class RelationFactory
 
         $class = RelationTarget::getClassMap()[(string) $relatedEntityType];
 
+        if (is_null($relation[(string) $relatedEntityType])) {
+            /** @todo Implement fallback for undefined relation */
+            die;
+        }
+
         return new $class(
             $relation[(string) $relatedEntityType],
             $relationType,
             $direction
         );
-    }
-
-    private static function getRelationClasses(): array
-    {
-        return [
-            \MusicBrainz\Relation\Target\AreaRelation::class,
-            \MusicBrainz\Relation\Target\ArtistRelation::class,
-            \MusicBrainz\Relation\Target\EventRelation::class,
-            \MusicBrainz\Relation\Target\InstrumentRelation::class,
-            \MusicBrainz\Relation\Target\LabelRelation::class,
-            \MusicBrainz\Relation\Target\PlaceRelation::class,
-            \MusicBrainz\Relation\Target\RecordingRelation::class,
-            \MusicBrainz\Relation\Target\ReleaseRelation::class,
-            \MusicBrainz\Relation\Target\ReleaseGroupRelation::class,
-            \MusicBrainz\Relation\Target\SeriesRelation::class,
-            \MusicBrainz\Relation\Target\UrlRelation::class,
-            \MusicBrainz\Relation\Target\WorkRelation::class
-        ];
     }
 
     /**
@@ -78,5 +73,7 @@ class RelationFactory
 
             return new $relationType;
         }
+
+        return new NullType;
     }
 }

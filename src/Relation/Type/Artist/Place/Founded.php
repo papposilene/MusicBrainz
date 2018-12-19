@@ -2,12 +2,10 @@
 
 namespace MusicBrainz\Relation\Type\Artist\Place;
 
-use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Name;
 use MusicBrainz\Relation\Type\Artist\Place;
 
 /**
- * An "founded" relation
  * This relationship type can be used to link a place (generally a studio or venue) to the person(s) who founded it.
  *
  * @link https://musicbrainz.org/relationship/54fcf574-eb3a-40da-839f-986d46997b97

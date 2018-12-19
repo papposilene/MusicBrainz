@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Relation\RelationList\Property\ReleaseGroupRelationListTrait;
 use MusicBrainz\Value;
 
 /**
@@ -27,6 +28,7 @@ class ReleaseGroup implements Value
     use Property\DisambiguationTrait;
     use Property\PrimaryReleaseTypeTrait;
     use Property\SecondaryReleaseTypesListTrait;
+    use ReleaseGroupRelationListTrait;
 
     /**
      * Constructs a release group.
@@ -40,6 +42,7 @@ class ReleaseGroup implements Value
         $this->setDisambiguationFromArray($releaseGroup);
         $this->setPrimaryReleaseTypeFromArray($releaseGroup);
         $this->setSecondaryReleaseTypesFromArray($releaseGroup);
+        $this->setRelationsFromArray($releaseGroup);
     }
 
     /**

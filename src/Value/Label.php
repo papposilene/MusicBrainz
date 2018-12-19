@@ -2,6 +2,8 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Relation\RelationList\Property\LabelRelationListTrait;
+use MusicBrainz\Relation\Target\RelationList\Property\RelationsToLabelTrait;
 use MusicBrainz\Value;
 
 /**
@@ -9,6 +11,7 @@ use MusicBrainz\Value;
  */
 class Label implements Value
 {
+    use LabelRelationListTrait;
     use Property\AliasesTrait;
     use Property\AreaTrait;
     use Property\CountryTrait;
@@ -30,6 +33,7 @@ class Label implements Value
      */
     public function __construct(array $label = [])
     {
+        $this->setRelationsFromArray($label);
         $this->setAliasesFromArray($label);
         $this->setAreaFromArray($label);
         $this->setCountryFromArray($label);

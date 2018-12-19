@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Relation\RelationList\Property\InstrumentRelationListTrait;
 use MusicBrainz\Value;
 
 /**
@@ -11,6 +12,7 @@ use MusicBrainz\Value;
  */
 class Instrument implements Value
 {
+    use InstrumentRelationListTrait;
     use Property\DescriptionTrait;
     use Property\DisambiguationTrait;
     use Property\InstrumentNameTrait;
@@ -24,6 +26,7 @@ class Instrument implements Value
      */
     public function __construct(array $instrument = [])
     {
+        $this->setRelationsFromArray($instrument);
         $this->setDescriptionFromArray($instrument);
         $this->setDisambiguationFromArray($instrument);
         $this->setInstrumentNameFromArray($instrument);

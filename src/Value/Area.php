@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Relation\RelationList\Property\AreaRelationListTrait;
 use MusicBrainz\Value;
 
 /**
@@ -9,6 +10,7 @@ use MusicBrainz\Value;
  */
 class Area implements Value
 {
+    use AreaRelationListTrait;
     use Property\AliasesTrait;
     use Property\AreaTypeTrait;
     use Property\DisambiguationTrait;
@@ -17,7 +19,6 @@ class Area implements Value
     use Property\LifeSpanTrait;
     use Property\MBIDTrait;
     use Property\NameTrait;
-    use Property\RelationList\AreaRelationListTrait;
     use Property\SortNameTrait;
 
     /**

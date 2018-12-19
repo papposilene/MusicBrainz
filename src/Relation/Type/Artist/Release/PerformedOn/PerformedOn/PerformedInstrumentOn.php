@@ -2,8 +2,7 @@
 
 namespace MusicBrainz\Relation\Type\Artist\Release\PerformedOn\PerformedOn;
 
-use MusicBrainz\Relation\Type\Artist\Release\PerformedOn\PerformedOn;
-use MusicBrainz\Value\MBID;
+use MusicBrainz\Relation\Type\Artist\Release\PerformedOn\Performance;
 use MusicBrainz\Value\Name;
 
 /**
@@ -12,7 +11,7 @@ use MusicBrainz\Value\Name;
  *
  * @link https://musicbrainz.org/relationship/67555849-61e5-455b-96e3-29733f0115f5
  */
-class PerformedInstrumentOn extends PerformedOn
+class PerformedInstrumentOn extends Performance
 {
     /**
      * Returns the name of the relation.

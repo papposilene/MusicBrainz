@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Relation\RelationList\Property\ReleaseRelationListTrait;
 use MusicBrainz\Value;
 
 /**
@@ -26,6 +27,7 @@ class Release implements Value
     use Property\ReleaseStatusTrait;
     use Property\TextRepresentationTrait;
     use Property\TitleTrait;
+    use ReleaseRelationListTrait;
 
     /**
      * Constructs a recording.
@@ -50,6 +52,7 @@ class Release implements Value
         $this->setTextRepresentationFromArray($release);
         $this->setTitleFromArray($release);
         $this->setPackagingFromArray($release);
+        $this->setRelationsFromArray($release);
     }
 
     /**

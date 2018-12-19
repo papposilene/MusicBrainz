@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Relation\RelationList\Property\EventRelationListTrait;
 use MusicBrainz\Value;
 
 /**
@@ -13,6 +14,7 @@ use MusicBrainz\Value;
  */
 class Event implements Value
 {
+    use EventRelationListTrait;
     use Property\CancelledTrait;
     use Property\DisambiguationTrait;
     use Property\EventNameTrait;
@@ -34,6 +36,7 @@ class Event implements Value
         $this->setEventTypeFromArray($event);
         $this->setLifeSpanFromArray($event);
         $this->setMbidFromArray($event);
+        $this->setRelationsFromArray($event);
         $this->setTimeFromArray($event);
     }
 
