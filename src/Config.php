@@ -31,6 +31,13 @@ class Config
     private $userAgent = 'https://github.com/XenosEleatikos/MusicBrainz';
 
     /**
+     * URL of the MusicBrainz API
+     *
+     * @var string
+     */
+    private $apiUrl = 'http://musicbrainz.org/ws/2';
+
+    /**
      * Returns the username.
      *
      * @return string
@@ -98,6 +105,30 @@ class Config
     public function setUserAgent(string $userAgent): self
     {
         $this->userAgent = $userAgent;
+
+        return $this;
+    }
+
+    /**
+     * Returns the URL of the MusicBrainz API.
+     *
+     * @return string
+     */
+    public function getApiUrl(): string
+    {
+        return $this->apiUrl;
+    }
+
+    /**
+     * Sets the URL of the MusicBrainz API.
+     *
+     * @param string $apiUrl The URL of the MusicBrainz API
+     *
+     * @return self
+     */
+    public function setApiUrl(string $apiUrl): Config
+    {
+        $this->apiUrl = $apiUrl;
 
         return $this;
     }

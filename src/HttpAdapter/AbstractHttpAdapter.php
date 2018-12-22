@@ -21,15 +21,13 @@ abstract class AbstractHttpAdapter
      * @param  Config  $config
      * @param  array   $params
      * @param  boolean $isAuthRequired
-     * @param  boolean $returnArray
      *
      * @return array
      */
     abstract public function call(
         string $path,
         Config $config,
-        array $params = array(),
-        bool $isAuthRequired = false,
-        bool $returnArray = false
+        array $params = [],
+        bool $isAuthRequired = false
     ): array;
 }

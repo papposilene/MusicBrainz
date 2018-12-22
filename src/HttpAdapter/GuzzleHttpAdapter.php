@@ -3,7 +3,7 @@
 namespace MusicBrainz\HttpAdapter;
 
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Exception\GuzzleException;
 use MusicBrainz\Config;
 use MusicBrainz\Exception;
 
@@ -22,16 +22,11 @@ class GuzzleHttpAdapter extends AbstractHttpAdapter
     /**
      * Initialize class
      *
-     * @param ClientInterface $client   A Guzzle HTTP client
-     * @param null|string     $endpoint API endpoint
+     * @param ClientInterface $client A Guzzle HTTP client
      */
-    public function __construct(ClientInterface $client, ?string $endpoint = null)
+    public function __construct(ClientInterface $client)
     {
         $this->client = $client;
-
-        if (filter_var($endpoint, FILTER_VALIDATE_URL)) {
-            $this->endpoint = $endpoint;
-        }
     }
 
     /**
@@ -41,17 +36,16 @@ class GuzzleHttpAdapter extends AbstractHttpAdapter
      * @param Config $config
      * @param array  $params
      * @param bool   $isAuthRequired
-     * @param bool   $returnArray
      *
      * @throws Exception
+     *
      * @return array
      */
     public function call(
         string $path,
         Config $config,
-        array $params = array(),
-        bool $isAuthRequired = false,
-        bool $returnArray = false
+        array $params = [],
+        bool $isAuthRequired = false
     ): array {
         if (empty($config->getUserAgent())) {
             throw new Exception('You must set a valid User Agent before accessing the MusicBrainz API');
@@ -84,13 +78,12 @@ class GuzzleHttpAdapter extends AbstractHttpAdapter
          *
          * @todo Implement loop to retry in case of 503
          */
-        sleep(1);
-        try{
-            $request = $this->client->request('GET', $this->endpoint . '/' . $path, $requestOptions);
-        }catch (ServerException $e){
-            sleep(1);
-            $request = $this->client->request('GET', $this->endpoint . '/' . $path, $requestOptions);
+        try {
+            $request = $this->client->request('GET', $config->getApiUrl() . '/' . $path, $requestOptions);
+        } catch (GuzzleException $exception) {
+            throw new Exception($exception->getMessage());
         }
+
         $responseBody = json_decode($request->getBody());
         /**
          * This is a weird one, but because most if not all functions in this package expect arrays
