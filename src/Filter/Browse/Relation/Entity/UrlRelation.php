@@ -9,5 +9,5 @@ use MusicBrainz\Filter\Browse\Relation\AbstractRelation;
  */
 class UrlRelation extends AbstractRelation
 {
-    use \MusicBrainz\Filter\Browse\Relation\RelatedEntity\RecourceTrait;
+    use \MusicBrainz\Filter\Browse\Relation\RelatedEntity\ResourceTrait;
 }

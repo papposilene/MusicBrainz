@@ -3,6 +3,7 @@
 namespace MusicBrainz\Filter\Browse\Relation\RelatedEntity;
 
 use MusicBrainz\Value\EntityType;
+use MusicBrainz\Value\MBID;
 
 /**
  * Provides a setter for the entity type editor.
@@ -10,12 +11,15 @@ use MusicBrainz\Value\EntityType;
 trait EditorTrait
 {
     /**
-     * Sets the entity type editor.
+     * Defines a relation to an editor.
+     *
+     * @param MBID $mbid The MusicBrainz Identifier (MBID) of the related editor
      *
      * @return void
      */
-    public function setEntityTypeEditor(): void
+    public function editor(MBID $mbid): void
     {
+        $this->setEntityId($mbid);
         $this->setEntityType(new EntityType(EntityType::EDITOR));
     }
 }

@@ -3,6 +3,7 @@
 namespace MusicBrainz\Filter\Browse\Relation\RelatedEntity;
 
 use MusicBrainz\Value\EntityType;
+use MusicBrainz\Value\MBID;
 
 /**
  * Provides a setter for the entity type label.
@@ -10,12 +11,15 @@ use MusicBrainz\Value\EntityType;
 trait LabelTrait
 {
     /**
-     * Sets the entity type label.
+     * Defines a relation to a label.
+     *
+     * @param MBID $mbid The MusicBrainz Identifier (MBID) of the related label
      *
      * @return void
      */
-    public function setEntityTypeLabel(): void
+    public function label(MBID $mbid): void
     {
+        $this->setEntityId($mbid);
         $this->setEntityType(new EntityType(EntityType::LABEL));
     }
 }

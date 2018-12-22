@@ -3,6 +3,7 @@
 namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
+use MusicBrainz\Value\Tag;
 use MusicBrainz\Value\TagList;
 
 /**
@@ -13,14 +14,14 @@ trait TagsTrait
     /**
      * A list of tags associated to the artist
      *
-     * @var TagList
+     * @var Tag[]|TagList
      */
     private $tags;
 
     /**
      * Returns a list of tags associated to the artist.
      *
-     * @return TagList
+     * @return Tag[]|TagList
      */
     public function getTags(): TagList
     {

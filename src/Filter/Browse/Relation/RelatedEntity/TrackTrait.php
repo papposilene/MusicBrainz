@@ -3,6 +3,7 @@
 namespace MusicBrainz\Filter\Browse\Relation\RelatedEntity;
 
 use MusicBrainz\Value\EntityType;
+use MusicBrainz\Value\MBID;
 
 /**
  * Provides a setter for the entity type track.
@@ -10,12 +11,15 @@ use MusicBrainz\Value\EntityType;
 trait TrackTrait
 {
     /**
-     * Sets the entity type track.
+     * Defines a relation to a track.
+     *
+     * @param MBID $mbid The MusicBrainz Identifier (MBID) of the related track
      *
      * @return void
      */
-    public function setEntityTypeTrack(): void
+    public function track(MBID $mbid): void
     {
+        $this->setEntityId($mbid);
         $this->setEntityType(new EntityType(EntityType::TRACK));
     }
 }

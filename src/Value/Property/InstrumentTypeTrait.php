@@ -4,6 +4,7 @@ namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\InstrumentType;
+use MusicBrainz\Value\MBID;
 
 /**
  * Provides a getter for the instrument type.
@@ -36,8 +37,9 @@ trait InstrumentTypeTrait
      */
     private function setInstrumentTypeFromArray(array $input): void
     {
-        $this->instrumentType = is_null($instrumentType = ArrayAccess::getString($input, 'type'))
-            ? new InstrumentType
-            : new InstrumentType($instrumentType);
+        $this->instrumentType = new InstrumentType(
+            ArrayAccess::getString($input, 'type'),
+            new MBID(ArrayAccess::getString($input, 'type-id'))
+        );
     }
 }

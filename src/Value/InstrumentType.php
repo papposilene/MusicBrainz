@@ -73,15 +73,39 @@ class InstrumentType implements Value
     private $instrumentTypeCode;
 
     /**
+     * The MusicBrainz Identifier (MBID) of the instument type
+     *
+     * @var MBID
+     */
+    private $mbid;
+
+    /**
      * Constructs an instrument type.
      *
      * @param string $instrumentTypeCode The instrument type code
+     * @param MBID   $mbid               The MusicBrainz Identifier (MBID) of the instument type
      */
-    public function __construct(string $instrumentTypeCode = self::UNDEFINED)
+    public function __construct(?string $instrumentTypeCode = self::UNDEFINED, MBID $mbid = null)
     {
-        $this->instrumentTypeCode = in_array($instrumentTypeCode, self::INSTRUMENT_TYPES)
-            ? $instrumentTypeCode
-            : self::UNDEFINED;
+        if (is_null($instrumentTypeCode)) {
+            $this->instrumentTypeCode = self::UNDEFINED;
+        } else {
+            $this->instrumentTypeCode = in_array($instrumentTypeCode, self::INSTRUMENT_TYPES)
+                ? $instrumentTypeCode
+                : self::UNDEFINED;
+        }
+
+        $this->mbid = $mbid ?: new MBID;
+    }
+
+    /**
+     * Returns the MusicBrainz Identifier (MBID) of the instument type.
+     *
+     * @return MBID
+     */
+    public function getMbid(): MBID
+    {
+        return $this->mbid;
     }
 
     /**

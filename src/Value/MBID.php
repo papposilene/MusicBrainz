@@ -21,13 +21,15 @@ class MBID implements Value
     /**
      * Constructs a MusicBrainz Identifier (MBID).
      *
-     * @param string $mbid A MusicBrainz Identifier (MBID)
+     * @param null|string $mbid A MusicBrainz Identifier (MBID)
      */
-    public function __construct(string $mbid = '')
+    public function __construct(?string $mbid = '')
     {
-        $this->mbid = ($this->isValidMBID($mbid))
-            ? $mbid
-            : '';
+        $this->mbid = is_null($mbid)
+            ? ''
+            :($this->isValidMBID($mbid))
+                ? $mbid
+                : '';
     }
 
     /**
@@ -37,7 +39,7 @@ class MBID implements Value
      *
      * @return bool
      */
-    private function isValidMBID($mbid): bool
+    private function isValidMBID(string $mbid): bool
     {
         return (bool) preg_match("/^(\{)?[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}(?(1)\})$/i", $mbid);
     }

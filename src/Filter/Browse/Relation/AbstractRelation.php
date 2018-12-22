@@ -49,7 +49,7 @@ abstract class AbstractRelation
      *
      * @return self
      */
-    public function setEntityId(MBID $mbid): self
+    protected function setEntityId(MBID $mbid): self
     {
         $this->entityId = $mbid;
 

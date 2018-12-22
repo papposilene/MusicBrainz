@@ -3,6 +3,7 @@
 namespace MusicBrainz\Filter\Browse\Relation\RelatedEntity;
 
 use MusicBrainz\Value\EntityType;
+use MusicBrainz\Value\MBID;
 
 /**
  * Provides a setter for the entity type recording.
@@ -10,12 +11,15 @@ use MusicBrainz\Value\EntityType;
 trait RecordingTrait
 {
     /**
-     * Sets the entity type recording.
+     * Defines a relation to a recording.
+     *
+     * @param MBID $mbid The MusicBrainz Identifier (MBID) of the related recording
      *
      * @return void
      */
-    public function setEntityTypeRecording(): void
+    public function recording(MBID $mbid): void
     {
+        $this->setEntityId($mbid);
         $this->setEntityType(new EntityType(EntityType::RECORDING));
     }
 }

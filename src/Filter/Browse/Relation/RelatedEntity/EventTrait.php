@@ -3,6 +3,7 @@
 namespace MusicBrainz\Filter\Browse\Relation\RelatedEntity;
 
 use MusicBrainz\Value\EntityType;
+use MusicBrainz\Value\MBID;
 
 /**
  * Provides a setter for the entity type event.
@@ -10,12 +11,15 @@ use MusicBrainz\Value\EntityType;
 trait EventTrait
 {
     /**
-     * Sets the entity type event.
+     * SDefines a relation to an event.
+     *
+     * @param MBID $mbid The MusicBrainz Identifier (MBID) of the related event
      *
      * @return void
      */
-    public function setEntityTypeEvent(): void
+    public function event(MBID $mbid): void
     {
+        $this->setEntityId($mbid);
         $this->setEntityType(new EntityType(EntityType::EVENT));
     }
 }

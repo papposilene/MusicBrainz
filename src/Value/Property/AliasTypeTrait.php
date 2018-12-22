@@ -4,6 +4,7 @@ namespace MusicBrainz\Value\Property;
 
 use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\AliasType;
+use MusicBrainz\Value\MBID;
 
 /**
  * Provides a getter for the alias type.
@@ -36,8 +37,9 @@ trait AliasTypeTrait
      */
     private function setAliasTypeFromArray(array $input): void
     {
-        $this->aliasType = is_null($aliasType = ArrayAccess::getString($input, 'type'))
-            ? new AliasType
-            : new AliasType($aliasType);
+        $this->aliasType = new AliasType(
+            ArrayAccess::getString($input, 'type'),
+            new MBID(ArrayAccess::getString($input, 'type-id'))
+        );
     }
 }

@@ -9,7 +9,7 @@ use MusicBrainz\Value;
  */
 class Tag implements Value
 {
-    use Value\Property\ScoreTrait;
+    use Value\Property\CountTrait;
     use Value\Property\NameTrait;
 
     /**
@@ -19,7 +19,7 @@ class Tag implements Value
      */
     public function __construct(array $tag = [])
     {
-        $this->setScoreFromArray($tag);
+        $this->setCountFromArray($tag);
         $this->setNameFromArray($tag);
     }
 

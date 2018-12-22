@@ -3,6 +3,7 @@
 namespace MusicBrainz\Api;
 
 use MusicBrainz\Config;
+use MusicBrainz\Filter\Browse\Relation\Entity\InstrumentRelation;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\HttpAdapter\AbstractHttpAdapter;
 use MusicBrainz\Filter\Browse\Relation\AbstractRelation;
@@ -20,6 +21,7 @@ use MusicBrainz\Filter\Browse\Relation\Entity\WorkRelation;
 use MusicBrainz\Supplement\Browse\AreaFields;
 use MusicBrainz\Supplement\Browse\ArtistFields;
 use MusicBrainz\Supplement\Browse\EventFields;
+use MusicBrainz\Supplement\Browse\InstrumentFields;
 use MusicBrainz\Supplement\Browse\LabelFields;
 use MusicBrainz\Supplement\Browse\PlaceFields;
 use MusicBrainz\Supplement\Browse\RecordingFields;
@@ -32,6 +34,7 @@ use MusicBrainz\Value\ArtistList;
 use MusicBrainz\Value\CollectionList;
 use MusicBrainz\Value\EntityType;
 use MusicBrainz\Value\EventList;
+use MusicBrainz\Value\InstrumentList;
 use MusicBrainz\Value\LabelList;
 use MusicBrainz\Value\PlaceList;
 use MusicBrainz\Value\RecordingList;
@@ -62,7 +65,7 @@ class Browse
     private $config;
 
     /**
-     * Constructs the search API.
+     * Constructs the browse API.
      *
      * @param AbstractHttpAdapter $httpAdapter An HTTP adapter
      * @param Config              $config      The API client configuration
@@ -183,6 +186,34 @@ class Browse
         );
 
         return new EventList($result['events']);
+    }
+
+    /**
+     * Looks up for all instruments standing in a certain relation.
+     *
+     * @param InstrumentRelation $instrumentRelation A relation, the requested instruments stand in
+     * @param InstrumentFields   $instrumentFields   A list of properties of the instrument to be included in the response
+     * @param PageFilter         $pageFilter         A page filter
+     *
+     * @return InstrumentList
+     */
+    public function instrument(InstrumentRelation $instrumentRelation, InstrumentFields $instrumentFields, PageFilter $pageFilter)
+    {
+        $fields = [
+            'aliases'      => $instrumentFields->getIncludeFlagForAliases(),
+            'annotation'   => $instrumentFields->getIncludeFlagForAnnotation(),
+            'tags'         => $instrumentFields->getIncludeFlagForTags(),
+            'user-tags'    => $instrumentFields->getIncludeFlagForUserTags()
+        ];
+
+        $result = $this->browse(
+            new EntityType(EntityType::INSTRUMENT),
+            $instrumentRelation,
+            $fields,
+            $pageFilter
+        );
+
+        return new InstrumentList($result['instruments']);
     }
 
     /**
@@ -367,6 +398,10 @@ class Browse
 
         return new SeriesList($result['series']);
     }
+
+    /**
+     * @todo Implement browse URL!
+     */
 
     /**
      * Looks up for all works standing in a certain relation.

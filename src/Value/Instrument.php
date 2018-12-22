@@ -13,11 +13,13 @@ use MusicBrainz\Value;
 class Instrument implements Value
 {
     use InstrumentRelationListTrait;
+    use Property\AliasesTrait;
     use Property\DescriptionTrait;
     use Property\DisambiguationTrait;
     use Property\InstrumentNameTrait;
     use Property\InstrumentTypeTrait;
     use Property\MBIDTrait;
+    use Property\TagsTrait;
 
     /**
      * Constructs an instrument.
@@ -27,11 +29,13 @@ class Instrument implements Value
     public function __construct(array $instrument = [])
     {
         $this->setRelationsFromArray($instrument);
+        $this->setAliasesFromArray($instrument);
         $this->setDescriptionFromArray($instrument);
         $this->setDisambiguationFromArray($instrument);
         $this->setInstrumentNameFromArray($instrument);
         $this->setInstrumentTypeFromArray($instrument);
         $this->setMbidFromArray($instrument);
+        $this->setTagsFromArray($instrument);
     }
 
     /**

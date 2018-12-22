@@ -2,7 +2,6 @@
 
 namespace MusicBrainz\Value;
 
-use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value;
 
 /**
@@ -16,6 +15,7 @@ class Alias implements Value
     use Property\AliasTypeTrait;
     use Property\BeginDateTrait;
     use Property\EndDateTrait;
+    use Property\EndedTrait;
     use Property\LocaleCodeTrait;
     use Property\NameTrait;
     use Property\PrimaryNameFlagTrait;
@@ -31,6 +31,7 @@ class Alias implements Value
         $this->setAliasTypeFromArray($alias);
         $this->setBeginDateFromArray($alias);
         $this->setEndDateFromArray($alias);
+        $this->setEndedFromArray($alias);
         $this->setLocaleCodeFromArray($alias);
         $this->setNameFromArray($alias);
         $this->setPrimaryNameFromArray($alias);

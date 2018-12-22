@@ -5,20 +5,12 @@ use MusicBrainz\Filter\Browse\Relation\Entity\ReleaseRelation;
 use MusicBrainz\Filter\PageFilter;
 use MusicBrainz\Supplement\Browse\ReleaseFields;
 use MusicBrainz\Test\Api\ApiTestCase;
-use MusicBrainz\Value\Artist;
-use MusicBrainz\Value\ArtistType;
-use MusicBrainz\Value\Date;
-use MusicBrainz\Value\Gender;
 use MusicBrainz\Value\MBID;
-use MusicBrainz\Value\Name;
 use MusicBrainz\Value\Release;
 use MusicBrainz\Value\ReleaseList;
-use MusicBrainz\Value\SearchResult;
-use MusicBrainz\Value\SearchResult\ArtistList;
-use MusicBrainz\Value\SortName;
 
 /**
- * Unit tests for the browse release request.
+ * Unit tests for the browse release request
  */
 class ReleaseTest extends ApiTestCase
 {
@@ -57,8 +49,7 @@ class ReleaseTest extends ApiTestCase
 
         /** Performing the test */
         $releaseRelation = new ReleaseRelation;
-        $releaseRelation->setEntityTypeLabel();
-        $releaseRelation->setEntityId(new MBID('47e718e1-7ee4-460c-b1cc-1192a841c6e5'));
+        $releaseRelation->label(new MBID('47e718e1-7ee4-460c-b1cc-1192a841c6e5'));
 
         $releaseFields = (new ReleaseFields)
             ->includeReleaseGroups()

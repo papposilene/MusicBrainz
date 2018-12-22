@@ -3,6 +3,7 @@
 namespace MusicBrainz\Filter\Browse\Relation\RelatedEntity;
 
 use MusicBrainz\Value\EntityType;
+use MusicBrainz\Value\MBID;
 
 /**
  * Provides a setter for the entity type place.
@@ -10,12 +11,15 @@ use MusicBrainz\Value\EntityType;
 trait PlaceTrait
 {
     /**
-     * Sets the entity type place.
+     * Defines a relation to place.
+     *
+     * @param MBID $mbid The MusicBrainz Identifier (MBID) of the related place
      *
      * @return void
      */
-    public function setEntityTypePlace(): void
+    public function place(MBID $mbid): void
     {
+        $this->setEntityId($mbid);
         $this->setEntityType(new EntityType(EntityType::PLACE));
     }
 }
