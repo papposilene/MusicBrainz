@@ -7,9 +7,9 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Mike Almond",
-            "email": "mike.almond@gmail.com",
-            "homepage": "http://mikealmond.com",
+            "name": "Christoph Hochholzer",
+            "email": "christoph@hochholzer.info",
+            "homepage": "https://github.com/XenosEleatikos",
             "role": "Developer"
         }
     ],
@@ -19,12 +19,12 @@
         "xenos/asklucy": "1.*"
     },
     "require-dev": {
-        "guzzle/guzzle": "~3.8.0",
+        "guzzlehttp/guzzle": "^6",
         "phpunit/phpunit": "^6.2"
     },
     "suggest": {
-        "guzzle/guzzle": "Allows you to use the GuzzleHttpAdapter. You must install one of the supported adapters.",
-        "rmccue/requests": "Allows you to use the RequestsHttpAdapter. You must install one of the supported adapters."
+        "guzzle/guzzle": "Allows you to use the GuzzleHttpAdapter.",
+        "monolog/monolog": "Allows logging of the application flow."
     },
     "autoload": {
         "psr-4": {
