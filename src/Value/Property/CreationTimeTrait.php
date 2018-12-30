@@ -28,6 +28,16 @@ trait CreationTimeTrait
     }
 
     /**
+     * Sets the creation time.
+     *
+     * @param string $creationTime Creation time
+     */
+    private function setCreationTime(string $creationTime): void
+    {
+        $this->creationTime = new TimeStamp($creationTime);
+    }
+
+    /**
      * Sets the creation time by extracting it from a given input array.
      *
      * @param array $input An array returned by the webservice

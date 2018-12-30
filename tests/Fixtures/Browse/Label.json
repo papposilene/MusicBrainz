@@ -1,0 +1,915 @@
+{
+  "labels": [
+    {
+      "isnis": [],
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "type-id": null,
+      "user-tags": [],
+      "name": "Heckert Empire",
+      "tags": [],
+      "ipis": [],
+      "type": null,
+      "country": null,
+      "disambiguation": "",
+      "user-rating": {
+        "value": null
+      },
+      "life-span": {
+        "begin": null,
+        "ended": false,
+        "end": null
+      },
+      "aliases": [],
+      "annotation": "I suspect this is a vanity label.",
+      "sort-name": "Heckert Empire",
+      "area": {
+        "sort-name": "Leipzig",
+        "disambiguation": "",
+        "name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41"
+      },
+      "label-code": null,
+      "id": "0ccbdb87-c23c-4bca-be21-2e2f9434e44d"
+    },
+    {
+      "name": "Gustav Heinze",
+      "user-tags": [],
+      "isnis": [],
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+      "rating": {
+        "votes-count": 0,
+        "value": null
+      },
+      "life-span": {
+        "begin": null,
+        "end": null,
+        "ended": false
+      },
+      "aliases": [],
+      "user-rating": {
+        "value": null
+      },
+      "id": "10c6f411-9dcf-4007-b5df-b49b9716bdf6",
+      "area": {
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "disambiguation": "",
+        "name": "Leipzig",
+        "sort-name": "Leipzig"
+      },
+      "label-code": null,
+      "annotation": null,
+      "sort-name": "Gustav Heinze",
+      "type": "Publisher",
+      "tags": [],
+      "ipis": [],
+      "disambiguation": "",
+      "country": null
+    },
+    {
+      "user-rating": {
+        "value": null
+      },
+      "life-span": {
+        "begin": null,
+        "ended": false,
+        "end": null
+      },
+      "aliases": [],
+      "sort-name": "C.F. Kahnt",
+      "annotation": null,
+      "area": {
+        "sort-name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "disambiguation": "",
+        "name": "Leipzig"
+      },
+      "label-code": null,
+      "id": "10c8f873-062c-4903-9f61-4e900964fbe3",
+      "ipis": [],
+      "tags": [],
+      "type": "Publisher",
+      "country": null,
+      "disambiguation": "",
+      "user-tags": [],
+      "name": "C.F. Kahnt",
+      "isnis": [],
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c"
+    },
+    {
+      "disambiguation": "",
+      "country": null,
+      "type": null,
+      "ipis": [],
+      "tags": [],
+      "id": "11856af1-dd14-46c9-96b7-7aa3d0af8a2f",
+      "label-code": null,
+      "area": {
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "disambiguation": "",
+        "name": "Leipzig",
+        "sort-name": "Leipzig"
+      },
+      "sort-name": "A Friend In Need",
+      "annotation": null,
+      "aliases": [],
+      "life-span": {
+        "ended": false,
+        "end": null,
+        "begin": null
+      },
+      "user-rating": {
+        "value": null
+      },
+      "type-id": null,
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "isnis": [],
+      "name": "A Friend In Need",
+      "user-tags": []
+    },
+    {
+      "name": "Eulenburg,",
+      "user-tags": [],
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+      "rating": {
+        "votes-count": 0,
+        "value": null
+      },
+      "isnis": [],
+      "id": "17448c2a-f46a-4b3b-832c-784399d9ddeb",
+      "label-code": null,
+      "area": {
+        "name": "Leipzig",
+        "disambiguation": "",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "sort-name": "Leipzig"
+      },
+      "annotation": null,
+      "sort-name": "Eulenburg,",
+      "aliases": [],
+      "life-span": {
+        "ended": false,
+        "end": null,
+        "begin": "1874"
+      },
+      "user-rating": {
+        "value": null
+      },
+      "disambiguation": "",
+      "country": null,
+      "type": "Publisher",
+      "ipis": [],
+      "tags": []
+    },
+    {
+      "user-rating": {
+        "value": null
+      },
+      "life-span": {
+        "ended": false,
+        "end": null,
+        "begin": null
+      },
+      "aliases": [],
+      "annotation": null,
+      "sort-name": "F.E.C. Leuckart",
+      "id": "23027358-8697-4db3-ad6d-62a1a7b22238",
+      "label-code": null,
+      "area": {
+        "disambiguation": "",
+        "name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "sort-name": "Leipzig"
+      },
+      "type": "Publisher",
+      "tags": [],
+      "ipis": [],
+      "country": null,
+      "disambiguation": "",
+      "user-tags": [],
+      "name": "F.E.C. Leuckart",
+      "isnis": [],
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+      "rating": {
+        "votes-count": 0,
+        "value": null
+      }
+    },
+    {
+      "label-code": null,
+      "area": {
+        "name": "Leipzig",
+        "disambiguation": "",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "sort-name": "Leipzig"
+      },
+      "id": "2b3af060-38dd-4756-96b3-5f6cd4d4627d",
+      "annotation": null,
+      "sort-name": "Andrè Kobliha Out Of Line e.K.",
+      "aliases": [],
+      "life-span": {
+        "begin": "1995",
+        "ended": true,
+        "end": "2007"
+      },
+      "user-rating": {
+        "value": null
+      },
+      "disambiguation": "",
+      "country": null,
+      "tags": [],
+      "ipis": [],
+      "type": "Original Production",
+      "name": "Andrè Kobliha Out Of Line e.K.",
+      "user-tags": [],
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "type-id": "7aaa37fe-2def-3476-b359-80245850062d",
+      "isnis": []
+    },
+    {
+      "life-span": {
+        "end": null,
+        "ended": false,
+        "begin": "1850"
+      },
+      "aliases": [],
+      "user-rating": {
+        "value": null
+      },
+      "label-code": null,
+      "area": {
+        "disambiguation": "",
+        "name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "sort-name": "Leipzig"
+      },
+      "id": "3ccc1b70-ee7d-4f4c-a7bd-993f6ef0d40d",
+      "annotation": null,
+      "sort-name": "Bartholf Senff",
+      "ipis": [],
+      "tags": [],
+      "type": "Publisher",
+      "disambiguation": "",
+      "country": null,
+      "name": "Bartholf Senff",
+      "user-tags": [],
+      "isnis": [],
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c"
+    },
+    {
+      "life-span": {
+        "ended": false,
+        "end": null,
+        "begin": "2010"
+      },
+      "aliases": [],
+      "user-rating": {
+        "value": null
+      },
+      "id": "465b0e6e-223b-4bf5-bafc-7106873a00c5",
+      "label-code": null,
+      "area": {
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "disambiguation": "",
+        "name": "Leipzig",
+        "sort-name": "Leipzig"
+      },
+      "sort-name": "Accentus Music",
+      "annotation": null,
+      "type": "Original Production",
+      "tags": [],
+      "ipis": [],
+      "disambiguation": "",
+      "country": null,
+      "name": "Accentus Music",
+      "user-tags": [],
+      "isnis": [],
+      "type-id": "7aaa37fe-2def-3476-b359-80245850062d",
+      "rating": {
+        "votes-count": 0,
+        "value": null
+      }
+    },
+    {
+      "name": "Heinrich Albert Probst",
+      "user-tags": [],
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+      "isnis": [],
+      "area": {
+        "sort-name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "name": "Leipzig",
+        "disambiguation": ""
+      },
+      "label-code": null,
+      "id": "46f7fc8b-f55d-4b5a-9296-2268a349cfc6",
+      "sort-name": "Heinrich Albert Probst",
+      "annotation": null,
+      "life-span": {
+        "begin": "1823",
+        "end": "1836",
+        "ended": true
+      },
+      "aliases": [
+        {
+          "locale": null,
+          "primary": null,
+          "begin": "1823",
+          "ended": true,
+          "name": "H. A. Probst",
+          "sort-name": "H. A. Probst",
+          "type": "Label name",
+          "type-id": "3a1a0c48-d885-3b89-87b2-9e8a483c5675",
+          "end": "1836"
+        }
+      ],
+      "user-rating": {
+        "value": null
+      },
+      "disambiguation": "",
+      "country": null,
+      "ipis": [],
+      "tags": [],
+      "type": "Publisher"
+    },
+    {
+      "ipis": [],
+      "tags": [],
+      "type": "Publisher",
+      "disambiguation": "",
+      "country": null,
+      "life-span": {
+        "begin": null,
+        "end": null,
+        "ended": false
+      },
+      "aliases": [],
+      "user-rating": {
+        "value": null
+      },
+      "label-code": null,
+      "area": {
+        "sort-name": "Leipzig",
+        "name": "Leipzig",
+        "disambiguation": "",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41"
+      },
+      "id": "514d32b6-17a2-4c0b-ba45-9e9c055c8a13",
+      "annotation": null,
+      "sort-name": "Breitkopf",
+      "isnis": [],
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+      "name": "Breitkopf",
+      "user-tags": []
+    },
+    {
+      "user-tags": [],
+      "name": "Edition Peters",
+      "rating": {
+        "votes-count": 0,
+        "value": null
+      },
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+      "isnis": [],
+      "sort-name": "Edition Peters",
+      "annotation": null,
+      "label-code": null,
+      "area": {
+        "disambiguation": "",
+        "name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "sort-name": "Leipzig"
+      },
+      "id": "5748b7be-7eb8-4076-85f6-a2b8f4e4ccc1",
+      "user-rating": {
+        "value": null
+      },
+      "aliases": [],
+      "life-span": {
+        "end": null,
+        "ended": false,
+        "begin": "1800-12-01"
+      },
+      "country": null,
+      "disambiguation": "",
+      "ipis": [],
+      "tags": [],
+      "type": "Publisher"
+    },
+    {
+      "label-code": null,
+      "area": {
+        "sort-name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "name": "Leipzig",
+        "disambiguation": ""
+      },
+      "id": "67facabb-f5ad-4fbd-8333-595a46e8b99d",
+      "annotation": null,
+      "sort-name": "Euphorium Records",
+      "aliases": [],
+      "life-span": {
+        "ended": false,
+        "end": null,
+        "begin": null
+      },
+      "user-rating": {
+        "value": null
+      },
+      "disambiguation": "",
+      "country": null,
+      "ipis": [],
+      "tags": [],
+      "type": null,
+      "name": "Euphorium Records",
+      "user-tags": [],
+      "rating": {
+        "votes-count": 0,
+        "value": null
+      },
+      "type-id": null,
+      "isnis": []
+    },
+    {
+      "isnis": [],
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+      "name": "C.F.W. Siegel",
+      "user-tags": [],
+      "ipis": [],
+      "tags": [],
+      "type": "Publisher",
+      "disambiguation": "",
+      "country": null,
+      "life-span": {
+        "begin": "1846",
+        "ended": true,
+        "end": "1923"
+      },
+      "aliases": [
+        {
+          "ended": true,
+          "name": "Siegel et Stoll",
+          "sort-name": "Siegel et Stoll",
+          "locale": null,
+          "begin": "1846",
+          "primary": null,
+          "end": "1849",
+          "type-id": "3a1a0c48-d885-3b89-87b2-9e8a483c5675",
+          "type": "Label name"
+        }
+      ],
+      "user-rating": {
+        "value": null
+      },
+      "label-code": null,
+      "area": {
+        "sort-name": "Leipzig",
+        "disambiguation": "",
+        "name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41"
+      },
+      "id": "8a610241-2096-46cb-966f-09b628ae9774",
+      "sort-name": "C.F.W. Siegel",
+      "annotation": null
+    },
+    {
+      "isnis": [],
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "name": "E.W. Fritzsch",
+      "user-tags": [],
+      "type": "Publisher",
+      "ipis": [],
+      "tags": [],
+      "disambiguation": "",
+      "country": null,
+      "aliases": [],
+      "life-span": {
+        "begin": "1866",
+        "ended": false,
+        "end": null
+      },
+      "user-rating": {
+        "value": null
+      },
+      "id": "903c65c2-58ea-4d31-9240-542b0b3f0476",
+      "area": {
+        "disambiguation": "",
+        "name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "sort-name": "Leipzig"
+      },
+      "label-code": null,
+      "sort-name": "E.W. Fritzsch",
+      "annotation": null
+    },
+    {
+      "country": null,
+      "disambiguation": "",
+      "type": "Publisher",
+      "tags": [],
+      "ipis": [],
+      "annotation": null,
+      "sort-name": "Kistner",
+      "id": "92e9e67f-0378-4881-94fc-1d0ccfbd68fb",
+      "area": {
+        "sort-name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "disambiguation": "",
+        "name": "Leipzig"
+      },
+      "label-code": null,
+      "user-rating": {
+        "value": null
+      },
+      "aliases": [
+        {
+          "end": "1923",
+          "type-id": "3a1a0c48-d885-3b89-87b2-9e8a483c5675",
+          "type": "Label name",
+          "sort-name": "C. F. Kistner",
+          "ended": true,
+          "name": "C. F. Kistner",
+          "locale": null,
+          "primary": null,
+          "begin": "1836"
+        },
+        {
+          "begin": "1836",
+          "primary": false,
+          "locale": "de",
+          "sort-name": "Fr. Kistner",
+          "name": "Fr. Kistner",
+          "ended": true,
+          "type": "Label name",
+          "type-id": "3a1a0c48-d885-3b89-87b2-9e8a483c5675",
+          "end": "1923"
+        }
+      ],
+      "life-span": {
+        "begin": "1836",
+        "ended": true,
+        "end": "1923"
+      },
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "isnis": [],
+      "user-tags": [],
+      "name": "Kistner"
+    },
+    {
+      "type": "Publisher",
+      "tags": [],
+      "ipis": [],
+      "country": null,
+      "disambiguation": "",
+      "user-rating": {
+        "value": null
+      },
+      "life-span": {
+        "begin": "1923",
+        "end": null,
+        "ended": false
+      },
+      "aliases": [],
+      "annotation": null,
+      "sort-name": "Kistner und Siegel",
+      "id": "9e6409f5-e589-4f22-9d15-c606c83bec1b",
+      "label-code": null,
+      "area": {
+        "sort-name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "name": "Leipzig",
+        "disambiguation": ""
+      },
+      "isnis": [],
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "user-tags": [],
+      "name": "Kistner und Siegel"
+    },
+    {
+      "user-tags": [],
+      "name": "Bondage Music",
+      "type-id": "b6285b2a-3514-3d43-80df-fcf528824ded",
+      "rating": {
+        "votes-count": 0,
+        "value": null
+      },
+      "isnis": [],
+      "annotation": null,
+      "sort-name": "Bondage Music",
+      "id": "c9909647-2798-4257-a541-7041b2140ffe",
+      "label-code": null,
+      "area": {
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "disambiguation": "",
+        "name": "Leipzig",
+        "sort-name": "Leipzig"
+      },
+      "user-rating": {
+        "value": null
+      },
+      "life-span": {
+        "begin": null,
+        "end": null,
+        "ended": false
+      },
+      "aliases": [],
+      "country": null,
+      "disambiguation": "German minimal techno label",
+      "type": "Imprint",
+      "ipis": [],
+      "tags": []
+    },
+    {
+      "id": "d039f21e-038d-4f85-b1eb-3e8f12f2a3c6",
+      "area": {
+        "sort-name": "Leipzig",
+        "disambiguation": "",
+        "name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41"
+      },
+      "label-code": null,
+      "sort-name": "Altone Distribution",
+      "annotation": null,
+      "aliases": [],
+      "life-span": {
+        "ended": false,
+        "end": null,
+        "begin": null
+      },
+      "user-rating": {
+        "value": null
+      },
+      "disambiguation": "",
+      "country": null,
+      "type": "Distributor",
+      "ipis": [],
+      "tags": [],
+      "name": "Altone Distribution",
+      "user-tags": [],
+      "type-id": "53ab8dcc-9946-3b62-966e-7634d78e5034",
+      "rating": {
+        "votes-count": 0,
+        "value": null
+      },
+      "isnis": []
+    },
+    {
+      "type": null,
+      "ipis": [],
+      "tags": [],
+      "country": null,
+      "disambiguation": "",
+      "user-rating": {
+        "value": null
+      },
+      "life-span": {
+        "end": null,
+        "ended": false,
+        "begin": null
+      },
+      "aliases": [
+        {
+          "end": null,
+          "type-id": null,
+          "type": null,
+          "sort-name": "Altin Village & Mine Records",
+          "name": "Altin Village & Mine Records",
+          "ended": false,
+          "locale": null,
+          "begin": null,
+          "primary": null
+        }
+      ],
+      "sort-name": "Altin Village & Mine",
+      "annotation": null,
+      "id": "e145c7a7-7ea4-40a0-a9a9-bfa9d9217d19",
+      "label-code": 24514,
+      "area": {
+        "sort-name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "disambiguation": "",
+        "name": "Leipzig"
+      },
+      "isnis": [],
+      "type-id": null,
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "user-tags": [],
+      "name": "Altin Village & Mine"
+    },
+    {
+      "country": null,
+      "disambiguation": "",
+      "type": "Production",
+      "ipis": [],
+      "tags": [],
+      "sort-name": "Elen Music",
+      "annotation": null,
+      "id": "e2364c0e-cae8-4627-87bf-30c9d3d43029",
+      "label-code": null,
+      "area": {
+        "disambiguation": "",
+        "name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "sort-name": "Leipzig"
+      },
+      "user-rating": {
+        "value": null
+      },
+      "aliases": [],
+      "life-span": {
+        "begin": null,
+        "ended": false,
+        "end": null
+      },
+      "type-id": "a2426aab-2dd4-339c-b47d-b4923a241678",
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "isnis": [],
+      "user-tags": [],
+      "name": "Elen Music"
+    },
+    {
+      "life-span": {
+        "end": null,
+        "ended": false,
+        "begin": null
+      },
+      "aliases": [],
+      "user-rating": {
+        "value": null
+      },
+      "id": "e309595c-27c2-4caa-8a95-de772d563a72",
+      "label-code": null,
+      "area": {
+        "sort-name": "Leipzig",
+        "disambiguation": "",
+        "name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41"
+      },
+      "sort-name": "Abfall Records",
+      "annotation": null,
+      "type": "Publisher",
+      "tags": [],
+      "ipis": [],
+      "disambiguation": "",
+      "country": null,
+      "name": "Abfall Records",
+      "user-tags": [],
+      "isnis": [],
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+      "rating": {
+        "votes-count": 0,
+        "value": null
+      }
+    },
+    {
+      "tags": [],
+      "ipis": [],
+      "type": null,
+      "country": null,
+      "disambiguation": "",
+      "user-rating": {
+        "value": null
+      },
+      "life-span": {
+        "end": null,
+        "ended": false,
+        "begin": null
+      },
+      "aliases": [],
+      "sort-name": "Brachialpop",
+      "annotation": null,
+      "area": {
+        "sort-name": "Leipzig",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "disambiguation": "",
+        "name": "Leipzig"
+      },
+      "label-code": null,
+      "id": "e7f21c76-a7db-4bc6-ab01-ed303e3c498c",
+      "isnis": [],
+      "rating": {
+        "votes-count": 0,
+        "value": null
+      },
+      "type-id": null,
+      "user-tags": [],
+      "name": "Brachialpop"
+    },
+    {
+      "disambiguation": "",
+      "country": null,
+      "ipis": [],
+      "tags": [],
+      "type": "Production",
+      "label-code": null,
+      "area": {
+        "name": "Leipzig",
+        "disambiguation": "",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "sort-name": "Leipzig"
+      },
+      "id": "e870b3b1-a6a6-45e5-91bf-19c1ea25b692",
+      "annotation": null,
+      "sort-name": "Beatdown Hardwear Rec.",
+      "aliases": [],
+      "life-span": {
+        "end": null,
+        "ended": false,
+        "begin": "2005"
+      },
+      "user-rating": {
+        "value": null
+      },
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "type-id": "a2426aab-2dd4-339c-b47d-b4923a241678",
+      "isnis": [],
+      "name": "Beatdown Hardwear Rec.",
+      "user-tags": []
+    },
+    {
+      "label-code": null,
+      "area": {
+        "name": "Leipzig",
+        "disambiguation": "",
+        "id": "20619e36-fca8-4499-bcc8-be01a3ea3e41",
+        "sort-name": "Leipzig"
+      },
+      "id": "ee973215-eeca-4091-96e9-1a39083aaa7e",
+      "annotation": null,
+      "sort-name": "Bau",
+      "aliases": [],
+      "life-span": {
+        "end": null,
+        "ended": false,
+        "begin": null
+      },
+      "user-rating": {
+        "value": null
+      },
+      "disambiguation": "",
+      "country": null,
+      "tags": [],
+      "ipis": [],
+      "type": "Original Production",
+      "name": "Bau",
+      "user-tags": [],
+      "rating": {
+        "value": null,
+        "votes-count": 0
+      },
+      "type-id": "7aaa37fe-2def-3476-b359-80245850062d",
+      "isnis": []
+    }
+  ],
+  "label-count": 39,
+  "label-offset": 0
+}

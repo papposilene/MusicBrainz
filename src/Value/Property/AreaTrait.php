@@ -32,13 +32,21 @@ trait AreaTrait
     /**
      * Sets the area by extracting it from a given input array.
      *
-     * @param array $input An array returned by the webservice
+     * @param array       $input An array returned by the webservice
+     * @param null|string $key   Optional array key (default: "area")
+     *                           Use first array dimension for null
      *
      * @return void
      */
-    private function setAreaFromArray(array $input): void
+    private function setAreaFromArray(array $input, ?string $key = 'area'): void
     {
-        $this->area = is_null($area = ArrayAccess::getArray($input, 'area'))
+        if (is_null($key)) {
+            $this->area = new Area($input);
+
+            return;
+        }
+
+        $this->area = is_null($area = ArrayAccess::getArray($input, $key))
             ? new Area
             : new Area($area);
     }

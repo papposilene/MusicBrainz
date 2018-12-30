@@ -40,4 +40,14 @@ trait OffsetTrait
             ? new Count
             : new Count($count);
     }
+
+    /**
+     * Sets the offset.
+     *
+     * @param int $offset The offset
+     */
+    private function setOffset(int $offset): void
+    {
+        $this->offset = new Count($offset);
+    }
 }

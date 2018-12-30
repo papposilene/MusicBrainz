@@ -29,19 +29,19 @@ use MusicBrainz\Supplement\Browse\ReleaseFields;
 use MusicBrainz\Supplement\Browse\ReleaseGroupFields;
 use MusicBrainz\Supplement\Browse\SeriesFields;
 use MusicBrainz\Supplement\Browse\WorkFields;
-use MusicBrainz\Value\AreaList;
-use MusicBrainz\Value\ArtistList;
-use MusicBrainz\Value\CollectionList;
 use MusicBrainz\Value\EntityType;
-use MusicBrainz\Value\EventList;
-use MusicBrainz\Value\InstrumentList;
-use MusicBrainz\Value\LabelList;
-use MusicBrainz\Value\PlaceList;
-use MusicBrainz\Value\RecordingList;
-use MusicBrainz\Value\ReleaseGroupList;
-use MusicBrainz\Value\ReleaseList;
-use MusicBrainz\Value\SeriesList;
-use MusicBrainz\Value\WorkList;
+use MusicBrainz\Value\Page\AreaListPage;
+use MusicBrainz\Value\Page\ArtistListPage;
+use MusicBrainz\Value\Page\CollectionListPage;
+use MusicBrainz\Value\Page\EventListPage;
+use MusicBrainz\Value\Page\InstrumentListPage;
+use MusicBrainz\Value\Page\LabelListPage;
+use MusicBrainz\Value\Page\PlaceListPage;
+use MusicBrainz\Value\Page\RecordingListPage;
+use MusicBrainz\Value\Page\ReleaseGroupListPage;
+use MusicBrainz\Value\Page\ReleaseListPage;
+use MusicBrainz\Value\Page\SeriesListPage;
+use MusicBrainz\Value\Page\WorkListPage;
 
 /**
  * Browse requests are a direct lookup of all the entities directly linked to another entity.
@@ -83,9 +83,9 @@ class Browse
      * @param AreaFields   $areaFields   A list of properties of the areas to be included in the response
      * @param PageFilter   $pageFilter   A page filter
      *
-     * @return AreaList
+     * @return AreaListPage
      */
-    public function area(AreaRelation $areaRelation, AreaFields $areaFields, PageFilter $pageFilter)
+    public function area(AreaRelation $areaRelation, AreaFields $areaFields, PageFilter $pageFilter): AreaListPage
     {
         $fields = [
             'aliases'      => $areaFields->getIncludeFlagForAliases(),
@@ -103,7 +103,7 @@ class Browse
             $pageFilter
         );
 
-        return new AreaList($result['areas']);
+        return AreaListPage::make($result, 'area');
     }
 
     /**
@@ -113,9 +113,9 @@ class Browse
      * @param ArtistFields   $artistFields   A list of properties of the artists to be included in the response
      * @param PageFilter     $pageFilter     A page filter
      *
-     * @return ArtistList
+     * @return ArtistListPage
      */
-    public function artist(ArtistRelation $artistRelation, ArtistFields $artistFields, PageFilter $pageFilter)
+    public function artist(ArtistRelation $artistRelation, ArtistFields $artistFields, PageFilter $pageFilter): ArtistListPage
     {
         $fields = [
             'aliases'      => $artistFields->getIncludeFlagForAliases(),
@@ -133,18 +133,20 @@ class Browse
             $pageFilter
         );
 
-        return new ArtistList($result['artists']);
+        return ArtistListPage::make($result, 'artist');
     }
 
     /**
      * Looks up for all collections standing in a certain relation.
      *
+     * The browse request for collection doesn't support any "inc" parameter.
+     *
      * @param CollectionRelation $collectionRelation A relation, the requested collections stand in
      * @param PageFilter         $pageFilter         A page filter
      *
-     * @return CollectionList
+     * @return CollectionListPage
      */
-    public function collection(CollectionRelation $collectionRelation, PageFilter $pageFilter)
+    public function collection(CollectionRelation $collectionRelation, PageFilter $pageFilter): CollectionListPage
     {
         $fields = [];
 
@@ -155,7 +157,7 @@ class Browse
             $pageFilter
         );
 
-        return new CollectionList($result['collections']);
+        return CollectionListPage::make($result, 'collection');
     }
 
     /**
@@ -165,9 +167,9 @@ class Browse
      * @param EventFields   $eventFields   A list of properties of the events to be included in the response
      * @param PageFilter    $pageFilter    A page filter
      *
-     * @return EventList
+     * @return EventListPage
      */
-    public function event(EventRelation $eventRelation, EventFields $eventFields, PageFilter $pageFilter)
+    public function event(EventRelation $eventRelation, EventFields $eventFields, PageFilter $pageFilter): EventListPage
     {
         $fields = [
             'aliases'      => $eventFields->getIncludeFlagForAliases(),
@@ -185,7 +187,7 @@ class Browse
             $pageFilter
         );
 
-        return new EventList($result['events']);
+        return EventListPage::make($result, 'event');
     }
 
     /**
@@ -195,9 +197,9 @@ class Browse
      * @param InstrumentFields   $instrumentFields   A list of properties of the instrument to be included in the response
      * @param PageFilter         $pageFilter         A page filter
      *
-     * @return InstrumentList
+     * @return InstrumentListPage
      */
-    public function instrument(InstrumentRelation $instrumentRelation, InstrumentFields $instrumentFields, PageFilter $pageFilter)
+    public function instrument(InstrumentRelation $instrumentRelation, InstrumentFields $instrumentFields, PageFilter $pageFilter): InstrumentListPage
     {
         $fields = [
             'aliases'      => $instrumentFields->getIncludeFlagForAliases(),
@@ -213,7 +215,7 @@ class Browse
             $pageFilter
         );
 
-        return new InstrumentList($result['instruments']);
+        return InstrumentListPage::make($result, 'instrument');
     }
 
     /**
@@ -223,9 +225,9 @@ class Browse
      * @param LabelFields   $labelFields   A list of properties of the labels to be included in the response
      * @param PageFilter    $pageFilter    A page filter
      *
-     * @return LabelList
+     * @return LabelListPage
      */
-    public function label(LabelRelation $labelRelation, LabelFields $labelFields, PageFilter $pageFilter)
+    public function label(LabelRelation $labelRelation, LabelFields $labelFields, PageFilter $pageFilter): LabelListPage
     {
         $fields = [
             'aliases'      => $labelFields->getIncludeFlagForAliases(),
@@ -243,7 +245,7 @@ class Browse
             $pageFilter
         );
 
-        return new LabelList($result['labels']);
+        return LabelListPage::make($result, 'label');
     }
 
     /**
@@ -253,9 +255,9 @@ class Browse
      * @param PlaceFields   $placeFields   A list of properties of the places to be included in the response
      * @param PageFilter    $pageFilter    A page filter
      *
-     * @return PlaceList
+     * @return PlaceListPage
      */
-    public function place(PlaceRelation $placeRelation, PlaceFields $placeFields, PageFilter $pageFilter)
+    public function place(PlaceRelation $placeRelation, PlaceFields $placeFields, PageFilter $pageFilter): PlaceListPage
     {
         $fields = [
             'aliases'      => $placeFields->getIncludeFlagForAliases(),
@@ -271,7 +273,7 @@ class Browse
             $pageFilter
         );
 
-        return new PlaceList($result['places']);
+        return PlaceListPage::make($result, 'place');
     }
 
     /**
@@ -281,16 +283,18 @@ class Browse
      * @param RecordingFields   $recordingFields   A list of properties of the recordings to be included in the response
      * @param PageFilter        $pageFilter        A page filter
      *
-     * @return RecordingList
+     * @return RecordingListPage
      */
-    public function recording(RecordingRelation $recordingRelation, RecordingFields $recordingFields, PageFilter $pageFilter)
+    public function recording(RecordingRelation $recordingRelation, RecordingFields $recordingFields, PageFilter $pageFilter): RecordingListPage
     {
         $fields = [
             'annotation'     => $recordingFields->getIncludeFlagForAnnotation(),
             'artist-credits' => $recordingFields->getIncludeFlagForArtistCredits(),
             'isrcs'          => $recordingFields->getIncludeFlagForIsrcs(),
+            'ratings'        => $recordingFields->getIncludeFlagForRatings(),
             'tags'           => $recordingFields->getIncludeFlagForTags(),
-            'user-tags'      => $recordingFields->getIncludeFlagForUserTags()
+            'user-tags'      => $recordingFields->getIncludeFlagForUserTags(),
+            'user-ratings'   => $recordingFields->getIncludeFlagForUserRatings()
         ];
 
         $result = $this->browse(
@@ -300,7 +304,7 @@ class Browse
             $pageFilter
         );
 
-        return new RecordingList($result['recordings']);
+        return RecordingListPage::make($result, 'recording');
     }
 
     /**
@@ -310,9 +314,9 @@ class Browse
      * @param ReleaseFields   $releaseFields   A list of properties of the releases to be included in the response
      * @param PageFilter      $pageFilter      A page filter
      *
-     * @return ReleaseList
+     * @return ReleaseListPage
      */
-    public function release(ReleaseRelation $releaseRelation, ReleaseFields $releaseFields, PageFilter $pageFilter)
+    public function release(ReleaseRelation $releaseRelation, ReleaseFields $releaseFields, PageFilter $pageFilter): ReleaseListPage
     {
         $fields = [
             'annotation'     => $releaseFields->getIncludeFlagForAnnotation(),
@@ -332,7 +336,7 @@ class Browse
             $pageFilter
         );
 
-        return new ReleaseList($result['releases']);
+        return ReleaseListPage::make($result, 'release');
     }
 
     /**
@@ -343,13 +347,13 @@ class Browse
      *                                                 response
      * @param PageFilter           $pageFilter         A page filter
      *
-     * @return ReleaseGroupList
+     * @return ReleaseGroupListPage
      */
     public function releaseGroup(
         ReleaseGroupRelation $releaseRelation,
         ReleaseGroupFields $releaseGroupFields,
         PageFilter $pageFilter
-    ) {
+    ): ReleaseGroupListPage {
         $fields = [
             'annotation'     => $releaseGroupFields->getIncludeFlagForAnnotation(),
             'artist-credits' => $releaseGroupFields->getIncludeFlagForArtistCredits(),
@@ -366,7 +370,7 @@ class Browse
             $pageFilter
         );
 
-        return new ReleaseGroupList($result['release-groups']);
+        return ReleaseGroupListPage::make($result, 'release-group');
     }
 
     /**
@@ -376,16 +380,14 @@ class Browse
      * @param SeriesFields   $seriesFields   A list of properties of the series to be included in the response
      * @param PageFilter      $pageFilter    A page filter
      *
-     * @return SeriesList
+     * @return SeriesListPage
      */
-    public function series(SeriesRelation $seriesRelation, SeriesFields $seriesFields, PageFilter $pageFilter)
+    public function series(SeriesRelation $seriesRelation, SeriesFields $seriesFields, PageFilter $pageFilter): SeriesListPage
     {
         $fields = [
             'aliases'      => $seriesFields->getIncludeFlagForAliases(),
             'annotation'   => $seriesFields->getIncludeFlagForAnnotation(),
-            'ratings'      => $seriesFields->getIncludeFlagForRatings(),
             'tags'         => $seriesFields->getIncludeFlagForTags(),
-            'user-ratings' => $seriesFields->getIncludeFlagForUserRatings(),
             'user-tags'    => $seriesFields->getIncludeFlagForUserTags()
         ];
 
@@ -396,7 +398,7 @@ class Browse
             $pageFilter
         );
 
-        return new SeriesList($result['series']);
+        return SeriesListPage::make($result, 'series');
     }
 
     /**
@@ -410,9 +412,9 @@ class Browse
      * @param WorkFields   $workFields   A list of properties of the series to be included in the response
      * @param PageFilter   $pageFilter   A page filter
      *
-     * @return WorkList
+     * @return WorkListPage
      */
-    public function work(WorkRelation $workRelation, WorkFields $workFields, PageFilter $pageFilter)
+    public function work(WorkRelation $workRelation, WorkFields $workFields, PageFilter $pageFilter): WorkListPage
     {
         $fields = [
             'aliases'      => $workFields->getIncludeFlagForAliases(),
@@ -430,7 +432,7 @@ class Browse
             $pageFilter
         );
 
-        return new WorkList($result['works']);
+        return WorkListPage::make($result, 'work');
     }
 
     /**
@@ -453,13 +455,16 @@ class Browse
 
         $params = [
             (string) $relation->getEntityType()  => (string) $relation->getEntityId(),
-            'inc'                                => implode('+', $includes),
             'limit'                              => $pageFilter->getLimit(),
             'offset'                             => $pageFilter->getOffset(),
             'fmt'                                => 'json'
         ];
 
-        $response = $this->httpAdapter->call((string) $entity . '/', $this->config, $params);
+        if (!empty($includes)) {
+            $params['inc'] = implode('+', $includes);
+        }
+
+        $response = $this->httpAdapter->call(str_replace('_' , '-', (string) $entity) . '/', $this->config, $params);
 
         return $response;
     }

@@ -2,7 +2,6 @@
 
 namespace MusicBrainz\Value;
 
-use MusicBrainz\Helper\GetValue;
 use MusicBrainz\Value;
 
 /**

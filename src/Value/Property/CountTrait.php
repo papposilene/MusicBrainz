@@ -6,7 +6,7 @@ use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Count;
 
 /**
- * Provides a getter for the offset.
+ * Provides a getter for a count.
  */
 trait CountTrait
 {
@@ -18,7 +18,7 @@ trait CountTrait
     private $count;
 
     /**
-     * Returns the offset.
+     * Returns the count.
      *
      * @return Count
      */
@@ -28,16 +28,27 @@ trait CountTrait
     }
 
     /**
-     * Sets the offset by extracting it from a given input array.
+     * Sets the count by extracting it from a given input array.
      *
-     * @param array $input An array returned by the webservice
+     * @param array  $input An array returned by the webservice
+     * @param string $key   Optional key (default: 'count')
      *
      * @return void
      */
-    private function setCountFromArray(array $input): void
+    private function setCountFromArray(array $input, string $key = 'count'): void
     {
-        $this->count = is_null($count = ArrayAccess::getInteger($input, 'count'))
+        $this->count = is_null($count = ArrayAccess::getInteger($input, $key))
             ? new Count
             : new Count($count);
+    }
+
+    /**
+     * Sets the count.
+     *
+     * @param int $count The count
+     */
+    private function setCount(int $count = 0): void
+    {
+        $this->count = new Count($count);
     }
 }

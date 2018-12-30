@@ -34,9 +34,15 @@ trait ArtistTrait
      *
      * @return void
      */
-    private function setArtistFromArray(array $input): void
+    private function setArtistFromArray(array $input, ?string $key = 'artist'): void
     {
-        $this->name = is_null($artist = ArrayAccess::getArray($input, 'artist'))
+        if (is_null($key)) {
+            $this->artist = new Artist($input);
+
+            return;
+        }
+
+        $this->artist = is_null($artist = ArrayAccess::getArray($input, $key))
             ? new Artist
             : new Artist($artist);
     }

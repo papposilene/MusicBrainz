@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value\Property;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value\Annotation;
 
 /**
@@ -14,7 +15,7 @@ trait AnnotationTrait
      *
      * @var Annotation
      */
-    public $annotation;
+    private $annotation;
 
     /**
      * Returns the annotation.
@@ -24,5 +25,19 @@ trait AnnotationTrait
     public function getAnnotation(): Annotation
     {
         return $this->annotation;
+    }
+
+    /**
+     * Sets the annotation by extracting it from a given input array.
+     *
+     * @param array $annotation An array returned by the webservice
+     *
+     * @preturn void
+     */
+    private function setAnnotationFromArray(array $annotation = [], ?string $key = 'annotation'): void
+    {
+        $this->annotation = (is_null($key))
+            ? new Annotation($annotation)
+            : new Annotation(ArrayAccess::getArray($annotation, $key));
     }
 }

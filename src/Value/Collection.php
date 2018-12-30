@@ -2,6 +2,7 @@
 
 namespace MusicBrainz\Value;
 
+use MusicBrainz\Helper\ArrayAccess;
 use MusicBrainz\Value;
 
 /**
@@ -10,6 +11,7 @@ use MusicBrainz\Value;
 class Collection implements Value
 {
     use Property\CollectionNameTrait;
+    use Property\CountTrait;
     use Property\EditorNameTrait;
     use Property\EntityTypeTrait;
     use Property\MBIDTrait;
@@ -22,6 +24,7 @@ class Collection implements Value
     public function __construct(array $collection = [])
     {
         $this->setCollectionNameFromArray($collection);
+        $this->setCountFromArray($collection, ArrayAccess::getString($collection, 'entity-type') . '-count');
         $this->setEditorNameFromArray($collection);
         $this->setEntityTypeFromArray($collection);
         $this->setMbidFromArray($collection);

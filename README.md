@@ -1,6 +1,6 @@
 # MusicBrainz API Client
 This project contains an easy to use PHP API client for the [MusicBrainz JSON web service](https://musicbrainz.org/doc/Development/JSON_Web_Service).
- 
+
 ## Contents
 - [Installation](#installation)
     - [Install with Git](#install-with-git)

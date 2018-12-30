@@ -16,7 +16,7 @@ use MusicBrainz\Value\InstrumentType;
 use MusicBrainz\Value\LocaleCode;
 use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Instrument;
-use MusicBrainz\Value\InstrumentList;
+use MusicBrainz\Value\Page\InstrumentListPage;
 use MusicBrainz\Value\Name;
 use MusicBrainz\Value\PrimaryNameFlag;
 use MusicBrainz\Value\SortName;
@@ -31,9 +31,9 @@ class InstrumentTest extends ApiTestCase
     /**
      * Test instance of the instrument list
      *
-     * @var Instrument[]|InstrumentList
+     * @var Instrument[]|InstrumentListPage
      */
-    private static $instrumentList;
+    private static $instrumentListPage;
 
     /**
      * Sets up a mock object of the abstract HTTP adapter and the MusicBrainz API client to be tested.
@@ -42,7 +42,7 @@ class InstrumentTest extends ApiTestCase
      */
     public function setUp(): void
     {
-        if (!is_null(self::$instrumentList)) {
+        if (!is_null(self::$instrumentListPage)) {
             return;
         }
 
@@ -62,7 +62,7 @@ class InstrumentTest extends ApiTestCase
         );
 
         /** Performing the test */
-        $instrumentRelation = new InstrumentRelation;
+        $instrumentRelation = (new InstrumentRelation);
         $instrumentRelation->collection(new MBID('60db380a-ef1a-4cf7-9abd-6fa26f401558'));
 
         $instrumentFields = (new InstrumentFields)
@@ -71,7 +71,7 @@ class InstrumentTest extends ApiTestCase
             ->includeUserTags()
             ->includeTags();
 
-        self::$instrumentList = $this->musicBrainz->api()->browse()->instrument($instrumentRelation, $instrumentFields, new PageFilter);
+        self::$instrumentListPage = $this->musicBrainz->api()->browse()->instrument($instrumentRelation, $instrumentFields, new PageFilter);
     }
 
     /**
@@ -79,21 +79,21 @@ class InstrumentTest extends ApiTestCase
      *
      * @return void
      */
-    public function testInstrumentList(): void
+    public function testInstrumentListPage(): void
     {
-        $instrumentList = self::$instrumentList;
+        $instrumentListPage = self::$instrumentListPage;
 
-        $this->assertInstanceOf(InstrumentList::class, $instrumentList);
-        $this->assertSame(3, count($instrumentList));
+        $this->assertInstanceOf(InstrumentListPage::class, $instrumentListPage);
+        $this->assertSame(3, count($instrumentListPage));
 
-        $instrument = $instrumentList[0];
+        $instrument = $instrumentListPage[0];
 
         $this->assertInstanceOf(Instrument::class, $instrument);
     }
 
     public function testInstrument(): void
     {
-        $instrument = self::$instrumentList[0];
+        $instrument = self::$instrumentListPage[0];
 
         $this->assertInstanceOf(Instrument::class, $instrument);
         $this->assertInstanceOf(InstrumentName::class, $instrument->getInstrumentName());
@@ -112,7 +112,7 @@ class InstrumentTest extends ApiTestCase
 
     public function testAliases(): void
     {
-        $aliases = self::$instrumentList[0]->getAliases();
+        $aliases = self::$instrumentListPage[0]->getAliases();
 
         $this->assertInstanceOf(AliasList::class, $aliases);
         $this->assertCount(25, $aliases);
@@ -147,7 +147,7 @@ class InstrumentTest extends ApiTestCase
 
     public function testFlags(): void
     {
-        $tags = self::$instrumentList[0]->getTags();
+        $tags = self::$instrumentListPage[0]->getTags();
 
         $this->assertInstanceOf(TagList::class, $tags);
         $this->assertCount(8, $tags);

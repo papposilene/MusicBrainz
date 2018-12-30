@@ -7,7 +7,7 @@ use MusicBrainz\Supplement\Browse\ReleaseFields;
 use MusicBrainz\Test\Api\ApiTestCase;
 use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Release;
-use MusicBrainz\Value\ReleaseList;
+use MusicBrainz\Value\Page\ReleaseListPage;
 
 /**
  * Unit tests for the browse release request
@@ -17,9 +17,9 @@ class ReleaseTest extends ApiTestCase
     /**
      * Test instance of the artist list
      *
-     * @var Release[]|ReleaseList
+     * @var Release[]|ReleaseListPage
      */
-    private static $releaseList;
+    private static $releaseListPage;
 
     /**
      * Sets up a mock object of the abstract HTTP adapter and the MusicBrainz API client to be tested.
@@ -28,7 +28,7 @@ class ReleaseTest extends ApiTestCase
      */
     public function setUp(): void
     {
-        if (!is_null(self::$releaseList)) {
+        if (!is_null(self::$releaseListPage)) {
             return;
         }
 
@@ -61,22 +61,22 @@ class ReleaseTest extends ApiTestCase
             ->includeIsrcs()
             ->includeLabels();
 
-        self::$releaseList = $this->musicBrainz->api()->browse()->release($releaseRelation, $releaseFields, new PageFilter);
+        self::$releaseListPage = $this->musicBrainz->api()->browse()->release($releaseRelation, $releaseFields, new PageFilter);
     }
 
     /**
-     * Tests, if Search::artist() properly converts the given JSON response into a domain model and returns it.
+     * Checks the release list.
      *
      * @return void
      */
-    public function testArtist(): void
+    public function testReleaseListPage(): void
     {
-        $releaseList = self::$releaseList;
+        $releaseListPage = self::$releaseListPage;
 
-        $this->assertInstanceOf(ReleaseList::class, $releaseList);
-        $this->assertSame(25, count($releaseList));
+        $this->assertInstanceOf(ReleaseListPage::class, $releaseListPage);
+        $this->assertSame(25, count($releaseListPage));
 
-        $release = $releaseList[0];
+        $release = $releaseListPage[0];
 
         $this->assertInstanceOf(Release::class, $release);
     }

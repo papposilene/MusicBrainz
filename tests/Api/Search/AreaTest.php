@@ -11,8 +11,8 @@ use MusicBrainz\Value\LifeSpan;
 use MusicBrainz\Value\LocaleCode;
 use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Name;
+use MusicBrainz\Value\Page\SearchResult\AreaListPage;
 use MusicBrainz\Value\SearchResult;
-use MusicBrainz\Value\SearchResult\AreaList;
 use MusicBrainz\Value\SortName;
 
 /**
@@ -23,7 +23,7 @@ class AreaTest extends ApiTestCase
     /**
      * Test instance of the area list
      *
-     * @var SearchResult[]|AreaList
+     * @var SearchResult\Area[]|AreaListPage
      */
     private static $areaList;
 
@@ -60,6 +60,24 @@ class AreaTest extends ApiTestCase
         self::$areaList = $this->musicBrainz->api()->search()->area($areaFilter, $pageFilter);
     }
 
+    public function testPage(): void
+    {
+        $areaList = self::$areaList;
+
+        $this->assertInstanceOf(AreaListPage::class, $areaList);
+        $this->assertSame(2, count($areaList));
+        $this->assertSame(2, $areaList->getCount()->getNumber());
+        $this->assertSame(0, $areaList->getOffset()->getNumber());
+        $this->assertSame('2017/07/09 17:54:44', (string) $areaList->getCreationTime());
+    }
+
+    public function testSearchResult(): void
+    {
+        $searchResult = self::$areaList[0];
+        $this->assertInstanceOf(SearchResult\Area::class, $searchResult);
+        $this->assertSame(100, $searchResult->getScore()->getNumber());
+    }
+
     /**
      * Tests, if Search::area() properly converts the given JSON response into a domain model and returns it.
      *
@@ -67,20 +85,7 @@ class AreaTest extends ApiTestCase
      */
     public function testArea(): void
     {
-        $areaList = self::$areaList;
-
-        $this->assertInstanceOf(AreaList::class, $areaList);
-        $this->assertSame(2, count($areaList));
-        $this->assertSame(2, $areaList->getCount()->getNumber());
-        $this->assertSame(0, $areaList->getOffset()->getNumber());
-        $this->assertSame('2017/07/09 17:54:44', (string) $areaList->getCreationTime());
-
-        $searchResult = $areaList[0];
-        $this->assertInstanceOf(SearchResult::class, $searchResult);
-        $this->assertSame(100, $searchResult->getScore()->getNumber());
-
-        /** @var Area $area */
-        $area = $searchResult->getValue();
+        $area = self::$areaList[0]->getArea();
         $this->assertInstanceOf(Area::class, $area);
 
         $this->assertInstanceOf(AreaType::class, $area->getAreaType());

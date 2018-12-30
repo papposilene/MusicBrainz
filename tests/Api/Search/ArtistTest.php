@@ -9,8 +9,8 @@ use MusicBrainz\Value\Date;
 use MusicBrainz\Value\Gender;
 use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Name;
+use MusicBrainz\Value\Page\SearchResult\ArtistListPage;
 use MusicBrainz\Value\SearchResult;
-use MusicBrainz\Value\SearchResult\ArtistList;
 use MusicBrainz\Value\SortName;
 
 /**
@@ -21,7 +21,7 @@ class ArtistTest extends ApiTestCase
     /**
      * Test instance of the artist list
      *
-     * @var SearchResult[]|ArtistList
+     * @var SearchResult\Artist[]|ArtistListPage
      */
     private static $artistList;
 
@@ -57,6 +57,24 @@ class ArtistTest extends ApiTestCase
         self::$artistList = $this->musicBrainz->api()->search()->artist($artistFilter, new PageFilter);
     }
 
+    public function testPage(): void
+    {
+        $artistList = self::$artistList;
+
+        $this->assertInstanceOf(ArtistListPage::class, $artistList);
+        $this->assertSame(21, count($artistList));
+        $this->assertSame(21, $artistList->getCount()->getNumber());
+        $this->assertSame(0, $artistList->getOffset()->getNumber());
+        $this->assertSame('2018/12/08 19:13:37', (string) $artistList->getCreationTime());
+    }
+
+    public function testSearchResult(): void
+    {
+        $searchResult = self::$artistList[4];
+        $this->assertInstanceOf(SearchResult\Artist::class, $searchResult);
+        $this->assertSame(84, $searchResult->getScore()->getNumber());
+    }
+
     /**
      * Tests, if Search::artist() properly converts the given JSON response into a domain model and returns it.
      *
@@ -64,20 +82,7 @@ class ArtistTest extends ApiTestCase
      */
     public function testArtist(): void
     {
-        $artistList = self::$artistList;
-
-        $this->assertInstanceOf(ArtistList::class, $artistList);
-        $this->assertSame(21, count($artistList));
-        $this->assertSame(21, $artistList->getCount()->getNumber());
-        $this->assertSame(0, $artistList->getOffset()->getNumber());
-        $this->assertSame('2018/12/08 19:13:37', (string) $artistList->getCreationTime());
-
-        $searchResult = $artistList[4];
-        $this->assertInstanceOf(SearchResult::class, $searchResult);
-        $this->assertSame(84, $searchResult->getScore()->getNumber());
-
-        /** @var Artist $artist */
-        $artist = $searchResult->getValue();
+        $artist = self::$artistList[4]->getArtist();
         $this->assertInstanceOf(Artist::class, $artist);
 
         $this->assertInstanceOf(ArtistType::class, $artist->getArtistType());
@@ -115,7 +120,7 @@ class ArtistTest extends ApiTestCase
          *
          * @var Artist $artist
          */
-        $artist = $artistList[16]->getValue();
+        $artist = self::$artistList[16]->getArtist();
         $this->assertInstanceOf(Date::class, $artist->getLifeSpan()->getBeginDate());
         $this->assertEquals('1963-06-16', $artist->getLifeSpan()->getBeginDate());
         $this->assertInstanceOf(Date::class, $artist->getLifeSpan()->getEndDate());
