@@ -36,7 +36,7 @@ trait TrackDisplayNumberTrait
      */
     private function setTrackDisplayNumberFromArray(array $input): void
     {
-        $this->length = is_null($trackDisplayNumber = ArrayAccess::getString($input, 'number'))
+        $this->trackDisplayNumber = is_null($trackDisplayNumber = ArrayAccess::getString($input, 'number'))
             ? new TrackDisplayNumber
             : new TrackDisplayNumber($trackDisplayNumber);
     }
