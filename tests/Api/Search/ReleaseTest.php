@@ -2,28 +2,51 @@
 namespace MusicBrainz\Test\Api;
 
 use MusicBrainz\Filter\PageFilter;
-use MusicBrainz\Filter\Search\ArtistFilter;
+use MusicBrainz\Filter\Search\ReleaseFilter;
+use MusicBrainz\Value\Area;
 use MusicBrainz\Value\Artist;
-use MusicBrainz\Value\ArtistType;
+use MusicBrainz\Value\ArtistCredit;
+use MusicBrainz\Value\ArtistCreditList;
+use MusicBrainz\Value\ASIN;
+use MusicBrainz\Value\Count;
+use MusicBrainz\Value\Country;
+use MusicBrainz\Value\Format;
+use MusicBrainz\Value\ISO31661Code;
+use MusicBrainz\Value\ISO31661CodeList;
+use MusicBrainz\Value\Label;
+use MusicBrainz\Value\Language;
+use MusicBrainz\Value\MediaList;
+use MusicBrainz\Value\Medium;
+use MusicBrainz\Value\Packaging;
+use MusicBrainz\Value\Release;
+use MusicBrainz\Value\ReleaseEvent;
+use MusicBrainz\Value\ReleaseEventList;
+use MusicBrainz\Value\ReleaseGroup;
+use MusicBrainz\Value\ReleaseStatus;
+use MusicBrainz\Value\ReleaseType;
 use MusicBrainz\Value\Date;
 use MusicBrainz\Value\Gender;
 use MusicBrainz\Value\MBID;
 use MusicBrainz\Value\Name;
-use MusicBrainz\Value\Page\SearchResult\ArtistListPage;
+use MusicBrainz\Value\Page\SearchResult\ReleaseListPage;
+use MusicBrainz\Value\ReleaseTypeList;
+use MusicBrainz\Value\Script;
 use MusicBrainz\Value\SearchResult;
 use MusicBrainz\Value\SortName;
+use MusicBrainz\Value\TextRepresentation;
+use MusicBrainz\Value\Title;
 
 /**
- * Unit tests for the search API.
+ * Unit tests for the release search
  */
-class ArtistTest extends ApiTestCase
+class ReleaseTest extends ApiTestCase
 {
     /**
-     * Test instance of the artist list
+     * Test instance of the release list
      *
-     * @var SearchResult\Artist[]|ArtistListPage
+     * @var SearchResult\Release[]|ReleaseListPage
      */
-    private static $artistList;
+    private static $releaseList;
 
     /**
      * Sets up a mock object of the abstract HTTP adapter and the MusicBrainz API client to be tested.
@@ -32,7 +55,7 @@ class ArtistTest extends ApiTestCase
      */
     public function setUp(): void
     {
-        if (!is_null(self::$artistList)) {
+        if (!is_null(self::$releaseList)) {
             return;
         }
 
@@ -40,93 +63,129 @@ class ArtistTest extends ApiTestCase
 
         /** Setting up the mock object of the abstract HTTP adapter */
         $this->expectApiCall(
-            'artist/',
+            'release/',
             [
                 'fmt'    => 'json',
-                'query'  => 'artist:Waite',
+                'query'  => 'arid:172e1f1a-504d-4488-b053-6344ba63e6d0',
                 'limit'  => 25,
                 'offset' => 0
             ],
-            'Search/Artist.json'
+            'Search/Release.json'
         );
 
         /** Performing the test */
-        $artistFilter = new ArtistFilter;
-        $artistFilter->addArtistNameWithoutAccents(new Name('Waite'));
+        $releaseFilter = new ReleaseFilter;
+        $releaseFilter->addArtistId(new MBID('172e1f1a-504d-4488-b053-6344ba63e6d0'));
 
-        self::$artistList = $this->musicBrainz->api()->search()->artist($artistFilter, new PageFilter);
+        self::$releaseList = $this->musicBrainz->api()->search()->release($releaseFilter, new PageFilter);
     }
 
     public function testPage(): void
     {
-        $artistList = self::$artistList;
+        $releaseList = self::$releaseList;
 
-        $this->assertInstanceOf(ArtistListPage::class, $artistList);
-        $this->assertSame(21, count($artistList));
-        $this->assertSame(21, $artistList->getCount()->getNumber());
-        $this->assertSame(0, $artistList->getOffset()->getNumber());
-        $this->assertSame('2018/12/08 19:13:37', (string) $artistList->getCreationTime());
+        $this->assertInstanceOf(ReleaseListPage::class, $releaseList);
+        $this->assertSame(25, count($releaseList));
+        $this->assertSame(372, $releaseList->getCount()->getNumber());
+        $this->assertSame(0, $releaseList->getOffset()->getNumber());
+        $this->assertSame('2019/02/27 17:59:27', (string) $releaseList->getCreationTime());
     }
 
     public function testSearchResult(): void
     {
-        $searchResult = self::$artistList[4];
-        $this->assertInstanceOf(SearchResult\Artist::class, $searchResult);
-        $this->assertSame(84, $searchResult->getScore()->getNumber());
+        $searchResult = self::$releaseList[4];
+        $this->assertInstanceOf(SearchResult\Release::class, $searchResult);
+        $this->assertSame(100, $searchResult->getScore()->getNumber());
     }
 
     /**
-     * Tests, if Search::artist() properly converts the given JSON response into a domain model and returns it.
+     * Tests, if Search::release() properly converts the given JSON response into a domain model and returns it.
      *
      * @return void
      */
-    public function testArtist(): void
+    public function testRelease(): void
     {
-        $artist = self::$artistList[4]->getArtist();
-        $this->assertInstanceOf(Artist::class, $artist);
+        $release = self::$releaseList[0]->getRelease();
+        $this->assertInstanceOf(Release::class, $release);
 
-        $this->assertInstanceOf(ArtistType::class, $artist->getArtistType());
-        $this->assertEquals(ArtistType::PERSON, $artist->getArtistType());
-        $this->assertInstanceOf(MBID::class, $artist->getArtistType()->getMBID());
-        $this->assertEquals('b6e035f4-3ce9-331c-97df-83397230b0df', $artist->getArtistType()->getMBID());
-        $this->assertSame('b856b4ae-5c73-4476-a61c-f1fddc573a4e', (string) $artist->getMBID());
+        $this->assertInstanceOf(MBID::class, $release->getMBID());
+        $this->assertEquals('f627eea8-6862-3eec-96fe-458543738a76', $release->getMBID());
 
-        $this->assertInstanceOf(Name::class, $artist->getArtistName());
-        $this->assertEquals('Xanthe Waite', $artist->getArtistName());
+        $this->assertInstanceOf(Title::class, $release->getTitle());
+        $this->assertEquals('Live Seeds', $release->getTitle());
 
-        $this->assertInstanceOf(SortName::class, $artist->getSortName());
-        $this->assertEquals('Waite, Xanthe', $artist->getSortName());
+        $this->assertInstanceOf(ReleaseStatus::class, $release->getReleaseStatus());
+        $this->assertEquals(ReleaseStatus::OFFICIAL, $release->getReleaseStatus());
 
-        $this->assertInstanceOf(Gender::class, $artist->getGender());
-        $this->assertEquals(Gender::FEMALE, $artist->getGender());
+        $this->assertInstanceOf(Packaging::class, $release->getPackaging());
+        $this->assertEquals(Packaging::JEWEL_CASE, $release->getPackaging());
 
-        /**
-         * "life-span": {
-         *     "ended": null
-         * }
-         */
-        $this->assertInstanceOf(Date::class, $artist->getLifeSpan()->getBeginDate());
-        $this->assertEmpty((string) $artist->getLifeSpan()->getBeginDate());
-        $this->assertInstanceOf(Date::class, $artist->getLifeSpan()->getEndDate());
-        $this->assertEmpty((string) $artist->getLifeSpan()->getEndDate());
-        $this->assertFalse($artist->getLifeSpan()->getEnded()->isEnded());
+        $this->assertInstanceOf(TextRepresentation::class, $release->getTextRepresentation());
+        $this->assertEquals('Latn (eng)', $release->getTextRepresentation());
+        $this->assertInstanceOf(Language::class, $release->getTextRepresentation()->getLanguage());
+        $this->assertEquals('eng', $release->getTextRepresentation()->getLanguage());
+        $this->assertInstanceOf(Script::class, $release->getTextRepresentation()->getScript());
+        $this->assertEquals('Latn', $release->getTextRepresentation()->getScript());
 
-        /**
-         * "life-span": {
-         *     "begin": "1963-06-16",
-         *     "end": "1993-02-18",
-         *     "ended": true
-         * }
-         *
-         * @var Artist $artist
-         */
-        $artist = self::$artistList[16]->getArtist();
-        $this->assertInstanceOf(Date::class, $artist->getLifeSpan()->getBeginDate());
-        $this->assertEquals('1963-06-16', $artist->getLifeSpan()->getBeginDate());
-        $this->assertInstanceOf(Date::class, $artist->getLifeSpan()->getEndDate());
-        $this->assertEquals('1993-02-18', $artist->getLifeSpan()->getEndDate());
-        $this->assertTrue($artist->getLifeSpan()->getEnded()->isEnded());
+        $this->assertInstanceOf(ArtistCreditList::class, $release->getArtistCredits());
+        $this->assertCount(1, $release->getArtistCredits());
 
-        /** @todo Test country and area */
+        $artistCredit = $release->getArtistCredits()[0];
+        $this->assertInstanceOf(ArtistCredit::class, $artistCredit);
+        $this->assertInstanceOf(Artist::class, $artistCredit->getArtist());
+        $this->assertEquals('Nick Cave & The Bad Seeds', $artistCredit->getArtist());
+        $this->assertInstanceOf(Name::class, $artistCredit->getArtist()->getArtistName());
+        $this->assertEquals('Nick Cave & The Bad Seeds', $artistCredit->getArtist()->getArtistName());
+        $this->assertInstanceOf(SortName::class, $artistCredit->getArtist()->getSortName());
+        $this->assertEquals('Cave, Nick, & The Bad Seeds', $artistCredit->getArtist()->getSortName());
+
+        $releaseGroup = $release->getReleaseGroup();
+        $this->assertInstanceOf(ReleaseGroup::class, $releaseGroup);
+        $this->assertInstanceOf(MBID::class, $releaseGroup->getMBID());
+        $this->assertEquals('ed4bb6ce-ace6-3841-931b-7f8f0bcfe806', $releaseGroup->getMBID());
+        $this->assertInstanceOf(ReleaseType::class, $releaseGroup->getPrimaryReleaseType());
+        $this->assertEquals('Album', $releaseGroup->getPrimaryReleaseType());
+        $this->assertInstanceOf(ReleaseTypeList::class, $releaseGroup->getSecondaryReleaseTypes());
+        $this->assertCount(1, $releaseGroup->getSecondaryReleaseTypes());
+        $this->assertContainsOnlyInstancesOf(ReleaseType::class, $releaseGroup->getSecondaryReleaseTypes());
+        $this->assertEquals('Live', $releaseGroup->getSecondaryReleaseTypes()[0]);
+
+        $this->assertInstanceOf(Date::class, $release->getDate());
+        $this->assertEquals('1996-08-05', $release->getDate());
+        $this->assertInstanceOf(Country::class, $release->getCountry());
+        $this->assertEquals('GB', $release->getCountry());
+
+        $this->assertInstanceOf(ReleaseEventList::class, $release->getReleaseEvents());
+        $this->assertContainsOnlyInstancesOf(ReleaseEvent::class, $release->getReleaseEvents());
+
+        $releaseEvent = $release->getReleaseEvents()[0];
+        $this->assertInstanceOf(ReleaseEvent::class, $releaseEvent);
+        $this->assertInstanceOf(Date::class, $releaseEvent->getDate());
+        $this->assertEquals('1996-08-05', $releaseEvent->getDate());
+        $this->assertInstanceOf(Area::class, $releaseEvent->getArea());
+        $this->assertEquals('United Kingdom', $releaseEvent->getArea());
+        $this->assertInstanceOf(Name::class, $releaseEvent->getArea()->getName());
+        $this->assertEquals('United Kingdom', $releaseEvent->getArea()->getName());
+        $this->assertInstanceOf(SortName::class, $releaseEvent->getArea()->getSortName());
+        $this->assertEquals('United Kingdom', $releaseEvent->getArea()->getSortName());
+        $this->assertInstanceOf(ISO31661CodeList::class, $releaseEvent->getArea()->getISO31661Codes());
+        $this->assertContainsOnlyInstancesOf(ISO31661Code::class, $releaseEvent->getArea()->getISO31661Codes());
+        $this->assertEquals('GB', $releaseEvent->getArea()->getISO31661Codes()[0]);
+
+        $this->assertInstanceOf(ASIN::class, $release->getAsin());
+        $this->assertEquals('B000003Z4N', $release->getAsin());
+
+        /** @todo Test Label Info */
+        /** @todo Test Track count */
+
+        $this->assertInstanceOf(MediaList::class, $release->getMedia());
+        $this->assertContainsOnlyInstancesOf(Medium::class, $release->getMedia());
+
+        $medium = $release->getMedia()[0];
+        $this->assertInstanceOf(Format::class, $medium->getFormat());
+        $this->assertEquals('CD', $medium->getFormat());
+
+        /** @todo Test Dist count */
+        /** @todo Test Track count */
     }
 }
