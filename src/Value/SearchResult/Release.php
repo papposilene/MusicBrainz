@@ -19,7 +19,7 @@ class Release extends SearchResult
      */
     public function __construct(array $searchResult = [])
     {
-        $this->setReleaseFromArray($searchResult);
+        $this->setReleaseFromArray($searchResult, null);
         parent::__construct($searchResult);
     }
 

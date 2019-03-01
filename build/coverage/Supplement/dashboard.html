@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/xenos/MusicBrainz/src/Supplement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/style.css" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]>
+  <script src="../.js/html5shiv.min.js"></script>
+  <script src="../.js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="../index.html">/var/www/xenos/MusicBrainz/src</a></li>
+        <li><a href="index.html">Supplement</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Field/AliasesTrait.php.html#5">AliasesTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/RecordingRelationsTrait.php.html#5">RecordingRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/WorkRelationsTrait.php.html#5">WorkRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/WorkLevelRelationsTrait.php.html#5">WorkLevelRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/VariousArtistsTrait.php.html#5">VariousArtistsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/UserTagsTrait.php.html#5">UserTagsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/UserRatingsTrait.php.html#5">UserRatingsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/URLRelationsTrait.php.html#5">URLRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/TagsTrait.php.html#5">TagsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/TagsRelationsTrait.php.html#5">TagsRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/SeriesRelationsTrait.php.html#5">SeriesRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ReleasesTrait.php.html#5">ReleasesTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ReleaseRelationsTrait.php.html#5">ReleaseRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ReleaseGroupsTrait.php.html#5">ReleaseGroupsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ReleaseGroupRelationsTrait.php.html#5">ReleaseGroupRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/RecordingsTrait.php.html#5">RecordingsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/RecordingLevelRelationsTrait.php.html#5">RecordingLevelRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/AnnotationTrait.php.html#5">AnnotationTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/RatingsTrait.php.html#5">RatingsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/PlaceRelationsTrait.php.html#5">PlaceRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/MediaTrait.php.html#5">MediaTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/LabelsTrait.php.html#5">LabelsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/LabelRelationsTrait.php.html#5">LabelRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/IsrcsTrait.php.html#5">IsrcsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/InstrumentRelationsTrait.php.html#5">InstrumentRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/EventRelationsTrait.php.html#5">EventRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/DiscIdsTrait.php.html#5">DiscIdsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/CollectionsTrait.php.html#5">CollectionsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ArtistsTrait.php.html#5">ArtistsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ArtistRelationsTrait.php.html#5">ArtistRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ArtistCreditsTrait.php.html#5">ArtistCreditsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/AreaRelationsTrait.php.html#5">AreaRelationsTrait</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/WorksTrait.php.html#5">WorksTrait</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Field/AliasesTrait.php.html#19"><abbr title="AliasesTrait::getIncludeFlagForAliases">getIncludeFlagForAliases</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/TagsRelationsTrait.php.html#31"><abbr title="TagsRelationsTrait::includeTagsRelations">includeTagsRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/RecordingsTrait.php.html#19"><abbr title="RecordingsTrait::getIncludeFlagForRecordings">getIncludeFlagForRecordings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/RecordingsTrait.php.html#31"><abbr title="RecordingsTrait::includeRecordings">includeRecordings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ReleaseGroupRelationsTrait.php.html#19"><abbr title="ReleaseGroupRelationsTrait::getIncludeFlagForReleaseGroupRelations">getIncludeFlagForReleaseGroupRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ReleaseGroupRelationsTrait.php.html#31"><abbr title="ReleaseGroupRelationsTrait::includeReleaseGroupRelations">includeReleaseGroupRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ReleaseGroupsTrait.php.html#19"><abbr title="ReleaseGroupsTrait::getIncludeFlagForReleaseGroups">getIncludeFlagForReleaseGroups</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ReleaseGroupsTrait.php.html#31"><abbr title="ReleaseGroupsTrait::includeReleaseGroups">includeReleaseGroups</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ReleaseRelationsTrait.php.html#19"><abbr title="ReleaseRelationsTrait::getIncludeFlagForReleaseRelations">getIncludeFlagForReleaseRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ReleaseRelationsTrait.php.html#31"><abbr title="ReleaseRelationsTrait::includeReleaseRelations">includeReleaseRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ReleasesTrait.php.html#19"><abbr title="ReleasesTrait::getIncludeFlagForReleases">getIncludeFlagForReleases</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ReleasesTrait.php.html#31"><abbr title="ReleasesTrait::includeReleases">includeReleases</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/SeriesRelationsTrait.php.html#19"><abbr title="SeriesRelationsTrait::getIncludeFlagForSeriesRelations">getIncludeFlagForSeriesRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/SeriesRelationsTrait.php.html#31"><abbr title="SeriesRelationsTrait::includeSeriesRelations">includeSeriesRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/TagsRelationsTrait.php.html#19"><abbr title="TagsRelationsTrait::getIncludeFlagForTagsRelations">getIncludeFlagForTagsRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/TagsTrait.php.html#19"><abbr title="TagsTrait::getIncludeFlagForTags">getIncludeFlagForTags</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/RecordingRelationsTrait.php.html#19"><abbr title="RecordingRelationsTrait::getIncludeFlagForRecordingRelations">getIncludeFlagForRecordingRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/TagsTrait.php.html#31"><abbr title="TagsTrait::includeTags">includeTags</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/URLRelationsTrait.php.html#19"><abbr title="URLRelationsTrait::getIncludeFlagForURLRelations">getIncludeFlagForURLRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/URLRelationsTrait.php.html#31"><abbr title="URLRelationsTrait::includeURLRelations">includeURLRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/UserRatingsTrait.php.html#19"><abbr title="UserRatingsTrait::getIncludeFlagForUserRatings">getIncludeFlagForUserRatings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/UserRatingsTrait.php.html#31"><abbr title="UserRatingsTrait::includeUserRatings">includeUserRatings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/UserTagsTrait.php.html#19"><abbr title="UserTagsTrait::getIncludeFlagForUserTags">getIncludeFlagForUserTags</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/UserTagsTrait.php.html#31"><abbr title="UserTagsTrait::includeUserTags">includeUserTags</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/VariousArtistsTrait.php.html#19"><abbr title="VariousArtistsTrait::getIncludeFlagForVariousArtists">getIncludeFlagForVariousArtists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/VariousArtistsTrait.php.html#31"><abbr title="VariousArtistsTrait::includeVariousArtists">includeVariousArtists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/WorkLevelRelationsTrait.php.html#19"><abbr title="WorkLevelRelationsTrait::getIncludeFlagForWorkLevelRelations">getIncludeFlagForWorkLevelRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/WorkLevelRelationsTrait.php.html#31"><abbr title="WorkLevelRelationsTrait::includeWorkLevelRelations">includeWorkLevelRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/WorkRelationsTrait.php.html#19"><abbr title="WorkRelationsTrait::getIncludeFlagForWorkRelations">getIncludeFlagForWorkRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/WorkRelationsTrait.php.html#31"><abbr title="WorkRelationsTrait::includeWorkRelations">includeWorkRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/WorksTrait.php.html#19"><abbr title="WorksTrait::getIncludeFlagForWorks">getIncludeFlagForWorks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/RecordingRelationsTrait.php.html#31"><abbr title="RecordingRelationsTrait::includeRecordingRelations">includeRecordingRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/RecordingLevelRelationsTrait.php.html#31"><abbr title="RecordingLevelRelationsTrait::includeRecordingLevelRelations">includeRecordingLevelRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/AliasesTrait.php.html#31"><abbr title="AliasesTrait::includeAliases">includeAliases</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/EventRelationsTrait.php.html#19"><abbr title="EventRelationsTrait::getIncludeFlagForEventRelations">getIncludeFlagForEventRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/AnnotationTrait.php.html#19"><abbr title="AnnotationTrait::getIncludeFlagForAnnotation">getIncludeFlagForAnnotation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/AnnotationTrait.php.html#31"><abbr title="AnnotationTrait::includeAnnotation">includeAnnotation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/AreaRelationsTrait.php.html#19"><abbr title="AreaRelationsTrait::getIncludeFlagForAreaRelations">getIncludeFlagForAreaRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/AreaRelationsTrait.php.html#31"><abbr title="AreaRelationsTrait::includeAreaRelations">includeAreaRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ArtistCreditsTrait.php.html#19"><abbr title="ArtistCreditsTrait::getIncludeFlagForArtistCredits">getIncludeFlagForArtistCredits</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ArtistCreditsTrait.php.html#31"><abbr title="ArtistCreditsTrait::includeArtistCredits">includeArtistCredits</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ArtistRelationsTrait.php.html#19"><abbr title="ArtistRelationsTrait::getIncludeFlagForArtistRelations">getIncludeFlagForArtistRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ArtistRelationsTrait.php.html#31"><abbr title="ArtistRelationsTrait::includeArtistRelations">includeArtistRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ArtistsTrait.php.html#19"><abbr title="ArtistsTrait::getIncludeFlagForArtists">getIncludeFlagForArtists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/ArtistsTrait.php.html#31"><abbr title="ArtistsTrait::includeArtists">includeArtists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/CollectionsTrait.php.html#19"><abbr title="CollectionsTrait::getIncludeFlagForCollections">getIncludeFlagForCollections</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/CollectionsTrait.php.html#31"><abbr title="CollectionsTrait::includeCollections">includeCollections</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/DiscIdsTrait.php.html#19"><abbr title="DiscIdsTrait::getIncludeFlagForDiscIds">getIncludeFlagForDiscIds</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/DiscIdsTrait.php.html#31"><abbr title="DiscIdsTrait::includeDiscIds">includeDiscIds</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/EventRelationsTrait.php.html#31"><abbr title="EventRelationsTrait::includeEventRelations">includeEventRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/RecordingLevelRelationsTrait.php.html#19"><abbr title="RecordingLevelRelationsTrait::getIncludeFlagForRecordingLevelRelations">getIncludeFlagForRecordingLevelRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/InstrumentRelationsTrait.php.html#19"><abbr title="InstrumentRelationsTrait::getIncludeFlagForInstrumentRelations">getIncludeFlagForInstrumentRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/InstrumentRelationsTrait.php.html#31"><abbr title="InstrumentRelationsTrait::includeInstrumentRelations">includeInstrumentRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/IsrcsTrait.php.html#19"><abbr title="IsrcsTrait::getIncludeFlagForIsrcs">getIncludeFlagForIsrcs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/IsrcsTrait.php.html#31"><abbr title="IsrcsTrait::includeIsrcs">includeIsrcs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/LabelRelationsTrait.php.html#19"><abbr title="LabelRelationsTrait::getIncludeFlagForLabelRelations">getIncludeFlagForLabelRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/LabelRelationsTrait.php.html#31"><abbr title="LabelRelationsTrait::includeLabelRelations">includeLabelRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/LabelsTrait.php.html#19"><abbr title="LabelsTrait::getIncludeFlagForLabels">getIncludeFlagForLabels</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/LabelsTrait.php.html#31"><abbr title="LabelsTrait::includeLabels">includeLabels</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/MediaTrait.php.html#19"><abbr title="MediaTrait::getIncludeFlagForMedia">getIncludeFlagForMedia</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/MediaTrait.php.html#31"><abbr title="MediaTrait::includeMedia">includeMedia</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/PlaceRelationsTrait.php.html#19"><abbr title="PlaceRelationsTrait::getIncludeFlagForPlaceRelations">getIncludeFlagForPlaceRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/PlaceRelationsTrait.php.html#31"><abbr title="PlaceRelationsTrait::includePlaceRelations">includePlaceRelations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/RatingsTrait.php.html#19"><abbr title="RatingsTrait::getIncludeFlagForRatings">getIncludeFlagForRatings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/RatingsTrait.php.html#31"><abbr title="RatingsTrait::includeRatings">includeRatings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Field/WorksTrait.php.html#31"><abbr title="WorksTrait::includeWorks">includeWorks</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 5.3.2</a> using <a href="https://secure.php.net/" target="_top">PHP 7.1.26</a> with <a href="https://xdebug.org/">Xdebug 2.6.1</a> and <a href="https://phpunit.de/">PHPUnit 6.5.14</a> at Fri Mar 1 21:05:06 UTC 2019.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../.js/jquery.min.js" type="text/javascript"></script>
+  <script src="../.js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../.js/holder.min.js" type="text/javascript"></script>
+  <script src="../.js/d3.min.js" type="text/javascript"></script>
+  <script src="../.js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([33,0,0,0,0,0,0,0,0,0,0,26], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([66,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[100,0,"<a href=\"Browse\/AreaFields.php.html#5\">MusicBrainz\\Supplement\\Browse\\AreaFields<\/a>"],[100,0,"<a href=\"Browse\/ArtistFields.php.html#5\">MusicBrainz\\Supplement\\Browse\\ArtistFields<\/a>"],[100,0,"<a href=\"Browse\/CollectionFields.php.html#5\">MusicBrainz\\Supplement\\Browse\\CollectionFields<\/a>"],[100,0,"<a href=\"Browse\/EventFields.php.html#5\">MusicBrainz\\Supplement\\Browse\\EventFields<\/a>"],[100,0,"<a href=\"Browse\/InstrumentFields.php.html#5\">MusicBrainz\\Supplement\\Browse\\InstrumentFields<\/a>"],[100,0,"<a href=\"Browse\/LabelFields.php.html#5\">MusicBrainz\\Supplement\\Browse\\LabelFields<\/a>"],[100,0,"<a href=\"Browse\/PlaceFields.php.html#5\">MusicBrainz\\Supplement\\Browse\\PlaceFields<\/a>"],[100,0,"<a href=\"Browse\/RecordingFields.php.html#5\">MusicBrainz\\Supplement\\Browse\\RecordingFields<\/a>"],[100,0,"<a href=\"Browse\/ReleaseFields.php.html#5\">MusicBrainz\\Supplement\\Browse\\ReleaseFields<\/a>"],[100,0,"<a href=\"Browse\/ReleaseGroupFields.php.html#5\">MusicBrainz\\Supplement\\Browse\\ReleaseGroupFields<\/a>"],[100,0,"<a href=\"Browse\/SeriesFields.php.html#5\">MusicBrainz\\Supplement\\Browse\\SeriesFields<\/a>"],[100,0,"<a href=\"Browse\/UrlFields.php.html#5\">MusicBrainz\\Supplement\\Browse\\UrlFields<\/a>"],[100,0,"<a href=\"Browse\/WorkFields.php.html#5\">MusicBrainz\\Supplement\\Browse\\WorkFields<\/a>"],[100,0,"<a href=\"Lookup\/AreaFields.php.html#5\">MusicBrainz\\Supplement\\Lookup\\AreaFields<\/a>"],[100,0,"<a href=\"Lookup\/ArtistFields.php.html#5\">MusicBrainz\\Supplement\\Lookup\\ArtistFields<\/a>"],[100,0,"<a href=\"Lookup\/DiscIdFields.php.html#5\">MusicBrainz\\Supplement\\Lookup\\DiscIdFields<\/a>"],[100,0,"<a href=\"Lookup\/EventFields.php.html#5\">MusicBrainz\\Supplement\\Lookup\\EventFields<\/a>"],[100,0,"<a href=\"Lookup\/InstrumentFields.php.html#5\">MusicBrainz\\Supplement\\Lookup\\InstrumentFields<\/a>"],[100,0,"<a href=\"Lookup\/LabelFields.php.html#5\">MusicBrainz\\Supplement\\Lookup\\LabelFields<\/a>"],[100,0,"<a href=\"Lookup\/PlaceFields.php.html#5\">MusicBrainz\\Supplement\\Lookup\\PlaceFields<\/a>"],[100,0,"<a href=\"Lookup\/RecordingFields.php.html#5\">MusicBrainz\\Supplement\\Lookup\\RecordingFields<\/a>"],[100,0,"<a href=\"Lookup\/ReleaseFields.php.html#5\">MusicBrainz\\Supplement\\Lookup\\ReleaseFields<\/a>"],[100,0,"<a href=\"Lookup\/ReleaseGroupFields.php.html#5\">MusicBrainz\\Supplement\\Lookup\\ReleaseGroupFields<\/a>"],[100,0,"<a href=\"Lookup\/SeriesFields.php.html#5\">MusicBrainz\\Supplement\\Lookup\\SeriesFields<\/a>"],[100,0,"<a href=\"Lookup\/UrlFields.php.html#5\">MusicBrainz\\Supplement\\Lookup\\UrlFields<\/a>"],[100,0,"<a href=\"Lookup\/WorkFields.php.html#5\">MusicBrainz\\Supplement\\Lookup\\WorkFields<\/a>"],[0,2,"<a href=\"Field\/AliasesTrait.php.html#5\">AliasesTrait<\/a>"],[0,2,"<a href=\"Field\/AnnotationTrait.php.html#5\">AnnotationTrait<\/a>"],[0,2,"<a href=\"Field\/AreaRelationsTrait.php.html#5\">AreaRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/ArtistCreditsTrait.php.html#5\">ArtistCreditsTrait<\/a>"],[0,2,"<a href=\"Field\/ArtistRelationsTrait.php.html#5\">ArtistRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/ArtistsTrait.php.html#5\">ArtistsTrait<\/a>"],[0,2,"<a href=\"Field\/CollectionsTrait.php.html#5\">CollectionsTrait<\/a>"],[0,2,"<a href=\"Field\/DiscIdsTrait.php.html#5\">DiscIdsTrait<\/a>"],[0,2,"<a href=\"Field\/EventRelationsTrait.php.html#5\">EventRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/InstrumentRelationsTrait.php.html#5\">InstrumentRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/IsrcsTrait.php.html#5\">IsrcsTrait<\/a>"],[0,2,"<a href=\"Field\/LabelRelationsTrait.php.html#5\">LabelRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/LabelsTrait.php.html#5\">LabelsTrait<\/a>"],[0,2,"<a href=\"Field\/MediaTrait.php.html#5\">MediaTrait<\/a>"],[0,2,"<a href=\"Field\/PlaceRelationsTrait.php.html#5\">PlaceRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/RatingsTrait.php.html#5\">RatingsTrait<\/a>"],[0,2,"<a href=\"Field\/RecordingLevelRelationsTrait.php.html#5\">RecordingLevelRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/RecordingRelationsTrait.php.html#5\">RecordingRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/RecordingsTrait.php.html#5\">RecordingsTrait<\/a>"],[0,2,"<a href=\"Field\/ReleaseGroupRelationsTrait.php.html#5\">ReleaseGroupRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/ReleaseGroupsTrait.php.html#5\">ReleaseGroupsTrait<\/a>"],[0,2,"<a href=\"Field\/ReleaseRelationsTrait.php.html#5\">ReleaseRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/ReleasesTrait.php.html#5\">ReleasesTrait<\/a>"],[0,2,"<a href=\"Field\/SeriesRelationsTrait.php.html#5\">SeriesRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/TagsRelationsTrait.php.html#5\">TagsRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/TagsTrait.php.html#5\">TagsTrait<\/a>"],[0,2,"<a href=\"Field\/URLRelationsTrait.php.html#5\">URLRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/UserRatingsTrait.php.html#5\">UserRatingsTrait<\/a>"],[0,2,"<a href=\"Field\/UserTagsTrait.php.html#5\">UserTagsTrait<\/a>"],[0,2,"<a href=\"Field\/VariousArtistsTrait.php.html#5\">VariousArtistsTrait<\/a>"],[0,2,"<a href=\"Field\/WorkLevelRelationsTrait.php.html#5\">WorkLevelRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/WorkRelationsTrait.php.html#5\">WorkRelationsTrait<\/a>"],[0,2,"<a href=\"Field\/WorksTrait.php.html#5\">WorksTrait<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Field\/AliasesTrait.php.html#19\">AliasesTrait::getIncludeFlagForAliases<\/a>"],[0,1,"<a href=\"Field\/AliasesTrait.php.html#31\">AliasesTrait::includeAliases<\/a>"],[0,1,"<a href=\"Field\/AnnotationTrait.php.html#19\">AnnotationTrait::getIncludeFlagForAnnotation<\/a>"],[0,1,"<a href=\"Field\/AnnotationTrait.php.html#31\">AnnotationTrait::includeAnnotation<\/a>"],[0,1,"<a href=\"Field\/AreaRelationsTrait.php.html#19\">AreaRelationsTrait::getIncludeFlagForAreaRelations<\/a>"],[0,1,"<a href=\"Field\/AreaRelationsTrait.php.html#31\">AreaRelationsTrait::includeAreaRelations<\/a>"],[0,1,"<a href=\"Field\/ArtistCreditsTrait.php.html#19\">ArtistCreditsTrait::getIncludeFlagForArtistCredits<\/a>"],[0,1,"<a href=\"Field\/ArtistCreditsTrait.php.html#31\">ArtistCreditsTrait::includeArtistCredits<\/a>"],[0,1,"<a href=\"Field\/ArtistRelationsTrait.php.html#19\">ArtistRelationsTrait::getIncludeFlagForArtistRelations<\/a>"],[0,1,"<a href=\"Field\/ArtistRelationsTrait.php.html#31\">ArtistRelationsTrait::includeArtistRelations<\/a>"],[0,1,"<a href=\"Field\/ArtistsTrait.php.html#19\">ArtistsTrait::getIncludeFlagForArtists<\/a>"],[0,1,"<a href=\"Field\/ArtistsTrait.php.html#31\">ArtistsTrait::includeArtists<\/a>"],[0,1,"<a href=\"Field\/CollectionsTrait.php.html#19\">CollectionsTrait::getIncludeFlagForCollections<\/a>"],[0,1,"<a href=\"Field\/CollectionsTrait.php.html#31\">CollectionsTrait::includeCollections<\/a>"],[0,1,"<a href=\"Field\/DiscIdsTrait.php.html#19\">DiscIdsTrait::getIncludeFlagForDiscIds<\/a>"],[0,1,"<a href=\"Field\/DiscIdsTrait.php.html#31\">DiscIdsTrait::includeDiscIds<\/a>"],[0,1,"<a href=\"Field\/EventRelationsTrait.php.html#19\">EventRelationsTrait::getIncludeFlagForEventRelations<\/a>"],[0,1,"<a href=\"Field\/EventRelationsTrait.php.html#31\">EventRelationsTrait::includeEventRelations<\/a>"],[0,1,"<a href=\"Field\/InstrumentRelationsTrait.php.html#19\">InstrumentRelationsTrait::getIncludeFlagForInstrumentRelations<\/a>"],[0,1,"<a href=\"Field\/InstrumentRelationsTrait.php.html#31\">InstrumentRelationsTrait::includeInstrumentRelations<\/a>"],[0,1,"<a href=\"Field\/IsrcsTrait.php.html#19\">IsrcsTrait::getIncludeFlagForIsrcs<\/a>"],[0,1,"<a href=\"Field\/IsrcsTrait.php.html#31\">IsrcsTrait::includeIsrcs<\/a>"],[0,1,"<a href=\"Field\/LabelRelationsTrait.php.html#19\">LabelRelationsTrait::getIncludeFlagForLabelRelations<\/a>"],[0,1,"<a href=\"Field\/LabelRelationsTrait.php.html#31\">LabelRelationsTrait::includeLabelRelations<\/a>"],[0,1,"<a href=\"Field\/LabelsTrait.php.html#19\">LabelsTrait::getIncludeFlagForLabels<\/a>"],[0,1,"<a href=\"Field\/LabelsTrait.php.html#31\">LabelsTrait::includeLabels<\/a>"],[0,1,"<a href=\"Field\/MediaTrait.php.html#19\">MediaTrait::getIncludeFlagForMedia<\/a>"],[0,1,"<a href=\"Field\/MediaTrait.php.html#31\">MediaTrait::includeMedia<\/a>"],[0,1,"<a href=\"Field\/PlaceRelationsTrait.php.html#19\">PlaceRelationsTrait::getIncludeFlagForPlaceRelations<\/a>"],[0,1,"<a href=\"Field\/PlaceRelationsTrait.php.html#31\">PlaceRelationsTrait::includePlaceRelations<\/a>"],[0,1,"<a href=\"Field\/RatingsTrait.php.html#19\">RatingsTrait::getIncludeFlagForRatings<\/a>"],[0,1,"<a href=\"Field\/RatingsTrait.php.html#31\">RatingsTrait::includeRatings<\/a>"],[0,1,"<a href=\"Field\/RecordingLevelRelationsTrait.php.html#19\">RecordingLevelRelationsTrait::getIncludeFlagForRecordingLevelRelations<\/a>"],[0,1,"<a href=\"Field\/RecordingLevelRelationsTrait.php.html#31\">RecordingLevelRelationsTrait::includeRecordingLevelRelations<\/a>"],[0,1,"<a href=\"Field\/RecordingRelationsTrait.php.html#19\">RecordingRelationsTrait::getIncludeFlagForRecordingRelations<\/a>"],[0,1,"<a href=\"Field\/RecordingRelationsTrait.php.html#31\">RecordingRelationsTrait::includeRecordingRelations<\/a>"],[0,1,"<a href=\"Field\/RecordingsTrait.php.html#19\">RecordingsTrait::getIncludeFlagForRecordings<\/a>"],[0,1,"<a href=\"Field\/RecordingsTrait.php.html#31\">RecordingsTrait::includeRecordings<\/a>"],[0,1,"<a href=\"Field\/ReleaseGroupRelationsTrait.php.html#19\">ReleaseGroupRelationsTrait::getIncludeFlagForReleaseGroupRelations<\/a>"],[0,1,"<a href=\"Field\/ReleaseGroupRelationsTrait.php.html#31\">ReleaseGroupRelationsTrait::includeReleaseGroupRelations<\/a>"],[0,1,"<a href=\"Field\/ReleaseGroupsTrait.php.html#19\">ReleaseGroupsTrait::getIncludeFlagForReleaseGroups<\/a>"],[0,1,"<a href=\"Field\/ReleaseGroupsTrait.php.html#31\">ReleaseGroupsTrait::includeReleaseGroups<\/a>"],[0,1,"<a href=\"Field\/ReleaseRelationsTrait.php.html#19\">ReleaseRelationsTrait::getIncludeFlagForReleaseRelations<\/a>"],[0,1,"<a href=\"Field\/ReleaseRelationsTrait.php.html#31\">ReleaseRelationsTrait::includeReleaseRelations<\/a>"],[0,1,"<a href=\"Field\/ReleasesTrait.php.html#19\">ReleasesTrait::getIncludeFlagForReleases<\/a>"],[0,1,"<a href=\"Field\/ReleasesTrait.php.html#31\">ReleasesTrait::includeReleases<\/a>"],[0,1,"<a href=\"Field\/SeriesRelationsTrait.php.html#19\">SeriesRelationsTrait::getIncludeFlagForSeriesRelations<\/a>"],[0,1,"<a href=\"Field\/SeriesRelationsTrait.php.html#31\">SeriesRelationsTrait::includeSeriesRelations<\/a>"],[0,1,"<a href=\"Field\/TagsRelationsTrait.php.html#19\">TagsRelationsTrait::getIncludeFlagForTagsRelations<\/a>"],[0,1,"<a href=\"Field\/TagsRelationsTrait.php.html#31\">TagsRelationsTrait::includeTagsRelations<\/a>"],[0,1,"<a href=\"Field\/TagsTrait.php.html#19\">TagsTrait::getIncludeFlagForTags<\/a>"],[0,1,"<a href=\"Field\/TagsTrait.php.html#31\">TagsTrait::includeTags<\/a>"],[0,1,"<a href=\"Field\/URLRelationsTrait.php.html#19\">URLRelationsTrait::getIncludeFlagForURLRelations<\/a>"],[0,1,"<a href=\"Field\/URLRelationsTrait.php.html#31\">URLRelationsTrait::includeURLRelations<\/a>"],[0,1,"<a href=\"Field\/UserRatingsTrait.php.html#19\">UserRatingsTrait::getIncludeFlagForUserRatings<\/a>"],[0,1,"<a href=\"Field\/UserRatingsTrait.php.html#31\">UserRatingsTrait::includeUserRatings<\/a>"],[0,1,"<a href=\"Field\/UserTagsTrait.php.html#19\">UserTagsTrait::getIncludeFlagForUserTags<\/a>"],[0,1,"<a href=\"Field\/UserTagsTrait.php.html#31\">UserTagsTrait::includeUserTags<\/a>"],[0,1,"<a href=\"Field\/VariousArtistsTrait.php.html#19\">VariousArtistsTrait::getIncludeFlagForVariousArtists<\/a>"],[0,1,"<a href=\"Field\/VariousArtistsTrait.php.html#31\">VariousArtistsTrait::includeVariousArtists<\/a>"],[0,1,"<a href=\"Field\/WorkLevelRelationsTrait.php.html#19\">WorkLevelRelationsTrait::getIncludeFlagForWorkLevelRelations<\/a>"],[0,1,"<a href=\"Field\/WorkLevelRelationsTrait.php.html#31\">WorkLevelRelationsTrait::includeWorkLevelRelations<\/a>"],[0,1,"<a href=\"Field\/WorkRelationsTrait.php.html#19\">WorkRelationsTrait::getIncludeFlagForWorkRelations<\/a>"],[0,1,"<a href=\"Field\/WorkRelationsTrait.php.html#31\">WorkRelationsTrait::includeWorkRelations<\/a>"],[0,1,"<a href=\"Field\/WorksTrait.php.html#19\">WorksTrait::getIncludeFlagForWorks<\/a>"],[0,1,"<a href=\"Field\/WorksTrait.php.html#31\">WorksTrait::includeWorks<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

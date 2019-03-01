@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/xenos/MusicBrainz/src/Relation/Type/Place</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../../../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../../../.css/style.css" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]>
+  <script src="../../../.js/html5shiv.min.js"></script>
+  <script src="../../../.js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="../../../index.html">/var/www/xenos/MusicBrainz/src</a></li>
+        <li><a href="../../index.html">Relation</a></li>
+        <li><a href="../index.html">Type</a></li>
+        <li><a href="index.html">Place</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Place.php.html#12">MusicBrainz\Relation\Type\Place\Place</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Setlistfm.php.html#14">MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Setlistfm</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/SocalNetwork.php.html#15">MusicBrainz\Relation\Type\Place\Url\OnlineData\SocalNetwork</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/SocialNetwork/Myspace.php.html#14">MusicBrainz\Relation\Type\Place\Url\OnlineData\SocialNetwork\Myspace</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/SocialNetwork/Soundcloud.php.html#14">MusicBrainz\Relation\Type\Place\Url\OnlineData\SocialNetwork\Soundcloud</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/VideoChannel.php.html#13">MusicBrainz\Relation\Type\Place\Url\OnlineData\VideoChannel</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/VideoChannel/Youtube.php.html#15">MusicBrainz\Relation\Type\Place\Url\OnlineData\VideoChannel\Youtube</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases.php.html#14">MusicBrainz\Relation\Type\Place\Url\OtherDatabases</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Bandsintown.php.html#14">MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Bandsintown</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Discogs.php.html#14">MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Discogs</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Geonames.php.html#14">MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Geonames</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Imdb.php.html#14">MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Imdb</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/LastFm.php.html#14">MusicBrainz\Relation\Type\Place\Url\OtherDatabases\LastFm</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Songkick.php.html#14">MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Songkick</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/Image.php.html#13">MusicBrainz\Relation\Type\Place\Url\OnlineData\Image</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Viaf.php.html#16">MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Viaf</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Wikidata.php.html#14">MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Wikidata</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Wikipedia.php.html#14">MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Wikipedia</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work.php.html#12">MusicBrainz\Relation\Type\Place\Work</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/Commissioned.php.html#14">MusicBrainz\Relation\Type\Place\Work\Commissioned</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/Premiere.php.html#13">MusicBrainz\Relation\Type\Place\Work\Premiere</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt.php.html#13">MusicBrainz\Relation\Type\Place\Work\WrittenAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt/ComposedAt.php.html#13">MusicBrainz\Relation\Type\Place\Work\WrittenAt\ComposedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt/IsArrangingAreaFor.php.html#13">MusicBrainz\Relation\Type\Place\Work\WrittenAt\IsArrangingAreaFor</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt/LibrettoCommissioned.php.html#13">MusicBrainz\Relation\Type\Place\Work\WrittenAt\LibrettoCommissioned</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt/LyricsCommissioned.php.html#13">MusicBrainz\Relation\Type\Place\Work\WrittenAt\LyricsCommissioned</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt/RevisedAt.php.html#13">MusicBrainz\Relation\Type\Place\Work\WrittenAt\RevisedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/Patronage.php.html#14">MusicBrainz\Relation\Type\Place\Url\OnlineData\Patronage</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/Crowdfunding.php.html#13">MusicBrainz\Relation\Type\Place\Url\OnlineData\Crowdfunding</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Place/PartOf.php.html#13">MusicBrainz\Relation\Type\Place\Place\PartOf</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt.php.html#13">MusicBrainz\Relation\Type\Place\Release\EngineeredAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Place/RelocatedTo.php.html#13">MusicBrainz\Relation\Type\Place\Place\RelocatedTo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording.php.html#12">MusicBrainz\Relation\Type\Place\Recording</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/ArrangedAt.php.html#13">MusicBrainz\Relation\Type\Place\Recording\ArrangedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/EngineeredAt.php.html#13">MusicBrainz\Relation\Type\Place\Recording\EngineeredAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/EngineeredAt/EditedAt.php.html#13">MusicBrainz\Relation\Type\Place\Recording\EngineeredAt\EditedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/EngineeredAt/MixedAt.php.html#13">MusicBrainz\Relation\Type\Place\Recording\EngineeredAt\MixedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/EngineeredAt/RecordedAt.php.html#13">MusicBrainz\Relation\Type\Place\Recording\EngineeredAt\RecordedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/EngineeredAt/RemixedAt.php.html#13">MusicBrainz\Relation\Type\Place\Recording\EngineeredAt\RemixedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/ProducedAt.php.html#13">MusicBrainz\Relation\Type\Place\Recording\ProducedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/VideoShotAt.php.html#13">MusicBrainz\Relation\Type\Place\Recording\VideoShotAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release.php.html#12">MusicBrainz\Relation\Type\Place\Release</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/ArrangedAt.php.html#13">MusicBrainz\Relation\Type\Place\Release\ArrangedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt/EditedAt.php.html#13">MusicBrainz\Relation\Type\Place\Release\EngineeredAt\EditedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/Blog.php.html#13">MusicBrainz\Relation\Type\Place\Url\OnlineData\Blog</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt/MasteredAt.php.html#13">MusicBrainz\Relation\Type\Place\Release\EngineeredAt\MasteredAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt/MasteredAt/LacquerCutAt.php.html#13">MusicBrainz\Relation\Type\Place\Release\EngineeredAt\MasteredAt\LacquerCutAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt/MixedAt.php.html#13">MusicBrainz\Relation\Type\Place\Release\EngineeredAt\MixedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt/RecordedAt.php.html#13">MusicBrainz\Relation\Type\Place\Release\EngineeredAt\RecordedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt/RemixedAt.php.html#13">MusicBrainz\Relation\Type\Place\Release\EngineeredAt\RemixedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/ManufacturedAt.php.html#13">MusicBrainz\Relation\Type\Place\Release\ManufacturedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/ManufacturedAt/GlassMasteredAt.php.html#13">MusicBrainz\Relation\Type\Place\Release\ManufacturedAt\GlassMasteredAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/ManufacturedAt/PressedAt.php.html#13">MusicBrainz\Relation\Type\Place\Release\ManufacturedAt\PressedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/ProducedAt.php.html#13">MusicBrainz\Relation\Type\Place\Release\ProducedAt</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url.php.html#12">MusicBrainz\Relation\Type\Place\Url</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OfficialHomepage.php.html#13">MusicBrainz\Relation\Type\Place\Url\OfficialHomepage</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData.php.html#13">MusicBrainz\Relation\Type\Place\Url\OnlineData</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt/TranslatedAt.php.html#13">MusicBrainz\Relation\Type\Place\Work\WrittenAt\TranslatedAt</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Place.php.html#19"><abbr title="MusicBrainz\Relation\Type\Place\Place::getRelatedEntityType">getRelatedEntityType</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Setlistfm.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Setlistfm::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/SocalNetwork.php.html#22"><abbr title="MusicBrainz\Relation\Type\Place\Url\OnlineData\SocalNetwork::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/SocialNetwork/Myspace.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Url\OnlineData\SocialNetwork\Myspace::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/SocialNetwork/Soundcloud.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Url\OnlineData\SocialNetwork\Soundcloud::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/VideoChannel.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Url\OnlineData\VideoChannel::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/VideoChannel/Youtube.php.html#22"><abbr title="MusicBrainz\Relation\Type\Place\Url\OnlineData\VideoChannel\Youtube::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Url\OtherDatabases::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Bandsintown.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Bandsintown::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Discogs.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Discogs::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Geonames.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Geonames::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Imdb.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Imdb::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/LastFm.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Url\OtherDatabases\LastFm::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Songkick.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Songkick::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/Image.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Url\OnlineData\Image::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Viaf.php.html#23"><abbr title="MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Viaf::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Wikidata.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Wikidata::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OtherDatabases/Wikipedia.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Url\OtherDatabases\Wikipedia::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work.php.html#19"><abbr title="MusicBrainz\Relation\Type\Place\Work::getRelatedEntityType">getRelatedEntityType</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/Commissioned.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Work\Commissioned::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/Premiere.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Work\Premiere::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Work\WrittenAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt/ComposedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Work\WrittenAt\ComposedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt/IsArrangingAreaFor.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Work\WrittenAt\IsArrangingAreaFor::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt/LibrettoCommissioned.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Work\WrittenAt\LibrettoCommissioned::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt/LyricsCommissioned.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Work\WrittenAt\LyricsCommissioned::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt/RevisedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Work\WrittenAt\RevisedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/Patronage.php.html#21"><abbr title="MusicBrainz\Relation\Type\Place\Url\OnlineData\Patronage::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/Crowdfunding.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Url\OnlineData\Crowdfunding::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Place/PartOf.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Place\PartOf::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Release\EngineeredAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Place/RelocatedTo.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Place\RelocatedTo::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording.php.html#19"><abbr title="MusicBrainz\Relation\Type\Place\Recording::getRelatedEntityType">getRelatedEntityType</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/ArrangedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Recording\ArrangedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/EngineeredAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Recording\EngineeredAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/EngineeredAt/EditedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Recording\EngineeredAt\EditedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/EngineeredAt/MixedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Recording\EngineeredAt\MixedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/EngineeredAt/RecordedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Recording\EngineeredAt\RecordedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/EngineeredAt/RemixedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Recording\EngineeredAt\RemixedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/ProducedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Recording\ProducedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Recording/VideoShotAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Recording\VideoShotAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release.php.html#19"><abbr title="MusicBrainz\Relation\Type\Place\Release::getRelatedEntityType">getRelatedEntityType</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/ArrangedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Release\ArrangedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt/EditedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Release\EngineeredAt\EditedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData/Blog.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Url\OnlineData\Blog::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt/MasteredAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Release\EngineeredAt\MasteredAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt/MasteredAt/LacquerCutAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Release\EngineeredAt\MasteredAt\LacquerCutAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt/MixedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Release\EngineeredAt\MixedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt/RecordedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Release\EngineeredAt\RecordedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/EngineeredAt/RemixedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Release\EngineeredAt\RemixedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/ManufacturedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Release\ManufacturedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/ManufacturedAt/GlassMasteredAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Release\ManufacturedAt\GlassMasteredAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/ManufacturedAt/PressedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Release\ManufacturedAt\PressedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Release/ProducedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Release\ProducedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url.php.html#19"><abbr title="MusicBrainz\Relation\Type\Place\Url::getRelatedEntityType">getRelatedEntityType</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OfficialHomepage.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Url\OfficialHomepage::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Url/OnlineData.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Url\OnlineData::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Work/WrittenAt/TranslatedAt.php.html#20"><abbr title="MusicBrainz\Relation\Type\Place\Work\WrittenAt\TranslatedAt::getRelationName">getRelationName</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 5.3.2</a> using <a href="https://secure.php.net/" target="_top">PHP 7.1.26</a> with <a href="https://xdebug.org/">Xdebug 2.6.1</a> and <a href="https://phpunit.de/">PHPUnit 6.5.14</a> at Fri Mar 1 21:05:06 UTC 2019.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../../.js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../../.js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../../../.js/holder.min.js" type="text/javascript"></script>
+  <script src="../../../.js/d3.min.js" type="text/javascript"></script>
+  <script src="../../../.js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([58,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([58,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Place.php.html#12\">MusicBrainz\\Relation\\Type\\Place\\Place<\/a>"],[0,1,"<a href=\"Place\/PartOf.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Place\\PartOf<\/a>"],[0,1,"<a href=\"Place\/RelocatedTo.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Place\\RelocatedTo<\/a>"],[0,1,"<a href=\"Recording.php.html#12\">MusicBrainz\\Relation\\Type\\Place\\Recording<\/a>"],[0,1,"<a href=\"Recording\/ArrangedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Recording\\ArrangedAt<\/a>"],[0,1,"<a href=\"Recording\/EngineeredAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Recording\\EngineeredAt<\/a>"],[0,1,"<a href=\"Recording\/EngineeredAt\/EditedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Recording\\EngineeredAt\\EditedAt<\/a>"],[0,1,"<a href=\"Recording\/EngineeredAt\/MixedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Recording\\EngineeredAt\\MixedAt<\/a>"],[0,1,"<a href=\"Recording\/EngineeredAt\/RecordedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Recording\\EngineeredAt\\RecordedAt<\/a>"],[0,1,"<a href=\"Recording\/EngineeredAt\/RemixedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Recording\\EngineeredAt\\RemixedAt<\/a>"],[0,1,"<a href=\"Recording\/ProducedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Recording\\ProducedAt<\/a>"],[0,1,"<a href=\"Recording\/VideoShotAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Recording\\VideoShotAt<\/a>"],[0,1,"<a href=\"Release.php.html#12\">MusicBrainz\\Relation\\Type\\Place\\Release<\/a>"],[0,1,"<a href=\"Release\/ArrangedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Release\\ArrangedAt<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt\/EditedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt\\EditedAt<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt\/MasteredAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt\\MasteredAt<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt\/MasteredAt\/LacquerCutAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt\\MasteredAt\\LacquerCutAt<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt\/MixedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt\\MixedAt<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt\/RecordedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt\\RecordedAt<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt\/RemixedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt\\RemixedAt<\/a>"],[0,1,"<a href=\"Release\/ManufacturedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Release\\ManufacturedAt<\/a>"],[0,1,"<a href=\"Release\/ManufacturedAt\/GlassMasteredAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Release\\ManufacturedAt\\GlassMasteredAt<\/a>"],[0,1,"<a href=\"Release\/ManufacturedAt\/PressedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Release\\ManufacturedAt\\PressedAt<\/a>"],[0,1,"<a href=\"Release\/ProducedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Release\\ProducedAt<\/a>"],[0,1,"<a href=\"Url.php.html#12\">MusicBrainz\\Relation\\Type\\Place\\Url<\/a>"],[0,1,"<a href=\"Url\/OfficialHomepage.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Url\\OfficialHomepage<\/a>"],[0,1,"<a href=\"Url\/OnlineData.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/Blog.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\Blog<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/Crowdfunding.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\Crowdfunding<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/Image.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\Image<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/Patronage.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\Patronage<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/SocalNetwork.php.html#15\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\SocalNetwork<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/SocialNetwork\/Myspace.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\SocialNetwork\\Myspace<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/SocialNetwork\/Soundcloud.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\SocialNetwork\\Soundcloud<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/VideoChannel.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\VideoChannel<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/VideoChannel\/Youtube.php.html#15\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\VideoChannel\\Youtube<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Bandsintown.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Bandsintown<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Discogs.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Discogs<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Geonames.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Geonames<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Imdb.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Imdb<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/LastFm.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\LastFm<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Setlistfm.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Setlistfm<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Songkick.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Songkick<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Viaf.php.html#16\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Viaf<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Wikidata.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Wikidata<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Wikipedia.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Wikipedia<\/a>"],[0,1,"<a href=\"Work.php.html#12\">MusicBrainz\\Relation\\Type\\Place\\Work<\/a>"],[0,1,"<a href=\"Work\/Commissioned.php.html#14\">MusicBrainz\\Relation\\Type\\Place\\Work\\Commissioned<\/a>"],[0,1,"<a href=\"Work\/Premiere.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Work\\Premiere<\/a>"],[0,1,"<a href=\"Work\/WrittenAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt<\/a>"],[0,1,"<a href=\"Work\/WrittenAt\/ComposedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt\\ComposedAt<\/a>"],[0,1,"<a href=\"Work\/WrittenAt\/IsArrangingAreaFor.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt\\IsArrangingAreaFor<\/a>"],[0,1,"<a href=\"Work\/WrittenAt\/LibrettoCommissioned.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt\\LibrettoCommissioned<\/a>"],[0,1,"<a href=\"Work\/WrittenAt\/LyricsCommissioned.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt\\LyricsCommissioned<\/a>"],[0,1,"<a href=\"Work\/WrittenAt\/RevisedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt\\RevisedAt<\/a>"],[0,1,"<a href=\"Work\/WrittenAt\/TranslatedAt.php.html#13\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt\\TranslatedAt<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Place.php.html#19\">MusicBrainz\\Relation\\Type\\Place\\Place::getRelatedEntityType<\/a>"],[0,1,"<a href=\"Place\/PartOf.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Place\\PartOf::getRelationName<\/a>"],[0,1,"<a href=\"Place\/RelocatedTo.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Place\\RelocatedTo::getRelationName<\/a>"],[0,1,"<a href=\"Recording.php.html#19\">MusicBrainz\\Relation\\Type\\Place\\Recording::getRelatedEntityType<\/a>"],[0,1,"<a href=\"Recording\/ArrangedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Recording\\ArrangedAt::getRelationName<\/a>"],[0,1,"<a href=\"Recording\/EngineeredAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Recording\\EngineeredAt::getRelationName<\/a>"],[0,1,"<a href=\"Recording\/EngineeredAt\/EditedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Recording\\EngineeredAt\\EditedAt::getRelationName<\/a>"],[0,1,"<a href=\"Recording\/EngineeredAt\/MixedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Recording\\EngineeredAt\\MixedAt::getRelationName<\/a>"],[0,1,"<a href=\"Recording\/EngineeredAt\/RecordedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Recording\\EngineeredAt\\RecordedAt::getRelationName<\/a>"],[0,1,"<a href=\"Recording\/EngineeredAt\/RemixedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Recording\\EngineeredAt\\RemixedAt::getRelationName<\/a>"],[0,1,"<a href=\"Recording\/ProducedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Recording\\ProducedAt::getRelationName<\/a>"],[0,1,"<a href=\"Recording\/VideoShotAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Recording\\VideoShotAt::getRelationName<\/a>"],[0,1,"<a href=\"Release.php.html#19\">MusicBrainz\\Relation\\Type\\Place\\Release::getRelatedEntityType<\/a>"],[0,1,"<a href=\"Release\/ArrangedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Release\\ArrangedAt::getRelationName<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt::getRelationName<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt\/EditedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt\\EditedAt::getRelationName<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt\/MasteredAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt\\MasteredAt::getRelationName<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt\/MasteredAt\/LacquerCutAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt\\MasteredAt\\LacquerCutAt::getRelationName<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt\/MixedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt\\MixedAt::getRelationName<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt\/RecordedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt\\RecordedAt::getRelationName<\/a>"],[0,1,"<a href=\"Release\/EngineeredAt\/RemixedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Release\\EngineeredAt\\RemixedAt::getRelationName<\/a>"],[0,1,"<a href=\"Release\/ManufacturedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Release\\ManufacturedAt::getRelationName<\/a>"],[0,1,"<a href=\"Release\/ManufacturedAt\/GlassMasteredAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Release\\ManufacturedAt\\GlassMasteredAt::getRelationName<\/a>"],[0,1,"<a href=\"Release\/ManufacturedAt\/PressedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Release\\ManufacturedAt\\PressedAt::getRelationName<\/a>"],[0,1,"<a href=\"Release\/ProducedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Release\\ProducedAt::getRelationName<\/a>"],[0,1,"<a href=\"Url.php.html#19\">MusicBrainz\\Relation\\Type\\Place\\Url::getRelatedEntityType<\/a>"],[0,1,"<a href=\"Url\/OfficialHomepage.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Url\\OfficialHomepage::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OnlineData.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/Blog.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\Blog::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/Crowdfunding.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\Crowdfunding::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/Image.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\Image::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/Patronage.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\Patronage::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/SocalNetwork.php.html#22\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\SocalNetwork::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/SocialNetwork\/Myspace.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\SocialNetwork\\Myspace::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/SocialNetwork\/Soundcloud.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\SocialNetwork\\Soundcloud::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/VideoChannel.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\VideoChannel::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OnlineData\/VideoChannel\/Youtube.php.html#22\">MusicBrainz\\Relation\\Type\\Place\\Url\\OnlineData\\VideoChannel\\Youtube::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Bandsintown.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Bandsintown::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Discogs.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Discogs::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Geonames.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Geonames::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Imdb.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Imdb::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/LastFm.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\LastFm::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Setlistfm.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Setlistfm::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Songkick.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Songkick::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Viaf.php.html#23\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Viaf::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Wikidata.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Wikidata::getRelationName<\/a>"],[0,1,"<a href=\"Url\/OtherDatabases\/Wikipedia.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Url\\OtherDatabases\\Wikipedia::getRelationName<\/a>"],[0,1,"<a href=\"Work.php.html#19\">MusicBrainz\\Relation\\Type\\Place\\Work::getRelatedEntityType<\/a>"],[0,1,"<a href=\"Work\/Commissioned.php.html#21\">MusicBrainz\\Relation\\Type\\Place\\Work\\Commissioned::getRelationName<\/a>"],[0,1,"<a href=\"Work\/Premiere.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Work\\Premiere::getRelationName<\/a>"],[0,1,"<a href=\"Work\/WrittenAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt::getRelationName<\/a>"],[0,1,"<a href=\"Work\/WrittenAt\/ComposedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt\\ComposedAt::getRelationName<\/a>"],[0,1,"<a href=\"Work\/WrittenAt\/IsArrangingAreaFor.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt\\IsArrangingAreaFor::getRelationName<\/a>"],[0,1,"<a href=\"Work\/WrittenAt\/LibrettoCommissioned.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt\\LibrettoCommissioned::getRelationName<\/a>"],[0,1,"<a href=\"Work\/WrittenAt\/LyricsCommissioned.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt\\LyricsCommissioned::getRelationName<\/a>"],[0,1,"<a href=\"Work\/WrittenAt\/RevisedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt\\RevisedAt::getRelationName<\/a>"],[0,1,"<a href=\"Work\/WrittenAt\/TranslatedAt.php.html#20\">MusicBrainz\\Relation\\Type\\Place\\Work\\WrittenAt\\TranslatedAt::getRelationName<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

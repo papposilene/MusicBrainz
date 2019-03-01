@@ -16,7 +16,7 @@
     "require": {
         "php": ">=7.1.0",
         "psr/log": "~1.0",
-        "xenos/asklucy": "1.*"
+        "xenos/asklucy": "^2"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^6",
