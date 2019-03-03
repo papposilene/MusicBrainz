@@ -35,7 +35,7 @@ class Config
      *
      * @var string
      */
-    private $apiUrl = 'http://musicbrainz.org/ws/2';
+    private $apiUrl = 'https://musicbrainz.org/ws/2';
 
     /**
      * Returns the username.

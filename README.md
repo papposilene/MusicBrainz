@@ -89,14 +89,14 @@ $musicBrainz->config()
 
 ### Custom API Path
 By default, all requests are executed against the MusicBrainz API at
-[http://musicbrainz.org/ws/2](http://musicbrainz.org/ws/2). You can set another base path (e. g. for your own MusicBrainz
+[https://musicbrainz.org/ws/2](https://musicbrainz.org/ws/2). You can set another base path (e. g. for your own MusicBrainz
 installation) as follows:
 
 ```php
 <?php
 /** @var \MusicBrainz\MusicBrainz $musicBrainz*/
 $musicBrainz->config()
-    ->setApiUrl('http://example.com/ws/2');
+    ->setApiUrl('https://example.com/ws/2');
 ```
 
 ## Usage
