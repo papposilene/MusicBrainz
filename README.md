@@ -17,7 +17,7 @@ This project contains an easy to use PHP API client for the [MusicBrainz JSON we
 ## Installation
 ### Install with Git
 ```bash
-git clone https://github.com/XenosEleatikos/MusicBrainz.git
+git clone https://github.com/papposilene/MusicBrainz.git
 ```
 
 ### Install with Composer
@@ -25,7 +25,7 @@ This project is available at [Packagist](https://packagist.org): https://packagi
 
 You can use it in your project with the following command:
 ```bash
-composer require xenos/musicbrainz
+composer require papposilene/musicbrainz
 ```
 
 ## Set up
