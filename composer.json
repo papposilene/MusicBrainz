@@ -3,13 +3,19 @@
     "type": "library",
     "description": "A PHP library for accessing the MusicBrainz API",
     "keywords": ["musicbrainz", "library", "php", "api"],
-    "homepage": "https://github.com/papposilene/MusicBrainz",
+    "homepage": "https://github.com/papposilene/musicbrainz",
     "license": "MIT",
     "authors": [
         {
             "name": "Christoph Hochholzer",
             "email": "christoph@hochholzer.info",
             "homepage": "https://github.com/XenosEleatikos",
+            "role": "Developer"
+        },
+        {
+            "name": "Philippe-Alexandre Pierre",
+            "email": "dev@psln.nl",
+            "homepage": "https://github.com/papposilene",
             "role": "Developer"
         }
     ],
