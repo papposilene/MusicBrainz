@@ -1,9 +1,9 @@
 {
-    "name": "xenos/musicbrainz",
+    "name": "papposilene/musicbrainz",
     "type": "library",
     "description": "A PHP library for accessing the MusicBrainz API",
     "keywords": ["musicbrainz", "library", "php", "api"],
-    "homepage": "https://github.com/XenosEleatikos/MusicBrainz",
+    "homepage": "https://github.com/papposilene/MusicBrainz",
     "license": "MIT",
     "authors": [
         {
